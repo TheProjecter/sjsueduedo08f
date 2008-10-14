@@ -16,7 +16,7 @@ public interface CourseService {
     List<Course> getAll(); //throws general exception. may return empty list
     Course create (Course course); //throws invalid course exception, duplicate course exception, general exception
     Course update (Course course); //throws invalid course exception, no such course exception, duplicate course exception, general exception 
-    void delete (Course course); //throws no such course exception, general exception
+    void delete (Course course); //throws no such course exception, general exception, hasDependencies
 
     void enrollStudent (Course course, Student student); //throws can't enroll exception, no such course exception, no such student exception, general exception
     void unEnrollStudent (Course course, Student student); //throws can't unenroll exception, no such course exception, no such student exception, general exception
