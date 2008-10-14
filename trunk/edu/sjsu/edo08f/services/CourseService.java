@@ -21,7 +21,7 @@ public interface CourseService {
     void enrollStudent (Course course, Student student); //throws can't enroll exception, no such course exception, no such student exception, general exception
     void unEnrollStudent (Course course, Student student); //throws can't unenroll exception, no such course exception, no such student exception, general exception
 
-    void assignInstructor (Course course, Instructor instructor); //exc: course already has instructor, no such course, no such instructor
+    void assignInstructor (Course course, Instructor instructor); //exc: course already has instructor, no such course, no such instructor, invalid operation
     void removeInstructor (Course course, Instructor instructor); // exc: course doesn't have instructors exception, has dependencies, no such course, no such instructor 
 
     /*
