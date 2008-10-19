@@ -1,8 +1,8 @@
-<project name="testng" default="run-tests" basedir=".">
+<project name="testng" default="tests-run" basedir=".">
 
     <property file="build.properties"/>
 
-    <target name="compile"
+    <target name="tests-compile"
             description="compile the tests"
             depends="prepare">
 
@@ -27,7 +27,7 @@
         <mkdir dir="${test.output}"/>
     </target>
 
-    <target  name="run-tests" depends="compile"
+    <target  name="tests-run" depends="tests-compile"
              description="run tests">
         <testng
                 classpathref="cp"
