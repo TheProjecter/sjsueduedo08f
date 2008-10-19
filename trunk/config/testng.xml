@@ -1,0 +1,10 @@
+<suite name="Main Suite">
+
+  <test name="Main Test">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.BillCalculatorTest" />
+    </classes>
+  </test>
+
+
+</suite>
