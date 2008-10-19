@@ -1,6 +1,6 @@
 <suite name="Main Suite">
 
-  <test name="Main Test">
+  <test name="TestBillCalculator">
     <classes>
       <class name="edu.sjsu.edo08f.support.BillCalculatorTest" />
     </classes>
