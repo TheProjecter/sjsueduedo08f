@@ -18,7 +18,7 @@ public class Instructor extends Person {
 
     /*
     This is office hours, in a special format
-    See also: ParserUtils.verifyOfficeHours
+    Please see: ParserUtils.verifyOfficeHours
      */
     private String officeHours;
 

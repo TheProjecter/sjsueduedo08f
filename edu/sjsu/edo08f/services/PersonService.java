@@ -13,10 +13,6 @@ public interface PersonService {
 
     List<Person> getAll(); // exceptions: general exception. may return empty list
 
-    /*
-    Need to think more about how search is going to work:
-    Maybe field - valueToSeach isn't enough. It may need to seach > 5 and < 10 of somrthing
-     */
-    List<Person> search (Map<String /*name of field*/, String /*value*/> params); // may return an empty list
+    List<Person> search (String searchedFieldName, String searchedValue); // exc: general exception, invalid argument exception (if nulls are passed in)
 
 }

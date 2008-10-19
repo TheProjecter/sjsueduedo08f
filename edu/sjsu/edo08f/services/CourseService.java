@@ -3,6 +3,7 @@ package edu.sjsu.edo08f.services;
 import edu.sjsu.edo08f.domain.Course;
 import edu.sjsu.edo08f.domain.Student;
 import edu.sjsu.edo08f.domain.Instructor;
+import edu.sjsu.edo08f.domain.Person;
 
 import java.util.List;
 import java.util.Map;
@@ -24,11 +25,9 @@ public interface CourseService {
     void assignInstructor (Course course, Instructor instructor); //exc: course already has instructor, no such course, no such instructor, invalid operation
     void removeInstructor (Course course, Instructor instructor); // exc: course doesn't have instructors exception, has dependencies, no such course, no such instructor 
 
-    /*
-    Need to think more about how search is going to work:
-    Maybe field - valueToSeach isn't enough. It may need to seach > 5 and < 10 of somrthing
-     */
-    List<Course> search (Map<String /*name of field*/, String /*value*/> params); // may return an empty list
+    List<Course> search (String searchedFieldName, String searchedValue); // exc: general exception, invalid argument exception (if nulls are passed in)
+
+    List<Course> getAssociatedCourses (Person person); // general exception, no such student exception, no such instructor exception
 
 }
 
