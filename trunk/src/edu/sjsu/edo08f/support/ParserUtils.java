@@ -33,10 +33,7 @@ public class ParserUtils {
         return true;
     }
 
-    /**
-     *
-     * @param studentId
-     * @return if valid student ID
+    /*
      * Student ID is supposed to be in this format
         [0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]
         like 111-22-3333

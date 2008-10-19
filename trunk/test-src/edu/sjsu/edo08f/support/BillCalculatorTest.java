@@ -1,20 +1,17 @@
 package edu.sjsu.edo08f.support;
 
+import org.testng.annotations.Test;
+
 /**
  * Created by: Oleksiy Yarmula
  * Date: Oct 18, 2008
  */
 public class BillCalculatorTest {
 
-    @Configuration(beforeTestClass = true)
-    public void configure() {
-        System.out.println("configure");
-    }
+    @Test(groups = {"main"})
 
-    @Test(groups = {"exec-group"})
-        public void exec() {
-        System.out.println("exec");
-        assert 1 == 2;
+    public void getCalculatedValueTest() {
+        assert (BillCalculator.getCalculatedValue(5.0, true) == 699.6);
       }
     
 
