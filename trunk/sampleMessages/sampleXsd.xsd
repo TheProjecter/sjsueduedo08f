@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+
+    <xs:element name="cccElement" type="ccc">
+
+    </xs:element>
+
+    <xs:complexType name="ccc">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="smthelse" type="date" minOccurs="0" maxOccurs="1" />
+            <xs:element name="ttt" type="date" minOccurs="0" maxOccurs="1" />
+            <xs:element name="somethingOfBbb" type="bbb" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:simpleType name="date">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[1-2][0-9][0-9][0-9]-[0-1]?[0-9]-[0-3]?[0-9] [0-2]?[0-9]:[0-5][0-9]" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="nullableInteger">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]+" />
+            <xs:pattern value="null" />
+            <xs:pattern value="NULL" />
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="nullableDecimal">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]+[.]?[0-9]*" />
+            <xs:pattern value="null" />
+            <xs:pattern value="NULL" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="booleanYN">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[YN]" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="bbb">
+        <xs:all>
+            <xs:element name="one" type="xs:string" maxOccurs="1" />
+            <xs:element name="two" minOccurs="0" type="xs:decimal" maxOccurs="1" />
+            <xs:element name="three" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="four" type="booleanYN" minOccurs="0" maxOccurs="1" />
+            <xs:element name="five" type="xs:integer" minOccurs="0" 
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="aaa">
+        <xs:all>
+            <xs:element name="one" type="xs:string" maxOccurs="1" />
+            <xs:element name="two" type="xs:integer" maxOccurs="1" />
+            <xs:element name="three" type="bbb" minOccurs="1" maxOccurs="1" />
+        </xs:all>
+    </xs:complexType>
+
+
+</xs:schema>
