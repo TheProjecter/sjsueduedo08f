@@ -1,23 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
 
-    <xs:element name="cccElement" type="ccc">
+    <xs:element name="request" type="commonRequest">
 
     </xs:element>
 
-    <xs:complexType name="ccc">
+    <xs:complexType name="commonRequest">
+        <xs:choice>
+            <xs:element name="studentService" type="studentServiceRequest" />
+            <xs:element name="instructorService" type="instructorServiceRequest" />
+            <xs:element name="courseService" type="courseServiceRequest" />
+            <xs:element name="personService" type="personServiceRequest" />
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="instructorServiceRequest">
+        <xs:choice>
+            <xs:element name="getAll"/>
+            <xs:element name="getById" type="instructorService-getById" />
+            <xs:element name="create" type="instructorService-create-update-delete" />
+            <xs:element name="update" type="instructorService-create-update-delete" />
+            <xs:element name="delete" type="instructorService-create-update-delete" />
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="instructorService-getById">
+        <xs:element name="id" type="xs:long"/>
+    </xs:complexType>
+
+    <xs:complexType name="instructorService-create-update-delete">
+        <xs:element name="instructor" type="instructor"/>
+    </xs:complexType>
+
+    <xs:complexType name="person">
         <xs:sequence>
-            <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
-            <xs:element name="smthelse" type="date" minOccurs="0" maxOccurs="1" />
-            <xs:element name="ttt" type="date" minOccurs="0" maxOccurs="1" />
-            <xs:element name="somethingOfBbb" type="bbb" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="id" type="xs:long" minOccurs="0" maxOccurs="1" />
+            <xs:element name="first-name" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="last-name" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="address" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="city" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="state" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="zip-code" type="zipCode" minOccurs="1" maxOccurs="1" />
+            <xs:element name="type" type="xs:string" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="instructor">
+        <xs:complexContent>
+            <xs:extension base="person">
+                <xs:sequence>
+                    <xs:element name="department" type="xs:string" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="employee-id" type="student-or-employee-id" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="office-hours" type="xs:string" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="office" type="xs:string" minOccurs="1" maxOccurs="1" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
     </xs:complexType>
 
 
     <xs:simpleType name="date">
         <xs:restriction base="xs:string">
             <xs:pattern value="[1-2][0-9][0-9][0-9]-[0-1]?[0-9]-[0-3]?[0-9] [0-2]?[0-9]:[0-5][0-9]" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="zipCode">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9][0-9][0-9][0-9][0-9]([0-9][0-9][0-9][0-9])?" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="student-or-employee-id">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]" />
         </xs:restriction>
     </xs:simpleType>
 
@@ -43,24 +99,5 @@
             <xs:pattern value="[YN]" />
         </xs:restriction>
     </xs:simpleType>
-
-    <xs:complexType name="bbb">
-        <xs:all>
-            <xs:element name="one" type="xs:string" maxOccurs="1" />
-            <xs:element name="two" minOccurs="0" type="xs:decimal" maxOccurs="1" />
-            <xs:element name="three" type="xs:string" minOccurs="1" maxOccurs="1" />
-            <xs:element name="four" type="booleanYN" minOccurs="0" maxOccurs="1" />
-            <xs:element name="five" type="xs:integer" minOccurs="0" 
-        </xs:all>
-    </xs:complexType>
-
-    <xs:complexType name="aaa">
-        <xs:all>
-            <xs:element name="one" type="xs:string" maxOccurs="1" />
-            <xs:element name="two" type="xs:integer" maxOccurs="1" />
-            <xs:element name="three" type="bbb" minOccurs="1" maxOccurs="1" />
-        </xs:all>
-    </xs:complexType>
-
 
 </xs:schema>
