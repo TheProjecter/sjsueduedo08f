@@ -14,6 +14,40 @@
         </xs:choice>
     </xs:complexType>
 
+    <xs:complexType name="studentServiceRequest">
+        <xs:choice>
+            <xs:element name="getAll"/>
+            <xs:element name="getById" type="studentService-getById" />
+            <xs:element name="create" type="studentService-create-update-delete" />
+            <xs:element name="update" type="studentService-create-update-delete" />
+            <xs:element name="delete" type="studentService-create-update-delete" />
+        </xs:choice>
+    </xs:complexType>
+    
+    
+    <xs:complexType name="studentService-getById">
+        <xs:element name="id" type="xs:long"/>
+    </xs:complexType>
+    
+    <xs:complexType name="studentService-create-update-delete">
+        <xs:element name="student" type="student"/>
+    </xs:complexType>
+    
+    <xs:complexType name="student">
+        <xs:complexContent>
+            <xs:extension base="person">
+                <xs:sequence>
+                    <xs:element name="department" type="xs:string" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="student_id" type="student-or-employee-id" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="cource_id" type="course-id" minOccurs="1" maxOccurs="6" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    
+
+
     <xs:complexType name="instructorServiceRequest">
         <xs:choice>
             <xs:element name="getAll"/>
