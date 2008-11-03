@@ -94,7 +94,7 @@
 </xs:complexType>
 
 <xs:complexType name="personService-create-update-delete">
-    <xs:element name="person" type="person">
+    <xs:element name="person" type="person"/>
 </xs:complexType>
 
 
