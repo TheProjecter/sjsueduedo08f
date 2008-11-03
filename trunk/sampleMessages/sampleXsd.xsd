@@ -79,6 +79,26 @@
         </xs:sequence>
     </xs:complexType>
 
+<xs:complexType name="personServiceRequest">
+    <xs:choice>
+        <xs:element name="getAll"/>
+        <xs:element name="getById" type="personService-getById" />
+        <xs:element name="create" type="personService-create-update-delete" />
+        <xs:element name="update" type="personService-create-update-delete" />
+        <xs:element name="delete" type="personService-create-update-delete" />
+    </xs:choice>
+</xs:complexType>
+
+<xs:complexType name="personService-getById">
+    <xs:element name="id" type="xs:long"/>
+</xs:complexType>
+
+<xs:complexType name="personService-create-update-delete">
+    <xs:element name="person" type="person">
+</xs:complexType>
+
+
+
     <xs:complexType name="instructor">
         <xs:complexContent>
             <xs:extension base="person">
