@@ -41,7 +41,40 @@
         </xs:complexContent>
     </xs:complexType>
     
-    
+	<!--courseServicesRequest>-->
+	<!--*******************************>-->
+        <xs:complexType name="courseServiceRequest">
+        <xs:choice>
+            <xs:element name="getAll"/>
+            <xs:element name="getBySection" type="courseService-getBySection" />
+            <xs:element name="create" type="courseService-create-update-delete" />
+            <xs:element name="update" type="courseService-create-update-delete" />
+            <xs:element name="delete" type="courseService-create-update-delete" />
+        </xs:choice>
+    </xs:complexType>
+	<!-- searching criteria for course will be search by course-section as it may be possible that course may have more than 1 section>-->
+    <xs:complexType name="courseService-getBySection">
+        <xs:element name="section" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="courseService-create-update-delete">
+        <xs:element name="course" type="course"/>
+    </xs:complexType>
+
+    <xs:complexType name="course">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0" maxOccurs="1" />
+            <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="section" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="meeting-hours" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="location" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="instructor-name" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="employee-id" type="student-or-employee-id" minOccurs="1" maxOccurs="1" />
+            
+        </xs:sequence>
+    </xs:complexType>
+	<!--*******************************>-->
 
 
     <xs:complexType name="instructorServiceRequest">
