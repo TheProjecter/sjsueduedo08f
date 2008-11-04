@@ -23,27 +23,30 @@
             <xs:element name="delete" type="studentService-create-update-delete" />
         </xs:choice>
     </xs:complexType>
-    
-    
+
     <xs:complexType name="studentService-getById">
-        <xs:element name="id" type="xs:long"/>
+        <xs:all>
+            <xs:element name="id" type="xs:long"/>
+        </xs:all>
     </xs:complexType>
-    
+
     <xs:complexType name="studentService-create-update-delete">
-        <xs:element name="student" type="student"/>
+        <xs:all>
+            <xs:element name="student" type="student"/>
+        </xs:all>
     </xs:complexType>
-    
+
     <xs:complexType name="student">
         <xs:complexContent>
-            <xs:extension base="person">   
+            <xs:extension base="person">
+                <xs:sequence>
                     <xs:element name="student-id" type="student-or-employee-id" minOccurs="1" maxOccurs="1" />
+                </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    
-	<!--courseServicesRequest>-->
-	<!--*******************************>-->
-        <xs:complexType name="courseServiceRequest">
+
+    <xs:complexType name="courseServiceRequest">
         <xs:choice>
             <xs:element name="getAll"/>
             <xs:element name="getBySection" type="courseService-getBySection" />
@@ -52,13 +55,17 @@
             <xs:element name="delete" type="courseService-create-update-delete" />
         </xs:choice>
     </xs:complexType>
-	<!-- searching criteria for course will be search by course-section as it may be possible that course may have more than 1 section>-->
+
     <xs:complexType name="courseService-getBySection">
-        <xs:element name="section" type="xs:string"/>
+        <xs:all>
+            <xs:element name="section" type="xs:string"/>
+        </xs:all>
     </xs:complexType>
 
     <xs:complexType name="courseService-create-update-delete">
-        <xs:element name="course" type="course"/>
+        <xs:all>
+            <xs:element name="course" type="course"/>
+        </xs:all>
     </xs:complexType>
 
     <xs:complexType name="course">
@@ -66,16 +73,14 @@
             <xs:element name="id" type="xs:long" minOccurs="0" maxOccurs="1" />
             <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
             <xs:element name="section" type="xs:string" minOccurs="1" maxOccurs="1" />
-			<xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1" />
             <xs:element name="meeting-hours" type="xs:string" minOccurs="1" maxOccurs="1" />
             <xs:element name="location" type="xs:string" minOccurs="1" maxOccurs="1" />
             <xs:element name="instructor-name" type="xs:string" minOccurs="1" maxOccurs="1" />
             <xs:element name="employee-id" type="student-or-employee-id" minOccurs="1" maxOccurs="1" />
-            
+
         </xs:sequence>
     </xs:complexType>
-	<!--*******************************>-->
-
 
     <xs:complexType name="instructorServiceRequest">
         <xs:choice>
@@ -88,11 +93,15 @@
     </xs:complexType>
 
     <xs:complexType name="instructorService-getById">
-        <xs:element name="id" type="xs:long"/>
+        <xs:all>
+            <xs:element name="id" type="xs:long"/>
+        </xs:all>
     </xs:complexType>
 
     <xs:complexType name="instructorService-create-update-delete">
-        <xs:element name="instructor" type="instructor"/>
+        <xs:all>
+            <xs:element name="instructor" type="instructor"/>
+        </xs:all>
     </xs:complexType>
 
     <xs:complexType name="person">
@@ -108,23 +117,27 @@
         </xs:sequence>
     </xs:complexType>
 
-<xs:complexType name="personServiceRequest">
-    <xs:choice>
-        <xs:element name="getAll"/>
-        <xs:element name="getById" type="personService-getById" />
-        <xs:element name="create" type="personService-create-update-delete" />
-        <xs:element name="update" type="personService-create-update-delete" />
-        <xs:element name="delete" type="personService-create-update-delete" />
-    </xs:choice>
-</xs:complexType>
+    <xs:complexType name="personServiceRequest">
+        <xs:choice>
+            <xs:element name="getAll"/>
+            <xs:element name="getById" type="personService-getById" />
+            <xs:element name="create" type="personService-create-update-delete" />
+            <xs:element name="update" type="personService-create-update-delete" />
+            <xs:element name="delete" type="personService-create-update-delete" />
+        </xs:choice>
+    </xs:complexType>
 
-<xs:complexType name="personService-getById">
-    <xs:element name="id" type="xs:long"/>
-</xs:complexType>
+    <xs:complexType name="personService-getById">
+        <xs:all>
+            <xs:element name="id" type="xs:long"/>
+        </xs:all>
+    </xs:complexType>
 
-<xs:complexType name="personService-create-update-delete">
-    <xs:element name="person" type="person"/>
-</xs:complexType>
+    <xs:complexType name="personService-create-update-delete">
+        <xs:all>
+            <xs:element name="person" type="person"/>
+        </xs:all>
+    </xs:complexType>
 
 
 
