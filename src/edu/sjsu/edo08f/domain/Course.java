@@ -1,5 +1,7 @@
 package edu.sjsu.edo08f.domain;
 
+import java.util.List;
+
 /**
  * Created by: Oleksiy Yarmula
  * Date: Oct 12, 2008
@@ -21,7 +23,7 @@ public class Course {
     need to decide if we need a map <Day, Hours> or something else
     all depends on how are we going to perform search
      */
-    private String meetingHours;
+    private List<String> meetingHours;
 
     /*
      This is a full-format class location, like ENG222, or CLR107
@@ -46,11 +48,11 @@ public class Course {
         this.courseSection = courseSection;
     }
 
-    public String getMeetingHours() {
+    public List<String> getMeetingHours() {
         return meetingHours;
     }
 
-    public void setMeetingHours(String meetingHours) {
+    public void setMeetingHours(List<String> meetingHours) {
         this.meetingHours = meetingHours;
     }
 
