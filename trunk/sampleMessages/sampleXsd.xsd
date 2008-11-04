@@ -45,19 +45,22 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-
+	
+	<!--<Updated courseServiceRequest>-->
+	<!--<*********************************>-->
      <xs:complexType name="courseServiceRequest">
         <xs:choice>
             <xs:element name="getAll"/>
             <xs:element name="getById" type="courseService-getById" />
-			<xs:element name="getStudentsByCourse"/>
-            <xs:element name="create" type="courseService-create-update-delete" />
-            <xs:element name="update" type="courseService-create-update-delete" />
-            <xs:element name="delete" type="courseService-create-update-delete" />
-			<xs:element name="enrollStudent"/>
-			<xs:element name="unEnrollStudent"/>
-			<xs:element name="removeInstructor"/>
-			<xs:element name="search"/> 			
+            <xs:element name="getStudentsByCourse" type="courseService-getStudentsByCourse" />
+            <xs:element name="create" type="courseService-create" />
+            <xs:element name="update" type="courseService-update-delete" />
+            <xs:element name="delete" type="courseService-update-delete" />
+            <xs:element name="enrollStudent" type="courseService-enrollStudent-unEnrollStudent" />
+            <xs:element name="unEnrollStudent" type="courseService-enrollStudent-unEnrollStudent" />
+            <xs:element name="removeInstructor" type="courseService-removeInstructor" />
+            <xs:element name="search" type="courseService-search" />
+
         </xs:choice>
     </xs:complexType>
 
@@ -66,26 +69,62 @@
             <xs:element name="id" type="xs:long"/>
         </xs:all>
     </xs:complexType>
-	
-    <xs:complexType name="courseService-create-update-delete">
+   
+    <xs:complexType name="courseService-getStudentsByCourse">
+        <xs:all>
+            <xs:element name="course" type="xs:course"/>
+        </xs:all>
+    </xs:complexType>
+       
+    <xs:complexType name="courseService-create">
+
         <xs:all>
             <xs:element name="course" type="course"/>
+            <xs:element name="instructor" type="instructor"/>
+        </xs:all>
+    </xs:complexType>
+   
+    <xs:complexType name="courseService-update-delete">
+
+        <xs:all>
+            <xs:element name="course" type="course"/>
+        </xs:all>
+    </xs:complexType>
+   
+    <xs:complexType name="courseService-enrollStudent-unEnrollStudent">
+
+        <xs:all>
+            <xs:element name="course" type="course"/>
+            <xs:element name="student" type="student"/>
+        </xs:all>
+    </xs:complexType>
+   
+    <xs:complexType name="courseService-removeInstructor">
+
+        <xs:all>
+            <xs:element name="course" type="course"/>
+            <xs:element name="instructor" type="instructor"/>
+        </xs:all>
+    </xs:complexType>
+   
+    <xs:complexType name="courseService-search">
+        <xs:all>
+            <xs:element name="searchedFieldName" type="string"/>
+            <xs:element name="searchedValue" type="string"/>
+
         </xs:all>
     </xs:complexType>
 
     <xs:complexType name="course">
         <xs:sequence>
             <xs:element name="id" type="xs:long" minOccurs="0" maxOccurs="1" />
-            <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
-            <xs:element name="section" type="xs:string" minOccurs="1" maxOccurs="1" />
-            <xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1" />
-            <xs:element name="meeting-hours" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="course-name" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="course-section" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="meeting-hours" type="meetingHours" minOccurs="1" maxOccurs="1" />
             <xs:element name="location" type="xs:string" minOccurs="1" maxOccurs="1" />
-            <xs:element name="instructor-name" type="xs:string" minOccurs="1" maxOccurs="1" />
-            <xs:element name="employee-id" type="student-or-employee-id" minOccurs="1" maxOccurs="1" />
-
         </xs:sequence>
     </xs:complexType>
+	<!--<**********************************>-->
 
     <xs:complexType name="instructorServiceRequest">
         <xs:choice>
@@ -200,5 +239,13 @@
             <xs:pattern value="[YN]" />
         </xs:restriction>
     </xs:simpleType>
-
+	
+	<!--<meetingHours pattern for courseServices>-->
+	<xs:simpleType name="meetingHours">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[M?][T?][W?][R?][F?][S?][U?] [00-23][00-59]-[00-23][00-59]" />
+            <xs:pattern value="TBA" />
+        </xs:restriction>
+    </xs:simpleType>
+	
 </xs:schema>
