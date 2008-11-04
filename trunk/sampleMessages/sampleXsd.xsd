@@ -234,7 +234,7 @@
         </xs:restriction>
     </xs:simpleType>
 	
-	<!--<meetingHours pattern for courseServices>-->
+	<!--<meetingHours pattern for courseService>-->
 	<xs:simpleType name="meetingHours">
         <xs:restriction base="xs:string">
             <xs:pattern value="[M?][T?][W?][R?][F?][S?][U?] [00-23][00-59]-[00-23][00-59]" />
