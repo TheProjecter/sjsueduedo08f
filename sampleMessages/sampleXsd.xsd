@@ -45,10 +45,8 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-	
-	<!--<Updated courseServiceRequest>-->
-	<!--<*********************************>-->
-     <xs:complexType name="courseServiceRequest">
+
+    <xs:complexType name="courseServiceRequest">
         <xs:choice>
             <xs:element name="getAll"/>
             <xs:element name="getById" type="courseService-getById" />
@@ -68,44 +66,44 @@
             <xs:element name="id" type="xs:long"/>
         </xs:all>
     </xs:complexType>
-   
+
     <xs:complexType name="courseService-getStudentsByCourse">
         <xs:all>
-            <xs:element name="course" type="xs:course"/>
+            <xs:element name="course" type="course"/>
         </xs:all>
     </xs:complexType>
-       
+
     <xs:complexType name="courseService-create">
         <xs:all>
             <xs:element name="course" type="course"/>
             <xs:element name="instructor" type="instructor"/>
         </xs:all>
     </xs:complexType>
-   
+
     <xs:complexType name="courseService-update-delete">
         <xs:all>
             <xs:element name="course" type="course"/>
         </xs:all>
     </xs:complexType>
-   
+
     <xs:complexType name="courseService-enrollStudent-unEnrollStudent">
         <xs:all>
             <xs:element name="course" type="course"/>
             <xs:element name="student" type="student"/>
         </xs:all>
     </xs:complexType>
-   
+
     <xs:complexType name="courseService-removeInstructor">
         <xs:all>
             <xs:element name="course" type="course"/>
             <xs:element name="instructor" type="instructor"/>
         </xs:all>
     </xs:complexType>
-   
+
     <xs:complexType name="courseService-search">
         <xs:all>
-            <xs:element name="searchedFieldName" type="string"/>
-            <xs:element name="searchedValue" type="string"/>
+            <xs:element name="searched-field-name" type="xs:string"/>
+            <xs:element name="searched-value" type="xs:string"/>
         </xs:all>
     </xs:complexType>
 
@@ -114,11 +112,10 @@
             <xs:element name="id" type="xs:long" minOccurs="0" maxOccurs="1" />
             <xs:element name="course-name" type="xs:string" minOccurs="1" maxOccurs="1" />
             <xs:element name="course-section" type="xs:string" minOccurs="1" maxOccurs="1" />
-            <xs:element name="meeting-hours" type="meetingHours" minOccurs="1" maxOccurs="1" />
+            <xs:element name="meeting-hours" type="meetingHoursList" minOccurs="1" maxOccurs="1" />
             <xs:element name="location" type="xs:string" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
     </xs:complexType>
-	<!--<**********************************>-->
 
     <xs:complexType name="instructorServiceRequest">
         <xs:choice>
@@ -150,7 +147,7 @@
             <xs:element name="address" type="xs:string" minOccurs="1" maxOccurs="1" />
             <xs:element name="city" type="xs:string" minOccurs="1" maxOccurs="1" />
             <xs:element name="state" type="xs:string" minOccurs="1" maxOccurs="1" />
-            <xs:element name="zip-code" type="zipCode" minOccurs="1" maxOccurs="1" />
+            <xs:element name="zip-code" type="zip-code" minOccurs="1" maxOccurs="1" />
             <xs:element name="type" type="xs:string" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
     </xs:complexType>
@@ -192,6 +189,11 @@
         </xs:complexContent>
     </xs:complexType>
 
+    <xs:complexType name="meetingHoursList">
+        <xs:sequence>
+            <xs:element name="meeting-hours" type="meeting-hours" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
 
     <xs:simpleType name="date">
         <xs:restriction base="xs:string">
@@ -199,7 +201,7 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="zipCode">
+    <xs:simpleType name="zip-code">
         <xs:restriction base="xs:string">
             <xs:pattern value="[0-9][0-9][0-9][0-9][0-9]([0-9][0-9][0-9][0-9])?" />
         </xs:restriction>
@@ -211,7 +213,7 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="nullableInteger">
+    <xs:simpleType name="nullable-integer">
         <xs:restriction base="xs:string">
             <xs:pattern value="[0-9]+" />
             <xs:pattern value="null" />
@@ -220,7 +222,7 @@
     </xs:simpleType>
 
 
-    <xs:simpleType name="nullableDecimal">
+    <xs:simpleType name="nullable-decimal">
         <xs:restriction base="xs:string">
             <xs:pattern value="[0-9]+[.]?[0-9]*" />
             <xs:pattern value="null" />
@@ -228,18 +230,17 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="booleanYN">
+    <xs:simpleType name="boolean-YN">
         <xs:restriction base="xs:string">
             <xs:pattern value="[YN]" />
         </xs:restriction>
     </xs:simpleType>
-	
-	<!--<meetingHours pattern for courseService>-->
-	<xs:simpleType name="meetingHours">
+
+    <xs:simpleType name="meeting-hours">
         <xs:restriction base="xs:string">
             <xs:pattern value="[M?][T?][W?][R?][F?][S?][U?] [00-23][00-59]-[00-23][00-59]" />
             <xs:pattern value="TBA" />
         </xs:restriction>
     </xs:simpleType>
-	
+
 </xs:schema>
