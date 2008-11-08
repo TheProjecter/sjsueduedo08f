@@ -1,5 +1,8 @@
 package edu.sjsu.edo08f.support;
 
+import java.util.*;
+import java.util.ArrayList;
+
 /**
  * Created by: Oleksiy Yarmula
  * Date: Oct 12, 2008
@@ -42,6 +45,15 @@ public class ParserUtils {
 
         //need to implement this method
         return true;
+    }
+
+    /*
+    Must return a list with records for each meeting time. One record means one meeting.
+    Even if input is provided as "MWT 1800-2000", it still has to be 3 records returnes.
+     For list of 2 records : "MW 1800-2000" and "S 1000-1200" the method must return list with 3 records
+     */
+    private static List<DayOfWeek> parseOfficeHours (List<String> officeHoursLines) {
+        return new ArrayList<DayOfWeek>();
     }
     
 
