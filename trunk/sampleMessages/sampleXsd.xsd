@@ -182,7 +182,7 @@
                 <xs:sequence>
                     <xs:element name="department" type="xs:string" minOccurs="1" maxOccurs="1" />
                     <xs:element name="employee-id" type="student-or-employee-id" minOccurs="1" maxOccurs="1" />
-                    <xs:element name="office-hours" type="xs:string" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="office-hours" type="officeHoursList" minOccurs="1" maxOccurs="1" />
                     <xs:element name="office" type="xs:string" minOccurs="1" maxOccurs="1" />
                 </xs:sequence>
             </xs:extension>
@@ -192,6 +192,12 @@
     <xs:complexType name="meetingHoursList">
         <xs:sequence>
             <xs:element name="meeting-hours" type="meeting-hours" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="officeHoursList">
+        <xs:sequence>
+            <xs:element name="meeting-hours" type="meeting-hours" minOccurs="0" maxOccurs="unbounded" />
         </xs:sequence>
     </xs:complexType>
 
@@ -210,29 +216,6 @@
     <xs:simpleType name="student-or-employee-id">
         <xs:restriction base="xs:string">
             <xs:pattern value="[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]" />
-        </xs:restriction>
-    </xs:simpleType>
-
-    <xs:simpleType name="nullable-integer">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="[0-9]+" />
-            <xs:pattern value="null" />
-            <xs:pattern value="NULL" />
-        </xs:restriction>
-    </xs:simpleType>
-
-
-    <xs:simpleType name="nullable-decimal">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="[0-9]+[.]?[0-9]*" />
-            <xs:pattern value="null" />
-            <xs:pattern value="NULL" />
-        </xs:restriction>
-    </xs:simpleType>
-
-    <xs:simpleType name="boolean-YN">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="[YN]" />
         </xs:restriction>
     </xs:simpleType>
 
