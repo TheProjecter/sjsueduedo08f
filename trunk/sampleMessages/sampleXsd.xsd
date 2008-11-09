@@ -14,16 +14,6 @@
         </xs:choice>
     </xs:complexType>
 
-    <xs:complexType name="studentServiceRequest">
-        <xs:choice>
-            <xs:element name="getAll"/>
-            <xs:element name="getById" type="getById" />
-            <xs:element name="create" type="studentService-create-update-delete" />
-            <xs:element name="update" type="studentService-create-update-delete" />
-            <xs:element name="delete" type="studentService-create-update-delete" />
-        </xs:choice>
-    </xs:complexType>
-
     <xs:complexType name="courseServiceRequest">
         <xs:choice>
             <xs:element name="getAll"/>
@@ -35,7 +25,16 @@
             <xs:element name="enrollStudent" type="courseService-enrollStudent-unEnrollStudent" />
             <xs:element name="unEnrollStudent" type="courseService-enrollStudent-unEnrollStudent" />
             <xs:element name="removeInstructor" type="courseService-removeInstructor" />
-            <xs:element name="search" type="courseService-search" />
+            <xs:element name="search" type="search" />
+        </xs:choice>
+    </xs:complexType>
+
+
+    <xs:complexType name="personServiceRequest">
+        <xs:choice>
+            <xs:element name="getAll"/>
+            <xs:element name="getById" type="getById" />
+            <xs:element name="search" type="search" />
         </xs:choice>
     </xs:complexType>
 
@@ -47,17 +46,19 @@
             <xs:element name="create" type="instructorService-create-update-delete" />
             <xs:element name="update" type="instructorService-create-update-delete" />
             <xs:element name="delete" type="instructorService-create-update-delete" />
+            <xs:element name="getAssociatedCourses" type="instructorService-getAssociatedCourses" />
         </xs:choice>
     </xs:complexType>
 
 
-    <xs:complexType name="personServiceRequest">
+    <xs:complexType name="studentServiceRequest">
         <xs:choice>
             <xs:element name="getAll"/>
             <xs:element name="getById" type="getById" />
-            <xs:element name="create" type="personService-create-update-delete" />
-            <xs:element name="update" type="personService-create-update-delete" />
-            <xs:element name="delete" type="personService-create-update-delete" />
+            <xs:element name="create" type="studentService-create-update-delete" />
+            <xs:element name="update" type="studentService-create-update-delete" />
+            <xs:element name="delete" type="studentService-create-update-delete" />
+            <xs:element name="getAssociatedCourses" type="studentService-getAssociatedCourses" />
         </xs:choice>
     </xs:complexType>
 
@@ -65,7 +66,12 @@
     <xs:complexType name="studentService-create-update-delete">
         <xs:all>
             <xs:element name="student" type="student"/>
+           </xs:all>
+    </xs:complexType>
 
+    <xs:complexType name="studentService-getAssociatedCourses">
+        <xs:all>
+            <xs:element name="student" type="student"/>
         </xs:all>
     </xs:complexType>
 
@@ -102,7 +108,7 @@
         </xs:all>
     </xs:complexType>
 
-    <xs:complexType name="courseService-search">
+    <xs:complexType name="search">
         <xs:all>
             <xs:element name="searched-field-name" type="xs:string"/>
             <xs:element name="searched-value" type="xs:string"/>
@@ -115,18 +121,17 @@
         </xs:all>
     </xs:complexType>
 
+    <xs:complexType name="instructorService-getAssociatedCourses">
+        <xs:all>
+            <xs:element name="instructor" type="instructor"/>
+        </xs:all>
+    </xs:complexType>
+
     <xs:complexType name="getById">
         <xs:all>
             <xs:element name="id" type="xs:long"/>
         </xs:all>
     </xs:complexType>
-
-    <xs:complexType name="personService-create-update-delete">
-        <xs:all>
-            <xs:element name="person" type="person"/>
-        </xs:all>
-    </xs:complexType>
-
 
     <xs:complexType name="person">
         <xs:sequence>

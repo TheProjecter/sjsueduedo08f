@@ -15,7 +15,6 @@ public interface PersonService {
     List<Person> getAll(); // exceptions: general exception. may return empty list
     Person getById (Long id);  //thows general exception, no such person, invalid argument
 
-    List<Person> search (String searchedFieldName, String searchedValue); // exc: general exception, invalid argument exception (if nulls are passed in)
+    List<Person> search (String searchedFieldName, String searchedValue); // exc: general exception, invalid argument exception
 
-    List<Course> getAssociatedCourses (Person person); // general exception, no such student exception, no such instructor exception
 }
