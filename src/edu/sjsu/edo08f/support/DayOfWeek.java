@@ -38,4 +38,13 @@ public enum DayOfWeek {
         }
     }
 
+    public boolean isCorrectDayOfWeek (String shortcutName ) {
+        try {
+            getDayByShortcutName(shortcutName);
+            return true;
+        } catch (InvalidOperationException invalidOperationException) {
+            return false;
+        }
+    }
+
 }

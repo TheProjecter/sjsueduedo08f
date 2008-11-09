@@ -41,7 +41,7 @@ public class ParserUtils {
         [0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]
         like 111-22-3333
      */
-    private static boolean verifyStudentId (String studentId) {
+    public static boolean verifyStudentId (String studentId) {
 
         //need to implement this method
         return true;
@@ -52,9 +52,15 @@ public class ParserUtils {
     Even if input is provided as "MWT 1800-2000", it still has to be 3 records returnes.
      For list of 2 records : "MW 1800-2000" and "S 1000-1200" the method must return list with 3 records
      */
-    private static List<DayOfWeek> parseOfficeHours (List<String> officeHoursLines) {
-        return new ArrayList<DayOfWeek>();
+    public static List<EventInformation> parseOfficeHours (List<String> officeHoursLines) {
+        return new ArrayList<EventInformation>();
     }
-    
+
+    /*
+    The input can be like ENG183, TBATBA
+     */
+    public static boolean verifyCourseLocation (String courseLocation) {
+        return true;
+    }
 
 }
