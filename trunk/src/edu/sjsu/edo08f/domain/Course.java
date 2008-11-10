@@ -31,7 +31,6 @@ public class Course {
      */
     private String location;
 
-
     public String getCourseName() {
         return courseName;
     }
