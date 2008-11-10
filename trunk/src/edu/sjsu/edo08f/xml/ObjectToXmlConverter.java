@@ -11,11 +11,12 @@ public class ObjectToXmlConverter {
 
     public String getExceptionXmlTemplate() {
         return "<exception>" +
-                        "%s" +
-                    "</exception>" +
-                    "<exceptionCode>" +
-                        "%s" +
-                    "</exceptionCode>" +
+                        "<name>" +
+                                "%s" +
+                        "</name>" +
+                        "<reason>" +
+                                "%s" +
+                        "</reason>" +
                 "</exception>";
     }
 
