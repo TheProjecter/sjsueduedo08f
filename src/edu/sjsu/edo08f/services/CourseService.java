@@ -17,6 +17,7 @@ public interface CourseService {
     List<Course> getAll();
     Course getById (Long id);
     List<Student> getStudentsByCourse (Course course);
+    Instructor getInstructorByCourse (Course course);
 
     Course create (Course course, Instructor instructor);
     Course update (Course course);
