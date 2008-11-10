@@ -1,7 +1,7 @@
 package edu.sjsu.edo08f.support;
 
 import java.util.*;
-import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 /**
  * Created by: Oleksiy Yarmula
@@ -17,26 +17,57 @@ import java.util.ArrayList;
 
 public class ParserUtils {
 
-    /**
-     *
+	//Student Ids are required to match the pattern of [0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]
+    //For example, 111-22-3333
+	private static final String PATTERN_STUDENT_ID = "\\d{3}-\\d{2}-\\d{4}";
+	
+	//Zip code is required to match these two patterns
+	//[0-9][0-9][0-9][0-9][0-9]
+	//or
+	//[0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]
+	private static final String PATTERN_ZIP_CODE = "(\\d{5}|\\d{5}-\\d{4})";
+	
+	//private static final String PATTERN_OFFICE_HOUR = "";
+    
+	/**
+     *Modified by Tan Tan, Nov,09,2008
      * @param officeHours in format [M?][T?][W?][R?][F?][S?][U?] [00-23][00-59]-[00-23][00-59]
      * @return if this is valid
      */
-    public static boolean verifyOfficeHours (String officeHours) {
+    public static boolean verifyOfficeHours (String officeHours) 
+    {
+    	// need to implement this method
+        // boolean isCorrectOfficeHours = false;
+        // if ()
+        // {
+        //	 isCorrectOfficeHours = true;
+        // }
+        
+        //return isCorrectOfficeHours;
 
-        // need to implement this method
-        return true;
-
-    }
-
-    public static boolean verifyZipCode (String zipCode) {
-
-        //need to implement this method
-
-        return true;
     }
 
     /*
+     * Modified by Tan Tan, Nov,09,2008
+    Zip code of the person.
+    2 possible formats:
+    [0-9][0-9][0-9][0-9][0-9]
+    or
+    [0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]
+     */
+    public static boolean verifyZipCode (String zipCode) 
+    {  
+        //need to implement this method
+    	boolean isCorrectZipCode = false;
+    	if (Pattern.matches(PATTERN_ZIP_CODE, zipCode))
+    	{
+    		isCorrectZipCode = true;
+    	}
+        return isCorrectZipCode;
+    }
+
+    /*
+     * Modified by Tan Tan, Nov,09,2008
      * Student ID is supposed to be in this format
         [0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]
         like 111-22-3333
@@ -44,7 +75,13 @@ public class ParserUtils {
     public static boolean verifyStudentId (String studentId) {
 
         //need to implement this method
-        return true;
+    	
+    	boolean isCorrectStudentId = false;
+    	if (Pattern.matches(PATTERN_STUDENT_ID, studentId))
+    	{
+    	    isCorrectStudentId = true;
+    	}
+        return isCorrectStudentId;
     }
 
     /*
@@ -62,5 +99,6 @@ public class ParserUtils {
     public static boolean verifyCourseLocation (String courseLocation) {
         return true;
     }
+    
 
 }
