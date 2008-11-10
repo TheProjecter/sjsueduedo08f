@@ -55,21 +55,15 @@
         <xs:choice>
             <xs:element name="getAll"/>
             <xs:element name="getById" type="getById" />
-            <xs:element name="create" type="studentService-create-update-delete" />
-            <xs:element name="update" type="studentService-create-update-delete" />
-            <xs:element name="delete" type="studentService-create-update-delete" />
-            <xs:element name="getAssociatedCourses" type="studentService-getAssociatedCourses" />
+            <xs:element name="create" type="studentService-studentParameter" />
+            <xs:element name="update" type="studentService-studentParameter" />
+            <xs:element name="delete" type="studentService-studentParameter" />
+            <xs:element name="getAssociatedCourses" type="studentService-studentParameter" />
+            <xs:element name="generateInvoice" type="studentService-studentParameter" />
         </xs:choice>
     </xs:complexType>
 
-
-    <xs:complexType name="studentService-create-update-delete">
-        <xs:all>
-            <xs:element name="student" type="student"/>
-           </xs:all>
-    </xs:complexType>
-
-    <xs:complexType name="studentService-getAssociatedCourses">
+    <xs:complexType name="studentService-studentParameter">
         <xs:all>
             <xs:element name="student" type="student"/>
         </xs:all>

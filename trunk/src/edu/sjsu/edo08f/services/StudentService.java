@@ -18,5 +18,7 @@ public interface StudentService {
     Student update (Student student); // exceptions: no such student, invalid student, duplicate student, general exception, invalid argument exception
     void delete (Student student); // exceptions: no such student, hasDependencies, general exception, invalid argument exception
 
+    String generateInvoice (Student student);
+
     List<Course> getAssociatedCourses (Student student); // general exception, no such student exception, invalid argument exception
 }
