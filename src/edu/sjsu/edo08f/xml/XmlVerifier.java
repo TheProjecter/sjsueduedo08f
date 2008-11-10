@@ -16,7 +16,8 @@ public class XmlVerifier {
 
         File xsdSchema = new File ("address-to-xsd");
         // verification happens here
-
+        //fill possible errors file
+        
         return possibleErrors;
 
         
