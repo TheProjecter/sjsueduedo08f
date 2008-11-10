@@ -18,13 +18,14 @@
         <xs:choice>
             <xs:element name="getAll"/>
             <xs:element name="getById" type="getById" />
-            <xs:element name="getStudentsByCourse" type="courseService-getStudentsByCourse" />
             <xs:element name="create" type="courseService-create" />
-            <xs:element name="update" type="courseService-update-delete" />
-            <xs:element name="delete" type="courseService-update-delete" />
+            <xs:element name="update" type="courseService-courseParameter" />
+            <xs:element name="delete" type="courseService-courseParameter" />
             <xs:element name="enrollStudent" type="courseService-enrollStudent-unEnrollStudent" />
             <xs:element name="unEnrollStudent" type="courseService-enrollStudent-unEnrollStudent" />
             <xs:element name="updateInstructor" type="courseService-updateInstructor" />
+            <xs:element name="getStudentsByCourse" type="courseService-courseParameter" />
+            <xs:element name="getInstructorByCourse" type="courseService-courseParameter" />
             <xs:element name="search" type="search" />
         </xs:choice>
     </xs:complexType>
@@ -69,7 +70,7 @@
         </xs:all>
     </xs:complexType>
 
-    <xs:complexType name="courseService-getStudentsByCourse">
+    <xs:complexType name="courseService-courseParameter">
         <xs:all>
             <xs:element name="course" type="course"/>
         </xs:all>
@@ -79,12 +80,6 @@
         <xs:all>
             <xs:element name="course" type="course"/>
             <xs:element name="instructor" type="instructor"/>
-        </xs:all>
-    </xs:complexType>
-
-    <xs:complexType name="courseService-update-delete">
-        <xs:all>
-            <xs:element name="course" type="course"/>
         </xs:all>
     </xs:complexType>
 
@@ -138,8 +133,8 @@
     <xs:complexType name="course">
         <xs:sequence>
             <xs:element name="id" type="xs:long" minOccurs="0" maxOccurs="1" />
-            <xs:element name="course-name" type="xs:string" minOccurs="1" maxOccurs="1" />
-            <xs:element name="course-section" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="section" type="xs:string" minOccurs="1" maxOccurs="1" />
             <xs:element name="meeting-hours" type="meetingHoursList" minOccurs="1" maxOccurs="1" />
             <xs:element name="location" type="xs:string" minOccurs="1" maxOccurs="1" />
         </xs:sequence>

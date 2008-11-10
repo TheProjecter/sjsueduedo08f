@@ -9,43 +9,39 @@ import java.util.List;
 public class Course {
 
     private Long id;
-    /*
-    Standard name
-     */
-    private String courseName;
 
-    /*
-    1-2-3-4, standard int
-     */
-    private int courseSection;
+    private String name;
 
-    /*
-    need to decide if we need a map <Day, Hours> or something else
-    all depends on how are we going to perform search
-     */
+    private int section;
+
     private List<String> meetingHours;
 
-    /*
-     This is a full-format class location, like ENG222, or CLR107
-     See also: Instructor.officeHours
-     */
     private String location;
 
-    
-    public String getCourseName() {
-        return courseName;
+    private Instructor instructor;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public int getCourseSection() {
-        return courseSection;
+    public String getName() {
+        return name;
     }
 
-    public void setCourseSection(int courseSection) {
-        this.courseSection = courseSection;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getSection() {
+        return section;
+    }
+
+    public void setSection(int section) {
+        this.section = section;
     }
 
     public List<String> getMeetingHours() {
@@ -64,11 +60,11 @@ public class Course {
         this.location = location;
     }
 
-    public Long getId() {
-        return id;
+    public Instructor getInstructor() {
+        return instructor;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
     }
 }
