@@ -7,15 +7,12 @@ package edu.sjsu.edo08f.domain;
 public class Person {
 
     protected Long id;
-    private String firstName;
-    private String lastName;
-    private String address;
-    private String city;
-    private String state;
-
-    // readonly variable. type="STUDENT" or "INSTRUCTOR"
-    private String type;
-
+    protected String firstName;
+    protected String lastName;
+    protected String address;
+    protected String city;
+    protected String state;
+    
     /*
     Zip code of the person.
     2 possible formats:
@@ -25,6 +22,8 @@ public class Person {
      */
     private String zipCode;
 
+    // readonly variable. type="STUDENT" or "INSTRUCTOR"
+    private String type;
 
     public String getFirstName() {
         return firstName;
