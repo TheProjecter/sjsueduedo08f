@@ -11,14 +11,14 @@ import java.util.List;
  */
 public interface StudentService {
 
-    List<Student> getAll (); // exceptions: general exception. may return empty list
-    Student getById (Long id);  //thows general exception, no such student, invalid argument
+    List<Student> getAll ();
+    Student getById (Long id);
 
-    Student create (Student student); // exceptions: invalid student, duplicate student, general exception, invalid argument exception
-    Student update (Student student); // exceptions: no such student, invalid student, duplicate student, general exception, invalid argument exception
-    void delete (Student student); // exceptions: no such student, hasDependencies, general exception, invalid argument exception
+    Student create (Student student);
+    Student update (Student student);
+    void delete (Student student);
 
     String generateInvoice (Student student);
 
-    List<Course> getAssociatedCourses (Student student); // general exception, no such student exception, invalid argument exception
+    List<Course> getAssociatedCourses (Student student);
 }
