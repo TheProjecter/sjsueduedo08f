@@ -24,7 +24,7 @@
             <xs:element name="delete" type="courseService-update-delete" />
             <xs:element name="enrollStudent" type="courseService-enrollStudent-unEnrollStudent" />
             <xs:element name="unEnrollStudent" type="courseService-enrollStudent-unEnrollStudent" />
-            <xs:element name="removeInstructor" type="courseService-removeInstructor" />
+            <xs:element name="updateInstructor" type="courseService-updateInstructor" />
             <xs:element name="search" type="search" />
         </xs:choice>
     </xs:complexType>
@@ -43,10 +43,10 @@
         <xs:choice>
             <xs:element name="getAll"/>
             <xs:element name="getById" type="getById" />
-            <xs:element name="create" type="instructorService-create-update-delete" />
-            <xs:element name="update" type="instructorService-create-update-delete" />
-            <xs:element name="delete" type="instructorService-create-update-delete" />
-            <xs:element name="getAssociatedCourses" type="instructorService-getAssociatedCourses" />
+            <xs:element name="create" type="instructorService-instructorParameter" />
+            <xs:element name="update" type="instructorService-instructorParameter" />
+            <xs:element name="delete" type="instructorService-instructorParameter" />
+            <xs:element name="getAssociatedCourses" type="instructorService-instructorParameter" />
         </xs:choice>
     </xs:complexType>
 
@@ -95,7 +95,7 @@
         </xs:all>
     </xs:complexType>
 
-    <xs:complexType name="courseService-removeInstructor">
+    <xs:complexType name="courseService-updateInstructor">
         <xs:all>
             <xs:element name="course" type="course"/>
             <xs:element name="instructor" type="instructor"/>
@@ -109,13 +109,7 @@
         </xs:all>
     </xs:complexType>
 
-    <xs:complexType name="instructorService-create-update-delete">
-        <xs:all>
-            <xs:element name="instructor" type="instructor"/>
-        </xs:all>
-    </xs:complexType>
-
-    <xs:complexType name="instructorService-getAssociatedCourses">
+    <xs:complexType name="instructorService-instructorParameter">
         <xs:all>
             <xs:element name="instructor" type="instructor"/>
         </xs:all>
@@ -177,13 +171,13 @@
 
     <xs:complexType name="meetingHoursList">
         <xs:sequence>
-            <xs:element name="meeting-hours" type="meeting-hours" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element name="meeting-hours" type="event-hours" minOccurs="1" maxOccurs="unbounded" />
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="officeHoursList">
         <xs:sequence>
-            <xs:element name="meeting-hours" type="meeting-hours" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="meeting-hours" type="event-hours" minOccurs="0" maxOccurs="unbounded" />
         </xs:sequence>
     </xs:complexType>
 
@@ -205,7 +199,7 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="meeting-hours">
+    <xs:simpleType name="event-hours">
         <xs:restriction base="xs:string">
             <xs:pattern value="[M?][T?][W?][R?][F?][S?][U?] [00-23][00-59]-[00-23][00-59]" />
             <xs:pattern value="TBA" />
