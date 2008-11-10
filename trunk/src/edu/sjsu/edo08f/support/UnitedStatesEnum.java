@@ -9,8 +9,58 @@ import java.util.HashMap;
  */
 public enum UnitedStatesEnum {
 
-    // need to add all the other states and abbreviations
-    AZ ("Arizona"), CA ("California");
+    // add all the other states and abbreviations
+    //AZ ("Arizona"), CA ("California");
+	AL ("ALABAMA"),
+	AK ("ALASKA"),
+	AZ ("ARIZONA"),
+	AR ("ARKANSAS"),
+	CA ("CALIFORNIA"),
+	CO ("COLORADO"),
+	CT ("CONNECTICUT"),
+	DE ("DELAWARE"),
+	FL ("FLORIDA"),
+	GA ("GEORGIA"),
+	HI ("HAWAII"),
+	ID ("IDAHO"),
+	IL ("ILLINOIS"),
+	IN ("INDIANA"),
+	IA ("IOWA"),
+	KS ("KANSAS"),
+	KY ("KENTUCKY"),
+	LA ("LOUISIANA"),
+	ME ("MAINE"),
+	MD ("MARYLAND"),
+	MA ("MASSACHUSETTS"),
+	MI ("MICHIGAN"),
+	MN ("MINNESOTA"),
+	MS ("MISSISSIPPI"),
+	MO ("MISSOURI"),
+	MT ("MONTANA"),
+	NE ("NEBRASKA"),
+	NV ("NEVADA"),
+	NH ("NEW_HAMPSHIRE"),
+	NJ ("NEW_JERSEY"),
+	NM ("NEW_MEXICO"),
+	NY ("NEW_YORK"),
+	NC ("NORTH_CAROLINA"),
+	ND ("NORTH_DAKOTA"),
+	OH ("OHIO"),
+	OK ("OKLAHOMA"),
+	OR ("OREGON"),
+	PA ("PENNSYLVANIA"),
+	RI ("RHODE_ISLAND"),
+	SC ("SOUTH_CAROLINA"),
+	SD ("SOUTH_DAKOTA"),
+	TN ("TENNESSEE"),
+	TX ("TEXAS"),
+	UT ("UTAH"),
+	VT ("VERMONT"),
+	VA ("VIRGINIA"),
+	WA ("WASHINGTON"),
+	WV ("WEST_VIRGINIA"),
+	WI ("WISCONSIN"),
+	WY ("WYOMING");
     
     private String fullName;
     private static Map<String, String> states = new HashMap<String, String>();
