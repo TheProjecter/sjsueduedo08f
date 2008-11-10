@@ -10,14 +10,13 @@ import edu.sjsu.edo08f.domain.Course;
 public class ObjectToXmlConverter {
 
     public String getExceptionXmlTemplate() {
-        return "<xml>" +
-                    "<exception>" +
+        return "<exception>" +
                         "%s" +
                     "</exception>" +
                     "<exceptionCode>" +
                         "%s" +
                     "</exceptionCode>" +
-                "</xml>";
+                "</exception>";
     }
 
     public String getBadXmlMessage (String reason) {
