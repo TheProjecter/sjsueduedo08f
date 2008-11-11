@@ -15,7 +15,7 @@ public class XmlParser {
 
     public XmlParser() {
         objectToXmlConverter = new ObjectToXmlConverter();
-        courseService = new CourseServiceImpl();
+ //       courseService = new CourseServiceImpl();
     }
 
     public String parse (String textMessage) {

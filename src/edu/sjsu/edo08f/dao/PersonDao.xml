@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Person">
+
+    <typeAlias alias="Person" type="edu.sjsu.edo08f.domain.Person" />
+
+    <resultMap id="personResultMap" class="Person">
+        <result property="id" javaType="java.lang.Long"  />
+        <result property="firstName" javaType="java.lang.String"  />
+        <result property="lastName" javaType="java.lang.String"  />
+    </resultMap>
+
+    <sql id="selectPerson">
+        select
+        id as id,
+        first_name as firstName,
+        last_name as lastName
+        from universitySystem.Person
+    </sql>
+
+    <select id="getById" parameterClass="java.lang.Long"
+            resultMap="personResultMap" resultClass="Person">
+        <include refid="selectPerson"/>
+        where id = #value#
+    </select>
+</sqlMap>

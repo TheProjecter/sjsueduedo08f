@@ -44,7 +44,7 @@ public class ParserUtils {
         // }
         
         //return isCorrectOfficeHours;
-
+        return true;
     }
 
     /*
