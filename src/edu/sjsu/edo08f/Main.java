@@ -7,6 +7,9 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.orm.ibatis.SqlMapClientFactoryBean;
 import edu.sjsu.edo08f.dao.PersonDao;
 import edu.sjsu.edo08f.domain.Person;
+import edu.sjsu.edo08f.services.PersonService;
+
+import java.util.List;
 
 /**
  * Created by: Alex Yarmula
@@ -15,9 +18,10 @@ import edu.sjsu.edo08f.domain.Person;
 public class Main {
 
     public static void main (String[] args) {
-        PersonDao personDao  = (PersonDao) getBeanFactory().getBean("personDao");
-        Person person = personDao.getById(1L);
- 
+        PersonService personService  = (PersonService) getBeanFactory().getBean("personService");
+        Person person = personService.getById(2L);
+        List<Person> persons = personService.getAll();
+
     }
 
 

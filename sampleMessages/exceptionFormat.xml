@@ -1,9 +1,0 @@
-<courseService>
-    <createCourse>
-        <exception>edu.sjsu.edo08f.exceptions.NoSuchInstructorException
-            <message>
-                Can't create a course, because the provided instructor doesn't exist
-            </message>
-        </exception>
-    </createCourse>
-</courseService>
