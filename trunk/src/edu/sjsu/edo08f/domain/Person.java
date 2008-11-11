@@ -12,18 +12,8 @@ public class Person {
     protected String address;
     protected String city;
     protected String state;
-    
-    /*
-    Zip code of the person.
-    2 possible formats:
-    [0-9][0-9][0-9][0-9][0-9]
-    or
-    [0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]
-     */
-    private String zipCode;
-
-    // readonly variable. type="STUDENT" or "INSTRUCTOR"
-    private String type;
+    protected String zipCode;
+    protected String type;
 
     public String getFirstName() {
         return firstName;
