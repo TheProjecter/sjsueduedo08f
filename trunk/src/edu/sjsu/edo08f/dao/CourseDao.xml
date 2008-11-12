@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Course">
+
+    <typeAlias alias="Course" type="edu.sjsu.edo08f.domain.Course" />
+    <typeAlias alias="EventInformation" type="edu.sjsu.edo08f.support.EventInformation" />
+
+    <resultMap id="courseResultMap" class="Course">
+        <result property="id" column="id" javaType="java.lang.Long"  />
+        <result property="name" column="name" javaType="java.lang.String"  />
+        <result property="section" column="section" javaType="java.lang.Integer"  />
+        <result property="location" column="location" javaType="java.lang.String"  />
+        <result property="meetingHours" column="id" select="Common.selectCourseHoursForCourse"  />
+    </resultMap>
+
+    <sql id="selectCourse">
+        select
+        course.id as id,
+        course.name as name,
+        course.section as section,
+        location.name as location
+        from universitySystem.Course course
+        left join universitySystem.Location location
+        on location.id = course.location_id
+    </sql>
+
+    <select id="getById" parameterClass="java.lang.Long"
+            resultMap="courseResultMap" resultClass="Course">
+        <include refid="selectCourse"/>
+        where id = #value#
+    </select>
+
+    <select id="getAll" resultMap="courseResultMap" resultClass="Course">
+        <include refid="selectCourse"/>
+    </select>
+
+</sqlMap>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Instructor">
+
+    <typeAlias alias="Instructor" type="edu.sjsu.edo08f.domain.Instructor" />
+
+    <resultMap id="instructorResultMap" class="Instructor" extends="Person.personResultMap">
+        <result property="employeeId" column="employeeId" javaType="java.lang.String"  />
+        <result property="department" column="department" javaType="java.lang.String"  />
+        <result property="office" column="office" javaType="java.lang.String"  />
+        <result property="officeHours" column="id" select="Common.selectOfficeHoursForInstructor"  />
+
+    </resultMap>
+
+    <sql id="selectInstructor">
+        select
+        instructor.id as id,
+        person.first_name as firstName,
+        person.last_name as lastName,
+        person.address as address,
+        person.city as city,
+        person.state as state,
+        person.zip_code as zipCode,
+        person.type as type,
+        instructor.employee_id as employeeId,
+        instructor.department as department,
+        instructor.office as office
+        from universitySystem.instructor,
+        universitySystem.person
+        where person.type_id = instructor.id
+        and person.type = "INSTRUCTOR"
+    </sql>
+
+    <select id="getById" parameterClass="java.lang.Long"
+            resultMap="instructorResultMap" resultClass="Instructor">
+        <include refid="selectInstructor"/>
+        where id = #value#
+    </select>
+
+    <select id="getAll" resultMap="instructorResultMap" resultClass="Instructor">
+        <include refid="selectInstructor"/>
+    </select>
+</sqlMap>

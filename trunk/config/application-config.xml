@@ -10,6 +10,31 @@
         <property name="sqlMapClient" ref="sqlMapClient"/>
     </bean>
 
+    <bean id="studentService" class="edu.sjsu.edo08f.services.StudentServiceImpl">
+        <property name="studentDao" ref="studentDao"/>
+    </bean>
+
+    <bean id="studentDao" class="edu.sjsu.edo08f.dao.StudentDao">
+        <property name="sqlMapClient" ref="sqlMapClient"/>
+    </bean>
+
+    <bean id="instructorService" class="edu.sjsu.edo08f.services.InstructorServiceImpl">
+        <property name="instructorDao" ref="instructorDao"/>
+    </bean>
+
+    <bean id="instructorDao" class="edu.sjsu.edo08f.dao.InstructorDao">
+        <property name="sqlMapClient" ref="sqlMapClient"/>
+    </bean>
+
+
+    <bean id="courseService" class="edu.sjsu.edo08f.services.CourseServiceImpl">
+        <property name="courseDao" ref="courseDao"/>
+    </bean>
+
+    <bean id="courseDao" class="edu.sjsu.edo08f.dao.CourseDao">
+        <property name="sqlMapClient" ref="sqlMapClient"/>
+    </bean>
+
     <bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://127.0.0.1/universitySystem"/>

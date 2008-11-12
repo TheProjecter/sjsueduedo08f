@@ -2,7 +2,6 @@ package edu.sjsu.edo08f.dao;
 
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 import edu.sjsu.edo08f.domain.Person;
-
 import java.util.List;
 
 /**

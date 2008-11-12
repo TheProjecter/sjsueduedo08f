@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Common">
+
+    <typeAlias alias="EventInformation" type="edu.sjsu.edo08f.support.EventInformation" />
+
+    <resultMap id="meetingHours" class="EventInformation">
+        <result property="dayOfWeek" column="dayOfWeek"
+                javaType="java.lang.String" typeHandler="edu.sjsu.edo08f.dao.DayOfWeekTypeHandler"/>
+        <result property="startTime" column="startTime" javaType="java.lang.String" />
+        <result property="endTime" column="endTime" javaType="java.lang.String" />
+    </resultMap>
+
+    <sql id="selectEventInformation">
+        select
+            eventInformation.day_of_week as dayOfWeek,
+            eventInformation.start_time as startTime,
+            eventInformation.end_time as endTime
+        from universitySystem.event_information eventInformation
+    </sql>
+
+    <select id="selectCourseHoursForCourse"
+            parameterClass="java.lang.Long" resultMap="meetingHours">
+        <include refid="selectEventInformation"/>
+        left join universitySystem.course_meeting_hours meetingHours
+            on meetingHours.event_information_id = eventInformation.id
+        left join universitySystem.course course
+            on meetingHours.course_id = course.id
+        where course.id = #value#
+    </select>
+
+    <select id="selectOfficeHoursForInstructor"
+            parameterClass="java.lang.Long" resultMap="meetingHours">
+        <include refid="selectEventInformation"/>
+        left join universitySystem.instructor_office_hours meetingHours
+            on meetingHours.event_information_id = eventInformation.id
+        left join universitySystem.instructor instructor
+            on meetingHours.instructor_id = instructor.id
+        where instructor.id = #value#
+    </select>
+</sqlMap>

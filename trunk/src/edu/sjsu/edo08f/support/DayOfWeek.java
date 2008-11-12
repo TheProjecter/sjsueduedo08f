@@ -3,6 +3,7 @@ package edu.sjsu.edo08f.support;
 import edu.sjsu.edo08f.exceptions.InvalidOperationException;
 
 import java.util.Map;
+import java.util.HashMap;
 
 /**
  * Created by: Alex Yarmula
@@ -22,7 +23,7 @@ public enum DayOfWeek {
         this.shortcutName = shortcutName;
     }
     private String shortcutName;
-    private static Map<String, DayOfWeek> daysShortToFull;
+    private static Map<String, DayOfWeek> daysShortToFull = new HashMap<String, DayOfWeek>();
 
     static {
         for (DayOfWeek day : DayOfWeek.values()) {
@@ -30,7 +31,7 @@ public enum DayOfWeek {
         }
     }
 
-    public DayOfWeek getDayByShortcutName (String shortcutName) {
+    public static DayOfWeek getDayByShortcutName (String shortcutName) {
         if (daysShortToFull.containsKey(shortcutName)) {
             return daysShortToFull.get(shortcutName);
         } else {
@@ -38,7 +39,7 @@ public enum DayOfWeek {
         }
     }
 
-    public boolean isCorrectDayOfWeek (String shortcutName ) {
+    public static boolean isCorrectDayOfWeek (String shortcutName ) {
         try {
             getDayByShortcutName(shortcutName);
             return true;
@@ -47,4 +48,7 @@ public enum DayOfWeek {
         }
     }
 
+    public String getShortcutName() {
+        return shortcutName;
+    }
 }
