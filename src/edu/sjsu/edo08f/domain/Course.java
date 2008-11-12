@@ -1,5 +1,7 @@
 package edu.sjsu.edo08f.domain;
 
+import edu.sjsu.edo08f.support.EventInformation;
+
 import java.util.List;
 
 /**
@@ -12,13 +14,11 @@ public class Course {
 
     private String name;
 
-    private int section;
+    private Integer section;
 
-    private List<String> meetingHours;
+    private List<EventInformation> meetingHours;
 
     private String location;
-
-    private Instructor instructor;
 
     public Long getId() {
         return id;
@@ -36,19 +36,19 @@ public class Course {
         this.name = name;
     }
 
-    public int getSection() {
+    public Integer getSection() {
         return section;
     }
 
-    public void setSection(int section) {
+    public void setSection(Integer section) {
         this.section = section;
     }
 
-    public List<String> getMeetingHours() {
+    public List<EventInformation> getMeetingHours() {
         return meetingHours;
     }
 
-    public void setMeetingHours(List<String> meetingHours) {
+    public void setMeetingHours(List<EventInformation> meetingHours) {
         this.meetingHours = meetingHours;
     }
 
@@ -58,13 +58,5 @@ public class Course {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public Instructor getInstructor() {
-        return instructor;
-    }
-
-    public void setInstructor(Instructor instructor) {
-        this.instructor = instructor;
     }
 }

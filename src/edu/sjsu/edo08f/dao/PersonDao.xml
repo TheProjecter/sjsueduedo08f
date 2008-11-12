@@ -7,22 +7,27 @@
     <typeAlias alias="Person" type="edu.sjsu.edo08f.domain.Person" />
 
     <resultMap id="personResultMap" class="Person">
-        <result property="id" javaType="java.lang.Long"  />
-        <result property="firstName" javaType="java.lang.String"  />
-        <result property="lastName" javaType="java.lang.String"  />
+        <result property="id" column="id" javaType="java.lang.Long"  />
+        <result property="firstName" column="firstName" javaType="java.lang.String"  />
+        <result property="lastName" column="lastName" javaType="java.lang.String"  />
+        <result property="address" column="address" javaType="java.lang.String"  />
+        <result property="city" column="city" javaType="java.lang.String"  />
+        <result property="state" column="state" javaType="java.lang.String"  />
+        <result property="zipCode" column="zipCode" javaType="java.lang.String"  />
+        <result property="type" column="type" javaType="java.lang.String"  />
     </resultMap>
 
     <sql id="selectPerson">
         select
-        id as id,
-        first_name as firstName,
-        last_name as lastName,
-        address as address,
-        city as city,
-        state as state,
-        zip_code as zipCode,
-        type as type
-        from universitySystem.Person
+        person.id as id,
+        person.first_name as firstName,
+        person.last_name as lastName,
+        person.address as address,
+        person.city as city,
+        person.state as state,
+        person.zip_code as zipCode,
+        person.type as type
+        from universitySystem.Person person
     </sql>
 
     <select id="getById" parameterClass="java.lang.Long"

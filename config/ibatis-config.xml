@@ -5,11 +5,13 @@
 
 <sqlMapConfig>
 
-    <settings useStatementNamespaces="true"/>
+    <settings useStatementNamespaces="true"
+            lazyLoadingEnabled="false"/>
 
     <sqlMap resource="edu/sjsu/edo08f/dao/PersonDao.xml"/>
-    <!--<sqlMap resource="edu/sjsu/edo08f/dao/StudentDao.xml"/>-->
-    <!--<sqlMap resource="edu/sjsu/edo08f/dao/InstructorDao.xml"/>-->
-    <!--<sqlMap resource="edu/sjsu/edo08f/dao/CourseDao.xml"/>-->
+    <sqlMap resource="edu/sjsu/edo08f/dao/StudentDao.xml"/>
+    <sqlMap resource="edu/sjsu/edo08f/dao/InstructorDao.xml"/>
+    <sqlMap resource="edu/sjsu/edo08f/dao/CourseDao.xml"/>
+    <sqlMap resource="edu/sjsu/edo08f/dao/Common.xml"/>
 
 </sqlMapConfig>

@@ -1,5 +1,7 @@
 package edu.sjsu.edo08f.domain;
 
+import edu.sjsu.edo08f.support.EventInformation;
+
 import java.util.List;
 
 /**
@@ -22,7 +24,7 @@ public class Instructor extends Person {
     This is office hours, in a special format
     Please see: ParserUtils.verifyOfficeHours
      */
-    private List<String> officeHours;
+    private List<EventInformation> officeHours;
 
     /*
     This is a full-format office location, like ENG222, or CLR107
@@ -46,11 +48,11 @@ public class Instructor extends Person {
         this.employeeId = employeeId;
     }
 
-    public List<String> getOfficeHours() {
+    public List<EventInformation> getOfficeHours() {
         return officeHours;
     }
 
-    public void setOfficeHours(List<String> officeHours) {
+    public void setOfficeHours(List<EventInformation> officeHours) {
         this.officeHours = officeHours;
     }
 
