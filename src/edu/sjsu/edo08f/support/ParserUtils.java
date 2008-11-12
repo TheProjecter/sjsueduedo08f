@@ -1,7 +1,7 @@
 package edu.sjsu.edo08f.support;
 
 import java.util.*;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
 
 /**
  * Created by: Oleksiy Yarmula
@@ -27,7 +27,7 @@ public class ParserUtils {
 	//[0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]
 	private static final String PATTERN_ZIP_CODE = "(\\d{5}|\\d{5}-\\d{4})";
 	
-	//private static final String PATTERN_OFFICE_HOUR = "";
+	private static final String PATTERN_OFFICE_HOUR = "???????????????????";
     
 	/**
      *Modified by Tan Tan, Nov,09,2008
@@ -37,14 +37,7 @@ public class ParserUtils {
     public static boolean verifyOfficeHours (String officeHours) 
     {
     	// need to implement this method
-        // boolean isCorrectOfficeHours = false;
-        // if ()
-        // {
-        //	 isCorrectOfficeHours = true;
-        // }
-        
-        //return isCorrectOfficeHours;
-        return true;
+    	return Pattern.matches(PATTERN_OFFICE_HOUR, officeHours);
     }
 
     /*
@@ -58,12 +51,7 @@ public class ParserUtils {
     public static boolean verifyZipCode (String zipCode) 
     {  
         //need to implement this method
-    	boolean isCorrectZipCode = false;
-    	if (Pattern.matches(PATTERN_ZIP_CODE, zipCode))
-    	{
-    		isCorrectZipCode = true;
-    	}
-        return isCorrectZipCode;
+        return Pattern.matches(PATTERN_ZIP_CODE, zipCode);
     }
 
     /*
@@ -75,24 +63,49 @@ public class ParserUtils {
     public static boolean verifyStudentId (String studentId) {
 
         //need to implement this method
-    	
-    	boolean isCorrectStudentId = false;
-    	if (Pattern.matches(PATTERN_STUDENT_ID, studentId))
-    	{
-    	    isCorrectStudentId = true;
-    	}
-        return isCorrectStudentId;
+        return Pattern.matches(PATTERN_STUDENT_ID, studentId);
     }
 
     /*
+     * Modified by Tan Tan, Nov,10,2008
     Must return a list with records for each meeting time. One record means one meeting.
-    Even if input is provided as "MWT 1800-2000", it still has to be 3 records returnes.
+    Even if input is provided as "MWF 1800-2000", it still has to be 3 records returnes.
      For list of 2 records : "MW 1800-2000" and "S 1000-1200" the method must return list with 3 records
      */
-    public static List<EventInformation> parseOfficeHours (List<String> officeHoursLines) {
-        return new ArrayList<EventInformation>();
+    public static List<EventInformation> parseOfficeHours (List<String> officeHoursLines) 
+    {
+    	String myOfficeHoursLine;
+    	ArrayList<EventInformation> myArrayList = new ArrayList<EventInformation>; 
+    	
+    	for (int i=0; i<officeHoursLines.size(); i++)
+    	{
+    		myOfficeHoursLine = officeHoursLines.get(i);
+    		String[] tempArr = myOfficeHoursLine.split(" ");
+    		String stringDayOfWeek = tempArr[0];
+    		String stringStartEnd = tempArr[1];
+    		
+    		tempArr = stringStartEnd.split("-");
+    		String StartTime = tempArr[0];
+    		String EndTime = tempArr[1];
+    		
+    		for (int j=0; j<stringDayOfWeek.length(); j++)
+    		{
+    			EventInformation myEventInformation = new EventInformation(); 
+    			String Day = stringDayOfWeek.charAt(j);
+//////////////////////////////////////////////////////////////////
+//    			myEventInformation.setDayOfWeek();
+    			myEventInformation.setStartTime(StartTime);
+    			myEventInformation.setEndTime(EndTime);
+    			myArrayList.add(myEventInformation);
+    		}
+    	}
+        return new myArrayList;
     }
 
+    public static List<String> convertOfficeHoursToLines(List<EventInformation> officeHours)
+    {
+    	return new ArrayList<EventInformation>();
+    }
     /*
     The input can be like ENG183, TBATBA
      */
