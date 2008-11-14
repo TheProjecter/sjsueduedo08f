@@ -135,7 +135,7 @@
             <xs:element name="id" type="xs:long" minOccurs="0" maxOccurs="1" />
             <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
             <xs:element name="section" type="xs:string" minOccurs="1" maxOccurs="1" />
-            <xs:element name="meeting-hours" type="meetingHoursList" minOccurs="1" maxOccurs="1" />
+            <xs:element name="meeting-hours" type="event-hours" minOccurs="1" maxOccurs="1" />
             <xs:element name="location" type="xs:string" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
     </xs:complexType>
@@ -146,7 +146,7 @@
                 <xs:sequence>
                     <xs:element name="department" type="xs:string" minOccurs="1" maxOccurs="1" />
                     <xs:element name="employee-id" type="student-or-employee-id" minOccurs="1" maxOccurs="1" />
-                    <xs:element name="office-hours" type="officeHoursList" minOccurs="1" maxOccurs="1" />
+                    <xs:element name="office-hours" type="event-hours" minOccurs="0" maxOccurs="1" />
                     <xs:element name="office" type="xs:string" minOccurs="1" maxOccurs="1" />
                 </xs:sequence>
             </xs:extension>
@@ -162,18 +162,6 @@
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
-    </xs:complexType>
-
-    <xs:complexType name="meetingHoursList">
-        <xs:sequence>
-            <xs:element name="meeting-hours" type="event-hours" minOccurs="1" maxOccurs="unbounded" />
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="officeHoursList">
-        <xs:sequence>
-            <xs:element name="meeting-hours" type="event-hours" minOccurs="0" maxOccurs="unbounded" />
-        </xs:sequence>
     </xs:complexType>
 
     <xs:simpleType name="date">
