@@ -29,7 +29,7 @@
     <select id="getById" parameterClass="java.lang.Long"
             resultMap="courseResultMap" resultClass="Course">
         <include refid="selectCourse"/>
-        where id = #value#
+        where course.id = #value#
     </select>
 
     <select id="getAll" resultMap="courseResultMap" resultClass="Course">

@@ -21,19 +21,28 @@
         person.zip_code as zipCode,
         person.type as type,
         student.student_id as studentId
-        from universitySystem.student,
-        universitySystem.person
-        where person.type_id = student.id
+        from universitySystem.student
+        left join universitySystem.PERSON
+        on student.id = person.type_id
         and person.type = "STUDENT"
     </sql>
 
     <select id="getById" parameterClass="java.lang.Long"
             resultMap="studentResultMap" resultClass="Student">
         <include refid="selectStudent"/>
-        where id = #value#
+        where student.id = #value#
     </select>
 
     <select id="getAll" resultMap="studentResultMap" resultClass="Student">
         <include refid="selectStudent"/>
+    </select>
+
+    <select id="getStudentsByCourse" resultMap="studentResultMap" parameterClass="java.lang.Long" resultClass="Student">
+        <include refid="selectStudent"/>
+        left join universitySystem.STUDENT_TO_COURSE joinTable
+        on joinTable.student_id = student.id
+        left join universitySystem.COURSE course
+        on joinTable.course_id = course.id
+        where course.id = #value#
     </select>
 </sqlMap>

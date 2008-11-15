@@ -9,5 +9,9 @@ public class NoSuchCourseException extends GeneralException {
     public NoSuchCourseException(String message) {
         super(message);
     }
+
+    public NoSuchCourseException () {
+        super ("The course with this ID doesn't exist");
+    }
     
 }

@@ -39,6 +39,10 @@ public class Main {
         CourseService courseService = (CourseService) getBeanFactory().getBean("courseService");
         List<Course> courses = courseService.getAll();
 
+        Course course1 = new Course();
+        List<Student> studentsInCourse = courseService.getStudentsByCourse(null);
+
+        int a = 5;
     }
 
 
