@@ -22,5 +22,9 @@ public class StudentDao  extends SqlMapClientDaoSupport {
         return (List<Student>) getSqlMapClientTemplate().queryForList(NAMESPACE + "getAll");
     }
 
+    public List<Student> getStudentsByCourse (Long courseId) {
+        return (List<Student>) getSqlMapClientTemplate().queryForList(NAMESPACE + "getStudentsByCourse", courseId);
+    }
+
 
 }

@@ -29,10 +29,19 @@
 
     <bean id="courseService" class="edu.sjsu.edo08f.services.CourseServiceImpl">
         <property name="courseDao" ref="courseDao"/>
+        <property name="studentDao" ref="studentDao"/>
+        <property name="objectVerifier" ref="objectVerifier"/>
     </bean>
 
     <bean id="courseDao" class="edu.sjsu.edo08f.dao.CourseDao">
         <property name="sqlMapClient" ref="sqlMapClient"/>
+    </bean>
+
+    <bean id="objectVerifier" class="edu.sjsu.edo08f.services.utils.ObjectVerifier">
+        <property name="courseDao" ref="courseDao"/>
+        <property name="instructorDao" ref="instructorDao"/>
+        <property name="personDao" ref="personDao"/>
+        <property name="studentDao" ref="studentDao"/>        
     </bean>
 
     <bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">

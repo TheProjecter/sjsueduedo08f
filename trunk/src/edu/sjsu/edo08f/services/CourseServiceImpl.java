@@ -2,10 +2,12 @@ package edu.sjsu.edo08f.services;
 
 import org.apache.log4j.Logger;
 import edu.sjsu.edo08f.dao.CourseDao;
+import edu.sjsu.edo08f.dao.StudentDao;
 import edu.sjsu.edo08f.domain.Course;
 import edu.sjsu.edo08f.domain.Student;
 import edu.sjsu.edo08f.domain.Instructor;
 import edu.sjsu.edo08f.exceptions.NoSuchCourseException;
+import edu.sjsu.edo08f.services.utils.ObjectVerifier;
 
 import java.util.List;
 
@@ -16,9 +18,19 @@ import java.util.List;
 public class CourseServiceImpl implements CourseService {
 
     private CourseDao courseDao;
+    private StudentDao studentDao;
+    private ObjectVerifier objectVerifier;
 
     public void setCourseDao(CourseDao courseDao) {
         this.courseDao = courseDao;
+    }
+
+    public void setStudentDao(StudentDao studentDao) {
+        this.studentDao = studentDao;
+    }
+
+    public void setObjectVerifier(ObjectVerifier objectVerifier) {
+        this.objectVerifier = objectVerifier;
     }
 
     private Logger logger = Logger.getLogger(CourseServiceImpl.class);
@@ -41,7 +53,13 @@ public class CourseServiceImpl implements CourseService {
     }
 
     public List<Student> getStudentsByCourse(Course course) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+
+        objectVerifier.verifyCourseExists(course);
+        List<Student> students = studentDao.getStudentsByCourse(course.getId());
+        if (students.size() == 0) {
+            logger.info("No students enrolled in this course were found");
+        }
+        return students;
     }
 
     public Instructor getInstructorByCourse(Course course) {
