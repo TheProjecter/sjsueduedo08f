@@ -23,7 +23,9 @@ public enum DayOfWeek {
         this.shortcutName = shortcutName;
     }
     private String shortcutName;
-    private static Map<String, DayOfWeek> daysShortToFull = new HashMap<String, DayOfWeek>();
+
+    private static Map<String, DayOfWeek> daysShortToFull ;
+
 
     static {
         for (DayOfWeek day : DayOfWeek.values()) {
