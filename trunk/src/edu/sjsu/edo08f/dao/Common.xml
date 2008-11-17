@@ -41,4 +41,18 @@
             on meetingHours.instructor_id = instructor.id
         where instructor.id = #value#
     </select>
+             
+    <select id="getLocationIdByName" parameterClass="java.lang.String"
+            resultClass="java.lang.Long">
+        select location.ID
+        from universitySystem.LOCATION location
+        where location.name = #value#
+    </select>
+
+    <insert id="createLocation" parameterClass="java.lang.String">
+        insert into
+        universitySysten.LOCATION
+        (name) VALUES
+        (#value#)
+    </insert>
 </sqlMap>

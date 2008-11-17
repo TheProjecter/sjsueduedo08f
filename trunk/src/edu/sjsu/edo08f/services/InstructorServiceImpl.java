@@ -3,6 +3,7 @@ package edu.sjsu.edo08f.services;
 import edu.sjsu.edo08f.domain.Instructor;
 import edu.sjsu.edo08f.domain.Course;
 import edu.sjsu.edo08f.dao.InstructorDao;
+import edu.sjsu.edo08f.dao.CourseDao;
 import edu.sjsu.edo08f.exceptions.NoSuchInstructorException;
 
 import java.util.List;
@@ -19,6 +20,12 @@ public class InstructorServiceImpl implements InstructorService {
 
     public InstructorDao getInstructorDao() {
         return instructorDao;
+    }
+
+    private CourseDao courseDao;
+
+    public void setCourseDao(CourseDao courseDao) {
+        this.courseDao = courseDao;
     }
 
     private static Logger logger = Logger.getLogger(InstructorServiceImpl.class);
@@ -53,7 +60,11 @@ public class InstructorServiceImpl implements InstructorService {
     }
 
     public List<Course> getAssociatedCourses(Instructor instructor) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        List<Course> courses = courseDao.getCoursesByInstructorId (instructor.getId());
+        if (courses.size() == 0) {
+            logger.warn ("No courses were found for provided instructor");
+        }
+        return courses;
     }
 
     public void setInstructorDao(InstructorDao instructorDao) {

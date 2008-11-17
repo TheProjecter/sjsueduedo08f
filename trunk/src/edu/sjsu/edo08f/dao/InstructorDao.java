@@ -21,5 +21,4 @@ public class InstructorDao extends SqlMapClientDaoSupport {
         return (List<Instructor>) getSqlMapClientTemplate().queryForList(NAMESPACE + "getAll");
     }
 
-
 }

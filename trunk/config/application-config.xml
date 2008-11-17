@@ -1,6 +1,6 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
         "http://www.springframework.org/dtd/spring-beans.dtd">
-<beans>
+<beans default-autowire="byName">
 
     <bean id="personService" class="edu.sjsu.edo08f.services.PersonServiceImpl">
         <property name="personDao" ref="personDao"/>
@@ -30,18 +30,31 @@
     <bean id="courseService" class="edu.sjsu.edo08f.services.CourseServiceImpl">
         <property name="courseDao" ref="courseDao"/>
         <property name="studentDao" ref="studentDao"/>
-        <property name="objectVerifier" ref="objectVerifier"/>
+        <property name="courseVerifier" ref="courseVerifier"/>
+        <property name="commonDao" ref="commonDao"/>
     </bean>
 
     <bean id="courseDao" class="edu.sjsu.edo08f.dao.CourseDao">
         <property name="sqlMapClient" ref="sqlMapClient"/>
     </bean>
 
-    <bean id="objectVerifier" class="edu.sjsu.edo08f.services.utils.ObjectVerifier">
+    <bean id="commonVerifier" class="edu.sjsu.edo08f.services.utils.CommonVerifier">
         <property name="courseDao" ref="courseDao"/>
         <property name="instructorDao" ref="instructorDao"/>
         <property name="personDao" ref="personDao"/>
-        <property name="studentDao" ref="studentDao"/>        
+        <property name="studentDao" ref="studentDao"/>
+        <property name="commonDao" ref="commonDao"/>
+    </bean>
+
+    <bean id="courseVerifier" parent="commonVerifier" class="edu.sjsu.edo08f.services.utils.CourseVerifier">
+        <property name="instructorVerifier" ref="instructorVerifier"/>
+    </bean>
+
+    <bean id="instructorVerifier" parent="commonVerifier" class="edu.sjsu.edo08f.services.utils.InstructorVerifier">
+    </bean>
+
+    <bean id="commonDao" class="edu.sjsu.edo08f.dao.CommonDao">
+        <property name="sqlMapClient" ref="sqlMapClient"/>
     </bean>
 
     <bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">

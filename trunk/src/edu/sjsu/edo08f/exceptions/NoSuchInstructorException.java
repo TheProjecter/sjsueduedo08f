@@ -9,4 +9,8 @@ public class NoSuchInstructorException extends GeneralException {
     public NoSuchInstructorException(String message) {
         super(message);
     }
+
+    public NoSuchInstructorException () {
+        super ("The instructor with this ID doesn't exist");
+    }
 }

@@ -15,8 +15,10 @@ import edu.sjsu.edo08f.services.StudentService;
 import edu.sjsu.edo08f.services.InstructorService;
 import edu.sjsu.edo08f.services.CourseService;
 import edu.sjsu.edo08f.support.EventInformation;
+import edu.sjsu.edo08f.support.DayOfWeek;
 
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by: Alex Yarmula
@@ -39,8 +41,17 @@ public class Main {
         CourseService courseService = (CourseService) getBeanFactory().getBean("courseService");
         List<Course> courses = courseService.getAll();
 
-        Course course1 = new Course();
-        List<Student> studentsInCourse = courseService.getStudentsByCourse(null);
+        Course courseToCreate = new Course();
+        courseToCreate.setName("Some new course");
+        courseToCreate.setLocation("CLK117");
+        courseToCreate.setSection(1);
+        courseToCreate.setUnits(3);
+        List<EventInformation> meetingHours = new ArrayList<EventInformation>();
+        meetingHours.add(new EventInformation(DayOfWeek.Monday, "1700", "1800"));
+        meetingHours.add(new EventInformation(DayOfWeek.Tuesday, "1700", "1800"));
+        courseToCreate.setMeetingHours(meetingHours);
+        courseService.create(courseToCreate, instructorService.getById(2L));
+
 
         int a = 5;
     }

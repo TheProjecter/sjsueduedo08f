@@ -3,11 +3,12 @@ package edu.sjsu.edo08f.services;
 import org.apache.log4j.Logger;
 import edu.sjsu.edo08f.dao.CourseDao;
 import edu.sjsu.edo08f.dao.StudentDao;
+import edu.sjsu.edo08f.dao.CommonDao;
 import edu.sjsu.edo08f.domain.Course;
 import edu.sjsu.edo08f.domain.Student;
 import edu.sjsu.edo08f.domain.Instructor;
 import edu.sjsu.edo08f.exceptions.NoSuchCourseException;
-import edu.sjsu.edo08f.services.utils.ObjectVerifier;
+import edu.sjsu.edo08f.services.utils.CourseVerifier;
 
 import java.util.List;
 
@@ -19,7 +20,8 @@ public class CourseServiceImpl implements CourseService {
 
     private CourseDao courseDao;
     private StudentDao studentDao;
-    private ObjectVerifier objectVerifier;
+    private CourseVerifier courseVerifier;
+    private CommonDao commonDao;
 
     public void setCourseDao(CourseDao courseDao) {
         this.courseDao = courseDao;
@@ -29,8 +31,12 @@ public class CourseServiceImpl implements CourseService {
         this.studentDao = studentDao;
     }
 
-    public void setObjectVerifier(ObjectVerifier objectVerifier) {
-        this.objectVerifier = objectVerifier;
+    public void setCourseVerifier(CourseVerifier courseVerifier) {
+        this.courseVerifier = courseVerifier;
+    }
+
+    public void setCommonDao(CommonDao commonDao) {
+        this.commonDao = commonDao;
     }
 
     private Logger logger = Logger.getLogger(CourseServiceImpl.class);
@@ -54,7 +60,7 @@ public class CourseServiceImpl implements CourseService {
 
     public List<Student> getStudentsByCourse(Course course) {
 
-        objectVerifier.verifyCourseExists(course);
+        courseVerifier.verifyCourseExists(course);
         List<Student> students = studentDao.getStudentsByCourse(course.getId());
         if (students.size() == 0) {
             logger.info("No students enrolled in this course were found");
@@ -67,7 +73,11 @@ public class CourseServiceImpl implements CourseService {
     }
 
     public Course create(Course course, Instructor instructor) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        courseVerifier.verifyCourseOnCreate(course, instructor);
+
+        Long locationId = provideCourseLocation(course.getLocation());
+
+        return new Course();
     }
 
     public Course update(Course course) {
@@ -92,5 +102,13 @@ public class CourseServiceImpl implements CourseService {
 
     public List<Course> search(String searchedFieldName, String searchedValue) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    private Long provideCourseLocation(String locationName) {
+        if (courseVerifier.isNewLocation(locationName)) {
+            return commonDao.createLocation(locationName);
+        } else {
+            return commonDao.getLocationIdByName(locationName);
+        }
     }
 }

@@ -13,6 +13,7 @@
         <result property="section" column="section" javaType="java.lang.Integer"  />
         <result property="location" column="location" javaType="java.lang.String"  />
         <result property="meetingHours" column="id" select="Common.selectCourseHoursForCourse"  />
+        <result property="units" column="units" javaType="java.lang.Integer"  />
     </resultMap>
 
     <sql id="selectCourse">
@@ -20,7 +21,8 @@
         course.id as id,
         course.name as name,
         course.section as section,
-        location.name as location
+        location.name as location,
+        course.units as units
         from universitySystem.Course course
         left join universitySystem.Location location
         on location.id = course.location_id
@@ -34,6 +36,25 @@
 
     <select id="getAll" resultMap="courseResultMap" resultClass="Course">
         <include refid="selectCourse"/>
+    </select>
+
+    <select id="getByNameAndSection" parameterClass="java.util.Map" resultClass="Course"
+            resultMap="courseResultMap">
+        <include refid="selectCourse"/>
+        where course.name = #name#
+        and course.section = #section#
+    </select>
+
+    <select id="getByLocationName" parameterClass="java.lang.String"
+            resultMap="courseResultMap" resultClass="Course">
+        <include refid="selectCourse"/>
+        where location.name = #value#
+    </select>
+
+    <select id="getByInstructorId" parameterClass="java.lang.Long"
+            resultMap="courseResultMap" resultClass="Course">
+        <include refid="selectCourse"/>
+        where course.instructor_id = #value#
     </select>
 
 </sqlMap>

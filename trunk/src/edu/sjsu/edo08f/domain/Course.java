@@ -20,6 +20,8 @@ public class Course {
 
     private String location;
 
+    private Integer units;
+
     public Long getId() {
         return id;
     }
@@ -58,5 +60,13 @@ public class Course {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Integer getUnits() {
+        return units;
+    }
+
+    public void setUnits(Integer units) {
+        this.units = units;
     }
 }

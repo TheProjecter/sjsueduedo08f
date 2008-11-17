@@ -137,6 +137,7 @@
             <xs:element name="section" type="xs:string" minOccurs="1" maxOccurs="1" />
             <xs:element name="meeting-hours" type="event-hours" minOccurs="1" maxOccurs="1" />
             <xs:element name="location" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="units" type="xs:integer" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
     </xs:complexType>
 

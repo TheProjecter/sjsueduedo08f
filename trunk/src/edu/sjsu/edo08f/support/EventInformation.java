@@ -10,6 +10,15 @@ public class EventInformation {
     private String startTime;
     private String endTime;
 
+    public EventInformation() {
+    }
+
+    public EventInformation(DayOfWeek dayOfWeek, String startTime, String endTime) {
+        this.dayOfWeek = dayOfWeek;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
     public DayOfWeek getDayOfWeek() {
         return dayOfWeek;
     }
