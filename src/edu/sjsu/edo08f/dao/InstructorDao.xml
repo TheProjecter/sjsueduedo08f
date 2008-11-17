@@ -27,16 +27,16 @@
         instructor.employee_id as employeeId,
         instructor.department as department,
         instructor.office as office
-        from universitySystem.instructor,
-        universitySystem.person
-        where person.type_id = instructor.id
+        from universitySystem.instructor instructor
+        left join universitySystem.person person
+        on person.type_id = instructor.id
         and person.type = "INSTRUCTOR"
     </sql>
 
     <select id="getById" parameterClass="java.lang.Long"
             resultMap="instructorResultMap" resultClass="Instructor">
         <include refid="selectInstructor"/>
-        where id = #value#
+        where instructor.id = #value#
     </select>
 
     <select id="getAll" resultMap="instructorResultMap" resultClass="Instructor">
