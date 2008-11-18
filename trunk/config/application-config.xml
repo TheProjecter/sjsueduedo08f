@@ -30,6 +30,7 @@
     <bean id="courseService" class="edu.sjsu.edo08f.services.CourseServiceImpl">
         <property name="courseDao" ref="courseDao"/>
         <property name="studentDao" ref="studentDao"/>
+        <property name="instructorDao" ref="instructorDao"/>
         <property name="courseVerifier" ref="courseVerifier"/>
         <property name="commonDao" ref="commonDao"/>
     </bean>

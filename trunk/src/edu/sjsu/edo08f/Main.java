@@ -43,17 +43,15 @@ public class Main {
 
         Course courseToCreate = new Course();
         courseToCreate.setName("Some new course");
-        courseToCreate.setLocation("CLK117");
+        courseToCreate.setLocation("CLK118");
         courseToCreate.setSection(1);
         courseToCreate.setUnits(3);
         List<EventInformation> meetingHours = new ArrayList<EventInformation>();
-        meetingHours.add(new EventInformation(DayOfWeek.Monday, "1700", "1800"));
-        meetingHours.add(new EventInformation(DayOfWeek.Tuesday, "1700", "1800"));
+        meetingHours.add(new EventInformation(DayOfWeek.Monday, "1500", "1600"));
+        meetingHours.add(new EventInformation(DayOfWeek.Tuesday, "1500", "1600"));
         courseToCreate.setMeetingHours(meetingHours);
-        courseService.create(courseToCreate, instructorService.getById(2L));
+        Course courseCreated = courseService.create(courseToCreate, instructorService.getById(2L));
 
-
-        int a = 5;
     }
 
 

@@ -4,11 +4,14 @@ import org.apache.log4j.Logger;
 import edu.sjsu.edo08f.dao.CourseDao;
 import edu.sjsu.edo08f.dao.StudentDao;
 import edu.sjsu.edo08f.dao.CommonDao;
+import edu.sjsu.edo08f.dao.InstructorDao;
 import edu.sjsu.edo08f.domain.Course;
 import edu.sjsu.edo08f.domain.Student;
 import edu.sjsu.edo08f.domain.Instructor;
 import edu.sjsu.edo08f.exceptions.NoSuchCourseException;
+import edu.sjsu.edo08f.exceptions.GeneralException;
 import edu.sjsu.edo08f.services.utils.CourseVerifier;
+import edu.sjsu.edo08f.support.EventInformation;
 
 import java.util.List;
 
@@ -22,6 +25,7 @@ public class CourseServiceImpl implements CourseService {
     private StudentDao studentDao;
     private CourseVerifier courseVerifier;
     private CommonDao commonDao;
+    private InstructorDao instructorDao;
 
     public void setCourseDao(CourseDao courseDao) {
         this.courseDao = courseDao;
@@ -37,6 +41,10 @@ public class CourseServiceImpl implements CourseService {
 
     public void setCommonDao(CommonDao commonDao) {
         this.commonDao = commonDao;
+    }
+
+    public void setInstructorDao(InstructorDao instructorDao) {
+        this.instructorDao = instructorDao;
     }
 
     private Logger logger = Logger.getLogger(CourseServiceImpl.class);
@@ -69,19 +77,49 @@ public class CourseServiceImpl implements CourseService {
     }
 
     public Instructor getInstructorByCourse(Course course) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        courseVerifier.verifyCourseExists(course);
+        Instructor instructor = instructorDao.getInstructorByCourse(course.getId());
+        if (instructor == null ) {
+            logger.error("The course doesn't have an instructor. This shouldn't have happened");
+            throw new GeneralException("The course doesn't have an instructor. This shouldn't have happened");
+        }
+        return instructor;
+
     }
 
     public Course create(Course course, Instructor instructor) {
         courseVerifier.verifyCourseOnCreate(course, instructor);
 
         Long locationId = provideCourseLocation(course.getLocation());
+        Course newlyCreatedCourse = courseDao.create(course, instructor.getId(), locationId);
 
-        return new Course();
+        createMeetingHours (course);
+
+        return courseDao.getById(newlyCreatedCourse.getId());
+    }
+
+    private void createMeetingHours (Course course) {
+        for (EventInformation eventInformation : course.getMeetingHours()) {
+            Long eventInformationId = commonDao.getEventInformationId(eventInformation);
+            if (eventInformationId == null) {
+                commonDao.createEventInformation(eventInformation);
+                eventInformationId = commonDao.getEventInformationId(eventInformation);
+            }
+            commonDao.createMeetingHours(course.getId(), eventInformationId);
+        }
     }
 
     public Course update(Course course) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        courseVerifier.verifyCourseOnUpdate(course);
+
+        commonDao.deleteAllMeetingHoursForCourse(course.getId());
+        Long locationId = provideCourseLocation(course.getLocation());
+
+        courseDao.update(course, locationId);
+
+        createMeetingHours (course);
+
+        return courseDao.getById(course.getId());
     }
 
     public void delete(Course course) {

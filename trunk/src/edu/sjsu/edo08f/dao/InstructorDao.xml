@@ -42,4 +42,21 @@
     <select id="getAll" resultMap="instructorResultMap" resultClass="Instructor">
         <include refid="selectInstructor"/>
     </select>
+
+    <select id="getInstructorByCourse" resultMap="instructorResultMap" resultClass="Instructor"
+            parameterClass="java.lang.Long">
+        <include refid="selectInstructor"/>
+        left join universitySystem.COURSE course
+        on course.instructor_id = instructor.id
+        where course.id = #value#
+    </select>
+
+    <select id="getInstructorIdByCourse" resultClass="java.lang.Long" parameterClass="java.lang.Long">
+        select
+        instructor.id as value
+        from universitySystem.INSTRUCTOR instructor
+        left join universitySystem.COURSE course
+        on course.instructor_id = instructor.id
+        where course.id = #value#
+    </select>
 </sqlMap>

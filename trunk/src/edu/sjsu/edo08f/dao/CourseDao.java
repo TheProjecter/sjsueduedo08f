@@ -37,4 +37,22 @@ public class CourseDao extends SqlMapClientDaoSupport {
     public List<Course> getCoursesByInstructorId (Long instructorId) {
         return (List<Course>) getSqlMapClientTemplate().queryForList(NAMESPACE + "getByInstructorId", instructorId); 
     }
+
+    public Course create (Course course, Long instructorId, Long locationId) {
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("course", course);
+        parameters.put("instructorId", instructorId);
+        parameters.put("locationId", locationId);
+        getSqlMapClientTemplate().insert(NAMESPACE + "create", parameters);
+        return course;
+    }
+
+    public Course update (Course course, Long locationId) {
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("course", course);
+        parameters.put("locationId", locationId);
+        getSqlMapClientTemplate().update(NAMESPACE + "create", parameters);
+        return course;
+    }
+
 }

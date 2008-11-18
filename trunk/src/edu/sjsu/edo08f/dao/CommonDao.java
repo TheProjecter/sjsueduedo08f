@@ -1,6 +1,9 @@
 package edu.sjsu.edo08f.dao;
 
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+import edu.sjsu.edo08f.support.EventInformation;
+
+import java.util.*;
 
 /**
  * Created by: Alex Yarmula
@@ -18,4 +21,24 @@ public class CommonDao extends SqlMapClientDaoSupport {
         getSqlMapClientTemplate().insert(NAMESPACE + "createLocation", name);
         return getLocationIdByName(name);
     }
+
+    public Long getEventInformationId (EventInformation eventInformation) {
+        return (Long) getSqlMapClientTemplate().queryForObject(NAMESPACE + "findEventInformationId", eventInformation);
+    }
+
+    public void createEventInformation (EventInformation eventInformation) {
+        getSqlMapClientTemplate().insert(NAMESPACE + "createEventInformation", eventInformation);
+    }
+
+    public void createMeetingHours (Long courseId, Long eventInformationId) {
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put ("courseId", courseId);
+        parameters.put("eventInformationId", eventInformationId);
+        getSqlMapClientTemplate().insert(NAMESPACE + "createMeetingHours", parameters);
+    }
+
+    public void deleteAllMeetingHoursForCourse (Long courseId) {
+        getSqlMapClientTemplate().delete(NAMESPACE + "deleteAllMeetingHoursForCourse", courseId);
+    }
+    
 }
