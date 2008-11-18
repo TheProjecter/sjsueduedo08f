@@ -32,6 +32,12 @@ public class CourseVerifier extends CommonVerifier {
     public void verifyCourseOnUpdate (Course course) {
         verifyCourse(course);
         verifyCourseExists(course);
+
+        Instructor instructor = instructorDao.getInstructorByCourse(course.getId());
+
+        if (isInstructorOccupiedForThisCourse(instructor, course)) {
+            throw new ScheduleConflictException("This course conflicts with current schedule of this instructor");
+        }
     }
 
     public void verifyCourseOnDelete (Course course) {

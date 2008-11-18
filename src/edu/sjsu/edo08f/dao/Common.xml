@@ -16,9 +16,9 @@
 
     <sql id="selectEventInformation">
         select
-            eventInformation.day_of_week as dayOfWeek,
-            eventInformation.start_time as startTime,
-            eventInformation.end_time as endTime
+        eventInformation.day_of_week as dayOfWeek,
+        eventInformation.start_time as startTime,
+        eventInformation.end_time as endTime
         from universitySystem.event_information eventInformation
     </sql>
 
@@ -26,9 +26,9 @@
             parameterClass="java.lang.Long" resultMap="meetingHours">
         <include refid="selectEventInformation"/>
         left join universitySystem.course_meeting_hours meetingHours
-            on meetingHours.event_information_id = eventInformation.id
+        on meetingHours.event_information_id = eventInformation.id
         left join universitySystem.course course
-            on meetingHours.course_id = course.id
+        on meetingHours.course_id = course.id
         where course.id = #value#
     </select>
 
@@ -36,12 +36,12 @@
             parameterClass="java.lang.Long" resultMap="meetingHours">
         <include refid="selectEventInformation"/>
         left join universitySystem.instructor_office_hours meetingHours
-            on meetingHours.event_information_id = eventInformation.id
+        on meetingHours.event_information_id = eventInformation.id
         left join universitySystem.instructor instructor
-            on meetingHours.instructor_id = instructor.id
+        on meetingHours.instructor_id = instructor.id
         where instructor.id = #value#
     </select>
-             
+
     <select id="getLocationIdByName" parameterClass="java.lang.String"
             resultClass="java.lang.Long">
         select location.ID
@@ -51,8 +51,39 @@
 
     <insert id="createLocation" parameterClass="java.lang.String">
         insert into
-        universitySysten.LOCATION
+        universitySystem.LOCATION
         (name) VALUES
         (#value#)
     </insert>
+
+    <select id="findEventInformationId" resultClass="java.lang.Long" parameterClass="EventInformation">
+        select
+        info.ID
+        from universitySystem.event_information info
+        where
+        info.day_of_week = #dayOfWeek.shortcutName# and
+        info.start_time = #startTime# and
+        info.end_time = #endTime#
+    </select>
+
+    <insert id="createEventInformation" parameterClass="EventInformation">
+        insert into
+        universitySystem.EVENT_INFORMATION
+        (day_of_week, start_time, end_time)
+        VALUES
+        (#dayOfWeek.shortcutName#, #startTime#, #endTime#)
+    </insert>
+
+    <insert id="createMeetingHours" parameterClass="java.util.Map">
+        insert into
+        universitySystem.course_meeting_hours
+        (course_id, event_information_id)
+        VALUES
+        (#courseId#, #eventInformationId#)
+    </insert>
+
+    <delete id="deleteAllMeetingHoursForCourse" parameterClass="java.lang.Long">
+        delete from universitySystem.COURSE_MEETING_HOURS
+        where course_id = #value#
+    </delete>
 </sqlMap>
