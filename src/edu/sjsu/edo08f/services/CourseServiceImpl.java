@@ -10,7 +10,9 @@ import edu.sjsu.edo08f.domain.Student;
 import edu.sjsu.edo08f.domain.Instructor;
 import edu.sjsu.edo08f.exceptions.NoSuchCourseException;
 import edu.sjsu.edo08f.exceptions.GeneralException;
+import edu.sjsu.edo08f.exceptions.HasDependenciesException;
 import edu.sjsu.edo08f.services.utils.CourseVerifier;
+import edu.sjsu.edo08f.services.utils.StudentVerifier;
 import edu.sjsu.edo08f.support.EventInformation;
 
 import java.util.List;
@@ -123,11 +125,17 @@ public class CourseServiceImpl implements CourseService {
     }
 
     public void delete(Course course) {
-        //To change body of implemented methods use File | Settings | File Templates.
+
+        courseVerifier.verifyCourseOnDelete (course);
+        
+        commonDao.deleteAllMeetingHoursForCourse(course.getId());
+        courseDao.delete (course.getId());
     }
 
     public void enrollStudent(Course course, Student student) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        courseVerifier.verifyEnrollStudent(course, student);
+
+        courseDao.enrollStudent (course.getId(), student.getId());
     }
 
     public void unEnrollStudent(Course course, Student student) {

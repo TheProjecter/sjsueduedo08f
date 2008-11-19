@@ -50,8 +50,13 @@ public class Main {
         meetingHours.add(new EventInformation(DayOfWeek.Monday, "1500", "1600"));
         meetingHours.add(new EventInformation(DayOfWeek.Tuesday, "1500", "1600"));
         courseToCreate.setMeetingHours(meetingHours);
-        Course courseCreated = courseService.create(courseToCreate, instructorService.getById(2L));
+        Course courseCreated = courseService.create(courseToCreate, instructorService.getById(1L));
 
+        courseCreated.getMeetingHours().add(new EventInformation(DayOfWeek.Wednesday, "1500", "1600"));
+        courseService.update(courseCreated);
+
+        courseService.delete(courseCreated);
+        int b =5;
     }
 
 

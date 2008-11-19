@@ -38,6 +38,10 @@ public class CourseDao extends SqlMapClientDaoSupport {
         return (List<Course>) getSqlMapClientTemplate().queryForList(NAMESPACE + "getByInstructorId", instructorId); 
     }
 
+    public List<Course> getCoursesByStudentId (Long studentId) {
+        return (List<Course>) getSqlMapClientTemplate().queryForList(NAMESPACE + "getByStudentId", studentId); 
+    }
+
     public Course create (Course course, Long instructorId, Long locationId) {
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("course", course);
@@ -51,8 +55,19 @@ public class CourseDao extends SqlMapClientDaoSupport {
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("course", course);
         parameters.put("locationId", locationId);
-        getSqlMapClientTemplate().update(NAMESPACE + "create", parameters);
+        getSqlMapClientTemplate().update(NAMESPACE + "update", parameters);
         return course;
+    }
+
+    public void delete (Long courseId) {
+        getSqlMapClientTemplate().delete(NAMESPACE + "delete", courseId);
+    }
+
+    public void enrollStudent (Long courseId, Long studentId) {
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("courseId", courseId);
+        parameters.put("studentId", studentId);
+        getSqlMapClientTemplate().insert(NAMESPACE + "enrollStudent", parameters);
     }
 
 }

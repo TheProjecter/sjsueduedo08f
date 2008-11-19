@@ -5,6 +5,7 @@ import edu.sjsu.edo08f.support.EventInformation;
 import edu.sjsu.edo08f.exceptions.InvalidCourseException;
 import edu.sjsu.edo08f.domain.Course;
 import edu.sjsu.edo08f.domain.Instructor;
+import edu.sjsu.edo08f.domain.Student;
 import org.apache.log4j.Logger;
 
 import java.util.List;
@@ -69,6 +70,7 @@ public class CommonVerifier {
                 courseDao.getByLocationName(course.getLocation());
 
         for (Course currentCourse : coursesForGivenLocation) {
+            if (course.getId() != null && currentCourse.getId().equals(course.getId())) continue;
             courseOverlapping = courseOverlapping || isOverlappingOf2Courses(currentCourse, course);
         }
         return courseOverlapping;
@@ -101,7 +103,9 @@ public class CommonVerifier {
             if ((startTimeOfDBCourse < startTimeOfCreatedCourse &&
                     endTimeOfDBCourse > startTimeOfCreatedCourse)
                     || (startTimeOfDBCourse > startTimeOfCreatedCourse &&
-                    startTimeOfDBCourse < endTimeOfCreatedCourse)) {
+                    startTimeOfDBCourse < endTimeOfCreatedCourse)
+                    || (startTimeOfDBCourse == startTimeOfCreatedCourse)
+                    || (endTimeOfCreatedCourse == endTimeOfDBCourse)) {
                 logger.warn(String.format(
                         "The time overlaps: [%d - %d] and [%d - %d]",
                         startTimeOfDBCourse, endTimeOfDBCourse,
@@ -134,10 +138,30 @@ public class CommonVerifier {
 
         List<Course> instructorsCourses = courseDao.getCoursesByInstructorId(instructor.getId());
         for (Course instructorsCourse : instructorsCourses ) {
+            if (course.getId() != null && course.getId().equals(instructorsCourse.getId())) continue;
             for (EventInformation meetingDayOfInstructorsCourse : instructorsCourse.getMeetingHours()) {
                 for (EventInformation meetingDayOfCreatedCourse : course.getMeetingHours()) {
                     result = result ||
                             isMeetingTimeOverlapping(meetingDayOfInstructorsCourse, meetingDayOfCreatedCourse);
+                }
+            }
+        }
+        return result;
+    }
+
+    public boolean isStudentsOtherCoursesOverlapWithCourse (Student student, Course course) {
+
+        boolean result = false;
+
+        List<Course> studentsCourses = courseDao.getCoursesByStudentId(student.getId());
+        for (Course studentsCourse : studentsCourses ) {
+
+            if (course.getId() != null && course.getId().equals(studentsCourse.getId())) continue;
+
+            for (EventInformation meetingDayOfStudentsCourse : studentsCourse.getMeetingHours()) {
+                for (EventInformation meetingDayOfCreatedCourse : course.getMeetingHours()) {
+                    result = result ||
+                            isMeetingTimeOverlapping(meetingDayOfStudentsCourse, meetingDayOfCreatedCourse);
                 }
             }
         }

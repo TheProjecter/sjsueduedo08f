@@ -1,9 +1,12 @@
 package edu.sjsu.edo08f.services;
 
 import edu.sjsu.edo08f.dao.StudentDao;
+import edu.sjsu.edo08f.dao.CourseDao;
 import edu.sjsu.edo08f.domain.Student;
 import edu.sjsu.edo08f.domain.Course;
 import edu.sjsu.edo08f.exceptions.NoSuchStudentException;
+import edu.sjsu.edo08f.services.utils.StudentVerifier;
+import edu.sjsu.edo08f.support.BillCalculator;
 
 import java.util.List;
 
@@ -16,9 +19,19 @@ import org.apache.log4j.Logger;
 public class StudentServiceImpl implements StudentService {
 
     private StudentDao studentDao;
+    private StudentVerifier studentVerifier;
+    private CourseDao courseDao;
 
     public void setStudentDao(StudentDao studentDao) {
         this.studentDao = studentDao;
+    }
+
+    public void setStudentVerifier(StudentVerifier studentVerifier) {
+        this.studentVerifier = studentVerifier;
+    }
+
+    public void setCourseDao(CourseDao courseDao) {
+        this.courseDao = courseDao;
     }
 
     private static Logger logger = Logger.getLogger(StudentServiceImpl.class);
@@ -51,10 +64,20 @@ public class StudentServiceImpl implements StudentService {
     }
 
     public String generateInvoice(Student student) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        studentVerifier.verifyStudentExists(student);
+        Student studentFromDB = studentDao.getById(student.getId());
+
+        int numberOfUnitsTaken = studentVerifier.getStudentsUnits(student.getId());
+
+        double amount =
+                BillCalculator.getCalculatedValue(numberOfUnitsTaken, studentVerifier.isCaliforniaResedent(studentFromDB));
+
+        return Double.toString(amount);
+
     }
 
     public List<Course> getAssociatedCourses(Student student) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        studentVerifier.verifyStudentExists(student);
+        return courseDao.getCoursesByStudentId (student.getId());
     }
 }

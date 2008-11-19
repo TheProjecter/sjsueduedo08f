@@ -57,23 +57,44 @@
         where course.instructor_id = #value#
     </select>
 
+    <select id="getByStudentId" parameterClass="java.lang.Long"
+            resultMap="courseResultMap" resultClass="Course">
+        <include refid="selectCourse"/>
+        left join student_to_course studentToCourse
+        on course.id = studentToCourse.course_id
+        where studentToCourse.student_id = #value#
+    </select>
+
     <insert id="create" parameterClass="java.util.Map">
         insert into universitySystem.COURSE
-            (name, section, location_id, instructor_id, units)
+        (name, section, location_id, instructor_id, units)
         VALUES
-            (#course.name#, #course.section#, #locationId#, #instructorId#, #course.units#)
+        (#course.name#, #course.section#, #locationId#, #instructorId#, #course.units#)
         <selectKey keyProperty="course.id" resultClass="java.lang.Long">
             SELECT LAST_INSERT_ID()
         </selectKey>
     </insert>
 
+    <insert id="enrollStudent" parameterClass="java.util.Map">
+        insert into universitySystem.STUDENT_TO_COURSE
+        (student_id, course_id)
+        VALUES
+        (#studentId#, #courseId#)
+    </insert>
+
     <update id="update" parameterClass="java.util.Map">
         UPDATE universitySystem.COURSE
-                SET
+        SET
         name = #course.name#,
         section = #course.section#,
         units = #course.units#,
         location_id = #locationId#
+        where id = #id#
     </update>
+
+    <delete id="delete" parameterClass="java.lang.Long">
+        DELETE from universitySystem.course
+        WHERE id = #value#
+    </delete>
 
 </sqlMap>

@@ -12,6 +12,7 @@
 
     <bean id="studentService" class="edu.sjsu.edo08f.services.StudentServiceImpl">
         <property name="studentDao" ref="studentDao"/>
+        <property name="studentVerifier" ref="studentVerifier"/>
     </bean>
 
     <bean id="studentDao" class="edu.sjsu.edo08f.dao.StudentDao">
@@ -49,9 +50,13 @@
 
     <bean id="courseVerifier" parent="commonVerifier" class="edu.sjsu.edo08f.services.utils.CourseVerifier">
         <property name="instructorVerifier" ref="instructorVerifier"/>
+        <property name="studentVerifier" ref="studentVerifier"/>
     </bean>
 
     <bean id="instructorVerifier" parent="commonVerifier" class="edu.sjsu.edo08f.services.utils.InstructorVerifier">
+    </bean>
+
+    <bean id="studentVerifier" parent="commonVerifier" class="edu.sjsu.edo08f.services.utils.StudentVerifier">
     </bean>
 
     <bean id="commonDao" class="edu.sjsu.edo08f.dao.CommonDao">
