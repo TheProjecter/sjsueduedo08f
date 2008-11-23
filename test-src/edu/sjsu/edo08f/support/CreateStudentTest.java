@@ -99,6 +99,24 @@ public class CreateStudentTest {
            Assert.assertFalse(checkFlag,"true");
         }
 
+      public void testFirstNameAlpha() {
+           student.setFirstName("Skj23");
+
+           Student studentFromDB = studentService.create(student);
+
+           String temp = studentFromDB.getFirstName().toString();
+           String tempType = studentFromDB.getType().toString().toLowerCase();
+
+           System.out.println("Value of temp" + temp);
+
+           if (temp.toLowerCase().equals("Skj23")&& tempType.equals("student"))
+           checkFlag = false;
+           else
+           checkFlag = true;
+
+           Assert.assertFalse(checkFlag,"true");
+        }
+
     //Tests for Last Name
 
         public void testLastName() {
@@ -173,6 +191,24 @@ public class CreateStudentTest {
                Assert.assertFalse(checkFlag,"true");
            }
 
+     public void testLastNameAlpha() {
+               student.setLastName("hu87sf");
+
+               Student studentFromDB = studentService.create(student);
+
+               String tempFirstName = studentFromDB.getLastName().toString();
+           String tempType = studentFromDB.getType().toString().toLowerCase();
+
+               System.out.println("Value of temp" + tempFirstName);
+
+               if (tempFirstName.toLowerCase().equals("hu87sf")&& tempType.equals("student"))
+                   checkFlag = false;
+               else
+                   checkFlag = true;
+
+               Assert.assertFalse(checkFlag,"true");
+           }
+
 
       //Test for Address
         public void testAddress() {
@@ -225,7 +261,7 @@ public class CreateStudentTest {
 
            System.out.println("Value of temp" + tempFirstName);
 
-           if (tempFirstName.equals("123 ABC Street , San Jose ")&& tempType.equals("student"))
+           if (tempFirstName.equals("-123 ABC Street , San Jose ")&& tempType.equals("student"))
            checkFlag = false;
            else
            checkFlag = true;
@@ -333,6 +369,24 @@ public class CreateStudentTest {
 
            Assert.assertFalse(checkFlag,"true");
 
+        }
+
+    public void testCityAlpha() {
+        student.setCity("C6th9");
+
+           Student studentFromDB = studentService.create(student);
+
+           String tempFirstName = studentFromDB.getCity().toString();
+           String tempType = studentFromDB.getType().toString().toLowerCase();
+
+           System.out.println("Value of temp" + tempFirstName);
+
+           if (tempFirstName.toLowerCase().equals("C6th9")&& tempType.equals("student"))
+           checkFlag = false;
+           else
+           checkFlag = true;
+
+           Assert.assertFalse(checkFlag,"true");
 
         }
 
@@ -433,8 +487,24 @@ public class CreateStudentTest {
            checkFlag = true;
 
            Assert.assertFalse(checkFlag,"true");
+        }
 
+    public void testStateAlpha() {
+        student.setState("2C");
 
+           Student studentFromDB = studentService.create(student);
+
+           String tempFirstName = studentFromDB.getState().toString();
+           String tempType = studentFromDB.getType().toString().toLowerCase();
+
+           System.out.println("Value of temp" + tempFirstName);
+
+           if (tempFirstName.toLowerCase().equals("2C") && tempType.equals("student") )
+           checkFlag = false;
+           else
+           checkFlag = true;
+
+           Assert.assertFalse(checkFlag,"true");
         }
 
     //Tests for Zip Codes
