@@ -86,4 +86,17 @@
         delete from universitySystem.COURSE_MEETING_HOURS
         where course_id = #value#
     </delete>
+
+    <insert id="createOfficeHours" parameterClass="java.util.Map">
+        insert into
+        universitySystem.INSTRUCTOR_OFFICE_HOURS
+        (instructor_id, event_information_id)
+        VALUES
+        (#instructorId#, #eventInformationId#)
+    </insert>
+
+    <delete id="deleteAllOfficeHoursForInstructor" parameterClass="java.lang.Long">
+        delete from universitySystem.INSTRUCTOR_OFFICE_HOURS
+        where instructor_id = #value#
+    </delete>
 </sqlMap>

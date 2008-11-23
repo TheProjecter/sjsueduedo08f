@@ -21,6 +21,9 @@
 
     <bean id="instructorService" class="edu.sjsu.edo08f.services.InstructorServiceImpl">
         <property name="instructorDao" ref="instructorDao"/>
+        <property name="commonDao" ref="commonDao"/>
+        <property name="courseDao" ref="courseDao"/>
+        <property name="instructorVerifier" ref="instructorVerifier"/>
     </bean>
 
     <bean id="instructorDao" class="edu.sjsu.edo08f.dao.InstructorDao">

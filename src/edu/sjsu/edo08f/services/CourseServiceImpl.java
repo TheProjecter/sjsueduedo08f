@@ -92,7 +92,7 @@ public class CourseServiceImpl implements CourseService {
     public Course create(Course course, Instructor instructor) {
         courseVerifier.verifyCourseOnCreate(course, instructor);
 
-        Long locationId = provideCourseLocation(course.getLocation());
+        Long locationId = commonDao.provideCourseLocation(course.getLocation());
         Course newlyCreatedCourse = courseDao.create(course, instructor.getId(), locationId);
 
         createMeetingHours (course);
@@ -115,7 +115,7 @@ public class CourseServiceImpl implements CourseService {
         courseVerifier.verifyCourseOnUpdate(course);
 
         commonDao.deleteAllMeetingHoursForCourse(course.getId());
-        Long locationId = provideCourseLocation(course.getLocation());
+        Long locationId = commonDao.provideCourseLocation(course.getLocation());
 
         courseDao.update(course, locationId);
 
@@ -134,12 +134,12 @@ public class CourseServiceImpl implements CourseService {
 
     public void enrollStudent(Course course, Student student) {
         courseVerifier.verifyEnrollStudent(course, student);
-
         courseDao.enrollStudent (course.getId(), student.getId());
     }
 
     public void unEnrollStudent(Course course, Student student) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        courseVerifier.verifyUnenrollStudent(course, student);
+        courseDao.unenrollStudent(course.getId(), student.getId());
     }
 
     public void updateInstructor(Course course, Instructor instructor) {
@@ -148,13 +148,5 @@ public class CourseServiceImpl implements CourseService {
 
     public List<Course> search(String searchedFieldName, String searchedValue) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    private Long provideCourseLocation(String locationName) {
-        if (courseVerifier.isNewLocation(locationName)) {
-            return commonDao.createLocation(locationName);
-        } else {
-            return commonDao.getLocationIdByName(locationName);
-        }
     }
 }

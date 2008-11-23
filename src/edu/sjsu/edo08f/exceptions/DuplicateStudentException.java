@@ -6,7 +6,7 @@ package edu.sjsu.edo08f.exceptions;
  */
 public class DuplicateStudentException extends GeneralException {
 
-    public DuplicateStudentException(String message) {
-        super(message);
+    public DuplicateStudentException (String id) {
+        super (String.format("The student with this tower id [%s] already exists", id));
     }
 }

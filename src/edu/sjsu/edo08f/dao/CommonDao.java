@@ -40,5 +40,25 @@ public class CommonDao extends SqlMapClientDaoSupport {
     public void deleteAllMeetingHoursForCourse (Long courseId) {
         getSqlMapClientTemplate().delete(NAMESPACE + "deleteAllMeetingHoursForCourse", courseId);
     }
-    
+
+    public void createOfficeHours (Long courseId, Long eventInformationId) {
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put ("instructorId", courseId);
+        parameters.put("eventInformationId", eventInformationId);
+        getSqlMapClientTemplate().insert(NAMESPACE + "createOfficeHours", parameters);
+    }
+
+    public void deleteAllOfficeHoursForInstructor (Long instructorId) {
+        getSqlMapClientTemplate().delete(NAMESPACE + "deleteAllOfficeHoursForInstructor", instructorId);
+    }
+
+
+    public Long provideCourseLocation(String locationName) {
+        if (getLocationIdByName(locationName) == null) {
+            return createLocation(locationName);
+        } else {
+            return getLocationIdByName(locationName);
+        }
+    }
+
 }

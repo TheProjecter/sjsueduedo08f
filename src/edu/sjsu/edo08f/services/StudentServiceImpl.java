@@ -18,6 +18,8 @@ import org.apache.log4j.Logger;
  */
 public class StudentServiceImpl implements StudentService {
 
+    private static Logger logger = Logger.getLogger(StudentServiceImpl.class);
+
     private StudentDao studentDao;
     private StudentVerifier studentVerifier;
     private CourseDao courseDao;
@@ -34,7 +36,6 @@ public class StudentServiceImpl implements StudentService {
         this.courseDao = courseDao;
     }
 
-    private static Logger logger = Logger.getLogger(StudentServiceImpl.class);
 
     public List<Student> getAll() {
         List<Student> students = studentDao.getAll();
@@ -52,15 +53,19 @@ public class StudentServiceImpl implements StudentService {
     }
 
     public Student create(Student student) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        studentVerifier.verifyOnCreate (student);
+        return studentDao.create(student);
     }
 
     public Student update(Student student) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        studentVerifier.verifyOnUpdate(student);
+        studentDao.update(student);
+        return student;
     }
 
     public void delete(Student student) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        studentVerifier.verifyOnDelete(student);
+        studentDao.delete (student.getId());
     }
 
     public String generateInvoice(Student student) {

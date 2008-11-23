@@ -26,11 +26,13 @@
         person.type as type,
         instructor.employee_id as employeeId,
         instructor.department as department,
-        instructor.office as office
+        location.name as office
         from universitySystem.instructor instructor
         left join universitySystem.person person
         on person.type_id = instructor.id
         and person.type = "INSTRUCTOR"
+        left join universitySystem.Location location
+        on location.id = instructor.office
     </sql>
 
     <select id="getById" parameterClass="java.lang.Long"
@@ -51,6 +53,12 @@
         where course.id = #value#
     </select>
 
+    <select id="getByEmployeeId" parameterClass="java.lang.String"
+            resultMap="instructorResultMap" resultClass="Instructor">
+        <include refid="selectInstructor"/>
+        where instructor.employee_id = #value#
+    </select>
+
     <select id="getInstructorIdByCourse" resultClass="java.lang.Long" parameterClass="java.lang.Long">
         select
         instructor.id as value
@@ -59,4 +67,32 @@
         on course.instructor_id = instructor.id
         where course.id = #value#
     </select>
+
+
+    <insert id="create" parameterClass="java.util.Map">
+        insert into
+        universitySystem.instructor
+        (employee_id, department, office)
+        VALUES
+        (#instructor.employeeId#, #instructor.department#, #locationId#)
+        <selectKey keyProperty="instructor.id" resultClass="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <update id="update" parameterClass="java.util.Map">
+        update
+        universitySystem.instructor
+        set
+        employee_id = #instructor.employeeId#,
+        department = #instructor.department#,
+        office = #locationId#
+        where id = #instructor.id#
+    </update>
+
+    <delete id="delete" parameterClass="java.lang.Long">
+        delete from
+        universitySystem.instructor
+        where id = #value#
+    </delete>
 </sqlMap>

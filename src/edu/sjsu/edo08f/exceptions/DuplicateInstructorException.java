@@ -6,7 +6,7 @@ package edu.sjsu.edo08f.exceptions;
  */
 public class DuplicateInstructorException extends GeneralException {
 
-    public DuplicateInstructorException(String message) {
-        super(message);
+    public DuplicateInstructorException (String id) {
+        super (String.format("The instructor with this employee id [%s] already exists", id));
     }
 }

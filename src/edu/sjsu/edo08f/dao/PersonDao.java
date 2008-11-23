@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class PersonDao extends SqlMapClientDaoSupport {
 
-    private final String NAMESPACE = "Person.";
+    public static final String NAMESPACE = "Person.";
 
     public Person getById (Long id) {
         return (Person) getSqlMapClientTemplate().queryForObject(NAMESPACE + "getById", id);

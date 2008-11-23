@@ -82,6 +82,14 @@
         (#studentId#, #courseId#)
     </insert>
 
+    <delete id="unenrollStudent" parameterClass="java.util.Map">
+        delete from
+        universitySystem.STUDENT_TO_COURSE
+        where
+        student_id = #studentId# and 
+        course_id = #courseId#
+    </delete>
+
     <update id="update" parameterClass="java.util.Map">
         UPDATE universitySystem.COURSE
         SET

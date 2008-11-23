@@ -5,6 +5,8 @@
 <sqlMap namespace="Person">
 
     <typeAlias alias="Person" type="edu.sjsu.edo08f.domain.Person" />
+    <typeAlias alias="Student" type="edu.sjsu.edo08f.domain.Student" />
+    <typeAlias alias="Instructor" type="edu.sjsu.edo08f.domain.Instructor" />
 
     <resultMap id="personResultMap" class="Person">
         <result property="id" column="id" javaType="java.lang.Long"  />
@@ -39,4 +41,56 @@
     <select id="getAll" resultMap="personResultMap" resultClass="Person">
         <include refid="selectPerson"/>
     </select>
+
+    <insert id="createStudent" parameterClass="Student">
+        insert into universitySystem.PERSON
+        (first_name, last_name, address, city, state, zip_code, type, type_id)
+        VALUES
+        (#firstName#, #lastName#, #address#, #city#, #state#, #zipCode#, "STUDENT", #id#)
+    </insert>
+
+    <insert id="createInstructor" parameterClass="Instructor">
+        insert into universitySystem.PERSON
+        (first_name, last_name, address, city, state, zip_code, type, type_id)
+        VALUES
+        (#firstName#, #lastName#, #address#, #city#, #state#, #zipCode#, "INSTRUCTOR", #id#)
+    </insert>
+
+    <sql id="updatePersonTemplate">
+        update universitySystem.PERSON
+        SET
+        first_name = #firstName#,
+        last_name = #lastName#,
+        address = #address#,
+        city = #city#,
+        state = #state#,
+        zip_code = #zipCode#
+        where type_id = #id#
+    </sql>
+
+    <update id="updateStudent" parameterClass="Student">
+        <include refid="updatePersonTemplate"/>
+        and type = "STUDENT"
+    </update>
+
+    <update id="updateInstructor" parameterClass="Student">
+        <include refid="updatePersonTemplate"/>
+        and type = "INSTRUCTOR"
+    </update>
+
+    <sql id="deletePersonTemplate">
+        delete from
+        universitySystem.PERSON
+        where type_id = #value#
+    </sql>
+
+    <delete id="deleteStudent" parameterClass="java.lang.Long">
+        <include refid="deletePersonTemplate" />
+        and type = "STUDENT"
+    </delete>
+
+    <delete id="deleteInstructor" parameterClass="java.lang.Long">
+         <include refid="deletePersonTemplate" />
+        and type = "INSTRUCTOR"
+    </delete>
 </sqlMap>

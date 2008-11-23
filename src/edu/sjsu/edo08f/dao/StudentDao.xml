@@ -45,4 +45,34 @@
         on joinTable.course_id = course.id
         where course.id = #value#
     </select>
+
+    <select id="getByTowerId" resultMap="studentResultMap" resultClass="Student" parameterClass="java.lang.String">
+        <include refid="selectStudent"/>
+        where student.student_id = #value#
+    </select>
+
+    <insert id="create" parameterClass="Student">
+        insert into
+        universitySystem.student
+        (student_id)
+        VALUES
+        (#studentId#)
+        <selectKey keyProperty="id" resultClass="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <update id="update" parameterClass="Student">
+        update
+        universitySystem.student
+        set
+        student_id = #studentId#
+        where id = #id#
+    </update>
+
+    <delete id="delete" parameterClass="java.lang.Long">
+        delete from
+        universitySystem.student
+        where id = #value#
+    </delete>
 </sqlMap>
