@@ -69,4 +69,8 @@ public class Course {
     public void setUnits(Integer units) {
         this.units = units;
     }
+
+    public boolean equals (Object course) {
+        return course instanceof Course && ((Course)course).getId().equals(id);
+    }
 }

@@ -3,12 +3,14 @@ package edu.sjsu.edo08f.services.utils;
 import edu.sjsu.edo08f.dao.*;
 import edu.sjsu.edo08f.support.EventInformation;
 import edu.sjsu.edo08f.exceptions.InvalidCourseException;
+import edu.sjsu.edo08f.exceptions.InvalidInstructorException;
 import edu.sjsu.edo08f.domain.Course;
 import edu.sjsu.edo08f.domain.Instructor;
 import edu.sjsu.edo08f.domain.Student;
 import org.apache.log4j.Logger;
 
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by: Alex Yarmula
@@ -44,7 +46,7 @@ public class CommonVerifier {
         this.commonDao = commonDao;
     }
 
-    protected void verifyHours(List<EventInformation> meetingHours) {
+    protected void verifyMeetingHours(List<EventInformation> meetingHours) {
         if (meetingHours == null || meetingHours.size() == 0) {
             throw new InvalidCourseException("The meeting hours should be defined for the course");
         }
@@ -59,8 +61,20 @@ public class CommonVerifier {
         }
     }
 
+    protected void verifyOfficeHours(List<EventInformation> officeHours) {
+        for (EventInformation oneOfficeHours : officeHours) {
+            int startTime = Integer.parseInt(oneOfficeHours.getStartTime());
+            int endTime = Integer.parseInt(oneOfficeHours.getEndTime());
+            if (endTime - startTime <= 0 || endTime < 700) {
+                throw new InvalidInstructorException(String.format("Office hours " +
+                        "for the instructor are incorrect: %s %d - %d",
+                        oneOfficeHours.getDayOfWeek().name(), startTime, endTime));
+            }
+        }
+    }
 
-    protected boolean isCourseOverlappingWithDB (Course course) {
+
+    protected boolean isCourseOverlappingWithDBForThisTimeLocation(Course course) {
         boolean courseOverlapping = false;
 
         if (isNewLocation(course.getLocation()))  {
@@ -76,8 +90,8 @@ public class CommonVerifier {
         return courseOverlapping;
     }
 
-    public boolean isNewLocation (String courseLocation) {
-        return commonDao.getLocationIdByName(courseLocation) == null;
+    public boolean isNewLocation (String location) {
+        return commonDao.getLocationIdByName(location) == null;
     }
 
     private boolean isOverlappingOf2Courses(Course course1, Course course2) {
@@ -124,9 +138,9 @@ public class CommonVerifier {
     private boolean isInstructorsOfficeHoursOverlapWithCourse (Instructor instructor, Course course) {
         boolean result = false;
 
-        for (EventInformation meetingDayOfDBCourse : instructor.getOfficeHours()) {
-            for (EventInformation meetingDayOfCreatedCourse : course.getMeetingHours()) {
-                result = result || isMeetingTimeOverlapping(meetingDayOfDBCourse, meetingDayOfCreatedCourse);
+        for (EventInformation oneInstructorsMeetingDay : instructor.getOfficeHours()) {
+            for (EventInformation meetingDayOfCourse : course.getMeetingHours()) {
+                result = result || isMeetingTimeOverlapping(oneInstructorsMeetingDay, meetingDayOfCourse);
             }
         }
         return result;
@@ -166,5 +180,38 @@ public class CommonVerifier {
             }
         }
         return result;
+    }
+
+    protected boolean isInstructorsCourseTimeCorrectAfterChangedOfficeHours (Instructor instructor) {
+        List<Course> coursesByThisInstructor = courseDao.getCoursesByInstructorId(instructor.getId());
+        for (Course currentCourse: coursesByThisInstructor) {
+            if (isInstructorsOfficeHoursOverlapWithCourse (instructor, currentCourse)) return false; 
+        }
+        return false;
+    }
+
+    protected boolean isInstructorsOfficeHoursOverlapWithLocation (Instructor instructor) {
+        if (isNewLocation(instructor.getOffice()))  {
+            return false;
+        }
+
+        List<Course> coursesForGivenLocation =
+                courseDao.getByLocationName(instructor.getOffice());
+
+        for (Course currentCourse: coursesForGivenLocation) {
+            if (isInstructorsOfficeHoursOverlapWithCourse (instructor, currentCourse)) return true;
+        }
+        return false;
+    }
+
+    protected boolean isCoursesScheduleOverlapWithSomebodysOfficeHours (Course course) {
+        List<Course> coursesForGivenLocation =
+                courseDao.getByLocationName(course.getLocation());
+        //todo optimize getAll -> getInstructorsByLocation + getCoursesByLocation.getInstructor
+        List<Instructor> instructors = instructorDao.getAll();
+        for (Instructor currentInstructor : instructors) {
+            if (isInstructorsOfficeHoursOverlapWithCourse (currentInstructor, course)) return true;
+        }
+        return false;
     }
 }

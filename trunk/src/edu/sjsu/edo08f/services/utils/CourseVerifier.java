@@ -36,6 +36,11 @@ public class CourseVerifier extends CommonVerifier {
         if (isInstructorOccupiedForThisCourse(instructor, course)) {
             throw new ScheduleConflictException("This course conflicts with current schedule of this instructor");
         }
+        
+        if (isCoursesScheduleOverlapWithSomebodysOfficeHours (course)) {
+            throw new RoomBookedException ("This course can't be taken at given time/location, " +
+                    "because the place is occupied by one of instructors' office hours");
+        }
     }
 
     public void verifyCourseOnUpdate (Course course) {
@@ -48,6 +53,12 @@ public class CourseVerifier extends CommonVerifier {
         if (isInstructorOccupiedForThisCourse(instructor, course)) {
             throw new ScheduleConflictException("This course conflicts with current schedule of this instructor");
         }
+
+        if (isCoursesScheduleOverlapWithSomebodysOfficeHours (course)) {
+            throw new RoomBookedException ("This course can't be taken at given time/location, " +
+                    "because the place is occupied by one of instructors' office hours");
+        }
+        
     }
 
     public void verifyCourseOnDelete (Course course) {
@@ -55,7 +66,8 @@ public class CourseVerifier extends CommonVerifier {
         verifyCourseExists(course);
         List<Student> students = studentDao.getStudentsByCourse(course.getId());
         if (students.size() > 0) {
-            throw new HasDependenciesException("The course has students enrolled and can't be deleted");
+            throw new HasDependenciesException
+                    (String.format("The course has %d students enrolled and can't be deleted", students.size()));
         }
     }
 
@@ -85,6 +97,20 @@ public class CourseVerifier extends CommonVerifier {
         }
     }
 
+    public void verifyUnenrollStudent (Course course, Student student) {
+        verifyCourseExists(course);
+        studentVerifier.verifyStudentExists (student);
+        List<Course> coursesForStudent = courseDao.getCoursesByStudentId (student.getId());
+
+        boolean isEnrolled = coursesForStudent.contains(course);
+        
+        if (! isEnrolled) {
+            throw new CantUnenrollStudentException("This student is not enrolled " +
+                    "in this course, and therefore can't be deleted");
+        }
+
+    }
+
     private void verifyCourse (Course course) {
 
         if (course == null ) {
@@ -103,9 +129,9 @@ public class CourseVerifier extends CommonVerifier {
             logger.warn("The course section should be defined and be 1 or more");
             throw new InvalidCourseException("The course section should be defined and be 0 or more");
         }
-        verifyHours(course.getMeetingHours());
+        verifyMeetingHours(course.getMeetingHours());
 
-        if (isCourseOverlappingWithDB(course)) {
+        if (isCourseOverlappingWithDBForThisTimeLocation(course)) {
             throw new RoomBookedException();
         }
     }

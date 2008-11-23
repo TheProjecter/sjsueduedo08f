@@ -41,6 +41,25 @@ public class Main {
         CourseService courseService = (CourseService) getBeanFactory().getBean("courseService");
         List<Course> courses = courseService.getAll();
 
+        Instructor instructor = new Instructor();
+        instructor.setEmployeeId("123-23-4444");
+        instructor.setFirstName("Bill");
+        instructor.setLastName("Gates");
+        instructor.setOffice("CLK118");
+        instructor.setAddress("987 Cal st");
+        instructor.setCity("San Diego");
+        instructor.setState("CA");
+        instructor.setZipCode("12345");
+        instructor.setDepartment("CMPE");
+
+        List<EventInformation> officeHours = new ArrayList<EventInformation>();
+        officeHours.add(new EventInformation(DayOfWeek.Monday, "1500", "1600"));
+        officeHours.add(new EventInformation(DayOfWeek.Tuesday, "1500", "1600"));
+        instructor.setOfficeHours(officeHours);
+
+
+        instructor = instructorService.create(instructor);
+
         Course courseToCreate = new Course();
         courseToCreate.setName("Some new course");
         courseToCreate.setLocation("CLK118");
@@ -55,7 +74,39 @@ public class Main {
         courseCreated.getMeetingHours().add(new EventInformation(DayOfWeek.Wednesday, "1500", "1600"));
         courseService.update(courseCreated);
 
+        Student studentToCreate = new Student() ;
+        studentToCreate.setState("CA");
+        studentToCreate.setCity("San Diego");
+        studentToCreate.setFirstName("San");
+        studentToCreate.setLastName("Diego");
+        studentToCreate.setAddress("987 Cal st");
+        studentToCreate.setZipCode("12345");
+        studentToCreate.setStudentId("123-00-1234");
+
+        studentService.create(studentToCreate);
+
+        studentToCreate.setZipCode("65432");
+        studentToCreate.setStudentId("654-32-2222");
+        studentService.update(studentToCreate);
+
+        courseService.enrollStudent(courseCreated, studentToCreate);
+
+        try {
+            studentService.delete(studentToCreate);
+        } catch (Exception e) {
+            System.out.println("Nelza!");
+        }
+
+        try {
+            courseService.delete(courseCreated);
+        } catch (Exception e) {
+            System.out.println("Nelza!");
+        }
+        courseService.unEnrollStudent(courseCreated, studentToCreate);
+
+        studentService.delete(studentToCreate);
         courseService.delete(courseCreated);
+        instructorService.delete(instructor);
         int b =5;
     }
 

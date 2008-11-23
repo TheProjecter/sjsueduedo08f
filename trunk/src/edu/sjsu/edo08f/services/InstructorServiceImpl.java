@@ -4,7 +4,10 @@ import edu.sjsu.edo08f.domain.Instructor;
 import edu.sjsu.edo08f.domain.Course;
 import edu.sjsu.edo08f.dao.InstructorDao;
 import edu.sjsu.edo08f.dao.CourseDao;
+import edu.sjsu.edo08f.dao.CommonDao;
 import edu.sjsu.edo08f.exceptions.NoSuchInstructorException;
+import edu.sjsu.edo08f.support.EventInformation;
+import edu.sjsu.edo08f.services.utils.InstructorVerifier;
 
 import java.util.List;
 
@@ -28,6 +31,18 @@ public class InstructorServiceImpl implements InstructorService {
         this.courseDao = courseDao;
     }
 
+    private CommonDao commonDao;
+
+    public void setCommonDao(CommonDao commonDao) {
+        this.commonDao = commonDao;
+    }
+
+    private InstructorVerifier instructorVerifier;
+
+    public void setInstructorVerifier(InstructorVerifier instructorVerifier) {
+        this.instructorVerifier = instructorVerifier;
+    }
+
     private static Logger logger = Logger.getLogger(InstructorServiceImpl.class);
 
     public List<Instructor> getAll() {
@@ -48,15 +63,42 @@ public class InstructorServiceImpl implements InstructorService {
     }
 
     public Instructor create(Instructor instructor) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        instructorVerifier.verifyOnCreate (instructor);
+        Long locationId = commonDao.provideCourseLocation(instructor.getOffice());
+        instructorDao.create (instructor, locationId);
+        createOfficeHours(instructor);
+        return instructorDao.getById(instructor.getId());
+    }
+
+
+    private void createOfficeHours (Instructor instructor) {
+        for (EventInformation eventInformation : instructor.getOfficeHours()) {
+            Long eventInformationId = commonDao.getEventInformationId(eventInformation);
+            if (eventInformationId == null) {
+                commonDao.createEventInformation(eventInformation);
+                eventInformationId = commonDao.getEventInformationId(eventInformation);
+            }
+            commonDao.createOfficeHours(instructor.getId(), eventInformationId);
+        }
     }
 
     public Instructor update(Instructor instructor) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        instructorVerifier.verifyOnUpdate(instructor);
+        Long locationId = commonDao.provideCourseLocation(instructor.getOffice());
+
+        instructorDao.update (instructor, locationId);
+
+        commonDao.deleteAllOfficeHoursForInstructor(instructor.getId());
+        createOfficeHours(instructor);
+
+        return instructorDao.getById(instructor.getId());
+
     }
 
     public void delete(Instructor instructor) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        instructorVerifier.verifyOnDelete(instructor);
+        commonDao.deleteAllOfficeHoursForInstructor(instructor.getId());
+        instructorDao.delete(instructor.getId());
     }
 
     public List<Course> getAssociatedCourses(Instructor instructor) {

@@ -70,4 +70,11 @@ public class CourseDao extends SqlMapClientDaoSupport {
         getSqlMapClientTemplate().insert(NAMESPACE + "enrollStudent", parameters);
     }
 
+    public void unenrollStudent (Long courseId, Long studentId) {
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("courseId", courseId);
+        parameters.put("studentId", studentId);
+        getSqlMapClientTemplate().delete(NAMESPACE + "unenrollStudent", parameters);
+    }
+
 }

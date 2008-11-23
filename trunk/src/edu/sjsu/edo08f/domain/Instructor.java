@@ -44,7 +44,7 @@ public class Instructor extends Person {
         return employeeId;
     }
 
-    public void setEmployeheId(String employeeId) {
+    public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }
 
