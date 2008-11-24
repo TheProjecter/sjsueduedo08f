@@ -3,6 +3,7 @@ import java.util.Properties;
 
 import javax.jms.*;
 import javax.naming.*;
+import javax.xml.*;
 
 public class MessageServer implements MessageListener{
 private Topic topic;
@@ -10,7 +11,7 @@ private Connection connection;
 private static Session session;
 private MessageConsumer consumer;
 private MessageProducer producer;
-
+String reply = null, send = null;
 public static void main(String[] args){
 	new MessageServer();
 }
@@ -19,8 +20,7 @@ try{
 	MessageProducer producer = session.createProducer(null);
 	Destination reply=Request.getJMSReplyTo();
 	TextMessage TXT = session.createTextMessage();
-	TXT.setText(""+sum);
-	producer.send(reply,TXT);
+	
 }
 catch (JMSException e){
 	System.out.println("JMS Exception: "+e);
@@ -28,6 +28,9 @@ catch (JMSException e){
 }
 public void OnMessage(Message message){
 	TextMessage TXT=(TextMessage)message;
+	send  = TXT.toString().toLowerCase();
+	XmlReceiver receiver= new XmlReceiver();
+	reply = receiver.processRequest(send);
 }
 public MessageServer()
 	{
@@ -52,12 +55,6 @@ public MessageServer()
 			{
 				System.out.println("NamingException: "+NE1);
 			}
-			
-			/*if( null == topic )
-			{
-				topic = session.createTopic("CounterTopic");
-				jndi.bind("CounterTopic", topic);
-			}*/
 			
 			consumer = session.createConsumer( topic );
 			consumer.setMessageListener(this);
