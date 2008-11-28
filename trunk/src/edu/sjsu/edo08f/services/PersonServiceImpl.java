@@ -3,6 +3,7 @@ package edu.sjsu.edo08f.services;
 import edu.sjsu.edo08f.dao.PersonDao;
 import edu.sjsu.edo08f.domain.Person;
 import edu.sjsu.edo08f.exceptions.NoSuchPersonException;
+import edu.sjsu.edo08f.services.utils.SearchUtils;
 
 import java.util.List;
 
@@ -18,6 +19,12 @@ public class PersonServiceImpl implements PersonService {
 
     public void setPersonDao(PersonDao personDao) {
         this.personDao = personDao;
+    }
+
+    private SearchUtils searchUtils;
+
+    public void setSearchUtils(SearchUtils searchUtils) {
+        this.searchUtils = searchUtils;
     }
 
     private static Logger logger = Logger.getLogger(PersonServiceImpl.class);
@@ -38,6 +45,6 @@ public class PersonServiceImpl implements PersonService {
     }
 
     public List<Person> search(String searchedFieldName, String searchedValue) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return searchUtils.searchPerson(searchedFieldName, searchedValue);
     }
 }

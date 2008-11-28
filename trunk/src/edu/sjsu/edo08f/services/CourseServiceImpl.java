@@ -10,12 +10,12 @@ import edu.sjsu.edo08f.domain.Student;
 import edu.sjsu.edo08f.domain.Instructor;
 import edu.sjsu.edo08f.exceptions.NoSuchCourseException;
 import edu.sjsu.edo08f.exceptions.GeneralException;
-import edu.sjsu.edo08f.exceptions.HasDependenciesException;
 import edu.sjsu.edo08f.services.utils.CourseVerifier;
-import edu.sjsu.edo08f.services.utils.StudentVerifier;
+import edu.sjsu.edo08f.services.utils.SearchUtils;
 import edu.sjsu.edo08f.support.EventInformation;
 
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by: Alex Yarmula
@@ -47,6 +47,12 @@ public class CourseServiceImpl implements CourseService {
 
     public void setInstructorDao(InstructorDao instructorDao) {
         this.instructorDao = instructorDao;
+    }
+
+    private SearchUtils searchUtils;
+
+    public void setSearchUtils(SearchUtils searchUtils) {
+        this.searchUtils = searchUtils;
     }
 
     private Logger logger = Logger.getLogger(CourseServiceImpl.class);
@@ -143,10 +149,11 @@ public class CourseServiceImpl implements CourseService {
     }
 
     public void updateInstructor(Course course, Instructor instructor) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        courseVerifier.verifyUpdateInstructor(course, instructor);
+        courseDao.updateInstructor(course.getId(), instructor.getId());
     }
 
     public List<Course> search(String searchedFieldName, String searchedValue) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return searchUtils.searchCourse(searchedFieldName, searchedValue);
     }
 }

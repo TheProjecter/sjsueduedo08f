@@ -8,6 +8,9 @@ import org.springframework.util.StringUtils;
 import org.apache.log4j.Logger;
 
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.lang.reflect.Method;
 
 /**
  * Created by: Alex Yarmula
@@ -59,6 +62,14 @@ public class CourseVerifier extends CommonVerifier {
                     "because the place is occupied by one of instructors' office hours");
         }
         
+    }
+
+    public void verifyUpdateInstructor (Course course, Instructor instructor) {
+        verifyCourseExists(course);
+        instructorVerifier.verifyInstructorExists(instructor);
+        if (isInstructorOccupiedForThisCourse(instructor, course)) {
+            throw new ScheduleConflictException("This course conflicts with current schedule of this instructor");
+        } 
     }
 
     public void verifyCourseOnDelete (Course course) {

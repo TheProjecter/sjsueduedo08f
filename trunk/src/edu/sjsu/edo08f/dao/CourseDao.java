@@ -35,11 +35,11 @@ public class CourseDao extends SqlMapClientDaoSupport {
     }
 
     public List<Course> getCoursesByInstructorId (Long instructorId) {
-        return (List<Course>) getSqlMapClientTemplate().queryForList(NAMESPACE + "getByInstructorId", instructorId); 
+        return (List<Course>) getSqlMapClientTemplate().queryForList(NAMESPACE + "getByInstructorId", instructorId);
     }
 
     public List<Course> getCoursesByStudentId (Long studentId) {
-        return (List<Course>) getSqlMapClientTemplate().queryForList(NAMESPACE + "getByStudentId", studentId); 
+        return (List<Course>) getSqlMapClientTemplate().queryForList(NAMESPACE + "getByStudentId", studentId);
     }
 
     public Course create (Course course, Long instructorId, Long locationId) {
@@ -75,6 +75,27 @@ public class CourseDao extends SqlMapClientDaoSupport {
         parameters.put("courseId", courseId);
         parameters.put("studentId", studentId);
         getSqlMapClientTemplate().delete(NAMESPACE + "unenrollStudent", parameters);
+    }
+
+    public void updateInstructor (Long courseId, Long instructorId) {
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("courseId", courseId);
+        parameters.put("instructorId", instructorId);
+        getSqlMapClientTemplate().update("updateInstructor", parameters);
+    }
+
+    public List<Course> search (String searchedField, String searchedValue) {
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("searchedField", searchedField);
+        parameters.put("searchedValue", "%" + searchedValue + "%");
+        return (List<Course>) getSqlMapClientTemplate().queryForList(NAMESPACE + "search", parameters);
+    }
+
+    public List<Course> searchExact (String searchedField, String searchedValue) {
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("searchedField", searchedField);
+        parameters.put("searchedValue", searchedValue);
+        return (List<Course>) getSqlMapClientTemplate().queryForList(NAMESPACE + "searchExact", parameters);
     }
 
 }
