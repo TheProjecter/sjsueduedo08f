@@ -4,6 +4,7 @@
 
     <bean id="personService" class="edu.sjsu.edo08f.services.PersonServiceImpl">
         <property name="personDao" ref="personDao"/>
+        <property name="searchUtils" ref="searchUtils"/>
     </bean>
 
     <bean id="personDao" class="edu.sjsu.edo08f.dao.PersonDao">
@@ -37,6 +38,7 @@
         <property name="instructorDao" ref="instructorDao"/>
         <property name="courseVerifier" ref="courseVerifier"/>
         <property name="commonDao" ref="commonDao"/>
+        <property name="searchUtils" ref="searchUtils"/>
     </bean>
 
     <bean id="courseDao" class="edu.sjsu.edo08f.dao.CourseDao">
@@ -64,6 +66,11 @@
 
     <bean id="commonDao" class="edu.sjsu.edo08f.dao.CommonDao">
         <property name="sqlMapClient" ref="sqlMapClient"/>
+    </bean>
+
+    <bean id="searchUtils" class="edu.sjsu.edo08f.services.utils.SearchUtils">
+        <property name="personDao" ref="personDao"/>
+        <property name="courseDao" ref="courseDao"/>
     </bean>
 
     <bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">

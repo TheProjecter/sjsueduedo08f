@@ -57,6 +57,18 @@
         where course.instructor_id = #value#
     </select>
 
+    <select id="search" parameterClass="java.util.Map" resultMap="courseResultMap" resultClass="Course">
+        <include refid="selectCourse"/>
+        where
+        $searchedField$ like #searchedValue#
+    </select>
+
+    <select id="searchExact" parameterClass="java.util.Map" resultMap="courseResultMap" resultClass="Course">
+        <include refid="selectCourse"/>
+        where
+        $searchedField$ = #searchedValue#
+    </select>
+
     <select id="getByStudentId" parameterClass="java.lang.Long"
             resultMap="courseResultMap" resultClass="Course">
         <include refid="selectCourse"/>
@@ -97,6 +109,13 @@
         section = #course.section#,
         units = #course.units#,
         location_id = #locationId#
+        where id = #id#
+    </update>
+
+    <update id="updateInstructor" parameterClass="java.util.Map">
+        UPDATE universitySystem.COURSE
+        SET
+        instructor_id = #instructorId#
         where id = #id#
     </update>
 

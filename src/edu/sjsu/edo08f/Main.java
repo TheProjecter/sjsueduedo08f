@@ -14,6 +14,7 @@ import edu.sjsu.edo08f.services.PersonService;
 import edu.sjsu.edo08f.services.StudentService;
 import edu.sjsu.edo08f.services.InstructorService;
 import edu.sjsu.edo08f.services.CourseService;
+import edu.sjsu.edo08f.services.utils.SearchUtils;
 import edu.sjsu.edo08f.support.EventInformation;
 import edu.sjsu.edo08f.support.DayOfWeek;
 
@@ -28,7 +29,9 @@ public class Main {
 
     public static void main (String[] args) {
 
+
         PersonService personService  = (PersonService) getBeanFactory().getBean("personService");
+        List<Person> results = personService.search("lastName", "Yar");
         Person person = personService.getById(2L);
         List<Person> persons = personService.getAll();
 
@@ -42,10 +45,10 @@ public class Main {
         List<Course> courses = courseService.getAll();
 
         Instructor instructor = new Instructor();
-        instructor.setEmployeeId("123-23-4444");
+        instructor.setEmployeeId("123-23-4445");
         instructor.setFirstName("Bill");
         instructor.setLastName("Gates");
-        instructor.setOffice("CLK118");
+        instructor.setOffice("CLK111");
         instructor.setAddress("987 Cal st");
         instructor.setCity("San Diego");
         instructor.setState("CA");
@@ -57,12 +60,11 @@ public class Main {
         officeHours.add(new EventInformation(DayOfWeek.Tuesday, "1500", "1600"));
         instructor.setOfficeHours(officeHours);
 
-
         instructor = instructorService.create(instructor);
 
         Course courseToCreate = new Course();
         courseToCreate.setName("Some new course");
-        courseToCreate.setLocation("CLK118");
+        courseToCreate.setLocation("CLK111");
         courseToCreate.setSection(1);
         courseToCreate.setUnits(3);
         List<EventInformation> meetingHours = new ArrayList<EventInformation>();
@@ -107,11 +109,10 @@ public class Main {
         studentService.delete(studentToCreate);
         courseService.delete(courseCreated);
         instructorService.delete(instructor);
-        int b =5;
     }
 
 
-    private static BeanFactory getBeanFactory() {
+    public static BeanFactory getBeanFactory() {
 
         DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
         XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(factory);
