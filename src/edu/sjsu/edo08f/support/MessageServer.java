@@ -1,9 +1,11 @@
+package edu.sjsu.edo08f.support;
+
+import edu.sjsu.edo08f.xml.XmlReceiver;
 
 import java.util.Properties;
 
 import javax.jms.*;
 import javax.naming.*;
-import javax.xml.*;
 
 public class MessageServer implements MessageListener{
 private Topic topic;
