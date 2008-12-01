@@ -3,7 +3,7 @@ package edu.sjsu.edo08f.support;
 /**
  * Created by IntelliJ IDEA.
  * User: Anita
- * Date: Nov 22, 2008
+ * Date: Nov 21, 2008
  * Time: 7:42:09 PM
  * To change this template use File | Settings | File Templates.
  */
@@ -14,11 +14,11 @@ import edu.sjsu.edo08f.services.StudentService;
 import edu.sjsu.edo08f.services.StudentServiceImpl;
 import edu.sjsu.edo08f.domain.Student;
 import edu.sjsu.edo08f.Main;
-import edu.sjsu.edo08f.exceptions.NoSuchStudentException;
+
 
 public class CreateStudentTest {
         StudentService studentService = (StudentService) Main.getBeanFactory().getBean("studentService");
-        Student student = new Student();
+
         boolean checkFlag= false;
 
 
@@ -27,12 +27,18 @@ public class CreateStudentTest {
        //Test for First Name
 
         public void testFirstName() {
-           student.setFirstName("Jack");
+                  Student student = new Student();
+                  student.setFirstName("Jack");
+                  student.setLastName("Jill");
+                  student.setAddress("98 ABC Street");
+                  student.setState("CA");
+                  student.setCity("San Jose");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
+                  Student studentFromDB = studentService.create(student);
 
-           Student studentFromDB = studentService.create(student);
-
-           String temp = studentFromDB.getFirstName().toString();
-           String tempType = studentFromDB.getType().toString().toLowerCase();
+                  String temp = studentFromDB.getFirstName().toString();
+                  String tempType = studentFromDB.getType().toString().toLowerCase();
 
            System.out.println("Value of temp" + temp);
 
@@ -44,10 +50,20 @@ public class CreateStudentTest {
            Assert.assertFalse(checkFlag,"true");
         }
 
+    @Test(groups = {"main"})
+
 
      public void testFirstNameSpecial() {
-           student.setFirstName("$#%0--09 *^ ");
 
+
+                  Student student = new Student();
+                  student.setFirstName("$#%0--09 *^ ");
+                  student.setLastName("Jill");
+                  student.setAddress("98 ABC Street");
+                  student.setState("CA");
+                  student.setCity("San Jose");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
            Student studentFromDB = studentService.create(student);
 
            String temp = studentFromDB.getFirstName().toString();
@@ -63,9 +79,17 @@ public class CreateStudentTest {
            Assert.assertFalse(checkFlag,"true");
         }
 
+      @Test(groups = {"main"})
       public void testFirstNameNumbers() {
-           student.setFirstName("12387986");
 
+             Student student = new Student();
+                 student.setFirstName("12387986");
+                  student.setLastName("Jill");
+                  student.setAddress("98 ABC Street");
+                  student.setState("CA");
+                  student.setCity("San Jose");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
            Student studentFromDB = studentService.create(student);
 
            String temp = studentFromDB.getFirstName().toString();
@@ -81,9 +105,18 @@ public class CreateStudentTest {
            Assert.assertFalse(checkFlag,"true");
         }
 
-      public void testFirstNameEmpty() {
-           student.setFirstName("");
 
+      @Test(groups = {"main"})
+      public void testFirstNameEmpty() {
+
+            Student student = new Student();
+                 student.setFirstName("");
+                  student.setLastName("Jill");
+                  student.setAddress("98 ABC Street");
+                  student.setState("CA");
+                  student.setCity("San Jose");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
            Student studentFromDB = studentService.create(student);
 
            String temp = studentFromDB.getFirstName().toString();
@@ -99,8 +132,17 @@ public class CreateStudentTest {
            Assert.assertFalse(checkFlag,"true");
         }
 
+          @Test(groups = {"main"})
       public void testFirstNameAlpha() {
-           student.setFirstName("Skj23");
+
+          Student student = new Student();
+                   student.setFirstName("Skj23");
+                  student.setLastName("Jill");
+                  student.setAddress("98 ABC Street");
+                  student.setState("CA");
+                  student.setCity("San Jose");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
 
            Student studentFromDB = studentService.create(student);
 
@@ -119,9 +161,18 @@ public class CreateStudentTest {
 
     //Tests for Last Name
 
-        public void testLastName() {
-            student.setLastName("Jill");
+      @Test(groups = {"main"})
 
+        public void testLastName() {
+
+            Student student = new Student();
+                   student.setFirstName("Jack");
+                  student.setLastName("Jill");
+                  student.setAddress("98 ABC Street");
+                  student.setState("CA");
+                  student.setCity("San Jose");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
             Student studentFromDB = studentService.create(student);
 
             String tempFirstName = studentFromDB.getLastName().toString();
@@ -137,9 +188,17 @@ public class CreateStudentTest {
             Assert.assertFalse(checkFlag,"true");
         }
 
+      @Test(groups = {"main"})
     public void testLastNameEmpty() {
-            student.setLastName("");
 
+             Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("");
+                  student.setAddress("98 ABC Street");
+                  student.setState("CA");
+                  student.setCity("San Jose");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
             Student studentFromDB = studentService.create(student);
 
             String tempFirstName = studentFromDB.getLastName().toString();
@@ -155,9 +214,18 @@ public class CreateStudentTest {
             Assert.assertFalse(checkFlag,"true");
         }
 
-     public void testLastNameSpecial() {
-            student.setLastName("^%$0 )(*");
+      @Test(groups = {"main"})
 
+     public void testLastNameSpecial() {
+
+           Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("^%$0 )(*");
+                  student.setAddress("98 ABC Street");
+                  student.setState("CA");
+                  student.setCity("San Jose");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
             Student studentFromDB = studentService.create(student);
 
             String tempFirstName = studentFromDB.getLastName().toString();
@@ -173,9 +241,18 @@ public class CreateStudentTest {
             Assert.assertFalse(checkFlag,"true");
         }
 
-    public void testLastNameNumber() {
-               student.setLastName("12587");
+      @Test(groups = {"main"})
 
+    public void testLastNameNumber() {
+
+               Student student = new Student();
+                   student.setFirstName("Jack");
+                  student.setLastName("12587");
+                  student.setAddress("98 ABC Street");
+                  student.setState("CA");
+                  student.setCity("San Jose");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
                Student studentFromDB = studentService.create(student);
 
                String tempFirstName = studentFromDB.getLastName().toString();
@@ -191,9 +268,17 @@ public class CreateStudentTest {
                Assert.assertFalse(checkFlag,"true");
            }
 
+      @Test(groups = {"main"})
      public void testLastNameAlpha() {
-               student.setLastName("hu87sf");
 
+                Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("hu87sf");
+                  student.setAddress("98 ABC Street");
+                  student.setState("CA");
+                  student.setCity("San Jose");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
                Student studentFromDB = studentService.create(student);
 
                String tempFirstName = studentFromDB.getLastName().toString();
@@ -211,9 +296,18 @@ public class CreateStudentTest {
 
 
       //Test for Address
-        public void testAddress() {
-        student.setAddress("123 ABC Street , San Jose ");
 
+      @Test(groups = {"main"})
+        public void testAddress() {
+
+             Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("hu87sf");
+                  student.setAddress("98 ABC Street");
+                  student.setState("CA");
+                  student.setCity("San Jose");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
             Student studentFromDB = studentService.create(student);
 
             String tempFirstName = studentFromDB.getAddress().toString();
@@ -231,9 +325,17 @@ public class CreateStudentTest {
 
         }
 
+      @Test(groups = {"main"})
      public void testAddressSpecial() {
-        student.setAddress("^&%_) (* #@$@#  ");
 
+            Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("hu87sf");
+                   student.setAddress("^&%_) (* #@$@#  ");
+                  student.setState("CA");
+                  student.setCity("San Jose");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
             Student studentFromDB = studentService.create(student);
 
             String tempFirstName = studentFromDB.getAddress().toString();
@@ -251,7 +353,16 @@ public class CreateStudentTest {
 
         }
 
+      @Test(groups = {"main"})
      public void testAddressNegetiveNum() {
+           Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("hu87sf");
+                   //student.setAddress("^&%_) (* #@$@#  ");
+                  student.setState("CA");
+                  student.setCity("San Jose");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
         student.setAddress("-123 ABC Street , San Jose ");
 
             Student studentFromDB = studentService.create(student);
@@ -270,8 +381,16 @@ public class CreateStudentTest {
 
 
         }
-
+                                @Test(groups = {"main"})
     public void testAddressEmpty() {
+          Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("hu87sf");
+                   //student.setAddress("^&%_) (* #@$@#  ");
+                  student.setState("CA");
+                  student.setCity("San Jose");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
         student.setAddress("");
 
             Student studentFromDB = studentService.create(student);
@@ -293,7 +412,15 @@ public class CreateStudentTest {
 
     //Tests For City
 
+      @Test(groups = {"main"})
         public void testCity() {
+              Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("Jill");
+                   student.setAddress("123 ABC St");
+                  student.setState("CA");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
         student.setCity("San Jose");
 
            Student studentFromDB = studentService.create(student);
@@ -313,7 +440,15 @@ public class CreateStudentTest {
 
         }
 
+      @Test(groups = {"main"})
          public void testCitySpecial() {
+             Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("Jill");
+                    student.setAddress("123 ABC St");
+                  student.setState("CA");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
         student.setCity("^^@$% 87 *&");
 
            Student studentFromDB = studentService.create(student);
@@ -333,7 +468,16 @@ public class CreateStudentTest {
 
         }
 
+      @Test(groups = {"main"})
+
      public void testCityNumber() {
+          Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("Jill");
+                   student.setAddress("123 ABC St");
+                  student.setState("CA");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
         student.setCity("124567");
 
            Student studentFromDB = studentService.create(student);
@@ -352,7 +496,15 @@ public class CreateStudentTest {
 
         }
 
+      @Test(groups = {"main"})
      public void testCityEmpty() {
+          Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("Jill");
+                   student.setAddress("123 ABC Str");
+                  student.setState("CA");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
         student.setCity("");
 
            Student studentFromDB = studentService.create(student);
@@ -371,7 +523,16 @@ public class CreateStudentTest {
 
         }
 
+      @Test(groups = {"main"})
+
     public void testCityAlpha() {
+         Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("Jill");
+                   student.setAddress("123 ABS St");
+                  student.setState("CA");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
         student.setCity("C6th9");
 
            Student studentFromDB = studentService.create(student);
@@ -392,7 +553,16 @@ public class CreateStudentTest {
 
     //Tests For States
 
+
+      @Test(groups = {"main"})
         public void testState() {
+             Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("Jill");
+                   student.setAddress("123 ABC Street");
+                   student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
+
         student.setState("CA");
 
            Student studentFromDB = studentService.create(student);
@@ -412,7 +582,16 @@ public class CreateStudentTest {
 
         }
 
+      @Test(groups = {"main"})
      public void testStateSpecial() {
+          Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("Jill");
+                   student.setAddress("123 ABC St");
+                  student.setCity("San Jose");
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
+
         student.setState("*&");
 
            Student studentFromDB = studentService.create(student);
@@ -431,7 +610,17 @@ public class CreateStudentTest {
 
 
         }
+
+      @Test(groups = {"main"})
           public void testStateWrong() {
+               Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("Jill");
+                   student.setAddress("123 ABC St");
+
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
+        student.setCity("San Jose");
         student.setState("MP");
 
            Student studentFromDB = studentService.create(student);
@@ -451,7 +640,17 @@ public class CreateStudentTest {
 
         }
 
+      @Test(groups = {"main"})
      public void testStateEmpty() {
+               Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("Jill");
+                   student.setAddress("123 ABC St");
+
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
+        student.setCity("San Jose");
+
         student.setState("");
 
            Student studentFromDB = studentService.create(student);
@@ -471,7 +670,16 @@ public class CreateStudentTest {
 
         }
 
+      @Test(groups = {"main"})
     public void testStateNumber() {
+              Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("Jill");
+                   student.setAddress("123 ABC St");
+
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
+        student.setCity("San Jose");
         student.setState("23");
 
            Student studentFromDB = studentService.create(student);
@@ -489,7 +697,16 @@ public class CreateStudentTest {
            Assert.assertFalse(checkFlag,"true");
         }
 
+      @Test(groups = {"main"})
     public void testStateAlpha() {
+              Student student = new Student();
+                   student.setFirstName("Jack");
+                 student.setLastName("Jill");
+                   student.setAddress("123 ABC St");
+
+                  student.setZipCode("12345");
+                  student.setStudentId("123-00-004");
+        student.setCity("San Jose");
         student.setState("2C");
 
            Student studentFromDB = studentService.create(student);
@@ -509,8 +726,16 @@ public class CreateStudentTest {
 
     //Tests for Zip Codes
 
+      @Test(groups = {"main"})
         public void testZip() {
-           student.setZipCode("95123");
+                    Student student = new Student();
+                    student.setFirstName("Jack");
+                    student.setLastName("Jill");
+                    student.setAddress("123 ABC St");
+                    student.setStudentId("123-00-004");
+                    student.setCity("San Jose");
+                    student.setState("CA");
+                    student.setZipCode("95123");
            Student studentFromDB = studentService.create(student);
 
            String tempFirstName = studentFromDB.getZipCode();
@@ -528,8 +753,15 @@ public class CreateStudentTest {
 
         }
 
-
+          @Test(groups = {"main"})
         public void testZipAlpha() {
+            Student student = new Student();
+                    student.setFirstName("Jack");
+                    student.setLastName("Jill");
+                    student.setAddress("123 ABC St");
+                    student.setStudentId("123-00-004");
+                    student.setCity("San Jose");
+                    student.setState("CA");
            student.setZipCode("4j-23");
            Student studentFromDB = studentService.create(student);
 
@@ -547,8 +779,15 @@ public class CreateStudentTest {
 
 
         }
-
+            @Test(groups = {"main"})
            public void testZipNeg() {
+               Student student = new Student();
+                    student.setFirstName("Jack");
+                    student.setLastName("Jill");
+                    student.setAddress("123 ABC St");
+                    student.setStudentId("123-00-004");
+                    student.setCity("San Jose");
+                    student.setState("CA");
            student.setZipCode("-98823");
            Student studentFromDB = studentService.create(student);
 
@@ -566,8 +805,15 @@ public class CreateStudentTest {
 
 
         }
-
+           @Test(groups = {"main"})
     public void testZipEmpty() {
+        Student student = new Student();
+                    student.setFirstName("Jack");
+                    student.setLastName("Jill");
+                    student.setAddress("123 ABC St");
+                    student.setStudentId("123-00-004");
+                    student.setCity("San Jose");
+                    student.setState("CA");
            student.setZipCode("");
            Student studentFromDB = studentService.create(student);
 
@@ -585,8 +831,15 @@ public class CreateStudentTest {
 
 
         }
-
+           @Test(groups = {"main"})
      public void testZipSpecial() {
+         Student student = new Student();
+                    student.setFirstName("Jack");
+                    student.setLastName("Jill");
+                    student.setAddress("123 ABC St");
+                    student.setStudentId("123-00-004");
+                    student.setCity("San Jose");
+                    student.setState("CA");
            student.setZipCode("^$%__(");
            Student studentFromDB = studentService.create(student);
 
@@ -604,4 +857,141 @@ public class CreateStudentTest {
 
 
         }
+
+    //test for Id
+              @Test(groups = {"main"})
+     public void testStudId() {
+         Student student = new Student();
+                    student.setFirstName("Jack");
+                    student.setLastName("Jill");
+                    student.setAddress("123 ABC St");
+                    student.setStudentId("123-00-004");
+                    student.setCity("San Jose");
+                    student.setState("CA");
+           student.setZipCode("95112");
+           Student studentFromDB = studentService.create(student);
+
+           String tempFirstName = studentFromDB.getStudentId();
+           String tempType = studentFromDB.getType().toString().toLowerCase();
+
+           System.out.println("Value of temp" + tempFirstName);
+
+           if (tempFirstName.toLowerCase().equals("123-00-004") && tempType.equals("student") )
+           checkFlag = true;
+           else
+           checkFlag = false;
+
+           Assert.assertFalse(checkFlag,"true");
+
+
+        }
+
+      @Test(groups = {"main"})
+    public void testStudIdEmpty() {
+         Student student = new Student();
+                    student.setFirstName("Jack");
+                    student.setLastName("Jill");
+                    student.setAddress("123 ABC St");
+                    student.setStudentId("");
+                    student.setCity("San Jose");
+                    student.setState("CA");
+           student.setZipCode("95112");
+           Student studentFromDB = studentService.create(student);
+
+           String tempFirstName = studentFromDB.getStudentId();
+           String tempType = studentFromDB.getType().toString().toLowerCase();
+
+           System.out.println("Value of temp" + tempFirstName);
+
+           if (tempFirstName.toLowerCase().equals("") && tempType.equals("student") )
+           checkFlag = false;
+           else
+           checkFlag = true;
+
+           Assert.assertFalse(checkFlag,"true");
+
+
+        }
+
+      @Test(groups = {"main"})
+     public void testStudIdSpecial() {
+         Student student = new Student();
+                    student.setFirstName("Jack");
+                    student.setLastName("Jill");
+                    student.setAddress("123 ABC St");
+                    student.setStudentId("123-^&-004");
+                    student.setCity("San Jose");
+                    student.setState("CA");
+           student.setZipCode("95112");
+           Student studentFromDB = studentService.create(student);
+
+           String tempFirstName = studentFromDB.getStudentId();
+           String tempType = studentFromDB.getType().toString().toLowerCase();
+
+           System.out.println("Value of temp" + tempFirstName);
+
+           if (tempFirstName.toLowerCase().equals("123-^&-004") && tempType.equals("student") )
+           checkFlag = false;
+           else
+           checkFlag = true;
+
+           Assert.assertFalse(checkFlag,"true");
+
+
+        }
+
+      @Test(groups = {"main"})
+         public void testStudIdAlpha() {
+         Student student = new Student();
+                    student.setFirstName("Jack");
+                    student.setLastName("Jill");
+                    student.setAddress("123 ABC St");
+                    student.setStudentId("12K-AB-004");
+                    student.setCity("San Jose");
+                    student.setState("CA");
+           student.setZipCode("95112");
+           Student studentFromDB = studentService.create(student);
+
+           String tempFirstName = studentFromDB.getStudentId();
+           String tempType = studentFromDB.getType().toString().toLowerCase();
+
+           System.out.println("Value of temp" + tempFirstName);
+
+           if (tempFirstName.toLowerCase().equals("12K-AB-004") && tempType.equals("student") )
+           checkFlag = false;
+           else
+           checkFlag = true;
+
+           Assert.assertFalse(checkFlag,"true");
+
+
+        }
+
+      @Test(groups = {"main"})
+    public void testStudIdFormat() {
+         Student student = new Student();
+                    student.setFirstName("Jack");
+                    student.setLastName("Jill");
+                    student.setAddress("123 ABC St");
+                    student.setStudentId("1234-00004");
+                    student.setCity("San Jose");
+                    student.setState("CA");
+           student.setZipCode("95112");
+           Student studentFromDB = studentService.create(student);
+
+           String tempFirstName = studentFromDB.getStudentId();
+           String tempType = studentFromDB.getType().toString().toLowerCase();
+
+           System.out.println("Value of temp" + tempFirstName);
+
+           if (tempFirstName.toLowerCase().equals("1234-00004") && tempType.equals("student") )
+           checkFlag = false;
+           else
+           checkFlag = true;
+
+           Assert.assertFalse(checkFlag,"true");
+
+
+        }
+
 }
