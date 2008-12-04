@@ -12,27 +12,35 @@
                 destdir="${classes.dir}"/>
 
         <copy file="${root.dir}/log4j.properties"
-                  todir="${classes.dir}"/>
+              todir="${classes.dir}"/>
     </target>
 
     <target name="tests-compile"
             description="compile the tests"
-            depends="prepare">
+            depends="prepare, copyXmls">
 
         <javac debug="true"
                fork="true"
                source="1.6"
-               classpathref="testng-cp"
+               classpathref="cp"
                srcdir="${src.dir}"
                destdir="${classes.dir}"  />
 
         <javac debug="true"
                fork="true"
                source="1.6"
-               classpathref="testng-cp"
+               classpathref="cp"
                srcdir="${test.src.dir}"
                destdir="${classes.dir}"
                 />
+    </target>
+
+    <target name="copyXmls">
+        <copy todir="${classes.dir}" overwrite="true">
+            <fileset dir="${src.dir}">
+                <include name="**/*.xml"/>
+            </fileset>
+        </copy>
     </target>
 
     <target name="prepare">
@@ -43,7 +51,16 @@
     <target  name="tests-run" depends="tests-compile"
              description="run tests">
         <testng
-                classpathref="testng-cp"
+                classpathref="cp"
+                outputdir="${test.output}">
+            <xmlfileset file="config/testng.xml" />
+        </testng>
+    </target>
+
+    <target  name="cobertura-tests-run" depends="tests-compile"
+             description="run tests">
+        <testng
+                classpathref="cobertura-cp"
                 outputdir="${test.output}">
             <xmlfileset file="config/testng.xml" />
         </testng>
@@ -53,16 +70,21 @@
              description="clean up results">
         <delete dir="${classes.dir}"/>
         <delete dir="${test.output}"/>
+        <delete dir="${instrumented.dir}"/>
         <antcall target="prepare"/>
     </target>
 
-    <taskdef name="testng" classpathref="testng-cp"
+    <taskdef name="testng" classpathref="cp"
              classname="com.beust.testng.TestNGAntTask" />
 
-    <path id="testng-cp">
+    <path id="cobertura-cp">
         <pathelement location="${lib.dir}//testng-5.8-jdk15.jar"/>
+        <pathelement location="${instrumented.dir}"/>
         <pathelement location="${build.dir}"/>
         <pathelement location="${classes.dir}"/>
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
     </path>
 
     <path id="cp">
@@ -72,5 +94,33 @@
             <include name="*.jar"/>
         </fileset>
     </path>
+
+
+    <taskdef classpathref="cp" resource="tasks.properties"/>
+
+    <target name="instrument">
+
+        <delete file="cobertura.ser"/>
+        <delete dir="${instrumented.dir}" />
+        <mkdir dir="${instrumented.dir}" />
+
+        <cobertura-instrument todir="${instrumented.dir}" classpathref="cp">
+
+            <ignore regex="org.apache.log4j.*" />
+
+            <fileset dir="${classes.dir}">
+                <include name="**/*.class" />
+                <exclude name="**/*Test.class" />
+            </fileset>
+
+        </cobertura-instrument>
+    </target>
+
+    <target name="coverage-report">
+        <cobertura-report srcdir="${src.dir}" destdir="${build.coverage.dir}"/>       
+    </target>
+
+    <target name="coverage" depends="tests-compile, instrument,cobertura-tests-run,coverage-report, clean" description="Main task for cobertura"/>
+
 
 </project>
