@@ -36,18 +36,21 @@ public class CreateInstructorTest {
                  instructor.setZipCode("12345");
                  instructor.setDepartment("CMPE");
 
+               try{
                  Instructor instructorFromDB = instructorService.create(instructor);
 
                  String tempFirstName = instructorFromDB.getFirstName().toString();
                  String tempType = instructorFromDB.getType().toString().toLowerCase();
                  System.out.println("Value of temp" + tempFirstName);
 
+
                  if (tempFirstName.toLowerCase().equals("jack")&& tempType.equals("instructor"))
                  checkFlag = true;
                  else
                   checkFlag = false;
-
-               Assert.assertFalse(checkFlag,"true");
+               }
+                catch(Exception e){ checkFlag = false;}
+          finally{Assert.assertFalse(checkFlag,"true");}
             }
 
 
@@ -64,6 +67,7 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
            instructor.setFirstName("$#%0--09 *^ ");
 
+          try{
           Instructor instructorFromDB = instructorService.create(instructor);
 
            String temp = instructorFromDB.getFirstName().toString();
@@ -71,12 +75,14 @@ public class CreateInstructorTest {
 
            System.out.println("Value of temp" + temp);
 
+
            if (temp.toLowerCase().equals("$#%0--09 *^ ")&& tempType.equals("instructor"))
            checkFlag = false;
            else
            checkFlag = true;
-
-           Assert.assertFalse(checkFlag,"true");
+          }
+           catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
         }
 
       @Test(groups = {"main"})
@@ -93,6 +99,7 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
            instructor.setFirstName("12387986");
 
+          try{
            Instructor instructorFromDB = instructorService.create(instructor);
 
            String temp = instructorFromDB.getFirstName().toString();
@@ -100,12 +107,14 @@ public class CreateInstructorTest {
 
            System.out.println("Value of temp" + temp);
 
+
            if (temp.toLowerCase().equals("12387986")&& tempType.equals("instructor"))
            checkFlag = false;
            else
            checkFlag = true;
-
-           Assert.assertFalse(checkFlag,"true");
+          }
+            catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
         }
 
 
@@ -122,6 +131,7 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
            instructor.setFirstName("");
 
+          try{
            Instructor instructorFromDB = instructorService.create(instructor);
 
            String temp = instructorFromDB.getFirstName().toString();
@@ -129,12 +139,15 @@ public class CreateInstructorTest {
 
            System.out.println("Value of temp" + temp);
 
+
            if (temp.toLowerCase().equals("")&& tempType.equals("instructor"))
            checkFlag = false;
            else
            checkFlag = true;
+          }
 
-           Assert.assertFalse(checkFlag,"true");
+           catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
         }
 
       @Test(groups = {"main"})
@@ -150,6 +163,7 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
            instructor.setFirstName("hir567");
 
+          try{
            Instructor instructorFromDB = instructorService.create(instructor);
 
            String temp = instructorFromDB.getFirstName().toString();
@@ -157,12 +171,15 @@ public class CreateInstructorTest {
 
            System.out.println("Value of temp" + temp);
 
+
            if (temp.toLowerCase().equals("hir567")&& tempType.equals("instructor"))
            checkFlag = false;
            else
            checkFlag = true;
+          }
 
-           Assert.assertFalse(checkFlag,"true");
+           catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
         }
                 //Test for Last Name
                                 @Test(groups = {"main"})
@@ -178,18 +195,22 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
                 instructor.setLastName("Jill");
 
+                    try{
                 Instructor instructorFromDB = instructorService.create(instructor);
 
                 String temp = instructorFromDB.getLastName().toString();
              String tempType = instructorFromDB.getType().toString().toLowerCase();
                 System.out.println("Value of temp" + temp);
 
+
                 if (temp.toLowerCase().equals("jill")&& tempType.equals("instructor"))
                     checkFlag = true;
                 else
                     checkFlag = false;
+                    }
 
-                Assert.assertFalse(checkFlag,"true");
+                     catch(Exception e){ checkFlag = false;}
+          finally{Assert.assertFalse(checkFlag,"true");}
             }
 
       @Test(groups = {"main"})
@@ -206,7 +227,7 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
                instructor.setLastName("^%$0 )(*");
 
-
+      try{
              Instructor instructorFromDB = instructorService.create(instructor);
 
              String temp = instructorFromDB.getLastName().toString();
@@ -214,12 +235,15 @@ public class CreateInstructorTest {
 
              System.out.println("Value of temp" + temp);
 
+
             if (temp.toLowerCase().equals("^^%$0 )(*")&& tempType.equals("instructor"))
                 checkFlag = false;
             else
                 checkFlag = true;
+          }
 
-            Assert.assertFalse(checkFlag,"true");
+           catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
            }
 
       @Test(groups = {"main"})
@@ -234,7 +258,7 @@ public class CreateInstructorTest {
                  instructor.setZipCode("12345");
                  instructor.setDepartment("CMPE");
               instructor.setLastName("3434546");
-
+  try{
                Instructor instructorFromDB = instructorService.create(instructor);
 
                String temp = instructorFromDB.getLastName().toString();
@@ -242,12 +266,15 @@ public class CreateInstructorTest {
 
                System.out.println("Value of temp" + temp);
 
+
               if (temp.toLowerCase().equals("3434546")&& tempType.equals("instructor"))
                   checkFlag = false;
               else
                   checkFlag = true;
+          }
 
-              Assert.assertFalse(checkFlag,"true");
+           catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
               }
 
 
@@ -264,19 +291,22 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
               instructor.setLastName("");
 
-               Instructor instructorFromDB = instructorService.create(instructor);
+try{
+         Instructor instructorFromDB = instructorService.create(instructor);
 
                String temp = instructorFromDB.getLastName().toString();
                String tempType = instructorFromDB.getType().toString().toLowerCase();
 
                System.out.println("Value of temp" + temp);
 
+
               if (temp.toLowerCase().equals("")&& tempType.equals("instructor"))
                   checkFlag = false;
               else
                   checkFlag = true;
-
-              Assert.assertFalse(checkFlag,"true");
+         }
+           catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
               }
 
 
@@ -293,19 +323,26 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
                   instructor.setLastName("jbh87");
 
-                   Instructor instructorFromDB = instructorService.create(instructor);
+
+
+                  try{         Instructor instructorFromDB = instructorService.create(instructor);
+
 
                    String temp = instructorFromDB.getLastName().toString();
                    String tempType = instructorFromDB.getType().toString().toLowerCase();
 
                    System.out.println("Value of temp" + temp);
 
+
+
                   if (temp.toLowerCase().equals("jbh87")&& tempType.equals("instructor"))
                       checkFlag = false;
                   else
                       checkFlag = true;
+          }
 
-                  Assert.assertFalse(checkFlag,"true");
+           catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
                   }
 
 
@@ -323,18 +360,22 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
             instructor.setAddress("123 ABC Street , San Jose ");
 
+
+                  try{
                Instructor instructorFromDB = instructorService.create(instructor);
 
                String temp = instructorFromDB.getAddress().toString();
              String tempType = instructorFromDB.getType().toString().toLowerCase();
                System.out.println("Value of temp" + temp);
 
+
                if (temp.equals("123 ABC Street , San Jose ")&& tempType.equals("instructor"))
                checkFlag = true;
                else
                checkFlag = false;
-
-               Assert.assertFalse(checkFlag,"true");
+              }
+                catch(Exception e){ checkFlag = false;}
+          finally{Assert.assertFalse(checkFlag,"true");}
             }
 
       @Test(groups = {"main"})
@@ -352,19 +393,27 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
             instructor.setAddress("");
 
-               Instructor instructorFromDB = instructorService.create(instructor);
+
+
+                  try{
+                      Instructor instructorFromDB = instructorService.create(instructor);
 
                String temp = instructorFromDB.getAddress().toString();
              String tempType = instructorFromDB.getType().toString().toLowerCase();
                System.out.println("Value of temp" + temp);
 
+
                if (temp.equals("")&& tempType.equals("instructor"))
                checkFlag = false;
                else
                checkFlag = true;
+          }
 
-               Assert.assertFalse(checkFlag,"true");
+                catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
             }
+
+
       @Test(groups = {"main"})
     public void testAddressSpecial() {
         Instructor instructor = new Instructor();
@@ -378,19 +427,23 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
             instructor.setAddress("^&*&(* )(*)(* & n &^*&");
 
+                  try{
                Instructor instructorFromDB = instructorService.create(instructor);
 
                String temp = instructorFromDB.getAddress().toString();
              String tempType = instructorFromDB.getType().toString().toLowerCase();
                System.out.println("Value of temp" + temp);
 
+
                if (temp.equals("^&*&(* )(*)(* & n &^*&")&& tempType.equals("instructor"))
                checkFlag = false;
                else
                checkFlag = true;
-
-               Assert.assertFalse(checkFlag,"true");
+          }
+            catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
             }
+
 
          @Test(groups = {"main"})
     public void testAddressNeg() {
@@ -405,18 +458,23 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
             instructor.setAddress("-123 ABC Street , San Jose");
 
+
+                  try{
                Instructor instructorFromDB = instructorService.create(instructor);
 
                String temp = instructorFromDB.getAddress().toString();
              String tempType = instructorFromDB.getType().toString().toLowerCase();
                System.out.println("Value of temp" + temp);
 
+
                if (temp.equals("-123 ABC Street , San Jose")&& tempType.equals("instructor"))
                checkFlag = false;
                else
                checkFlag = true;
+             }
 
-               Assert.assertFalse(checkFlag,"true");
+              catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
             }
 
     //Test for City
@@ -435,18 +493,23 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
             instructor.setCity("San Jose");
 
+                  try{
                Instructor instructorFromDB = instructorService.create(instructor);
 
                String temp = instructorFromDB.getCity().toString();
              String tempType = instructorFromDB.getType().toString().toLowerCase();
                System.out.println("Value of temp" + temp);
 
+
+
                if (temp.toLowerCase().equals("san jose")&& tempType.equals("instructor"))
                checkFlag = true;
                else
                checkFlag = false;
+                  }
 
-               Assert.assertFalse(checkFlag,"true");
+                   catch(Exception e){ checkFlag = false;}
+          finally{Assert.assertFalse(checkFlag,"true");}
             }
 
       @Test(groups = {"main"})
@@ -462,18 +525,21 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
             instructor.setCity("&^ $%^");
 
-               Instructor instructorFromDB = instructorService.create(instructor);
+
+                  try{ Instructor instructorFromDB = instructorService.create(instructor);
 
                String temp = instructorFromDB.getCity().toString();
              String tempType = instructorFromDB.getType().toString().toLowerCase();
                System.out.println("Value of temp" + temp);
 
+
                if (temp.toLowerCase().equals("&^ $%^")&& tempType.equals("instructor"))
                checkFlag = false;
                else
                checkFlag = true;
-
-               Assert.assertFalse(checkFlag,"true");
+          }
+            catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
             }
 
     @Test(groups = {"main"})
@@ -489,18 +555,20 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
             instructor.setCity("234");
 
-               Instructor instructorFromDB = instructorService.create(instructor);
+
+                  try{        Instructor instructorFromDB = instructorService.create(instructor);
 
                String temp = instructorFromDB.getCity().toString();
              String tempType = instructorFromDB.getType().toString().toLowerCase();
                System.out.println("Value of temp" + temp);
 
-               if (temp.toLowerCase().equals("234")&& tempType.equals("instructor"))
+                      if (temp.toLowerCase().equals("234")&& tempType.equals("instructor"))
                checkFlag = false;
                else
                checkFlag = true;
-
-               Assert.assertFalse(checkFlag,"true");
+        }
+          catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
             }
 
                      @Test(groups = {"main"})
@@ -516,18 +584,23 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
                instructor.setCity("");
 
-                  Instructor instructorFromDB = instructorService.create(instructor);
+
+                  try{
+                      Instructor instructorFromDB = instructorService.create(instructor);
 
                   String temp = instructorFromDB.getCity().toString();
                 String tempType = instructorFromDB.getType().toString().toLowerCase();
                   System.out.println("Value of temp" + temp);
 
+
                   if (temp.toLowerCase().equals("")&& tempType.equals("instructor"))
                   checkFlag = false;
                   else
                   checkFlag = true;
+                  }
 
-                  Assert.assertFalse(checkFlag,"true");
+                   catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
                }
 
       @Test(groups = {"main"})
@@ -543,18 +616,23 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
                instructor.setCity("UG87j9");
 
+          try{
+
                   Instructor instructorFromDB = instructorService.create(instructor);
 
                   String temp = instructorFromDB.getCity().toString();
                 String tempType = instructorFromDB.getType().toString().toLowerCase();
                   System.out.println("Value of temp" + temp);
 
+
                   if (temp.toLowerCase().equals("UG87j9")&& tempType.equals("instructor"))
                   checkFlag = false;
                   else
                   checkFlag = true;
+          }
 
-                  Assert.assertFalse(checkFlag,"true");
+           catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
                }
 
 
@@ -571,6 +649,7 @@ public class CreateInstructorTest {
                  instructor.setZipCode("12345");
                  instructor.setDepartment("CMPE");
             instructor.setState("CA");
+        try{
 
                Instructor instructorFromDB = instructorService.create(instructor);
 
@@ -578,12 +657,14 @@ public class CreateInstructorTest {
              String tempType = instructorFromDB.getType().toString().toLowerCase();
                System.out.println("Value of temp" + temp);
 
+
                if (temp.toLowerCase().equals("ca")&& tempType.equals("instructor"))
                checkFlag = true;
                else
                checkFlag = false;
-
-               Assert.assertFalse(checkFlag,"true");
+        }
+          catch(Exception e){ checkFlag = false;}
+          finally{Assert.assertFalse(checkFlag,"true");}
 
             }
       @Test(groups = {"main"})
@@ -599,18 +680,21 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
                 instructor.setState("");
 
+          try{
                    Instructor instructorFromDB = instructorService.create(instructor);
 
                    String temp = instructorFromDB.getState().toString();
                  String tempType = instructorFromDB.getType().toString().toLowerCase();
                    System.out.println("Value of temp" + temp);
 
+
                    if (temp.toLowerCase().equals("")&& tempType.equals("instructor"))
                    checkFlag = false;
                    else
                    checkFlag = true;
-
-                   Assert.assertFalse(checkFlag,"true");
+          }
+            catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
 
                 }
 
@@ -627,18 +711,22 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
                 instructor.setState("2V");
 
+          try{
+
                    Instructor instructorFromDB = instructorService.create(instructor);
 
                    String temp = instructorFromDB.getState().toString();
                  String tempType = instructorFromDB.getType().toString().toLowerCase();
                    System.out.println("Value of temp" + temp);
 
+
                    if (temp.toLowerCase().equals("2V")&& tempType.equals("instructor"))
                    checkFlag = false;
                    else
                    checkFlag = true;
-
-                   Assert.assertFalse(checkFlag,"true");
+          }
+            catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
 
                 }
 
@@ -656,18 +744,21 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
                 instructor.setState("*&");
 
-                   Instructor instructorFromDB = instructorService.create(instructor);
+              try{     Instructor instructorFromDB = instructorService.create(instructor);
 
                    String temp = instructorFromDB.getState().toString();
                  String tempType = instructorFromDB.getType().toString().toLowerCase();
                    System.out.println("Value of temp" + temp);
 
+
                    if (temp.toLowerCase().equals("*&")&& tempType.equals("instructor"))
                    checkFlag = false;
                    else
                    checkFlag = true;
+          }
 
-                   Assert.assertFalse(checkFlag,"true");
+           catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
 
                 }
 
@@ -684,18 +775,21 @@ public class CreateInstructorTest {
                  instructor.setDepartment("CMPE");
                 instructor.setState("MP");
 
-                   Instructor instructorFromDB = instructorService.create(instructor);
+             try{         Instructor instructorFromDB = instructorService.create(instructor);
 
                    String temp = instructorFromDB.getState().toString();
                  String tempType = instructorFromDB.getType().toString().toLowerCase();
                    System.out.println("Value of temp" + temp);
 
+
                    if (temp.toLowerCase().equals("mp")&& tempType.equals("instructor"))
                    checkFlag = false;
                    else
                    checkFlag = true;
+          }
 
-                   Assert.assertFalse(checkFlag,"true");
+           catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
 
                 }
 
@@ -714,18 +808,21 @@ public class CreateInstructorTest {
                  instructor.setState("CA");
                  instructor.setDepartment("CMPE");
                instructor.setZipCode("95123");
-               Instructor instructorFromDB = instructorService.create(instructor);
+
+             try{     Instructor instructorFromDB = instructorService.create(instructor);
 
                String temp = instructorFromDB.getZipCode();
                 String tempType = instructorFromDB.getType().toString().toLowerCase();
                System.out.println("Value of temp" + temp);
 
+
                if (temp.toLowerCase().equals("95123")&& tempType.equals("instructor"))
                checkFlag = true;
                else
                checkFlag = false;
-
-               Assert.assertFalse(checkFlag,"true");
+          }
+            catch(Exception e){ checkFlag = false;}
+          finally{Assert.assertFalse(checkFlag,"true");}
 
             }
 
@@ -741,18 +838,21 @@ public class CreateInstructorTest {
                  instructor.setState("CA");
                  instructor.setDepartment("CMPE");
                   instructor.setZipCode("");
-                  Instructor instructorFromDB = instructorService.create(instructor);
+             try{        Instructor instructorFromDB = instructorService.create(instructor);
 
                   String temp = instructorFromDB.getZipCode();
                    String tempType = instructorFromDB.getType().toString().toLowerCase();
                   System.out.println("Value of temp" + temp);
 
+
                   if (temp.toLowerCase().equals("")&& tempType.equals("instructor"))
                   checkFlag = false;
                   else
                   checkFlag = true;
+          }
 
-                  Assert.assertFalse(checkFlag,"true");
+           catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
 
                }
 
@@ -768,19 +868,21 @@ public class CreateInstructorTest {
                  instructor.setState("CA");
                  instructor.setDepartment("CMPE");
                   instructor.setZipCode("&^&*");
-                  Instructor instructorFromDB = instructorService.create(instructor);
+             try{        Instructor instructorFromDB = instructorService.create(instructor);
 
                   String temp = instructorFromDB.getZipCode();
                    String tempType = instructorFromDB.getType().toString().toLowerCase();
                   System.out.println("Value of temp" + temp);
 
+
                   if (temp.toLowerCase().equals("&^&*")&& tempType.equals("instructor"))
                       checkFlag = false;
                         else
                       checkFlag = true;
+          }
 
-
-                  Assert.assertFalse(checkFlag,"true");
+            catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
 
                }
 
@@ -796,19 +898,21 @@ public class CreateInstructorTest {
                  instructor.setState("CA");
                  instructor.setDepartment("CMPE");
                   instructor.setZipCode("-5123");
-                  Instructor instructorFromDB = instructorService.create(instructor);
+          try{           Instructor instructorFromDB = instructorService.create(instructor);
 
                   String temp = instructorFromDB.getZipCode();
                    String tempType = instructorFromDB.getType().toString().toLowerCase();
                   System.out.println("Value of temp" + temp);
 
+
                   if (temp.toLowerCase().equals("-5123")&& tempType.equals("instructor"))
                       checkFlag = false;
                        else
                        checkFlag = true;
+      }
 
-
-                  Assert.assertFalse(checkFlag,"true");
+                   catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
 
                }
 
@@ -824,17 +928,21 @@ public class CreateInstructorTest {
                  instructor.setState("CA");
                  instructor.setDepartment("CMPE");
                   instructor.setZipCode("Hhg345");
-                  Instructor instructorFromDB = instructorService.create(instructor);
+                 try{    Instructor instructorFromDB = instructorService.create(instructor);
 
                   String temp = instructorFromDB.getZipCode();
                    String tempType = instructorFromDB.getType().toString().toLowerCase();
                   System.out.println("Value of temp" + temp);
 
+
                   if (temp.toLowerCase().equals("Hhg345")&& tempType.equals("instructor"))
                       checkFlag = false;
                        else
                        checkFlag = true;
-               Assert.assertFalse(checkFlag,"true");
+          }
+
+           catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
 
                }
 
@@ -850,22 +958,27 @@ public class CreateInstructorTest {
                  instructor.setState("CA");
                  instructor.setDepartment("CMPE");
                   instructor.setZipCode("98233");
+
+          try{
                   Instructor instructorFromDB = instructorService.create(instructor);
 
                   String temp = instructorFromDB.getEmployeeId();
                    String tempType = instructorFromDB.getType().toString().toLowerCase();
-                  System.out.println("Value of temp" + temp);
+                 
+
 
                   if (temp.toLowerCase().equals("123-23-4445")&& tempType.equals("instructor"))
-                      checkFlag = true;
+                      checkFlag = false;
                        else
-                       checkFlag = false;
-               Assert.assertFalse(checkFlag,"true");
+                       checkFlag = true;
+          }
+            catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
 
                }
 
       @Test(groups = {"main"})
-     public void testEmpSpecial() {
+     public void testEmpIDSpecial() {
                  Instructor instructor = new Instructor();
                  instructor.setEmployeeId("123-*&-4445");
                  instructor.setFirstName("Jack");
@@ -876,6 +989,8 @@ public class CreateInstructorTest {
                  instructor.setState("CA");
                  instructor.setDepartment("CMPE");
                   instructor.setZipCode("98233");
+
+              try{
                   Instructor instructorFromDB = instructorService.create(instructor);
 
                   String temp = instructorFromDB.getEmployeeId();
@@ -886,12 +1001,14 @@ public class CreateInstructorTest {
                       checkFlag = false;
                        else
                        checkFlag = true;
-               Assert.assertFalse(checkFlag,"true");
+              }
+                catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
 
                }
       @Test(groups = {"main"})
 
-    public void testEmpEmpty() {
+    public void testEmpIDEmpty() {
                      Instructor instructor = new Instructor();
                      instructor.setEmployeeId("");
                      instructor.setFirstName("Jack");
@@ -902,6 +1019,7 @@ public class CreateInstructorTest {
                      instructor.setState("CA");
                      instructor.setDepartment("CMPE");
                       instructor.setZipCode("98233");
+          try{
                       Instructor instructorFromDB = instructorService.create(instructor);
 
                       String temp = instructorFromDB.getEmployeeId();
@@ -912,11 +1030,13 @@ public class CreateInstructorTest {
                           checkFlag = false;
                            else
                            checkFlag = true;
-                   Assert.assertFalse(checkFlag,"true");
+          }
+            catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
 
                    }
       @Test(groups = {"main"})
-      public void testEmpAlpha() {
+      public void testEmpIDAlpha() {
                      Instructor instructor = new Instructor();
                      instructor.setEmployeeId("1AS-34-98f0");
                      instructor.setFirstName("Jack");
@@ -927,6 +1047,7 @@ public class CreateInstructorTest {
                      instructor.setState("CA");
                      instructor.setDepartment("CMPE");
                       instructor.setZipCode("98233");
+          try{
                       Instructor instructorFromDB = instructorService.create(instructor);
 
                       String temp = instructorFromDB.getEmployeeId();
@@ -937,12 +1058,14 @@ public class CreateInstructorTest {
                           checkFlag = false;
                            else
                            checkFlag = true;
-                   Assert.assertFalse(checkFlag,"true");
+          }
+           catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
 
                    }
 
       @Test(groups = {"main"})
-    public void testEmpFormat() {
+    public void testEmpIDFormat() {
                          Instructor instructor = new Instructor();
                          instructor.setEmployeeId("1346-98660");
                          instructor.setFirstName("Jack");
@@ -953,6 +1076,7 @@ public class CreateInstructorTest {
                          instructor.setState("CA");
                          instructor.setDepartment("CMPE");
                           instructor.setZipCode("98233");
+          try{
                           Instructor instructorFromDB = instructorService.create(instructor);
 
                           String temp = instructorFromDB.getEmployeeId();
@@ -963,7 +1087,9 @@ public class CreateInstructorTest {
                               checkFlag = false;
                                else
                                checkFlag = true;
-                       Assert.assertFalse(checkFlag,"true");
+          }
+           catch(Exception e){ checkFlag = true;}
+          finally{Assert.assertFalse(checkFlag,"true");}
 
                        }
         
