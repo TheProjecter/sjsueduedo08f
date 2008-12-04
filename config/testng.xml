@@ -1,8 +1,14 @@
 <suite name="Main Suite">
 
-  <test name="TestBillCalculator">
+  <!--<test name="TestBillCalculator">-->
+    <!--<classes>-->
+      <!--<class name="edu.sjsu.edo08f.support.BillCalculatorTest" />-->
+    <!--</classes>-->
+  <!--</test>-->
+
+  <test name="CreateStudentTest">
     <classes>
-      <class name="edu.sjsu.edo08f.support.BillCalculatorTest" />
+      <class name="edu.sjsu.edo08f.support.CreateStudentTest" />
     </classes>
   </test>
 
