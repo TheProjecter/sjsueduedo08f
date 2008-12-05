@@ -21,8 +21,10 @@ public class CreateStudentTest {
 
         boolean checkFlag= false;
 
+    public CreateStudentTest() {
+    }
 
-       @Test(groups = {"main"})
+    @Test
 
        //Test for First Name
 
@@ -64,9 +66,7 @@ public class CreateStudentTest {
            
         }
 
-    @Test(groups = {"main"})
-
-
+    @Test
      public void testFirstNameSpecial() {
 
 
@@ -103,7 +103,7 @@ public class CreateStudentTest {
             }
         }
 
-      @Test(groups = {"main"})
+      @Test
       public void testFirstNameNumbers() {
 
              Student student = new Student();
@@ -139,7 +139,7 @@ public class CreateStudentTest {
         }
 
 
-      @Test(groups = {"main"})
+      @Test
       public void testFirstNameEmpty() {
 
             Student student = new Student();
@@ -172,7 +172,7 @@ public class CreateStudentTest {
           }
         }
 
-          @Test(groups = {"main"})
+          @Test
       public void testFirstNameAlpha() {
 
           Student student = new Student();
@@ -204,7 +204,7 @@ public class CreateStudentTest {
 
     //Tests for Last Name
 
-      @Test(groups = {"main"})
+      @Test
 
         public void testLastName() {
 
@@ -233,7 +233,7 @@ public class CreateStudentTest {
             Assert.assertFalse(checkFlag,"true");
         }
 
-      @Test(groups = {"main"})
+      @Test
     public void testLastNameEmpty() {
 
              Student student = new Student();
@@ -262,7 +262,7 @@ public class CreateStudentTest {
               Assert.assertFalse(checkFlag,"true");}
         }
 
-      @Test(groups = {"main"})
+      @Test
 
      public void testLastNameSpecial() {
 
@@ -293,7 +293,7 @@ public class CreateStudentTest {
         }
 
 
-      @Test(groups = {"main"})
+      @Test
 
     public void testLastNameNumber() {
 
@@ -326,7 +326,7 @@ public class CreateStudentTest {
 
 
 
-      @Test(groups = {"main"})
+      @Test
      public void testLastNameAlpha() {
 
                 Student student = new Student();
@@ -360,7 +360,7 @@ public class CreateStudentTest {
 
       //Test for Address
 
-      @Test(groups = {"main"})
+      @Test
         public void testAddress() {
 
              Student student = new Student();
@@ -392,7 +392,7 @@ public class CreateStudentTest {
 
         }
 
-      @Test(groups = {"main"})
+      @Test
      public void testAddressSpecial() {
 
             Student student = new Student();
@@ -425,7 +425,7 @@ public class CreateStudentTest {
 
         }
 
-      @Test(groups = {"main"})
+      @Test
      public void testAddressNegetiveNum() {
            Student student = new Student();
                    student.setFirstName("Jack");
@@ -456,8 +456,10 @@ public class CreateStudentTest {
 
 
         }
-                                @Test(groups = {"main"})
+
+                                @Test
     public void testAddressEmpty() {
+                                    try {Thread.sleep(5000); } catch (Exception e) {}
           Student student = new Student();
                    student.setFirstName("Jack");
                  student.setLastName("hu87sf");
@@ -490,7 +492,7 @@ public class CreateStudentTest {
 
     //Tests For City
 
-      @Test(groups = {"main"})
+      @Test
         public void testCity() {
               Student student = new Student();
                    student.setFirstName("Jack");
@@ -520,7 +522,7 @@ public class CreateStudentTest {
 
         }
 
-      @Test(groups = {"main"})
+      @Test
          public void testCitySpecial() {
              Student student = new Student();
                    student.setFirstName("Jack");
@@ -550,7 +552,7 @@ public class CreateStudentTest {
 
         }
 
-      @Test(groups = {"main"})
+      @Test
 
      public void testCityNumber() {
           Student student = new Student();
@@ -580,7 +582,7 @@ public class CreateStudentTest {
 
         }
 
-      @Test(groups = {"main"})
+      @Test
      public void testCityEmpty() {
           Student student = new Student();
                    student.setFirstName("Jack");
@@ -610,7 +612,7 @@ public class CreateStudentTest {
 
         }
 
-      @Test(groups = {"main"})
+      @Test
 
     public void testCityAlpha() {
          Student student = new Student();
@@ -643,7 +645,7 @@ public class CreateStudentTest {
     //Tests For States
 
 
-      @Test(groups = {"main"})
+      @Test
         public void testState() {
              Student student = new Student();
                    student.setFirstName("Jack");
@@ -673,7 +675,7 @@ public class CreateStudentTest {
 
         }
 
-      @Test(groups = {"main"})
+      @Test
      public void testStateSpecial() {
           Student student = new Student();
                    student.setFirstName("Jack");
@@ -704,7 +706,7 @@ public class CreateStudentTest {
 
         }
 
-      @Test(groups = {"main"})
+      @Test
           public void testStateWrong() {
                Student student = new Student();
                    student.setFirstName("Jack");
@@ -734,7 +736,7 @@ public class CreateStudentTest {
 
         }
 
-      @Test(groups = {"main"})
+      @Test
      public void testStateEmpty() {
                Student student = new Student();
                    student.setFirstName("Jack");
@@ -766,7 +768,7 @@ public class CreateStudentTest {
 
         }
 
-      @Test(groups = {"main"})
+      @Test
     public void testStateNumber() {
               Student student = new Student();
                    student.setFirstName("Jack");
@@ -795,7 +797,7 @@ public class CreateStudentTest {
           finally{Assert.assertFalse(checkFlag,"true");}
         }
 
-      @Test(groups = {"main"})
+      @Test
     public void testStateAlpha() {
               Student student = new Student();
                    student.setFirstName("Jack");
@@ -827,7 +829,7 @@ public class CreateStudentTest {
 
     //Tests for Zip Codes
 
-      @Test(groups = {"main"})
+      @Test
         public void testZip() {
                     Student student = new Student();
                     student.setFirstName("Jack");
@@ -856,7 +858,7 @@ public class CreateStudentTest {
 
         }
 
-          @Test(groups = {"main"})
+          @Test
         public void testZipAlpha() {
             Student student = new Student();
                     student.setFirstName("Jack");
@@ -884,7 +886,7 @@ public class CreateStudentTest {
           finally{Assert.assertFalse(checkFlag,"true");}
 
         }
-            @Test(groups = {"main"})
+            @Test
            public void testZipNeg() {
                Student student = new Student();
                     student.setFirstName("Jack");
@@ -913,7 +915,7 @@ public class CreateStudentTest {
 
 
         }
-           @Test(groups = {"main"})
+           @Test
     public void testZipEmpty() {
         Student student = new Student();
                     student.setFirstName("Jack");
@@ -941,7 +943,7 @@ public class CreateStudentTest {
           finally{Assert.assertFalse(checkFlag,"true");}
 
         }
-           @Test(groups = {"main"})
+           @Test
      public void testZipSpecial() {
          Student student = new Student();
                     student.setFirstName("Jack");
@@ -972,7 +974,7 @@ public class CreateStudentTest {
         }
 
     //test for Id
-              @Test(groups = {"main"})
+              @Test
      public void testStudId() {
          Student student = new Student();
                     student.setFirstName("Jack");
@@ -1001,7 +1003,7 @@ public class CreateStudentTest {
 
         }
 
-      @Test(groups = {"main"})
+      @Test
     public void testStudIdEmpty() {
          Student student = new Student();
                     student.setFirstName("Jack");
@@ -1030,7 +1032,7 @@ public class CreateStudentTest {
 
         }
 
-      @Test(groups = {"main"})
+      @Test
      public void testStudIdSpecial() {
          Student student = new Student();
                     student.setFirstName("Jack");
@@ -1058,7 +1060,7 @@ public class CreateStudentTest {
 
         }
 
-      @Test(groups = {"main"})
+      @Test
          public void testStudIdAlpha() {
          Student student = new Student();
                     student.setFirstName("Jack");
@@ -1087,7 +1089,7 @@ public class CreateStudentTest {
 
         }
 
-      @Test(groups = {"main"})
+      @Test
     public void testStudIdFormat() {
          Student student = new Student();
                     student.setFirstName("Jack");
