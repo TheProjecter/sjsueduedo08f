@@ -35,18 +35,18 @@ public class XmlVerifier {
             reader.parse(testMessage);
             //reader.parse(new InputSource("file:///C:/Users/Sandip/Desktop/XML/person.xml"));
             System.out.println("XML is valid");
-            }
+        }
 
-            catch (Exception e) {
-                // TODO: handle exception
-                System.out.println(e);
-            }
+        catch (Exception e) {
+            // TODO: handle exception
+            System.out.println(e);
+        }
         // verification happens here
         //fill possible errors file
-        
+
         return possibleErrors;
 
-        
+
     }
 
 }

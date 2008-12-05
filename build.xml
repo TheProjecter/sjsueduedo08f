@@ -54,6 +54,7 @@
                 classpathref="cp"
                 outputdir="${test.output}">
             <xmlfileset file="config/testng.xml" />
+            <jvmarg line="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8900"/>
         </testng>
     </target>
 
