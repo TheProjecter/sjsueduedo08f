@@ -5,18 +5,46 @@ import edu.sjsu.edo08f.domain.Course;
 import edu.sjsu.edo08f.domain.Student;
 import edu.sjsu.edo08f.domain.Person;
 import edu.sjsu.edo08f.domain.Instructor;
+import edu.sjsu.edo08f.support.EventInformation;
+import edu.sjsu.edo08f.support.converters.EventInformationConverter;
 import com.thoughtworks.xstream.*;
 
 import java.util.List;
 
 /**
+ * 
  * Created by: Alex Yarmula
  * Date: Nov 8, 2008
  */
 public class ObjectToXmlConverter {
 
-    XStream xs = new XStream();
+    XStream xs;
     String xml;
+
+    public ObjectToXmlConverter() {
+        xs = new XStream();
+        xs.aliasType("student", Student.class);
+        xs.aliasType("instructor", Instructor.class);
+        xs.aliasType("person", Person.class);
+        xs.aliasType("course", Course.class);
+
+        xs.aliasField("first-name", Person.class, "firstName");
+        xs.aliasField("last-name", Person.class, "lastName");
+        xs.aliasField("zip-code", Person.class, "zipCode");
+
+        xs.aliasField("meeting-hours", Course.class, "meetingHours");
+
+        xs.aliasField("office-hours", Instructor.class, "officeHours");
+        xs.aliasField("employee-id", Instructor.class, "employeeId");
+
+        EventInformationConverter eventConverter = new EventInformationConverter();
+
+        xs.registerLocalConverter(Course.class, "meetingHours", eventConverter);
+        xs.registerLocalConverter(Instructor.class, "officeHours", eventConverter);
+
+        xs.aliasField("student-id", Student.class, "studentId");
+    }
+
     private String getExceptionXmlTemplate() {
         return "<exception>" +
                         "<name>" +
@@ -33,7 +61,7 @@ public class ObjectToXmlConverter {
     }
 
     public String getExceptionXmlMessage (Exception exception) {
-        return String.format (getExceptionXmlTemplate(), exception.getClass().getName(), exception.getMessage());
+        return String.format (getExceptionXmlTemplate(), exception.getClass().getSimpleName(), exception.getMessage());
     }
     // Output for StudentServices
 

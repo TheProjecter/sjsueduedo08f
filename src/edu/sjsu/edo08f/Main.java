@@ -17,6 +17,7 @@ import edu.sjsu.edo08f.services.CourseService;
 import edu.sjsu.edo08f.services.utils.SearchUtils;
 import edu.sjsu.edo08f.support.EventInformation;
 import edu.sjsu.edo08f.support.DayOfWeek;
+import edu.sjsu.edo08f.xml.XmlReceiver;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -29,7 +30,45 @@ public class Main {
 
     public static void main (String[] args) {
 
+        String[] text = new String[] {"<request>" +
+                "        <studentService>" +
+                "            <getAll/>" +
+                "        </studentService>" +
+                "    </request>",
 
+                "<request>" +
+                        "        <courseService>" +
+                        "            <getAll/>" +
+                        "        </courseService>" +
+                        "    </request>",
+
+                "<request>" +
+                        "        <instructorService>" +
+                        "            <getAll/>" +
+                        "        </instructorService>" +
+                        "    </request>",
+
+                "<request>" +
+                        "        <personService>" +
+                        "            <getById>" +
+                        "                   <id>1</id>" +
+                        "            </getById>" +
+                        "        </personService>" +
+                        "    </request>",
+
+        };
+
+        XmlReceiver xmlReceiver = (XmlReceiver) getBeanFactory().getBean("xmlReceiver");
+
+        for (String iteration : text) {
+            String result = xmlReceiver.processRequest(iteration);
+            int a =5;
+        }
+
+    }
+
+
+    public void pureServiceTest () {
         PersonService personService  = (PersonService) getBeanFactory().getBean("personService");
         List<Person> results = personService.search("lastName", "Yar");
         Person person = personService.getById(2L);
@@ -110,7 +149,6 @@ public class Main {
         courseService.delete(courseCreated);
         instructorService.delete(instructor);
     }
-
 
     public static BeanFactory getBeanFactory() {
 

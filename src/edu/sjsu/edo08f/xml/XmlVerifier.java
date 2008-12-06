@@ -1,6 +1,8 @@
 package edu.sjsu.edo08f.xml;
 
 import edu.sjsu.edo08f.objectWrappers.XmlParsingError;
+import edu.sjsu.edo08f.support.ParserUtils;
+import edu.sjsu.edo08f.exceptions.GeneralException;
 
 import java.io.*;
 import javax.xml.parsers.SAXParser;
@@ -10,8 +12,7 @@ import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 import javax.jms.TextMessage;
 
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
+import org.xml.sax.*;
 
 /**
  * Created by: Alex Yarmula
@@ -21,28 +22,40 @@ public class XmlVerifier {
 
     public XmlParsingError verifyMessage(String testMessage ) {
 
-        XmlParsingError possibleErrors = new XmlParsingError();
+        final XmlParsingError possibleErrors = new XmlParsingError();
 
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             factory.setValidating(false);
             factory.setNamespaceAware(true);
             SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema");
-            factory.setSchema(schemaFactory.newSchema(new Source[] { new StreamSource("file:///C:/Users/Sandip/Desktop/XML/inputSchema.xsd") }));
+            factory.setSchema(schemaFactory.newSchema(new File("resources/inputSchema.xsd")));
             SAXParser parser = factory.newSAXParser();
             XMLReader reader = parser.getXMLReader();
-            reader.setErrorHandler(new SimpleErrorHandler());
-            reader.parse(testMessage);
-            //reader.parse(new InputSource("file:///C:/Users/Sandip/Desktop/XML/person.xml"));
-            System.out.println("XML is valid");
+            reader.setErrorHandler(new ErrorHandler() {
+                public void warning(SAXParseException e) throws SAXException {
+                    // dont care about warnings
+                }
+
+                public void error(SAXParseException e) throws SAXException {
+                    possibleErrors.add(e.toString());
+                }
+
+                public void fatalError(SAXParseException e) throws SAXException {
+                    possibleErrors.add(e.toString());
+                }
+            });
+
+            InputStream messageInputStream = ParserUtils.convertStringToInputStream(testMessage);
+
+            InputSource inputSource = new InputSource(messageInputStream);
+
+            reader.parse(inputSource);
         }
 
         catch (Exception e) {
-            // TODO: handle exception
-            System.out.println(e);
+            possibleErrors.add(e.toString());
         }
-        // verification happens here
-        //fill possible errors file
 
         return possibleErrors;
 
