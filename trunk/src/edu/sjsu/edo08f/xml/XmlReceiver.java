@@ -1,6 +1,7 @@
 package edu.sjsu.edo08f.xml;
 
 import edu.sjsu.edo08f.objectWrappers.XmlParsingError;
+import edu.sjsu.edo08f.exceptions.GeneralException;
 
 /**
  * Created by: Alex Yarmula
@@ -12,23 +13,37 @@ public class XmlReceiver {
     private XmlParser xmlParser;
     private ObjectToXmlConverter objectToXmlConverter;
 
-    public XmlReceiver() {
-        this.xmlVerifier = new XmlVerifier ();
-        this.xmlParser = new XmlParser ();
-        this.objectToXmlConverter = new ObjectToXmlConverter();
+    public void setXmlVerifier(XmlVerifier xmlVerifier) {
+        this.xmlVerifier = xmlVerifier;
+    }
+
+    public void setXmlParser(XmlParser xmlParser) {
+        this.xmlParser = xmlParser;
+    }
+
+    public void setObjectToXmlConverter(ObjectToXmlConverter objectToXmlConverter) {
+        this.objectToXmlConverter = objectToXmlConverter;
     }
 
     public String processRequest (String textMessage) {
 
         XmlParsingError possibleErrors = xmlVerifier.verifyMessage(textMessage);
-        if (possibleErrors.isNotEmpty()) return getBadXmlMessage(possibleErrors.getErrorMessage()); 
+        if (possibleErrors.isNotEmpty()) return getBadXmlMessage(possibleErrors.getErrorMessage());
 
-       return xmlParser.parse(textMessage);
+        String resultToReturn = "";
+        try {
+            resultToReturn = xmlParser.parse(textMessage);
+        } catch (GeneralException e) {
+            return objectToXmlConverter.getExceptionXmlMessage (e);
+        } catch (Exception e) {
+            return getBadXmlMessage (e.getMessage());
+        }
+
+        return resultToReturn;
 
     }
 
     private String getBadXmlMessage (String reason) {
         return objectToXmlConverter.getBadXmlMessage(reason);
     }
-
 }

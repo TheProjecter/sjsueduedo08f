@@ -7,10 +7,13 @@ import edu.sjsu.edo08f.domain.Person;
 import edu.sjsu.edo08f.services.*;
 import edu.sjsu.edo08f.support.EventInformation;
 import edu.sjsu.edo08f.support.ParserUtils;
+import edu.sjsu.edo08f.exceptions.GeneralException;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.io.File;
+import java.io.InputStream;
+import java.io.ByteArrayInputStream;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -47,32 +50,35 @@ public class XmlParser {
 
     public XmlParser() {
         objectToXmlConverter = new ObjectToXmlConverter();
-        courseService = new CourseServiceImpl();
-        personService = new PersonServiceImpl();
-        studentService = new StudentServiceImpl();
-        instructorService = new InstructorServiceImpl();
-
     }
 
-    public String parse (String textMessage) {
+    public void setInstructorService(InstructorService instructorService) {
+        this.instructorService = instructorService;
+    }
 
-//          XmlParser reader = new XmlParser();
-//          reader.readXML();
-        String result=null;
-        try{
-            Dfactory = DocumentBuilderFactory.newInstance();
-            DBuilder = Dfactory.newDocumentBuilder();
-            d = DBuilder.parse(textMessage);
-            //d = DBuilder.parse(new File("person.xml"));
-            d.getDocumentElement().normalize();
-            System.out.println("Reading XML");
-            result= findServices();
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            System.out.println("Error:"+e);
-        }
+    public void setStudentService(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
+    public void setCourseService(CourseService courseService) {
+        this.courseService = courseService;
+    }
+
+    public void setPersonService(PersonService personService) {
+        this.personService = personService;
+    }
+
+    public String parse (String textMessage) throws Exception {
+
+        String result;
+        Dfactory = DocumentBuilderFactory.newInstance();
+        DBuilder = Dfactory.newDocumentBuilder();
+
+        InputStream inputStream = ParserUtils.convertStringToInputStream (textMessage);
+
+        d = DBuilder.parse(inputStream);
+        d.getDocumentElement().normalize();
+        result = findServices();
         return result;
     }
 
@@ -247,8 +253,6 @@ public class XmlParser {
 
                     }
 
-//        	            System.out.println(temp);
-//        	            break;
                 }
             }
 
@@ -258,14 +262,14 @@ public class XmlParser {
     // Bellow methods is used to get data for SutdentServices
 
     public Long getByIdStudentService(){
-        NodeList nodeLst = d.getElementsByTagName("student");
         NodeList sid=d.getElementsByTagName("id");
 
-        for (int s = 0; s < nodeLst.getLength(); s++){
+        for (int s = 0; s < sid.getLength(); s++){
             student.setId(Long.parseLong(sid.item(s).getTextContent()));
-            Long id = student.getId();
+            Long studentId = student.getId();
+            return studentId;
         }
-        return id;
+        throw new GeneralException ("Couldn't parse an ID for student");
     }
     public Student createUpdateStudentService(){
         NodeList nodeLst = d.getElementsByTagName("student");
@@ -317,15 +321,16 @@ public class XmlParser {
 
     // Bellow methods is used to get data for PersonServices
     public Long getByIdPersonService(){
-        NodeList nodeLst = d.getElementsByTagName("person");
         NodeList sid=d.getElementsByTagName("id");
 
-        for (int s = 0; s < nodeLst.getLength(); s++){
+        for (int s = 0; s < sid.getLength(); s++){
             person.setId(Long.parseLong(sid.item(s).getTextContent()));
-            Long id = person.getId();
+            Long personId = person.getId();
+            return personId;
         }
-        return id;
+        throw new GeneralException ("Couldn't parse an ID for student");
     }
+    
     public String getsearchedFieldName(){
         NodeList nodeLst = d.getElementsByTagName("person");
         NodeList searchFieldName=d.getElementsByTagName("searched-field-name");
@@ -349,14 +354,14 @@ public class XmlParser {
 
     // Bellow methods is used to get data for InstructorServices
     public Long getByIdInstructorService(){
-        NodeList nodeLst = d.getElementsByTagName("instructor");
         NodeList sid=d.getElementsByTagName("id");
 
-        for (int s = 0; s < nodeLst.getLength(); s++){
+        for (int s = 0; s < sid.getLength(); s++){
             instructor.setId(Long.parseLong(sid.item(s).getTextContent()));
-            Long id = instructor.getId();
+            Long instructorId = instructor.getId();
+            return instructorId; 
         }
-        return id;
+        throw new GeneralException ("Couldn't parse an ID for instructor");
     }
     public Instructor getIdInstructorService(){
         NodeList nodeLst = d.getElementsByTagName("instructor");
@@ -419,14 +424,14 @@ public class XmlParser {
     // Bellow methods is used to get data for CourseServices
 
     public Long getByIdCourseService(){
-        NodeList nodeLst = d.getElementsByTagName("course");
         NodeList sid=d.getElementsByTagName("id");
 
-        for (int s = 0; s < nodeLst.getLength(); s++){
+        for (int s = 0; s < sid.getLength(); s++){
             course.setId(Long.parseLong(sid.item(s).getTextContent()));
             Long id = course.getId();
+            return id;
         }
-        return id;
+        throw new GeneralException ("Couldn't parse an ID for course");
     }
     public Course getCourseIdCourseService(){
         NodeList nodeLst = d.getElementsByTagName("course");
@@ -487,7 +492,7 @@ public class XmlParser {
             officeHoursList.add(officeHours.item(s).getTextContent());
 
             instructor.setOfficeHours(ParserUtils.parseOfficeHours(officeHoursList));
-            
+
             instructor.setOffice(office.item(s).getTextContent());
 
         }

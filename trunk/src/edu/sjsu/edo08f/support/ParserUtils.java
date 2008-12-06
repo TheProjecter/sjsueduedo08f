@@ -1,9 +1,12 @@
 package edu.sjsu.edo08f.support;
 
 import edu.sjsu.edo08f.exceptions.InvalidArgumentException;
+import edu.sjsu.edo08f.exceptions.GeneralException;
 
 import java.util.*;
 import java.util.regex.Pattern;
+import java.io.InputStream;
+import java.io.ByteArrayInputStream;
 
 /**
  * This class will be used for general functions, like parse office hours and validate if
@@ -184,6 +187,14 @@ public class ParserUtils {
             }
         });
         return officeHoursCopy;
+    }
+
+    public static InputStream convertStringToInputStream (String text) {
+        try {
+            return new ByteArrayInputStream(text.getBytes("UTF-8"));
+        } catch (Exception e) {
+            throw new GeneralException("Unsopported encoding exception");
+        }
     }
 
 }
