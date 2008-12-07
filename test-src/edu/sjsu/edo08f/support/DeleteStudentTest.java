@@ -5,6 +5,7 @@ import org.testng.Assert;
 import edu.sjsu.edo08f.domain.Student;
 import edu.sjsu.edo08f.services.StudentService;
 import edu.sjsu.edo08f.Main;
+import edu.sjsu.edo08f.BeanRetriever;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,7 +15,7 @@ import edu.sjsu.edo08f.Main;
  * To change this template use File | Settings | File Templates.
  */
 public class DeleteStudentTest {
-    StudentService studentService = (StudentService) Main.getBeanFactory().getBean("studentService");
+    StudentService studentService = (StudentService) BeanRetriever.getBeanFactory().getBean("studentService");
 
         boolean checkFlag= false;
 

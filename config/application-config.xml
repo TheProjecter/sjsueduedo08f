@@ -102,5 +102,8 @@
         <property name="xmlVerifier" ref="xmlVerifier"/>
     </bean>
 
+    <bean id="messageServer" class="edu.sjsu.edo08f.jms.MessageServer">
+        <property name="xmlReceiver" ref="xmlReceiver"/>
+    </bean>
 
 </beans>

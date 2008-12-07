@@ -6,6 +6,7 @@ import edu.sjsu.edo08f.domain.Student;
 import edu.sjsu.edo08f.domain.Instructor;
 import edu.sjsu.edo08f.services.InstructorService;
 import edu.sjsu.edo08f.Main;
+import edu.sjsu.edo08f.BeanRetriever;
 
 /**
  * Created by IntelliJ IDEA.
@@ -16,7 +17,7 @@ import edu.sjsu.edo08f.Main;
  */
 public class CreateInstructorTest {
 
-    InstructorService instructorService = (InstructorService) Main.getBeanFactory().getBean("instructorService");
+    InstructorService instructorService = (InstructorService) BeanRetriever.getBeanFactory().getBean("instructorService");
 
      boolean checkFlag= false;
 

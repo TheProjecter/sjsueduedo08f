@@ -2,6 +2,7 @@ package edu.sjsu.edo08f.support;
 
 import edu.sjsu.edo08f.services.InstructorService;
 import edu.sjsu.edo08f.Main;
+import edu.sjsu.edo08f.BeanRetriever;
 import edu.sjsu.edo08f.domain.Instructor;
 import org.testng.annotations.Test;
 import org.testng.Assert;
@@ -15,7 +16,7 @@ import org.testng.Assert;
  */
 public class DeleteInstructorTest {
 
-    InstructorService instructorService = (InstructorService) Main.getBeanFactory().getBean("instructorService");
+    InstructorService instructorService = (InstructorService) BeanRetriever.getBeanFactory().getBean("instructorService");
 
         boolean checkFlag= false;
 
