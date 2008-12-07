@@ -12,7 +12,7 @@ public class BillCalculatorTest {
 
     public void getCalculatedValueTest() {
         assert (BillCalculator.getCalculatedValue(5.0, true) == 699.6);
-      }
-    
+    }
+
 
 }
