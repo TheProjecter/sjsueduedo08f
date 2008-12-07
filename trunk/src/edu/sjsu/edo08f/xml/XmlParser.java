@@ -174,12 +174,12 @@ public class XmlParser {
                             return objectToXmlConverter.getOutputForGetByIdInstructorService(returnedGetByIdInstructor);
                         }
                         if(methodName.equalsIgnoreCase("create")){
-                            Instructor createInstructorService = createUpdateInstructorService();
+                            Instructor createInstructorService = createInstructorService();
                             Instructor returnedCreatedInstructor = instructorService.create(createInstructorService);
                             return objectToXmlConverter.getOutputForCreateInstructorService(returnedCreatedInstructor);
                         }
                         if(methodName.equalsIgnoreCase("update")){
-                            Instructor updateInstructorService= createUpdateInstructorService();
+                            Instructor updateInstructorService= updateInstructorService();
                             Instructor returnedUpdatedInstructor = instructorService.update(updateInstructorService);
                             return objectToXmlConverter.getOutputForUpdateInstructorService(returnedUpdatedInstructor);
                         }
@@ -374,7 +374,43 @@ public class XmlParser {
         return instructor;
     }
 
-    public Instructor createUpdateInstructorService(){
+    public Instructor createInstructorService(){
+        NodeList nodeLst = d.getElementsByTagName("instructor");
+        NodeList firstName=d.getElementsByTagName("first-name");
+        NodeList lastName=d.getElementsByTagName("last-name");
+        NodeList address=d.getElementsByTagName("address");
+        NodeList city=d.getElementsByTagName("city");
+        NodeList state=d.getElementsByTagName("state");
+        NodeList zipCode=d.getElementsByTagName("zip-code");
+        NodeList type=d.getElementsByTagName("type");
+        NodeList department=d.getElementsByTagName("department");
+        NodeList employeeId=d.getElementsByTagName("employee-id");
+        NodeList officeHours=d.getElementsByTagName("office-hours");
+        NodeList office=d.getElementsByTagName("office");
+
+
+        for (int s = 0; s < nodeLst.getLength(); s++){
+
+            instructor.setFirstName(firstName.item(s).getTextContent());
+            instructor.setLastName(lastName.item(s).getTextContent());
+            instructor.setAddress(address.item(s).getTextContent());
+            instructor.setCity(city.item(s).getTextContent());
+            instructor.setState(state.item(s).getTextContent());
+            instructor.setZipCode(zipCode.item(s).getTextContent());
+            instructor.setType(type.item(s).getTextContent());
+            instructor.setDepartment(department.item(s).getTextContent());
+            instructor.setEmployeeId(employeeId.item(s).getTextContent());
+
+            List<String> officeHoursList = new ArrayList<String>();
+            officeHoursList.add(officeHours.item(s).getTextContent());
+
+            instructor.setOfficeHours(ParserUtils.parseOfficeHours(officeHoursList));
+            instructor.setOffice(office.item(s).getTextContent());
+        }
+        return instructor;
+    }
+
+    public Instructor updateInstructorService(){
         NodeList nodeLst = d.getElementsByTagName("instructor");
         NodeList sid=d.getElementsByTagName("id");
         NodeList firstName=d.getElementsByTagName("first-name");
@@ -411,6 +447,7 @@ public class XmlParser {
         }
         return instructor;
     }
+
     public Instructor getAssociatedCoursesInstructorService(){
         NodeList nodeLst = d.getElementsByTagName("instructor");
         NodeList studentId=d.getElementsByTagName("employee-id");

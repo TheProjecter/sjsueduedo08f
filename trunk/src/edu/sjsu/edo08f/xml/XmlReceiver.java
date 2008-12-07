@@ -36,7 +36,7 @@ public class XmlReceiver {
         } catch (GeneralException e) {
             return objectToXmlConverter.getExceptionXmlMessage (e);
         } catch (Exception e) {
-            return getBadXmlMessage (e.getMessage());
+            return getBadXmlMessage (String.format("Message name: %s,\nMessage cause: %s,\nMessage description: %s", e.getClass(), e.getCause(), e.getLocalizedMessage()));
         }
 
         return resultToReturn;
