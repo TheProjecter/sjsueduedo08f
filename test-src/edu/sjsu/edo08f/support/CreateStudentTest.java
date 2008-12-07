@@ -25,6 +25,11 @@ public class CreateStudentTest {
         boolean checkFlag= false;
 
     public CreateStudentTest() {
+
+        try {
+            Thread.sleep (5000);
+        } catch (Exception e) {}
+
     }
 
     @Test
@@ -39,7 +44,7 @@ public class CreateStudentTest {
                   student.setState("CA");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("123-00-0041");
 
                 try{
                     Student studentFromDB = studentService.create(student);
@@ -565,7 +570,7 @@ public class CreateStudentTest {
                    student.setAddress("123 ABC St");
                   student.setState("CA");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("123-00-0041");
         student.setCity("San Jose");
 
        try{      Student studentFromDB = studentService.create(student);
@@ -746,8 +751,8 @@ public class CreateStudentTest {
                  student.setLastName("Jill");
                    student.setAddress("123 ABC Street");
                    student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
-
+                  student.setStudentId("123-00-0041");
+          student.setCity("San Jose");
         student.setState("CA");
 
        try{       Student studentFromDB = studentService.create(student);
@@ -783,7 +788,7 @@ public class CreateStudentTest {
                    student.setAddress("123 ABC St");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("123-00-0041");
 
         student.setState("*&");
 
@@ -819,7 +824,7 @@ public class CreateStudentTest {
                    student.setAddress("123 ABC St");
 
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("123-00-0041");
         student.setCity("San Jose");
         student.setState("MP");
 
@@ -855,7 +860,7 @@ public class CreateStudentTest {
                    student.setAddress("123 ABC St");
 
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("123-00-0041");
         student.setCity("San Jose");
 
         student.setState("");
@@ -893,7 +898,7 @@ public class CreateStudentTest {
                    student.setAddress("123 ABC St");
 
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("123-00-0041");
         student.setCity("San Jose");
         student.setState("23");
 
@@ -929,7 +934,7 @@ public class CreateStudentTest {
                    student.setAddress("123 ABC St");
 
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("123-00-0041");
         student.setCity("San Jose");
         student.setState("2C");
 
@@ -965,7 +970,7 @@ public class CreateStudentTest {
                     student.setFirstName("Jack");
                     student.setLastName("Jill");
                     student.setAddress("123 ABC St");
-                    student.setStudentId("123-00-004");
+                    student.setStudentId("123-00-0041");
                     student.setCity("San Jose");
                     student.setState("CA");
                     student.setZipCode("95123");
