@@ -7,6 +7,8 @@ import edu.sjsu.edo08f.domain.Instructor;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * User: Anita
@@ -18,71 +20,79 @@ public class DeleteInstructorTest {
 
     InstructorService instructorService = (InstructorService) BeanRetriever.getBeanFactory().getBean("instructorService");
 
-        boolean checkFlag= false;
+    boolean checkFlag = false;
 
 
-              @Test(groups = {"main"})
+    @Test(groups = {"main"})
 
-                    //Test for Create then delete
+    //Test for Create then delete
 
-                    public void testDeleteInstr() {
+    public void testDeleteInstr() {
 
-                    Instructor instructor = new Instructor();
-                    instructor.setEmployeeId("123-23-4445");
-                    instructor.setFirstName("Jack");
-                    instructor.setLastName("Jill");
-                    instructor.setOffice("CLK111");
-                    instructor.setAddress("1237 Snatal st");
-                    instructor.setCity("San Diego");
-                    instructor.setState("CA");
-                    instructor.setZipCode("12345");
-                    instructor.setDepartment("CMPE");
+        Instructor instructor = new Instructor();
+        instructor.setEmployeeId("123-23-4445");
+        instructor.setFirstName("Jack");
+        instructor.setLastName("Jill");
+        instructor.setOffice("CLK111");
+        instructor.setAddress("1237 Snatal st");
+        instructor.setCity("San Diego");
+        instructor.setState("CA");
+        instructor.setZipCode("12345");
+        instructor.setDepartment("CMPE");
 
-                    instructorService.create(instructor);
-
-
-                  try{
-                      instructorService.delete(instructor);
-                      String temp = null , tempType= null;
-
-                       temp = instructor.getFirstName().toString();
-                       tempType= instructor.getType().toString().toLowerCase();
-                        if (temp.toLowerCase()!= null || tempType.equals("instructor"))
-                        checkFlag = false;
-                         else
-                        checkFlag = true;
-                      }
-                    catch(Exception e)   // need to put exact exception
-                    {
-                     checkFlag = true;
-                    }
-
-                  finally{
-                  Assert.assertFalse(checkFlag,"true");
-                  }
-               }
+        instructorService.create(instructor);
 
 
-                       //Test for deleting a non existing instructor
+        try {
+            instructorService.delete(instructor);
+            String temp = null, tempType = null;
 
-              @Test(groups = {"main"})
+            temp = instructor.getFirstName().toString();
+            tempType = instructor.getType().toString().toLowerCase();
+            if (temp.toLowerCase() != null || tempType.equals("instructor"))
+                checkFlag = false;
+            else
+                checkFlag = true;
+        }
+        catch (Exception e)   // need to put exact exception
+        {
+            checkFlag = true;
+        }
+
+         finally {
+            Assert.assertEquals(checkFlag,true);
+            List<Instructor> instructors = instructorService.getAll();
+            for (Instructor instructorsToBeDeleted : instructors) {
+                instructorService.delete(instructorsToBeDeleted);
+            }
+        }
+    }
+
+    //Test for deleting a non existing instructor
+
+    @Test(groups = {"main"})
 
 
+    public void testDeleteNoIntruc() {
 
-                    public void testDeleteNoIntruc() {
+        Instructor instructor = new Instructor();
 
-                    Instructor instructor = new Instructor();
-                  
-                    try{
-                       instructorService.delete(instructor);
-                        checkFlag=false;
-                      }
-                    catch(Exception e)   // need to put exact exception
-                    {
-                     checkFlag = true;
-                    }
+        try {
+            instructorService.delete(instructor);
+            checkFlag = false;
+        }
+        catch (Exception e)   // need to put exact exception
+        {
+            checkFlag = true;
+        }
 
-                  Assert.assertFalse(checkFlag,"true");
-               }
+         finally {
+            Assert.assertEquals(checkFlag,true);
+            List<Instructor> instructors = instructorService.getAll();
+            for (Instructor instructorsToBeDeleted : instructors) {
+                instructorService.delete(instructorsToBeDeleted);
+            }
+        }
+    }
 
 }

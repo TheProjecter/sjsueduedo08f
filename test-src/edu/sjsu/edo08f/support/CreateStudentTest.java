@@ -16,6 +16,8 @@ import edu.sjsu.edo08f.domain.Student;
 import edu.sjsu.edo08f.Main;
 import edu.sjsu.edo08f.BeanRetriever;
 
+import java.util.List;
+
 
 public class CreateStudentTest {
         StudentService studentService = (StudentService) BeanRetriever.getBeanFactory().getBean("studentService");
@@ -62,8 +64,12 @@ public class CreateStudentTest {
                checkFlag=false;
            }
            finally {
-           Assert.assertFalse(checkFlag,"true");
-           }
+                   Assert.assertEquals(checkFlag, true);
+                   List<Student> students = studentService.getAll();
+                   for (Student studentToBeDeleted : students) {
+                       studentService.delete(studentToBeDeleted);
+                   }
+               }
            
         }
 
@@ -99,9 +105,15 @@ public class CreateStudentTest {
 
                 checkFlag = true;
     }
-           finally{
-           Assert.assertFalse(checkFlag,"true");
-            }
+       finally {
+                   Assert.assertEquals(checkFlag, true);
+                   List<Student> students = studentService.getAll();
+                   for (Student studentToBeDeleted : students) {
+                       studentService.delete(studentToBeDeleted);
+                   }
+               }
+
+
         }
 
       @Test
@@ -168,9 +180,14 @@ public class CreateStudentTest {
                   checkFlag = true;
 
       }
-           finally{
-           Assert.assertFalse(checkFlag,"true");
-          }
+       finally {
+                   Assert.assertEquals(checkFlag, true);
+                   List<Student> students = studentService.getAll();
+                   for (Student studentToBeDeleted : students) {
+                       studentService.delete(studentToBeDeleted);
+                   }
+               }
+
         }
 
           @Test
@@ -200,7 +217,14 @@ public class CreateStudentTest {
 
               catch(Exception e){ checkFlag = true;}
 
-           finally {Assert.assertFalse(checkFlag,"true");}
+     finally {
+                 Assert.assertEquals(checkFlag, true);
+                 List<Student> students = studentService.getAll();
+                 for (Student studentToBeDeleted : students) {
+                     studentService.delete(studentToBeDeleted);
+                 }
+             }
+
         }
 
     //Tests for Last Name
@@ -259,8 +283,14 @@ public class CreateStudentTest {
                 checkFlag = true;
             }
             catch(Exception e){ checkFlag = true;}
-          finally{
-              Assert.assertFalse(checkFlag,"true");}
+        finally {
+                    Assert.assertEquals(checkFlag, true);
+                    List<Student> students = studentService.getAll();
+                    for (Student studentToBeDeleted : students) {
+                        studentService.delete(studentToBeDeleted);
+                    }
+                }
+
         }
 
       @Test
@@ -289,8 +319,14 @@ public class CreateStudentTest {
                 checkFlag = true;
           }
           catch(Exception e){ checkFlag = true;}
-          finally{
-              Assert.assertFalse(checkFlag,"true");}
+            finally {
+                        Assert.assertEquals(checkFlag, true);
+                        List<Student> students = studentService.getAll();
+                        for (Student studentToBeDeleted : students) {
+                            studentService.delete(studentToBeDeleted);
+                        }
+                    }
+
         }
 
 
@@ -320,9 +356,14 @@ public class CreateStudentTest {
                    checkFlag = true;
           }
         catch(Exception e){ checkFlag = true;}
-          finally{
-              Assert.assertFalse(checkFlag,"true");
-          }
+         finally {
+                     Assert.assertEquals(checkFlag, true);
+                     List<Student> students = studentService.getAll();
+                     for (Student studentToBeDeleted : students) {
+                         studentService.delete(studentToBeDeleted);
+                     }
+                 }
+
         }
 
 
@@ -352,9 +393,13 @@ public class CreateStudentTest {
                    checkFlag = true;
           }
           catch(Exception e){ checkFlag = true;}
-                    finally{
-                        Assert.assertFalse(checkFlag,"true");
-                    }
+          finally {
+                      Assert.assertEquals(checkFlag, true);
+                      List<Student> students = studentService.getAll();
+                      for (Student studentToBeDeleted : students) {
+                          studentService.delete(studentToBeDeleted);
+                      }
+                  }
 
            }
 
@@ -387,9 +432,14 @@ public class CreateStudentTest {
           }
 
           catch(Exception e){ checkFlag =false;}
-                    finally{
-                        Assert.assertFalse(checkFlag,"true");
+        finally {
+                    Assert.assertEquals(checkFlag, true);
+                    List<Student> students = studentService.getAll();
+                    for (Student studentToBeDeleted : students) {
+                        studentService.delete(studentToBeDeleted);
                     }
+                }
+
 
         }
 
@@ -419,10 +469,13 @@ public class CreateStudentTest {
           }
 
           catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");
-                    }
-
-
+         finally {
+                     Assert.assertEquals(checkFlag, true);
+                     List<Student> students = studentService.getAll();
+                     for (Student studentToBeDeleted : students) {
+                         studentService.delete(studentToBeDeleted);
+                     }
+                 }
 
         }
 
@@ -452,8 +505,14 @@ public class CreateStudentTest {
            checkFlag = true;
       }
            catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");
-       }
+       finally {
+                   Assert.assertEquals(checkFlag, true);
+                   List<Student> students = studentService.getAll();
+                   for (Student studentToBeDeleted : students) {
+                       studentService.delete(studentToBeDeleted);
+                   }
+               }
+
 
 
         }
@@ -485,8 +544,13 @@ public class CreateStudentTest {
            checkFlag = true;
           }
             catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");
-          }
+      finally {
+                  Assert.assertEquals(checkFlag, true);
+                  List<Student> students = studentService.getAll();
+                  for (Student studentToBeDeleted : students) {
+                      studentService.delete(studentToBeDeleted);
+                  }
+              }
 
 
         }
@@ -518,8 +582,13 @@ public class CreateStudentTest {
            checkFlag = false;
           }
            catch(Exception e){ checkFlag = false;}
-          finally{Assert.assertFalse(checkFlag,"true");}
-
+       finally {
+                   Assert.assertEquals(checkFlag, true);
+                   List<Student> students = studentService.getAll();
+                   for (Student studentToBeDeleted : students) {
+                       studentService.delete(studentToBeDeleted);
+                   }
+               }
 
         }
 
@@ -549,7 +618,13 @@ public class CreateStudentTest {
           }
 
           catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+          finally {
+                      Assert.assertEquals(checkFlag, true);
+                      List<Student> students = studentService.getAll();
+                      for (Student studentToBeDeleted : students) {
+                          studentService.delete(studentToBeDeleted);
+                      }
+                  }
 
         }
 
@@ -579,7 +654,13 @@ public class CreateStudentTest {
            checkFlag = true;
           }
           catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+    finally {
+                Assert.assertEquals(checkFlag, true);
+                List<Student> students = studentService.getAll();
+                for (Student studentToBeDeleted : students) {
+                    studentService.delete(studentToBeDeleted);
+                }
+            }
 
         }
 
@@ -608,7 +689,13 @@ public class CreateStudentTest {
            checkFlag = true;
           }
            catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+       finally {
+                   Assert.assertEquals(checkFlag, true);
+                   List<Student> students = studentService.getAll();
+                   for (Student studentToBeDeleted : students) {
+                       studentService.delete(studentToBeDeleted);
+                   }
+               }
 
 
         }
@@ -639,7 +726,13 @@ public class CreateStudentTest {
            checkFlag = true;
           }
            catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+          finally {
+                      Assert.assertEquals(checkFlag, true);
+                      List<Student> students = studentService.getAll();
+                      for (Student studentToBeDeleted : students) {
+                          studentService.delete(studentToBeDeleted);
+                      }
+                  }
 
         }
 
@@ -671,7 +764,13 @@ public class CreateStudentTest {
            checkFlag = false;
           }
            catch(Exception e){ checkFlag = false;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+       finally {
+                   Assert.assertEquals(checkFlag, true);
+                   List<Student> students = studentService.getAll();
+                   for (Student studentToBeDeleted : students) {
+                       studentService.delete(studentToBeDeleted);
+                   }
+               }
 
 
         }
@@ -702,8 +801,13 @@ public class CreateStudentTest {
            checkFlag = true;
           }
  catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
-
+          finally {
+                      Assert.assertEquals(checkFlag, true);
+                      List<Student> students = studentService.getAll();
+                      for (Student studentToBeDeleted : students) {
+                          studentService.delete(studentToBeDeleted);
+                      }
+                  }
 
         }
 
@@ -733,8 +837,14 @@ public class CreateStudentTest {
            checkFlag = true;
           }
            catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
-
+       finally {
+                   Assert.assertEquals(checkFlag, true);
+                   List<Student> students = studentService.getAll();
+                   for (Student studentToBeDeleted : students) {
+                       studentService.delete(studentToBeDeleted);
+                   }
+               }
+         
         }
 
       @Test
@@ -764,7 +874,13 @@ public class CreateStudentTest {
            checkFlag = true;
           }
            catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+         finally {
+            Assert.assertEquals(checkFlag, true);
+            List<Student> students = studentService.getAll();
+            for (Student studentToBeDeleted : students) {
+                studentService.delete(studentToBeDeleted);
+            }
+        }
 
 
         }
@@ -795,7 +911,14 @@ public class CreateStudentTest {
            checkFlag = true;
           }
            catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+     finally {
+                 Assert.assertEquals(checkFlag, true);
+                 List<Student> students = studentService.getAll();
+                 for (Student studentToBeDeleted : students) {
+                     studentService.delete(studentToBeDeleted);
+                 }
+             }
+
         }
 
       @Test
@@ -824,7 +947,13 @@ public class CreateStudentTest {
            checkFlag = true;
           }
           catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+   finally {
+               Assert.assertEquals(checkFlag, true);
+               List<Student> students = studentService.getAll();
+               for (Student studentToBeDeleted : students) {
+                   studentService.delete(studentToBeDeleted);
+               }
+           }
 
       }
 
@@ -854,7 +983,13 @@ public class CreateStudentTest {
            checkFlag = false;
           }
            catch(Exception e){ checkFlag = false;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+          finally {
+                      Assert.assertEquals(checkFlag, true);
+                      List<Student> students = studentService.getAll();
+                      for (Student studentToBeDeleted : students) {
+                          studentService.delete(studentToBeDeleted);
+                      }
+                  }
 
 
         }
@@ -884,7 +1019,13 @@ public class CreateStudentTest {
               }
 
                catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+       finally {
+                   Assert.assertEquals(checkFlag, true);
+                   List<Student> students = studentService.getAll();
+                   for (Student studentToBeDeleted : students) {
+                       studentService.delete(studentToBeDeleted);
+                   }
+               }
 
         }
             @Test
@@ -912,7 +1053,13 @@ public class CreateStudentTest {
            }
 
             catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+             finally {
+                         Assert.assertEquals(checkFlag, true);
+                         List<Student> students = studentService.getAll();
+                         for (Student studentToBeDeleted : students) {
+                             studentService.delete(studentToBeDeleted);
+                         }
+                     }
 
 
         }
@@ -941,7 +1088,14 @@ public class CreateStudentTest {
                }
 
                 catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+       finally {
+                   Assert.assertEquals(checkFlag, true);
+                   List<Student> students = studentService.getAll();
+                   for (Student studentToBeDeleted : students) {
+                       studentService.delete(studentToBeDeleted);
+                   }
+               }
+
 
         }
            @Test
@@ -969,7 +1123,14 @@ public class CreateStudentTest {
                }
 
             catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+           finally {
+                       Assert.assertEquals(checkFlag, true);
+                       List<Student> students = studentService.getAll();
+                       for (Student studentToBeDeleted : students) {
+                           studentService.delete(studentToBeDeleted);
+                       }
+                   }
+
 
 
         }
@@ -999,7 +1160,14 @@ public class CreateStudentTest {
            checkFlag = true;
         }
          catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+          finally {
+                      Assert.assertEquals(checkFlag, true);
+                      List<Student> students = studentService.getAll();
+                      for (Student studentToBeDeleted : students) {
+                          studentService.delete(studentToBeDeleted);
+                      }
+                  }
+
 
 
         }
@@ -1028,8 +1196,13 @@ public class CreateStudentTest {
            checkFlag = true;
           }
            catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
-
+        finally {
+                    Assert.assertEquals(checkFlag, true);
+                    List<Student> students = studentService.getAll();
+                    for (Student studentToBeDeleted : students) {
+                        studentService.delete(studentToBeDeleted);
+                    }
+                }
 
         }
 
@@ -1056,7 +1229,14 @@ public class CreateStudentTest {
            checkFlag = true;
           }
             catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+        finally {
+                    Assert.assertEquals(checkFlag, true);
+                    List<Student> students = studentService.getAll();
+                    for (Student studentToBeDeleted : students) {
+                        studentService.delete(studentToBeDeleted);
+                    }
+                }
+
 
 
         }
@@ -1085,7 +1265,13 @@ public class CreateStudentTest {
            checkFlag = true;
           }
            catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+      finally {
+                  Assert.assertEquals(checkFlag, true);
+                  List<Student> students = studentService.getAll();
+                  for (Student studentToBeDeleted : students) {
+                      studentService.delete(studentToBeDeleted);
+                  }
+              }
 
 
         }
@@ -1114,7 +1300,13 @@ public class CreateStudentTest {
            checkFlag = true;
           }
             catch(Exception e){ checkFlag = true;}
-          finally{Assert.assertFalse(checkFlag,"true");}
+       finally {
+                   Assert.assertEquals(checkFlag, true);
+                   List<Student> students = studentService.getAll();
+                   for (Student studentToBeDeleted : students) {
+                       studentService.delete(studentToBeDeleted);
+                   }
+               }
 
 
         }
