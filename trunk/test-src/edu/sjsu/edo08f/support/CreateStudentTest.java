@@ -14,10 +14,11 @@ import edu.sjsu.edo08f.services.StudentService;
 import edu.sjsu.edo08f.services.StudentServiceImpl;
 import edu.sjsu.edo08f.domain.Student;
 import edu.sjsu.edo08f.Main;
+import edu.sjsu.edo08f.BeanRetriever;
 
 
 public class CreateStudentTest {
-        StudentService studentService = (StudentService) Main.getBeanFactory().getBean("studentService");
+        StudentService studentService = (StudentService) BeanRetriever.getBeanFactory().getBean("studentService");
 
         boolean checkFlag= false;
 

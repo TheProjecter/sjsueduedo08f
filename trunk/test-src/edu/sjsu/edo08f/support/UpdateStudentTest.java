@@ -2,6 +2,7 @@ package edu.sjsu.edo08f.support;
 
 import edu.sjsu.edo08f.services.StudentService;
 import edu.sjsu.edo08f.Main;
+import edu.sjsu.edo08f.BeanRetriever;
 import edu.sjsu.edo08f.domain.Student;
 import org.testng.annotations.Test;
 import org.testng.Assert;
@@ -15,7 +16,7 @@ import org.testng.Assert;
  */
 public class UpdateStudentTest {
 
-    StudentService studentService = (StudentService) Main.getBeanFactory().getBean("studentService");
+    StudentService studentService = (StudentService) BeanRetriever.getBeanFactory().getBean("studentService");
             Student student = new Student();
             boolean checkFlag= false;
 

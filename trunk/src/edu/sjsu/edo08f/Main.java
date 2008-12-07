@@ -138,7 +138,7 @@ public class Main {
 
         };
 
-        XmlReceiver xmlReceiver = (XmlReceiver) getBeanFactory().getBean("xmlReceiver");
+        XmlReceiver xmlReceiver = (XmlReceiver) BeanRetriever.getBeanFactory().getBean("xmlReceiver");
 
         for (String iteration : text) {
             String result = xmlReceiver.processRequest(iteration);
@@ -149,18 +149,18 @@ public class Main {
 
 
     public void pureServiceTest () {
-        PersonService personService  = (PersonService) getBeanFactory().getBean("personService");
+        PersonService personService  = (PersonService) BeanRetriever.getBeanFactory().getBean("personService");
         List<Person> results = personService.search("lastName", "Yar");
         Person person = personService.getById(2L);
         List<Person> persons = personService.getAll();
 
-        StudentService studentService = (StudentService) getBeanFactory().getBean("studentService");
+        StudentService studentService = (StudentService) BeanRetriever.getBeanFactory().getBean("studentService");
         List<Student> students = studentService.getAll();
 
-        InstructorService instructorService = (InstructorService) getBeanFactory().getBean("instructorService");
+        InstructorService instructorService = (InstructorService) BeanRetriever.getBeanFactory().getBean("instructorService");
         List<Instructor> instructors  = instructorService.getAll();
 
-        CourseService courseService = (CourseService) getBeanFactory().getBean("courseService");
+        CourseService courseService = (CourseService) BeanRetriever.getBeanFactory().getBean("courseService");
         List<Course> courses = courseService.getAll();
 
         Instructor instructor = new Instructor();
@@ -228,15 +228,6 @@ public class Main {
         studentService.delete(studentToCreate);
         courseService.delete(courseCreated);
         instructorService.delete(instructor);
-    }
-
-    public static BeanFactory getBeanFactory() {
-
-        DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
-        XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(factory);
-        xmlBeanDefinitionReader.loadBeanDefinitions(new FileSystemResource("config/application-config.xml"));
-
-        return factory;
     }
 
 }
