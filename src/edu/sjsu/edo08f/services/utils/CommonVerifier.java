@@ -187,7 +187,7 @@ public class CommonVerifier {
         for (Course currentCourse: coursesByThisInstructor) {
             if (isInstructorsOfficeHoursOverlapWithCourse (instructor, currentCourse)) return false; 
         }
-        return false;
+        return true;
     }
 
     protected boolean isInstructorsOfficeHoursOverlapWithLocation (Instructor instructor) {

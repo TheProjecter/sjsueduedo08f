@@ -52,7 +52,7 @@ public class InstructorDao extends SqlMapClientDaoSupport {
         parameters.put ("instructor", instructor);
         parameters.put("locationId", locationId);
 
-        getSqlMapClientTemplate().insert(NAMESPACE + "create", parameters);
+        getSqlMapClientTemplate().insert(NAMESPACE + "update", parameters);
 
         getSqlMapClientTemplate().update(PersonDao.NAMESPACE + "updateInstructor", instructor);
         return instructor;

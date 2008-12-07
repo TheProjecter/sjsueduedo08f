@@ -85,7 +85,7 @@
         and type = "STUDENT"
     </update>
 
-    <update id="updateInstructor" parameterClass="Student">
+    <update id="updateInstructor" parameterClass="Instructor">
         <include refid="updatePersonTemplate"/>
         and type = "INSTRUCTOR"
     </update>

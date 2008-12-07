@@ -185,7 +185,7 @@
 
     <xs:simpleType name="event-hours">
         <xs:restriction base="xs:string">
-            <xs:pattern value="[M?][T?][W?][R?][F?][S?][U?] [00-23][00-59]-[00-23][00-59]" />
+            <xs:pattern value="[M]?[T]?[W]?[R]?[F]?[S]?[U]? [0-2][0-9][0-5][0-9]\-[0-2][0-9][0-5][0-9]" />
             <xs:pattern value="TBA" />
         </xs:restriction>
     </xs:simpleType>

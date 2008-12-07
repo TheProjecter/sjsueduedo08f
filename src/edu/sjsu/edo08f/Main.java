@@ -30,30 +30,110 @@ public class Main {
 
     public static void main (String[] args) {
 
-        String[] text = new String[] {"<request>" +
-                "        <studentService>" +
-                "            <getAll/>" +
-                "        </studentService>" +
-                "    </request>",
+        String[] text = new String[] {
 
-                "<request>" +
-                        "        <courseService>" +
-                        "            <getAll/>" +
-                        "        </courseService>" +
-                        "    </request>",
+//                "<request>" +
+//                "        <studentService>" +
+//                "            <getAll/>" +
+//                "        </studentService>" +
+//                "    </request>",
+//
+//                "<request>" +
+//                        "        <courseService>" +
+//                        "            <getAll/>" +
+//                        "        </courseService>" +
+//                        "    </request>",
+//
+//                "<request>" +
+//                        "        <instructorService>" +
+//                        "            <getAll/>" +
+//                        "        </instructorService>" +
+//                        "    </request>",
+//
+//                "<request>" +
+//                        "        <personService>" +
+//                        "            <getAll/>" +
+//                        "        </personService>" +
+//                        "    </request>",
+//
+//                "<request>" +
+//                        "        <personService>" +
+//                        "            <getById>" +
+//                        "                   <id>1</id>" +
+//                        "            </getById>" +
+//                        "        </personService>" +
+//                        "    </request>",
 
                 "<request>" +
                         "        <instructorService>" +
-                        "            <getAll/>" +
+                        "            <create>" +
+                        "<instructor>" +
+                                    "  <first-name>Dan</first-name>" +
+                                    "  <last-name>Harkey</last-name>" +
+                                    "  <address>A Good Place</address>" +
+                                    "  <city>San Jose</city>" +
+                                    "  <state>CA</state>" +
+                                    "  <zip-code>95118</zip-code>" +
+                                    "  <type>INSTRUCTOR</type>" +
+                                    "  <department>CMPE</department>" +
+                                    "  <employee-id>111-22-3456</employee-id>" +
+                                    "  <office-hours>M 2000-2100</office-hours>" +
+                                    "  <office>CLK120</office>" +
+                            "</instructor>" +
+                        "            </create>" +
+                        "        </instructorService>" +
+                        "    </request>",
+
+
+                "<request>" +
+                        "        <instructorService>" +
+                        "            <getById>" +
+                        "                   <id>9</id>" +
+                        "            </getById>" +
+                        "        </instructorService>" +
+                        "    </request>",
+
+
+                "<request>" +
+                        "        <instructorService>" +
+                        "            <update>" +
+                       "<instructor>\n" +
+                        "  <id>9</id>\n" +
+                        "  <first-name>Dan</first-name>\n" +
+                        "  <last-name>Harkey</last-name>\n" +
+                        "  <address>THE Good Place</address>\n" +
+                        "  <city>San Jose</city>\n" +
+                        "  <state>CA</state>\n" +
+                        "  <zip-code>95118</zip-code>\n" +
+                        "  <type>INSTRUCTOR</type>\n" +
+                        "  <department>CMPE</department>\n" +
+                        "  <employee-id>111-22-3457</employee-id>\n" +
+                        "  <office-hours>M 2000-2100</office-hours>\n" +
+                        "  <office>CLK120</office>\n" +
+                        "</instructor>" +
+                        "            </update>" +
                         "        </instructorService>" +
                         "    </request>",
 
                 "<request>" +
-                        "        <personService>" +
-                        "            <getById>" +
-                        "                   <id>1</id>" +
-                        "            </getById>" +
-                        "        </personService>" +
+                        "        <instructorService>" +
+                        "            <delete>" +
+                       "<instructor>\n" +
+                        "  <id>9</id>\n" +
+                        "  <first-name>Dan</first-name>\n" +
+                        "  <last-name>Harkey</last-name>\n" +
+                        "  <address>A Good Place</address>\n" +
+                        "  <city>San Jose</city>\n" +
+                        "  <state>CA</state>\n" +
+                        "  <zip-code>95118</zip-code>\n" +
+                        "  <type>INSTRUCTOR</type>\n" +
+                        "  <department>CMPE</department>\n" +
+                        "  <employee-id>111-22-3456</employee-id>\n" +
+                        "  <office-hours>M 2000-2100</office-hours>\n" +
+                        "  <office>CLK120</office>\n" +
+                        "</instructor>" +
+                        "            </delete>" +
+                        "        </instructorService>" +
                         "    </request>",
 
         };
@@ -62,7 +142,7 @@ public class Main {
 
         for (String iteration : text) {
             String result = xmlReceiver.processRequest(iteration);
-            int a =5;
+            System.out.println (result);
         }
 
     }
