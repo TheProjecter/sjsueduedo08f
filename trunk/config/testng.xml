@@ -12,5 +12,47 @@
     </classes>
   </test>
 
+  <test name="CreateInstructorTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.CreateInstructorTest" />
+    </classes>
+  </test>
+
+  <test name="UpdateStudentTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.UpdateStudentTest" />
+    </classes>
+  </test>
+
+  <test name="UpdateInstructorTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.UpdateInstructorTest" />
+    </classes>
+  </test>
+
+  <test name="DeleteInstructorTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.DeleteInstructorTest" />
+    </classes>
+  </test>
+
+  <test name="DeleteStudentTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.DeleteStudentTest" />
+    </classes>
+  </test>
+
+  <test name="EnrolStudentTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.EnrolStudentTest" />
+    </classes>
+  </test>
+
+  <test name="UnenrollStudentTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.UnenrollStudentTest" />
+    </classes>
+  </test>
+
 
 </suite>
