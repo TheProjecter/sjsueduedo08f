@@ -87,8 +87,7 @@ public class ObjectToXmlConverter {
         return  xml;
     }
     public String getOutputForGenerateInvoiceStudentService (String generatInvoice) {
-        xml  = xs.toXML(generatInvoice);
-        return  xml;
+        return String.format("<invoice>\n\t%s\n</invoice>", generatInvoice);
     }
     public String getOutputForgetAssociatedCoursesStudentService (List<Course> course) {
         xml  = xs.toXML(course);
