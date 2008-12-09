@@ -46,13 +46,13 @@ public class ObjectToXmlConverter {
     }
 
     private String getExceptionXmlTemplate() {
-        return "<exception>" +
-                        "<name>" +
-                                "%s" +
-                        "</name>" +
-                        "<reason>" +
-                                "%s" +
-                        "</reason>" +
+        return "<exception>\n" +
+                        "\t<name>\n" +
+                                "\t\t%s\n" +
+                        "\t</name>\n" +
+                        "\t<reason>\n" +
+                                "\t\t%s\n" +
+                        "\t</reason>\n" +
                 "</exception>";
     }
 
