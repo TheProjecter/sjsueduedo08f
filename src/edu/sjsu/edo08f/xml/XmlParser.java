@@ -102,8 +102,6 @@ public class XmlParser {
                             break;
                         }
                     }
-                    // call another method
-                    String temp = "Service is " + serviceName + " and method is " + methodName;
 
                     // StudentService methods
                     if(serviceName.equalsIgnoreCase("studentService")){
@@ -117,12 +115,12 @@ public class XmlParser {
                             return objectToXmlConverter.getOutputForGetByIdStudentService(returnedGetByIdStudent);
                         }
                         if(methodName.equalsIgnoreCase("create")){
-                            Student createStudentService =createUpdateStudentService();
+                            Student createStudentService =createStudentService();
                             Student returnedCreatedStudent = studentService.create(createStudentService);
                             return objectToXmlConverter.getOutputForCreateStudentService(returnedCreatedStudent);
                         }
                         if(methodName.equalsIgnoreCase("update")){
-                            Student updateStudentService= createUpdateStudentService();
+                            Student updateStudentService= updateStudentService();
                             Student returnedUpdatedStudent = studentService.update(updateStudentService);
                             return objectToXmlConverter.getOutputForUpdateStudentService(returnedUpdatedStudent);
                         }
@@ -271,7 +269,35 @@ public class XmlParser {
         }
         throw new GeneralException ("Couldn't parse an ID for student");
     }
-    public Student createUpdateStudentService(){
+
+    public Student createStudentService(){
+        NodeList nodeLst = d.getElementsByTagName("student");
+        NodeList firstName=d.getElementsByTagName("first-name");
+        NodeList lastName=d.getElementsByTagName("last-name");
+        NodeList address=d.getElementsByTagName("address");
+        NodeList city=d.getElementsByTagName("city");
+        NodeList state=d.getElementsByTagName("state");
+        NodeList zipCode=d.getElementsByTagName("zip-code");
+        NodeList type=d.getElementsByTagName("type");
+        NodeList studentId=d.getElementsByTagName("student-id");
+
+
+        for (int s = 0; s < nodeLst.getLength(); s++){
+
+            student.setFirstName(firstName.item(s).getTextContent());
+            student.setLastName(lastName.item(s).getTextContent());
+            student.setAddress(address.item(s).getTextContent());
+            student.setCity(city.item(s).getTextContent());
+            student.setState(state.item(s).getTextContent());
+            student.setZipCode(zipCode.item(s).getTextContent());
+            student.setType(type.item(s).getTextContent());
+            student.setStudentId(studentId.item(s).getTextContent());
+
+        }
+        return student;
+    }
+
+    public Student updateStudentService(){
         NodeList nodeLst = d.getElementsByTagName("student");
         NodeList sid=d.getElementsByTagName("id");
         NodeList firstName=d.getElementsByTagName("first-name");
