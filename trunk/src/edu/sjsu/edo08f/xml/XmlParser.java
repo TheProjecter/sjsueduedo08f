@@ -328,12 +328,18 @@ public class XmlParser {
 
     public Student getIdStudentService(){
         NodeList nodeLst = d.getElementsByTagName("student");
-        NodeList sid=d.getElementsByTagName("id");
+        NodeList studentNodes = nodeLst.item(0).getChildNodes();
 
-        for (int s = 0; s < nodeLst.getLength(); s++){
-            student.setId(Long.parseLong(sid.item(s).getTextContent()));
+        for (int i =0; i < studentNodes.getLength(); i++) {
+            Node oneNode = studentNodes.item(i);
+            String name = oneNode.getNodeName();
+            if (name.equals("id")) {
+                student.setId(Long.parseLong(oneNode.getTextContent()));
+                return student;
+            }
         }
-        return student;
+
+        return null;
     }
     public Student getAssociatedCoursesStudentService(){
         NodeList nodeLst = d.getElementsByTagName("student");
@@ -498,12 +504,18 @@ public class XmlParser {
     }
     public Course getCourseIdCourseService(){
         NodeList nodeLst = d.getElementsByTagName("course");
-        NodeList sid=d.getElementsByTagName("id");
+        NodeList courseNodes = nodeLst.item(0).getChildNodes();
 
-        for (int s = 0; s < nodeLst.getLength(); s++){
-            course.setId(Long.parseLong(sid.item(s).getTextContent()));
+        for (int i =0; i < courseNodes.getLength(); i++) {
+            Node oneNode = courseNodes.item(i);
+            String name = oneNode.getNodeName();
+            if (name.equals("id")) {
+                course.setId(Long.parseLong(oneNode.getTextContent()));
+                return course;
+            }
         }
-        return course;
+
+        return null;
     }
     public Course createCourseService(){
         NodeList nodeLst = d.getElementsByTagName("course");
@@ -512,6 +524,7 @@ public class XmlParser {
         NodeList section=d.getElementsByTagName("section");
         NodeList meetingHours=d.getElementsByTagName("meeting-hours");
         NodeList location=d.getElementsByTagName("location");
+        NodeList units =d.getElementsByTagName("units");
 
         for (int s = 0; s < nodeLst.getLength(); s++){
 
@@ -524,6 +537,8 @@ public class XmlParser {
 
             course.setMeetingHours(ParserUtils.parseOfficeHours(meetingHoursList));
             course.setLocation(location.item(s).getTextContent());
+
+            course.setUnits(Integer.parseInt(units.item(s).getTextContent()));
 
         }
         return course;
@@ -569,6 +584,7 @@ public class XmlParser {
         NodeList section=d.getElementsByTagName("section");
         NodeList meetingHours=d.getElementsByTagName("meeting-hours");
         NodeList location=d.getElementsByTagName("location");
+        NodeList units =d.getElementsByTagName("units");
         //List<String> meeting;
         for (int s = 0; s < nodeLst.getLength(); s++){
 
@@ -584,6 +600,7 @@ public class XmlParser {
             //meeting.add(course.setMeetingHours(meetingHours.item(s).getTextContent()));
             course.setLocation(location.item(s).getTextContent());
 
+            course.setUnits(Integer.parseInt(units.item(s).getTextContent()));
         }
         return course;
     }

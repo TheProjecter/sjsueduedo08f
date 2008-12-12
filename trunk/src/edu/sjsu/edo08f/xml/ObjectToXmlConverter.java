@@ -18,32 +18,73 @@ import java.util.List;
  */
 public class ObjectToXmlConverter {
 
-    XStream xs;
-    String xml;
-
     public ObjectToXmlConverter() {
-        xs = new XStream();
-        xs.aliasType("student", Student.class);
-        xs.aliasType("instructor", Instructor.class);
+
+    }
+
+    public XStream getPersonServiceConverter () {
+
+        XStream xs = new XStream();
+
         xs.aliasType("person", Person.class);
-        xs.aliasType("course", Course.class);
 
         xs.aliasField("first-name", Person.class, "firstName");
         xs.aliasField("last-name", Person.class, "lastName");
         xs.aliasField("zip-code", Person.class, "zipCode");
 
+        return xs;
+    }
+
+    public XStream getStudentServiceConverter () {
+
+        XStream xs = new XStream();
+
+        xs.aliasType("student", Student.class);
+
+        xs.aliasField("first-name", Person.class, "firstName");
+        xs.aliasField("last-name", Person.class, "lastName");
+        xs.aliasField("zip-code", Person.class, "zipCode");
+
+        xs.aliasField("student-id", Student.class, "studentId");
+        return xs;
+    }
+
+    public XStream getCourseServiceConverter () {
+
+        XStream xs = new XStream();
+
+        xs.aliasType("course", Course.class);
+
         xs.aliasField("meeting-hours", Course.class, "meetingHours");
+
+        EventInformationConverter eventConverter = new EventInformationConverter();
+
+        xs.registerLocalConverter(Course.class, "meetingHours", eventConverter);
+
+        return xs;
+    }
+
+    public XStream getInstructorServiceConverter () {
+
+        XStream xs = new XStream();
+
+        xs.aliasType("instructor", Instructor.class);
+
+        xs.aliasField("first-name", Person.class, "firstName");
+        xs.aliasField("last-name", Person.class, "lastName");
+        xs.aliasField("zip-code", Person.class, "zipCode");
 
         xs.aliasField("office-hours", Instructor.class, "officeHours");
         xs.aliasField("employee-id", Instructor.class, "employeeId");
 
         EventInformationConverter eventConverter = new EventInformationConverter();
 
-        xs.registerLocalConverter(Course.class, "meetingHours", eventConverter);
         xs.registerLocalConverter(Instructor.class, "officeHours", eventConverter);
 
-        xs.aliasField("student-id", Student.class, "studentId");
+        return xs;        
     }
+
+
 
     private String getExceptionXmlTemplate() {
         return "<exception>\n" +
@@ -66,100 +107,132 @@ public class ObjectToXmlConverter {
     // Output for StudentServices
 
     public String getOutputForAllStudent(List<Student> student) {
-        xml  = xs.toXML(student);
+
+        XStream xs = getStudentServiceConverter();
+        String xml = xs.toXML(student);
         return  xml;
     }
     public String getOutputForGetByIdStudentService (Student student) {
-        xml  = xs.toXML(student);
+
+        XStream xs = getStudentServiceConverter();
+        String xml = xs.toXML(student);
         return  xml;
     }
     public String getOutputForCreateStudentService (Student student) {
-        xml  = xs.toXML(student);
+
+        XStream xs = getStudentServiceConverter();
+        String xml = xs.toXML(student);
         return  xml;
     }
     public String getOutputForUpdateStudentService (Student student) {
-        xml  = xs.toXML(student);
+
+        XStream xs = getStudentServiceConverter();
+        String xml = xs.toXML(student);
         return  xml;
     }
 
     public String getOutputForDeleteStudentService (Student student) {
-        xml  = xs.toXML(student);
+
+        XStream xs = getStudentServiceConverter();
+        String xml = xs.toXML(student);
         return  xml;
     }
     public String getOutputForGenerateInvoiceStudentService (String generatInvoice) {
         return String.format("<invoice>\n\t%s\n</invoice>", generatInvoice);
     }
     public String getOutputForgetAssociatedCoursesStudentService (List<Course> course) {
-        xml  = xs.toXML(course);
+
+        XStream xs = getCourseServiceConverter();
+        String xml = xs.toXML(course);
         return  xml;
     }
 
     // Output for PersonServices
 
     public String getOutputForAllPerson(List<Person> person) {
-        xml  = xs.toXML(person);
+        XStream xs = getPersonServiceConverter();
+        String xml = xs.toXML(person);
         return  xml;
     }
     public String getOutputForGetByIdPersonService (Person person) {
-        xml  = xs.toXML(person);
+        XStream xs = getPersonServiceConverter();
+        String xml = xs.toXML(person);
         return  xml;
     }
     public String getOutputForSearchPerson (List<Person> person) {
-        xml  = xs.toXML(person);
+        XStream xs = getPersonServiceConverter();
+        String xml = xs.toXML(person);
         return  xml;
     }
     
     // Output for InstructorServices
 
     public String getOutputForAllInstructor(List<Instructor> instructor) {
-        xml  = xs.toXML(instructor);
+
+        XStream xs = getInstructorServiceConverter();
+        String xml = xs.toXML(instructor);
         return  xml;
     }
     public String getOutputForGetByIdInstructorService (Instructor instructor) {
-        xml  = xs.toXML(instructor);
+
+        XStream xs = getInstructorServiceConverter();
+        String xml = xs.toXML(instructor);
         return  xml;
     }
     public String getOutputForCreateInstructorService (Instructor instructor) {
-        xml  = xs.toXML(instructor);
+
+        XStream xs = getInstructorServiceConverter();
+        String xml = xs.toXML(instructor);
         return  xml;
     }
     public String getOutputForUpdateInstructorService (Instructor instructor) {
-        xml  = xs.toXML(instructor);
+        XStream xs = getInstructorServiceConverter();
+        String xml = xs.toXML(instructor);
         return  xml;
     }
     public String getOutputForgetAssociatedCoursesInstructorService (List<Course> course) {
-        xml  = xs.toXML(course);
+        XStream xs = getCourseServiceConverter();
+        String xml = xs.toXML(course);
         return  xml;
     }
 
     // Output for CourseServices
 
     public String getOutputForAllCourse(List<Course> course) {
-        xml  = xs.toXML(course);
+        XStream xs = getCourseServiceConverter();
+        String xml = xs.toXML(course);
         return  xml;
     }
     public String getOutputForGetByIdCourseService(Course course) {
-        xml  = xs.toXML(course);
+        XStream xs = getCourseServiceConverter();
+        String xml = xs.toXML(course);
         return  xml;
     }
     public String getOutputForGetStudentsByCourseCourseService(List<Student> student) {
-        xml  = xs.toXML(student);
+
+        XStream xs = getStudentServiceConverter();
+        String xml = xs.toXML(student);
         return  xml;
     }
     public String getOutputForGetInstructorByCourseCourseService(Instructor instructor) {
-        xml  = xs.toXML(instructor);
+
+        XStream xs = getInstructorServiceConverter();
+        String xml = xs.toXML(instructor);
         return  xml;
     }
     public String getOutputForCreateCourseService(Course course) {
-        xml  = xs.toXML(course);
+        XStream xs = getCourseServiceConverter();
+        String xml = xs.toXML(course);
         return  xml;
     }
     public String getOutputForUpdateCourseService(Course course) {
-        xml  = xs.toXML(course);
+        XStream xs = getCourseServiceConverter();
+        String xml = xs.toXML(course);
         return  xml;
     }
     public String getOutputForSearchInstructorCourse(List<Course> course) {
-        xml  = xs.toXML(course);
+        XStream xs = getCourseServiceConverter();
+        String xml = xs.toXML(course);
         return  xml;
     }
 }
