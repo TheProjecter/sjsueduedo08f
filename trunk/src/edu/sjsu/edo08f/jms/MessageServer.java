@@ -8,10 +8,15 @@ import javax.naming.*;
 
 public class MessageServer extends AbstractJMSPort implements MessageListener {
 
+    private String topicName = "UniversitySystemTopic";
     private XmlReceiver xmlReceiver;
 
     public void setXmlReceiver(XmlReceiver xmlReceiver) {
         this.xmlReceiver = xmlReceiver;
+    }
+
+    public void setTopicName(String topicName) {
+        this.topicName = topicName;
     }
 
     public static void main(String args[]) {
@@ -62,7 +67,7 @@ public class MessageServer extends AbstractJMSPort implements MessageListener {
     public MessageServer() {
 
         prepareResources();
-        createTopicIfDoesntExist ("CounterTopic");
+        createTopicIfDoesntExist (topicName);
         createAndPrepareConsumer();
         startConnection ();
 
@@ -73,7 +78,7 @@ public class MessageServer extends AbstractJMSPort implements MessageListener {
         activateJndi ();
         createConnection ();
         createSession();
-        lookUpTheTopicByName ("CounterTopic");
+        lookUpTheTopicByName (topicName);
 
     }
 
@@ -96,7 +101,7 @@ public class MessageServer extends AbstractJMSPort implements MessageListener {
 
     private void bindTopicWithJndi (String topicName) {
         try {
-            jndi.bind(topicName, counterTopic);
+            jndi.rebind(topicName, counterTopic);
         } catch (NamingException namingException ) {
             namingException.printStackTrace();
         }

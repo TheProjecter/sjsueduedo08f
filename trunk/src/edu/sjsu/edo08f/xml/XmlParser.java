@@ -5,15 +5,11 @@ import edu.sjsu.edo08f.domain.Instructor;
 import edu.sjsu.edo08f.domain.Student;
 import edu.sjsu.edo08f.domain.Person;
 import edu.sjsu.edo08f.services.*;
-import edu.sjsu.edo08f.support.EventInformation;
 import edu.sjsu.edo08f.support.ParserUtils;
-import edu.sjsu.edo08f.exceptions.GeneralException;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.io.File;
 import java.io.InputStream;
-import java.io.ByteArrayInputStream;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -21,26 +17,18 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import com.thoughtworks.xstream.*;
 
 public class XmlParser {
 
     DocumentBuilderFactory Dfactory;
     DocumentBuilder DBuilder;
     Document d;
-    Student student = new Student();
-    Person person = new Person();
-    Instructor instructor = new Instructor();
-    Course course = new Course();
+
     //StudentServiceImpl ss = new StudentServiceImpl();
     Attr attribute;
     NodeList nodeList;
     Node node;
     NamedNodeMap attList;
-
-    long id;
-    String FirstName, LastName, Address, City, State;
-    String ZipCode, Type, StudentID, FieldValue, FieldName;
 
     private ObjectToXmlConverter objectToXmlConverter;
     private PersonService personService;
@@ -110,32 +98,31 @@ public class XmlParser {
                             return objectToXmlConverter.getOutputForAllStudent(returnAllStudent);
                         }
                         if(methodName.equalsIgnoreCase("getById")){
-                            Long id= getByIdStudentService();
-                            Student returnedGetByIdStudent = studentService.getById(id);
-                            return objectToXmlConverter.getOutputForGetByIdStudentService(returnedGetByIdStudent);
+                            Student student = parseStudentWithId();
+                            return objectToXmlConverter.getOutputForGetByIdStudentService(student);
                         }
                         if(methodName.equalsIgnoreCase("create")){
-                            Student createStudentService =createStudentService();
+                            Student createStudentService = parseStudentWithId();
                             Student returnedCreatedStudent = studentService.create(createStudentService);
                             return objectToXmlConverter.getOutputForCreateStudentService(returnedCreatedStudent);
                         }
                         if(methodName.equalsIgnoreCase("update")){
-                            Student updateStudentService= updateStudentService();
+                            Student updateStudentService= parseStudentWithId();
                             Student returnedUpdatedStudent = studentService.update(updateStudentService);
                             return objectToXmlConverter.getOutputForUpdateStudentService(returnedUpdatedStudent);
                         }
                         if(methodName.equalsIgnoreCase("delete")){
-                            Student getStudentId=   getIdStudentService();
-                            studentService.delete(getStudentId);
+                            Student student =parseStudentWithId();
+                            studentService.delete(student);
                         }
                         if(methodName.equalsIgnoreCase("generateInvoice")){
-                            Student generateInvoiceStudentService = getIdStudentService();
-                            String returnedgenerateInvoiceStudent = studentService.generateInvoice(generateInvoiceStudentService);
+                            Student student = parseStudentWithId();
+                            String returnedgenerateInvoiceStudent = studentService.generateInvoice(student);
                             return objectToXmlConverter.getOutputForGenerateInvoiceStudentService(returnedgenerateInvoiceStudent);
                         }
                         if(methodName.equalsIgnoreCase("getAssociatedCourses")){
-                            Student getAssociatedCoursesStudentService= getAssociatedCoursesStudentService();
-                            List<Course> returnedAssociatedCoursesStudent = studentService.getAssociatedCourses(getAssociatedCoursesStudentService);
+                            Student student = parseStudentWithId();
+                            List<Course> returnedAssociatedCoursesStudent = studentService.getAssociatedCourses(student);
                             return objectToXmlConverter.getOutputForgetAssociatedCoursesStudentService(returnedAssociatedCoursesStudent);
                         }
                     }
@@ -147,13 +134,12 @@ public class XmlParser {
                             return objectToXmlConverter.getOutputForAllPerson(returnAllPerson);
                         }
                         if(methodName.equalsIgnoreCase("getById")){
-                            Long id= getByIdPersonService();
-                            Person returnedGetByIdPerson = personService.getById(id);
-                            return objectToXmlConverter.getOutputForGetByIdPersonService(returnedGetByIdPerson);
+                            Person person = parsePersonWithId ();
+                            return objectToXmlConverter.getOutputForGetByIdPersonService(person);
                         }
                         if(methodName.equalsIgnoreCase("search")){
-                            String searchedFieldName= getsearchedFieldName();
-                            String searchedFieldValue= getsearchedFieldValue();
+                            String searchedFieldName= getSearchField();
+                            String searchedFieldValue= getSearchedValue();
                             List<Person> returnSearchPerson = personService.search(searchedFieldName,searchedFieldValue);
                             return objectToXmlConverter.getOutputForSearchPerson(returnSearchPerson);
                         }
@@ -167,26 +153,25 @@ public class XmlParser {
                             return objectToXmlConverter.getOutputForAllInstructor(returnAllInstructor);
                         }
                         if(methodName.equalsIgnoreCase("getById")){
-                            Long id= getByIdInstructorService();
-                            Instructor returnedGetByIdInstructor = instructorService.getById(id);
-                            return objectToXmlConverter.getOutputForGetByIdInstructorService(returnedGetByIdInstructor);
+                            Instructor instructor = parseInstructorWithId();
+                            return objectToXmlConverter.getOutputForGetByIdInstructorService(instructor);
                         }
                         if(methodName.equalsIgnoreCase("create")){
-                            Instructor createInstructorService = createInstructorService();
+                            Instructor createInstructorService = parseInstructorWithId();
                             Instructor returnedCreatedInstructor = instructorService.create(createInstructorService);
                             return objectToXmlConverter.getOutputForCreateInstructorService(returnedCreatedInstructor);
                         }
                         if(methodName.equalsIgnoreCase("update")){
-                            Instructor updateInstructorService= updateInstructorService();
+                            Instructor updateInstructorService= parseInstructorWithId();
                             Instructor returnedUpdatedInstructor = instructorService.update(updateInstructorService);
                             return objectToXmlConverter.getOutputForUpdateInstructorService(returnedUpdatedInstructor);
                         }
                         if(methodName.equalsIgnoreCase("delete")){
-                            Instructor getInstructorId=   getIdInstructorService();
-                            instructorService.delete(instructor);
+                            Instructor getInstructorId =  parseInstructorWithId();
+                            instructorService.delete(getInstructorId);
                         }
                         if(methodName.equalsIgnoreCase("getAssociatedCourses")){
-                            Instructor getAssociatedCoursesInstructorService= getAssociatedCoursesInstructorService();
+                            Instructor getAssociatedCoursesInstructorService= parseInstructorWithId();
                             List<Course> returnedAssociatedCoursesInstructor = instructorService.getAssociatedCourses(getAssociatedCoursesInstructorService);
                             return objectToXmlConverter.getOutputForgetAssociatedCoursesInstructorService(returnedAssociatedCoursesInstructor);
                         }
@@ -200,51 +185,52 @@ public class XmlParser {
                             return objectToXmlConverter.getOutputForAllCourse(returnAllCourse);
                         }
                         if(methodName.equalsIgnoreCase("getById")){
-                            Long id= getByIdCourseService();
-                            Course returnedGetByIdCourse = courseService.getById(id);
-                            return objectToXmlConverter.getOutputForGetByIdCourseService(returnedGetByIdCourse);
+                            Course course = parseCourseWithId();
+                            return objectToXmlConverter.getOutputForGetByIdCourseService(course);
                         }
                         if(methodName.equalsIgnoreCase("getStudentsByCourse")){
-                            Course StudentsByCourseCourseService= getCourseIdCourseService();
-                            List<Student> returnedGetStudentsByCourse = courseService.getStudentsByCourse(StudentsByCourseCourseService);
+                            Course course= parseCourseWithId ();
+                            List<Student> returnedGetStudentsByCourse = courseService.getStudentsByCourse(course);
                             return objectToXmlConverter.getOutputForGetStudentsByCourseCourseService(returnedGetStudentsByCourse);
                         }
                         if(methodName.equalsIgnoreCase("getInstructorByCourse")){
-                            Course InstructorByCourseCourseService= getCourseIdCourseService();
+                            Course InstructorByCourseCourseService= parseCourseWithId();
                             Instructor returnedGetInstructorByCourse = courseService.getInstructorByCourse(InstructorByCourseCourseService);
                             return objectToXmlConverter.getOutputForGetInstructorByCourseCourseService(returnedGetInstructorByCourse);
                         }
                         if(methodName.equalsIgnoreCase("create")){
-                            Course createCourseService = createCourseService();
-                            Instructor createInstructorCourseService = createInstructorCourseService();
+                            Course createCourseService = parseCourseWithId();
+                            Instructor createInstructorCourseService = parseInstructorWithId();
                             Course returnedCreatedCourse = courseService.create(createCourseService,createInstructorCourseService );
                             return objectToXmlConverter.getOutputForCreateCourseService(returnedCreatedCourse);
                         }
                         if(methodName.equalsIgnoreCase("update")){
-                            Course updateCourseService= updateCourseService();
+                            Course updateCourseService= parseCourseWithId();
                             Course returnedUpdatedCourse = courseService.update(updateCourseService);
                             return objectToXmlConverter.getOutputForUpdateCourseService(returnedUpdatedCourse);
                         }
                         if(methodName.equalsIgnoreCase("delete")){
-                            Course getCourseId=   getCourseIdCourseService();
-                            courseService.delete(getCourseId);
+                            Course course = parseCourseWithId();
+                            courseService.delete(course);
                         }
                         if(methodName.equalsIgnoreCase("enrollStudent")){
-                            Course getCourseId =  getCourseIdCourseService();
-                            Student getStudentId = getIdStudentService();
-                            courseService.enrollStudent(getCourseId, getStudentId);
+                            Course courseWithId =  parseCourseWithId();
+                            Student studentWithId = parseStudentWithId();
+                            courseService.enrollStudent(courseWithId, studentWithId);
                         }
                         if(methodName.equalsIgnoreCase("unEnrollStudent")){
-                            Course getCourseId =  getCourseIdCourseService();
-                            Student getStudentId = getIdStudentService();
-                            courseService.unEnrollStudent(getCourseId, getStudentId);
+                            Course courseWithId =  parseCourseWithId();
+                            Student studentWithId = parseStudentWithId();
+                            courseService.unEnrollStudent(courseWithId, studentWithId);
                         }
-                        if(methodName.equalsIgnoreCase("updateInstructor")){
+                        if(methodName.equalsIgnoreCase("updateInstructor")) {
+                            Course course = parseCourseWithId();
+                            Instructor instructor = parseInstructorWithId();
                             courseService.updateInstructor(course, instructor);
                         }
                         if(methodName.equalsIgnoreCase("search")){
-                            String searchedFieldName= getsearchedFieldNameInstructor();
-                            String searchedFieldValue= getsearchedFieldValueInstructor();
+                            String searchedFieldName= getSearchField();
+                            String searchedFieldValue= getSearchedValue();
                             List<Course> returnSearchInstructor = courseService.search(searchedFieldName,searchedFieldValue);
                             return objectToXmlConverter.getOutputForSearchInstructorCourse(returnSearchInstructor);
                         }
@@ -257,372 +243,171 @@ public class XmlParser {
         }
         return "";
     }
-    // Bellow methods is used to get data for SutdentServices
 
-    public Long getByIdStudentService(){
-        NodeList sid=d.getElementsByTagName("id");
+    public Student parseStudentWithId() {
 
-        for (int s = 0; s < sid.getLength(); s++){
-            student.setId(Long.parseLong(sid.item(s).getTextContent()));
-            Long studentId = student.getId();
-            return studentId;
-        }
-        throw new GeneralException ("Couldn't parse an ID for student");
-    }
+        Student student = new Student();
 
-    public Student createStudentService(){
         NodeList nodeLst = d.getElementsByTagName("student");
-        NodeList firstName=d.getElementsByTagName("first-name");
-        NodeList lastName=d.getElementsByTagName("last-name");
-        NodeList address=d.getElementsByTagName("address");
-        NodeList city=d.getElementsByTagName("city");
-        NodeList state=d.getElementsByTagName("state");
-        NodeList zipCode=d.getElementsByTagName("zip-code");
-        NodeList type=d.getElementsByTagName("type");
-        NodeList studentId=d.getElementsByTagName("student-id");
 
+        NodeList studentElements = nodeLst.item(0).getChildNodes();
 
-        for (int s = 0; s < nodeLst.getLength(); s++){
+        for (int i = 0; i < studentElements.getLength(); i++ ) {
+            Node currentNode = studentElements.item(i);
 
-            student.setFirstName(firstName.item(s).getTextContent());
-            student.setLastName(lastName.item(s).getTextContent());
-            student.setAddress(address.item(s).getTextContent());
-            student.setCity(city.item(s).getTextContent());
-            student.setState(state.item(s).getTextContent());
-            student.setZipCode(zipCode.item(s).getTextContent());
-            student.setType(type.item(s).getTextContent());
-            student.setStudentId(studentId.item(s).getTextContent());
-
-        }
-        return student;
-    }
-
-    public Student updateStudentService(){
-        NodeList nodeLst = d.getElementsByTagName("student");
-        NodeList sid=d.getElementsByTagName("id");
-        NodeList firstName=d.getElementsByTagName("first-name");
-        NodeList lastName=d.getElementsByTagName("last-name");
-        NodeList address=d.getElementsByTagName("address");
-        NodeList city=d.getElementsByTagName("city");
-        NodeList state=d.getElementsByTagName("state");
-        NodeList zipCode=d.getElementsByTagName("zip-code");
-        NodeList type=d.getElementsByTagName("type");
-        NodeList studentId=d.getElementsByTagName("student-id");
-
-
-        for (int s = 0; s < nodeLst.getLength(); s++){
-
-            student.setFirstName(firstName.item(s).getTextContent());
-            student.setId(Long.parseLong(sid.item(s).getTextContent()));
-            student.setLastName(lastName.item(s).getTextContent());
-            student.setAddress(address.item(s).getTextContent());
-            student.setCity(city.item(s).getTextContent());
-            student.setState(state.item(s).getTextContent());
-            student.setZipCode(zipCode.item(s).getTextContent());
-            student.setType(type.item(s).getTextContent());
-            student.setStudentId(studentId.item(s).getTextContent());
-
-        }
-        return student;
-    }
-
-    public Student getIdStudentService(){
-        NodeList nodeLst = d.getElementsByTagName("student");
-        NodeList studentNodes = nodeLst.item(0).getChildNodes();
-
-        for (int i =0; i < studentNodes.getLength(); i++) {
-            Node oneNode = studentNodes.item(i);
-            String name = oneNode.getNodeName();
-            if (name.equals("id")) {
-                student.setId(Long.parseLong(oneNode.getTextContent()));
-                return student;
+            if (currentNode.getNodeName().equals("id")) {
+                student.setId(Long.parseLong(currentNode.getTextContent()));
+            } else if (currentNode.getNodeName().equals("first-name")) {
+                student.setFirstName(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("last-name")) {
+                student.setLastName(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("address")) {
+                student.setAddress(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("city")) {
+                student.setCity(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("state")) {
+                student.setState(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("zip-code")) {
+                student.setZipCode(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("type")) {
+                student.setType(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("student-id")) {
+                student.setStudentId(currentNode.getTextContent());
             }
         }
 
-        return null;
-    }
-    public Student getAssociatedCoursesStudentService(){
-        NodeList nodeLst = d.getElementsByTagName("student");
-        NodeList studentId=d.getElementsByTagName("student-id");
-
-        for (int s = 0; s < nodeLst.getLength(); s++){
-            student.setStudentId(studentId.item(s).getTextContent());
-        }
         return student;
     }
 
-    // Bellow methods is used to get data for PersonServices
-    public Long getByIdPersonService(){
-        NodeList sid=d.getElementsByTagName("id");
+    public Person parsePersonWithId() {
 
-        for (int s = 0; s < sid.getLength(); s++){
-            person.setId(Long.parseLong(sid.item(s).getTextContent()));
-            Long personId = person.getId();
-            return personId;
-        }
-        throw new GeneralException ("Couldn't parse an ID for student");
-    }
-    
-    public String getsearchedFieldName(){
-        NodeList nodeLst = d.getElementsByTagName("person");
-        NodeList searchFieldName=d.getElementsByTagName("searched-field-name");
+        Person person = new Person();
 
-        for (int s = 0; s < nodeLst.getLength(); s++){
-            FieldName = searchFieldName.item(s).getTextContent();
-        }
-        return FieldName;
-    }
-    public String getsearchedFieldValue(){
-
-        NodeList nodeLst = d.getElementsByTagName("person");
-        NodeList searchFieldValue=d.getElementsByTagName("searched-value");
-
-        for (int s = 0; s < nodeLst.getLength(); s++){
-            FieldValue = searchFieldValue.item(s).getTextContent();
-
-        }
-        return FieldValue;
-    }
-
-    // Bellow methods is used to get data for InstructorServices
-    public Long getByIdInstructorService(){
-        NodeList sid=d.getElementsByTagName("id");
-
-        for (int s = 0; s < sid.getLength(); s++){
-            instructor.setId(Long.parseLong(sid.item(s).getTextContent()));
-            Long instructorId = instructor.getId();
-            return instructorId; 
-        }
-        throw new GeneralException ("Couldn't parse an ID for instructor");
-    }
-    public Instructor getIdInstructorService(){
         NodeList nodeLst = d.getElementsByTagName("instructor");
-        NodeList sid=d.getElementsByTagName("id");
 
-        for (int s = 0; s < nodeLst.getLength(); s++){
-            instructor.setId(Long.parseLong(sid.item(s).getTextContent()));
+        NodeList personElements = nodeLst.item(0).getChildNodes();
 
-        }
-        return instructor;
-    }
+        for (int i = 0; i < personElements.getLength(); i++ ) {
+            Node currentNode = personElements.item(i);
 
-    public Instructor createInstructorService(){
-        NodeList nodeLst = d.getElementsByTagName("instructor");
-        NodeList firstName=d.getElementsByTagName("first-name");
-        NodeList lastName=d.getElementsByTagName("last-name");
-        NodeList address=d.getElementsByTagName("address");
-        NodeList city=d.getElementsByTagName("city");
-        NodeList state=d.getElementsByTagName("state");
-        NodeList zipCode=d.getElementsByTagName("zip-code");
-        NodeList type=d.getElementsByTagName("type");
-        NodeList department=d.getElementsByTagName("department");
-        NodeList employeeId=d.getElementsByTagName("employee-id");
-        NodeList officeHours=d.getElementsByTagName("office-hours");
-        NodeList office=d.getElementsByTagName("office");
-
-
-        for (int s = 0; s < nodeLst.getLength(); s++){
-
-            instructor.setFirstName(firstName.item(s).getTextContent());
-            instructor.setLastName(lastName.item(s).getTextContent());
-            instructor.setAddress(address.item(s).getTextContent());
-            instructor.setCity(city.item(s).getTextContent());
-            instructor.setState(state.item(s).getTextContent());
-            instructor.setZipCode(zipCode.item(s).getTextContent());
-            instructor.setType(type.item(s).getTextContent());
-            instructor.setDepartment(department.item(s).getTextContent());
-            instructor.setEmployeeId(employeeId.item(s).getTextContent());
-
-            List<String> officeHoursList = new ArrayList<String>();
-            officeHoursList.add(officeHours.item(s).getTextContent());
-
-            instructor.setOfficeHours(ParserUtils.parseOfficeHours(officeHoursList));
-            instructor.setOffice(office.item(s).getTextContent());
-        }
-        return instructor;
-    }
-
-    public Instructor updateInstructorService(){
-        NodeList nodeLst = d.getElementsByTagName("instructor");
-        NodeList sid=d.getElementsByTagName("id");
-        NodeList firstName=d.getElementsByTagName("first-name");
-        NodeList lastName=d.getElementsByTagName("last-name");
-        NodeList address=d.getElementsByTagName("address");
-        NodeList city=d.getElementsByTagName("city");
-        NodeList state=d.getElementsByTagName("state");
-        NodeList zipCode=d.getElementsByTagName("zip-code");
-        NodeList type=d.getElementsByTagName("type");
-        NodeList department=d.getElementsByTagName("department");
-        NodeList employeeId=d.getElementsByTagName("employee-id");
-        NodeList officeHours=d.getElementsByTagName("office-hours");
-        NodeList office=d.getElementsByTagName("office");
-
-
-        for (int s = 0; s < nodeLst.getLength(); s++){
-
-            instructor.setFirstName(firstName.item(s).getTextContent());
-            instructor.setId(Long.parseLong(sid.item(s).getTextContent()));
-            instructor.setLastName(lastName.item(s).getTextContent());
-            instructor.setAddress(address.item(s).getTextContent());
-            instructor.setCity(city.item(s).getTextContent());
-            instructor.setState(state.item(s).getTextContent());
-            instructor.setZipCode(zipCode.item(s).getTextContent());
-            instructor.setType(type.item(s).getTextContent());
-            instructor.setDepartment(department.item(s).getTextContent());
-            instructor.setEmployeeId(employeeId.item(s).getTextContent());
-
-            List<String> officeHoursList = new ArrayList<String>();
-            officeHoursList.add(officeHours.item(s).getTextContent());
-
-            instructor.setOfficeHours(ParserUtils.parseOfficeHours(officeHoursList));
-            instructor.setOffice(office.item(s).getTextContent());
-        }
-        return instructor;
-    }
-
-    public Instructor getAssociatedCoursesInstructorService(){
-        NodeList nodeLst = d.getElementsByTagName("instructor");
-        NodeList studentId=d.getElementsByTagName("employee-id");
-
-        for (int s = 0; s < nodeLst.getLength(); s++){
-            instructor.setEmployeeId(studentId.item(s).getTextContent());
-        }
-        return instructor;
-    }
-
-    // Bellow methods is used to get data for CourseServices
-
-    public Long getByIdCourseService(){
-        NodeList sid=d.getElementsByTagName("id");
-
-        for (int s = 0; s < sid.getLength(); s++){
-            course.setId(Long.parseLong(sid.item(s).getTextContent()));
-            Long id = course.getId();
-            return id;
-        }
-        throw new GeneralException ("Couldn't parse an ID for course");
-    }
-    public Course getCourseIdCourseService(){
-        NodeList nodeLst = d.getElementsByTagName("course");
-        NodeList courseNodes = nodeLst.item(0).getChildNodes();
-
-        for (int i =0; i < courseNodes.getLength(); i++) {
-            Node oneNode = courseNodes.item(i);
-            String name = oneNode.getNodeName();
-            if (name.equals("id")) {
-                course.setId(Long.parseLong(oneNode.getTextContent()));
-                return course;
+            if (currentNode.getNodeName().equals("id")) {
+                person.setId(Long.parseLong(currentNode.getTextContent()));
+            } else if (currentNode.getNodeName().equals("first-name")) {
+                person.setFirstName(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("last-name")) {
+                person.setLastName(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("address")) {
+                person.setAddress(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("city")) {
+                person.setCity(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("state")) {
+                person.setState(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("zip-code")) {
+                person.setZipCode(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("type")) {
+                person.setType(currentNode.getTextContent());
             }
         }
 
-        return null;
-    }
-    public Course createCourseService(){
-        NodeList nodeLst = d.getElementsByTagName("course");
-        NodeList sid=d.getElementsByTagName("id");
-        NodeList courseName=d.getElementsByTagName("name");
-        NodeList section=d.getElementsByTagName("section");
-        NodeList meetingHours=d.getElementsByTagName("meeting-hours");
-        NodeList location=d.getElementsByTagName("location");
-        NodeList units =d.getElementsByTagName("units");
-
-        for (int s = 0; s < nodeLst.getLength(); s++){
-
-            course.setId(Long.parseLong(sid.item(s).getTextContent()));
-            course.setName(courseName.item(s).getTextContent());
-            course.setSection(Integer.parseInt(section.item(s).getTextContent()));
-
-            List<String> meetingHoursList = new ArrayList<String>();
-            meetingHoursList.add(meetingHours.item(s).getTextContent());
-
-            course.setMeetingHours(ParserUtils.parseOfficeHours(meetingHoursList));
-            course.setLocation(location.item(s).getTextContent());
-
-            course.setUnits(Integer.parseInt(units.item(s).getTextContent()));
-
-        }
-        return course;
+        return person;
     }
 
-    public List<EventInformation> getEventInfo(NodeList meetingHours)
-    {
-        List<EventInformation> meetingHour ;
-        for (int s = 0; s < meetingHours.getLength(); s++){
-            String str=   meetingHours.item(s).getTextContent();
 
+    public Instructor parseInstructorWithId() {
+
+        Instructor instructor = new Instructor();
+
+        NodeList nodeLst = d.getElementsByTagName("instructor");
+
+        NodeList instructorElements = nodeLst.item(0).getChildNodes();
+
+        for (int i = 0; i < instructorElements.getLength(); i++ ) {
+            Node currentNode = instructorElements.item(i);
+
+            if (currentNode.getNodeName().equals("id")) {
+                instructor.setId(Long.parseLong(currentNode.getTextContent()));
+            } else if (currentNode.getNodeName().equals("first-name")) {
+                instructor.setFirstName(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("last-name")) {
+                instructor.setLastName(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("address")) {
+                instructor.setAddress(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("city")) {
+                instructor.setCity(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("state")) {
+                instructor.setState(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("zip-code")) {
+                instructor.setZipCode(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("type")) {
+                instructor.setType(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("department")) {
+                instructor.setDepartment(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("employee-id")) {
+                instructor.setEmployeeId(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("office")) {
+                instructor.setOffice(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("office-hours")) {
+                List<String> officeHoursList = new ArrayList<String>();
+                officeHoursList.add(currentNode.getTextContent());
+                instructor.setOfficeHours(ParserUtils.parseOfficeHours(officeHoursList));
+            }
         }
-        return null;
-    }
 
-    public Instructor createInstructorCourseService(){
-        NodeList nodeLst = d.getElementsByTagName("course");
-        NodeList department=d.getElementsByTagName("department");
-        NodeList employeeId=d.getElementsByTagName("employee-id");
-        NodeList officeHours=d.getElementsByTagName("office-hours");
-        NodeList office=d.getElementsByTagName("office");
-
-        for (int s = 0; s < nodeLst.getLength(); s++){
-
-            instructor.setDepartment(department.item(s).getTextContent());
-            instructor.setEmployeeId(employeeId.item(s).getTextContent());
-
-            List<String> officeHoursList = new ArrayList<String>();
-            officeHoursList.add(officeHours.item(s).getTextContent());
-
-            instructor.setOfficeHours(ParserUtils.parseOfficeHours(officeHoursList));
-
-            instructor.setOffice(office.item(s).getTextContent());
-
-        }
         return instructor;
+
     }
 
-    public Course updateCourseService(){
+
+    public Course parseCourseWithId(){
+
+        Course course = new Course();
+
         NodeList nodeLst = d.getElementsByTagName("course");
-        NodeList sid=d.getElementsByTagName("id");
-        NodeList courseName=d.getElementsByTagName("name");
-        NodeList section=d.getElementsByTagName("section");
-        NodeList meetingHours=d.getElementsByTagName("meeting-hours");
-        NodeList location=d.getElementsByTagName("location");
-        NodeList units =d.getElementsByTagName("units");
-        //List<String> meeting;
-        for (int s = 0; s < nodeLst.getLength(); s++){
 
-            course.setId(Long.parseLong(sid.item(s).getTextContent()));
-            course.setName(courseName.item(s).getTextContent());
-            course.setSection(Integer.parseInt(section.item(s).getTextContent()));
+        NodeList courseElements = nodeLst.item(0).getChildNodes();
 
-            List<String> meetingHoursList = new ArrayList<String>();
-            meetingHoursList.add(meetingHours.item(s).getTextContent());
+        for (int i = 0; i < courseElements.getLength(); i++ ) {
+            Node currentNode = courseElements.item(i);
 
-            course.setMeetingHours(ParserUtils.parseOfficeHours(meetingHoursList));
-
-            //meeting.add(course.setMeetingHours(meetingHours.item(s).getTextContent()));
-            course.setLocation(location.item(s).getTextContent());
-
-            course.setUnits(Integer.parseInt(units.item(s).getTextContent()));
+            if (currentNode.getNodeName().equals("id")) {
+                course.setId(Long.parseLong(currentNode.getTextContent()));
+            } else if (currentNode.getNodeName().equals("name")) {
+                course.setName(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("section")) {
+                course.setSection(Integer.parseInt(currentNode.getTextContent()));
+            } else if (currentNode.getNodeName().equals("units")) {
+                course.setUnits(Integer.parseInt(currentNode.getTextContent()));
+            } else if (currentNode.getNodeName().equals("location")) {
+                course.setLocation(currentNode.getTextContent());
+            } else if (currentNode.getNodeName().equals("meeting-hours")) {
+                List<String> meetingHoursList = new ArrayList<String>();
+                meetingHoursList.add(currentNode.getTextContent());
+                course.setMeetingHours(ParserUtils.parseOfficeHours(meetingHoursList));
+            }
         }
+
         return course;
+
     }
-    public String getsearchedFieldNameInstructor(){
-        NodeList nodeLst = d.getElementsByTagName("course");
+
+    public String getSearchField(){
+
         NodeList searchFieldName=d.getElementsByTagName("searched-field-name");
 
-        for (int s = 0; s < nodeLst.getLength(); s++){
-            FieldName = searchFieldName.item(s).getTextContent();
+        for (int s = 0; s < searchFieldName.getLength(); s++){
+            return searchFieldName.item(s).getTextContent();
         }
-        return FieldName;
+        return null;
     }
-    public String getsearchedFieldValueInstructor(){
+    public String getSearchedValue(){
 
-        NodeList nodeLst = d.getElementsByTagName("course");
         NodeList searchFieldValue=d.getElementsByTagName("searched-value");
 
-        for (int s = 0; s < nodeLst.getLength(); s++){
-            FieldValue = searchFieldValue.item(s).getTextContent();
+        for (int s = 0; s < searchFieldValue.getLength(); s++){
+            return searchFieldValue.item(s).getTextContent();
 
         }
-        return FieldValue;
+        return null;
     }
 
 }

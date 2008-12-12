@@ -33,6 +33,10 @@ public class SearchUtils {
 
     public List<Person> searchPerson(String searchedField, String searchedValue) {
 
+        if (searchedField.equals("first-name")) searchedField = "firstname";
+        else if (searchedField.equals("last-name")) searchedField = "lastname";
+        else if (searchedField.equals("zip-code")) searchedField = "zipcode";
+
         searchedField = searchedField.toLowerCase();
 
         checkThatFieldsHaveValues (searchedField, searchedValue);

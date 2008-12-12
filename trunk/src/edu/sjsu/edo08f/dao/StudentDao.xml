@@ -6,6 +6,14 @@
 
     <typeAlias alias="Student" type="edu.sjsu.edo08f.domain.Student" />
 
+    <cacheModel id="studentCache" type="LRU">
+        <flushInterval minutes="10"/>
+        <flushOnExecute statement="Student.create"/>
+        <flushOnExecute statement="Student.update"/>
+        <flushOnExecute statement="Student.delete"/>
+        <property name="size" value="1000"/>
+    </cacheModel>
+
     <resultMap id="studentResultMap" class="Student" extends="Person.personResultMap">
         <result property="studentId" column="studentId" javaType="java.lang.String"  />
     </resultMap>
@@ -27,13 +35,13 @@
         and person.type = "STUDENT"
     </sql>
 
-    <select id="getById" parameterClass="java.lang.Long"
+    <select id="getById" parameterClass="java.lang.Long" cacheModel="studentCache"
             resultMap="studentResultMap" resultClass="Student">
         <include refid="selectStudent"/>
         where student.id = #value#
     </select>
 
-    <select id="getAll" resultMap="studentResultMap" resultClass="Student">
+    <select id="getAll" resultMap="studentResultMap" resultClass="Student" cacheModel="studentCache">
         <include refid="selectStudent"/>
     </select>
 
@@ -46,7 +54,7 @@
         where course.id = #value#
     </select>
 
-    <select id="getByTowerId" resultMap="studentResultMap" resultClass="Student" parameterClass="java.lang.String">
+    <select id="getByTowerId" resultMap="studentResultMap" resultClass="Student" parameterClass="java.lang.String" cacheModel="studentCache">
         <include refid="selectStudent"/>
         where student.student_id = #value#
     </select>

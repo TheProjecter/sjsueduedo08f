@@ -64,94 +64,142 @@ public class Main {
 //                        "        </personService>" +
 //                        "    </request>",
 
+//                "<request>" +
+//                        "        <instructorService>" +
+//                        "            <create>" +
+//                        "<instructor>" +
+//                                    "  <first-name>Dan</first-name>" +
+//                                    "  <last-name>Harkey</last-name>" +
+//                                    "  <address>A Good Place</address>" +
+//                                    "  <city>San Jose</city>" +
+//                                    "  <state>CA</state>" +
+//                                    "  <zip-code>95118</zip-code>" +
+//                                    "  <type>INSTRUCTOR</type>" +
+//                                    "  <department>CMPE</department>" +
+//                                    "  <employee-id>111-22-3456</employee-id>" +
+//                                    "  <office-hours>M 2000-2100</office-hours>" +
+//                                    "  <office>CLK120</office>" +
+//                            "</instructor>" +
+//                        "            </create>" +
+//                        "        </instructorService>" +
+//                        "    </request>",
+//
+//
+//                "<request>" +
+//                        "        <instructorService>" +
+//                        "            <getById>" +
+//                        "                   <id>9</id>" +
+//                        "            </getById>" +
+//                        "        </instructorService>" +
+//                        "    </request>",
+//
+//
+//                "<request>" +
+//                        "        <instructorService>" +
+//                        "            <update>" +
+//                       "<instructor>\n" +
+//                        "  <id>9</id>\n" +
+//                        "  <first-name>Dan</first-name>\n" +
+//                        "  <last-name>Harkey</last-name>\n" +
+//                        "  <address>THE Good Place</address>\n" +
+//                        "  <city>San Jose</city>\n" +
+//                        "  <state>CA</state>\n" +
+//                        "  <zip-code>95118</zip-code>\n" +
+//                        "  <type>INSTRUCTOR</type>\n" +
+//                        "  <department>CMPE</department>\n" +
+//                        "  <employee-id>111-22-3457</employee-id>\n" +
+//                        "  <office-hours>M 2000-2100</office-hours>\n" +
+//                        "  <office>CLK120</office>\n" +
+//                        "</instructor>" +
+//                        "            </update>" +
+//                        "        </instructorService>" +
+//                        "    </request>",
+//
+//                "<request>" +
+//                        "        <instructorService>" +
+//                        "            <delete>" +
+//                       "<instructor>\n" +
+//                        "  <id>9</id>\n" +
+//                        "  <first-name>Dan</first-name>\n" +
+//                        "  <last-name>Harkey</last-name>\n" +
+//                        "  <address>A Good Place</address>\n" +
+//                        "  <city>San Jose</city>\n" +
+//                        "  <state>CA</state>\n" +
+//                        "  <zip-code>95118</zip-code>\n" +
+//                        "  <type>INSTRUCTOR</type>\n" +
+//                        "  <department>CMPE</department>\n" +
+//                        "  <employee-id>111-22-3456</employee-id>\n" +
+//                        "  <office-hours>M 2000-2100</office-hours>\n" +
+//                        "  <office>CLK120</office>\n" +
+//                        "</instructor>" +
+//                        "            </delete>" +
+//                        "        </instructorService>" +
+//                        "    </request>",
+
                 "<request>" +
-                        "        <instructorService>" +
-                        "            <create>" +
-                        "<instructor>" +
-                                    "  <first-name>Dan</first-name>" +
-                                    "  <last-name>Harkey</last-name>" +
-                                    "  <address>A Good Place</address>" +
-                                    "  <city>San Jose</city>" +
-                                    "  <state>CA</state>" +
-                                    "  <zip-code>95118</zip-code>" +
-                                    "  <type>INSTRUCTOR</type>" +
-                                    "  <department>CMPE</department>" +
-                                    "  <employee-id>111-22-3456</employee-id>" +
-                                    "  <office-hours>M 2000-2100</office-hours>" +
-                                    "  <office>CLK120</office>" +
-                            "</instructor>" +
-                        "            </create>" +
-                        "        </instructorService>" +
-                        "    </request>",
-
-
-                "<request>" +
-                        "        <instructorService>" +
-                        "            <getById>" +
-                        "                   <id>9</id>" +
-                        "            </getById>" +
-                        "        </instructorService>" +
-                        "    </request>",
-
-
-                "<request>" +
-                        "        <instructorService>" +
-                        "            <update>" +
-                       "<instructor>\n" +
-                        "  <id>9</id>\n" +
-                        "  <first-name>Dan</first-name>\n" +
-                        "  <last-name>Harkey</last-name>\n" +
-                        "  <address>THE Good Place</address>\n" +
-                        "  <city>San Jose</city>\n" +
-                        "  <state>CA</state>\n" +
-                        "  <zip-code>95118</zip-code>\n" +
-                        "  <type>INSTRUCTOR</type>\n" +
-                        "  <department>CMPE</department>\n" +
-                        "  <employee-id>111-22-3457</employee-id>\n" +
-                        "  <office-hours>M 2000-2100</office-hours>\n" +
-                        "  <office>CLK120</office>\n" +
-                        "</instructor>" +
-                        "            </update>" +
-                        "        </instructorService>" +
-                        "    </request>",
-
-                "<request>" +
-                        "        <instructorService>" +
-                        "            <delete>" +
-                       "<instructor>\n" +
-                        "  <id>9</id>\n" +
-                        "  <first-name>Dan</first-name>\n" +
-                        "  <last-name>Harkey</last-name>\n" +
-                        "  <address>A Good Place</address>\n" +
-                        "  <city>San Jose</city>\n" +
-                        "  <state>CA</state>\n" +
-                        "  <zip-code>95118</zip-code>\n" +
-                        "  <type>INSTRUCTOR</type>\n" +
-                        "  <department>CMPE</department>\n" +
-                        "  <employee-id>111-22-3456</employee-id>\n" +
-                        "  <office-hours>M 2000-2100</office-hours>\n" +
-                        "  <office>CLK120</office>\n" +
-                        "</instructor>" +
-                        "            </delete>" +
-                        "        </instructorService>" +
+                        "        <studentService>" +
+                        "            <generateInvoice>" +
+                        "<student>\n" +
+                        "    <id>2</id>\n" +
+                        "    <first-name>San</first-name>\n" +
+                        "    <last-name>Diego</last-name>\n" +
+                        "    <address>987 Cal st</address>\n" +
+                        "    <city>San Diego</city>\n" +
+                        "    <state>CA</state>\n" +
+                        "    <zip-code>12345</zip-code>\n" +
+                        "    <type>STUDENT</type>\n" +
+                        "    <student-id>123-00-1234</student-id>\n" +
+                        "  </student>" +
+                        "</generateInvoice>" +
+                        "        </studentService>" +
                         "    </request>",
 
         };
 
-        XmlReceiver xmlReceiver = (XmlReceiver) BeanRetriever.getBeanFactory().getBean("xmlReceiver");
+//        XmlReceiver xmlReceiver = (XmlReceiver) BeanRetriever.getBeanFactory().getBean("xmlReceiver");
+//
+//        for (String iteration : text) {
+//            String result = xmlReceiver.processRequest(iteration);
+//            System.out.println (result);
+//        }
 
-        for (String iteration : text) {
-            String result = xmlReceiver.processRequest(iteration);
-            System.out.println (result);
-        }
+        new Main () .instructorTest ();
 
+    }
+
+    public void instructorTest () {
+        InstructorService instructorService = (InstructorService) BeanRetriever.getBeanFactory().getBean("instructorService");
+        List<Instructor> instructors  = instructorService.getAll();
+
+        CourseService courseService = (CourseService) BeanRetriever.getBeanFactory().getBean("courseService");
+        List<Course> courses = courseService.getAll();
+
+        Instructor instructor = new Instructor();
+        instructor.setEmployeeId("123-23-3895");
+        instructor.setFirstName("Billy");
+        instructor.setLastName("Gatesy");
+        instructor.setOffice("CLK111");
+        instructor.setAddress("987 Cal st");
+        instructor.setCity("San Diego");
+        instructor.setState("CA");
+        instructor.setZipCode("12346");
+        instructor.setDepartment("CMPE");
+
+        List<EventInformation> officeHours = new ArrayList<EventInformation>();
+        officeHours.add(new EventInformation(DayOfWeek.Monday, "1600", "1700"));
+        officeHours.add(new EventInformation(DayOfWeek.Tuesday, "1600", "1700"));
+        instructor.setOfficeHours(officeHours);
+
+        instructor = instructorService.create(instructor);
+        List < Instructor > gotOne = instructorService.getAll();
+        String a = "5";
     }
 
 
     public void pureServiceTest () {
         PersonService personService  = (PersonService) BeanRetriever.getBeanFactory().getBean("personService");
         List<Person> results = personService.search("lastName", "Yar");
-        Person person = personService.getById(2L);
+        //   Person person = personService.getById(2L);
         List<Person> persons = personService.getAll();
 
         StudentService studentService = (StudentService) BeanRetriever.getBeanFactory().getBean("studentService");
@@ -225,9 +273,9 @@ public class Main {
         }
         courseService.unEnrollStudent(courseCreated, studentToCreate);
 
-        studentService.delete(studentToCreate);
-        courseService.delete(courseCreated);
-        instructorService.delete(instructor);
+//        studentService.delete(studentToCreate);
+//        courseService.delete(courseCreated);
+        //       instructorService.delete(instructor);
     }
 
 }

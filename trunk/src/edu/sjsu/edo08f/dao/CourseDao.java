@@ -79,9 +79,9 @@ public class CourseDao extends SqlMapClientDaoSupport {
 
     public void updateInstructor (Long courseId, Long instructorId) {
         Map<String, Object> parameters = new HashMap<String, Object>();
-        parameters.put("courseId", courseId);
+        parameters.put("id", courseId);
         parameters.put("instructorId", instructorId);
-        getSqlMapClientTemplate().update("updateInstructor", parameters);
+        getSqlMapClientTemplate().update(NAMESPACE + "updateInstructor", parameters);
     }
 
     public List<Course> search (String searchedField, String searchedValue) {
