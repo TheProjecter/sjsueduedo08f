@@ -11,13 +11,14 @@ import javax.jms.TextMessage;
  */
 public class MessageClient extends AbstractJMSPort {
 
+    private static String topicName = "UniversitySystemTopic";
     private Topic replyTopic;
 
     public static void main(String args[]) {
         new MessageClient();
     }
 
-     private void sendAsynchronousMessage (String messageText) throws JMSException {
+    protected void sendAsynchronousMessage (String messageText) throws JMSException {
         MessageProducer messageProducer = session.createProducer(counterTopic);
 
         TextMessage textMessage = session.createTextMessage(messageText);
@@ -42,7 +43,6 @@ public class MessageClient extends AbstractJMSPort {
 
         prepareResources ();
 
-        makeCallSafely();
     }
 
 
@@ -50,29 +50,9 @@ public class MessageClient extends AbstractJMSPort {
         activateJndi();
         createConnection();
         createSession();
-        lookUpTheTopicByName ("CounterTopic");
+        lookUpTheTopicByName (topicName);
         startConnection();
     }
 
-    private void makeCallSafely () {
-        try {
-            makeCall ();
-        }   catch(JMSException JMSException) {
-            System.out.println("JMS Exception: "+JMSException);
-        }
-    }
-
-    private void makeCall () throws JMSException {
-
-        sendAsynchronousMessage(
-                "<request>" +
-                "        <studentService>" +
-                "            <getAll/>" +
-                "        </studentService>" +
-                "    </request>"
-        );
-        String reply = getReply();
-        System.out.println(reply);
-    }
 
 }

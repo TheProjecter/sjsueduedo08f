@@ -30,12 +30,14 @@ public class XmlReceiver {
         XmlParsingError possibleErrors = xmlVerifier.verifyMessage(textMessage);
         if (possibleErrors.isNotEmpty()) return getBadXmlMessage(possibleErrors.getErrorMessage());
 
-        String resultToReturn = "";
+        String resultToReturn;
         try {
             resultToReturn = xmlParser.parse(textMessage);
         } catch (GeneralException e) {
+            e.printStackTrace();
             return objectToXmlConverter.getExceptionXmlMessage (e);
         } catch (Exception e) {
+            e.printStackTrace();
             return getBadXmlMessage (String.format("Message name: %s,\nMessage cause: %s,\nMessage description: %s", e.getClass(), e.getCause(), e.getLocalizedMessage()));
         }
 

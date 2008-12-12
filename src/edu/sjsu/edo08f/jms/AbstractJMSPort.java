@@ -18,7 +18,7 @@ abstract class AbstractJMSPort {
     protected MessageConsumer consumer;
     protected InitialContext jndi;
 
-
+    
     protected void activateJndi () {
         Properties properties = new Properties();
         properties.put(Context.INITIAL_CONTEXT_FACTORY, "org.jnp.interfaces.NamingContextFactory");

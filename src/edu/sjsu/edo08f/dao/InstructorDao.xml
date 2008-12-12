@@ -6,6 +6,14 @@
 
     <typeAlias alias="Instructor" type="edu.sjsu.edo08f.domain.Instructor" />
 
+    <cacheModel id="instructorCache" type="LRU">
+        <flushInterval minutes="10"/>
+        <flushOnExecute statement="Instructor.create"/>
+        <flushOnExecute statement="Instructor.update"/>
+        <flushOnExecute statement="Instructor.delete"/>
+        <property name="size" value="1000"/>
+    </cacheModel>
+
     <resultMap id="instructorResultMap" class="Instructor" extends="Person.personResultMap">
         <result property="employeeId" column="employeeId" javaType="java.lang.String"  />
         <result property="department" column="department" javaType="java.lang.String"  />
@@ -41,12 +49,12 @@
         where instructor.id = #value#
     </select>
 
-    <select id="getAll" resultMap="instructorResultMap" resultClass="Instructor">
+    <select id="getAll" resultMap="instructorResultMap" resultClass="Instructor" cacheModel="instructorCache">
         <include refid="selectInstructor"/>
     </select>
 
     <select id="getInstructorByCourse" resultMap="instructorResultMap" resultClass="Instructor"
-            parameterClass="java.lang.Long">
+            parameterClass="java.lang.Long" cacheModel="instructorCache">
         <include refid="selectInstructor"/>
         left join universitySystem.COURSE course
         on course.instructor_id = instructor.id
@@ -54,12 +62,12 @@
     </select>
 
     <select id="getByEmployeeId" parameterClass="java.lang.String"
-            resultMap="instructorResultMap" resultClass="Instructor">
+            resultMap="instructorResultMap" resultClass="Instructor" cacheModel="instructorCache">
         <include refid="selectInstructor"/>
         where instructor.employee_id = #value#
     </select>
 
-    <select id="getInstructorIdByCourse" resultClass="java.lang.Long" parameterClass="java.lang.Long">
+    <select id="getInstructorIdByCourse" resultClass="java.lang.Long" parameterClass="java.lang.Long" cacheModel="instructorCache">
         select
         instructor.id as value
         from universitySystem.INSTRUCTOR instructor

@@ -13,6 +13,9 @@ public class BillCalculator {
 
 
     public static double getCalculatedValue (double numberOfUnits, boolean isCaliforniaResident) {
+
+        if (numberOfUnits == 0) return 0;
+
         if (isCaliforniaResident) {
             if (numberOfUnits <= 6) {
                 return PRICE_RESIDENT_UNDER_6 + MANDATORY_FEES;

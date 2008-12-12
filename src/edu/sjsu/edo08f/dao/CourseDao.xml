@@ -7,6 +7,17 @@
     <typeAlias alias="Course" type="edu.sjsu.edo08f.domain.Course" />
     <typeAlias alias="EventInformation" type="edu.sjsu.edo08f.support.EventInformation" />
 
+    <cacheModel id="courseCache" type="LRU">
+        <flushInterval minutes="10"/>
+        <flushOnExecute statement="Course.create"/>
+        <flushOnExecute statement="Course.update"/>
+        <flushOnExecute statement="Course.enrollStudent"/>
+        <flushOnExecute statement="Course.unenrollStudent"/>
+        <flushOnExecute statement="Course.updateInstructor"/>
+        <flushOnExecute statement="Course.delete"/>
+        <property name="size" value="1000"/>
+    </cacheModel>
+
     <resultMap id="courseResultMap" class="Course">
         <result property="id" column="id" javaType="java.lang.Long"  />
         <result property="name" column="name" javaType="java.lang.String"  />
@@ -29,24 +40,24 @@
     </sql>
 
     <select id="getById" parameterClass="java.lang.Long"
-            resultMap="courseResultMap" resultClass="Course">
+            resultMap="courseResultMap" resultClass="Course" cacheModel="courseCache">
         <include refid="selectCourse"/>
         where course.id = #value#
     </select>
 
-    <select id="getAll" resultMap="courseResultMap" resultClass="Course">
+    <select id="getAll" resultMap="courseResultMap" resultClass="Course" cacheModel="courseCache">
         <include refid="selectCourse"/>
     </select>
 
     <select id="getByNameAndSection" parameterClass="java.util.Map" resultClass="Course"
-            resultMap="courseResultMap">
+            resultMap="courseResultMap" cacheModel="courseCache">
         <include refid="selectCourse"/>
         where course.name = #name#
         and course.section = #section#
     </select>
 
     <select id="getByLocationName" parameterClass="java.lang.String"
-            resultMap="courseResultMap" resultClass="Course">
+            resultMap="courseResultMap" resultClass="Course" cacheModel="courseCache">
         <include refid="selectCourse"/>
         where location.name = #value#
     </select>
@@ -57,20 +68,20 @@
         where course.instructor_id = #value#
     </select>
 
-    <select id="search" parameterClass="java.util.Map" resultMap="courseResultMap" resultClass="Course">
+    <select id="search" parameterClass="java.util.Map" resultMap="courseResultMap" resultClass="Course" cacheModel="courseCache">
         <include refid="selectCourse"/>
         where
         $searchedField$ like #searchedValue#
     </select>
 
-    <select id="searchExact" parameterClass="java.util.Map" resultMap="courseResultMap" resultClass="Course">
+    <select id="searchExact" parameterClass="java.util.Map" resultMap="courseResultMap" resultClass="Course" cacheModel="courseCache">
         <include refid="selectCourse"/>
         where
         $searchedField$ = #searchedValue#
     </select>
 
     <select id="getByStudentId" parameterClass="java.lang.Long"
-            resultMap="courseResultMap" resultClass="Course">
+            resultMap="courseResultMap" resultClass="Course" cacheModel="courseCache">
         <include refid="selectCourse"/>
         left join student_to_course studentToCourse
         on course.id = studentToCourse.course_id
@@ -109,7 +120,7 @@
         section = #course.section#,
         units = #course.units#,
         location_id = #locationId#
-        where id = #id#
+        where id = #course.id#
     </update>
 
     <update id="updateInstructor" parameterClass="java.util.Map">
