@@ -8,7 +8,7 @@ package edu.sjsu.edo08f.gui;
 
 /**
  *
- * @author  Rags
+ * @author  Anita
  */
 public class CourseGUI extends javax.swing.JFrame {
 
