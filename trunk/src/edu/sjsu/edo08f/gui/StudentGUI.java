@@ -8,7 +8,7 @@ package edu.sjsu.edo08f.gui;
 
 /**
  *
- * @author  Anita
+ * @author  Rags
  */
 public class StudentGUI extends javax.swing.JFrame {
 
@@ -261,14 +261,23 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 // TODO add your handling code here:
+    UpdatePerson updatePerson = new UpdatePerson();
+    this.setVisible(false);
+    updatePerson.setVisible(true);
 }//GEN-LAST:event_jButton2ActionPerformed
 
 private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-// TODO add your handling code here:
+// TODO add your handling code here:w
+    RetrivePerson retrievePerson = new RetrivePerson();
+    this.setVisible(false);
+    retrievePerson.setVisible(true);
 }//GEN-LAST:event_jButton3ActionPerformed
 
 private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 // TODO add your handling code here:
+    DeletePerson deletePerson = new DeletePerson();
+    this.setVisible(false);
+    deletePerson.setVisible(true);
 }//GEN-LAST:event_jButton4ActionPerformed
 
 private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed

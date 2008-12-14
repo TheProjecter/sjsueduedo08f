@@ -8,9 +8,11 @@ package edu.sjsu.edo08f.gui;
 
 /**
  *
- * @author  Anita
+ * @author  Rags
  */
 public class FirstPage extends javax.swing.JFrame {
+
+    public static boolean personFlag = false;
 
     /** Creates new form FirstPage */
     public FirstPage() {
@@ -263,6 +265,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 // TODO add your handling code here:
     InstructorGUI instructorgui = new InstructorGUI();
     this.setVisible(false);
+    personFlag = true;
     instructorgui.setVisible(true);
 }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -270,6 +273,7 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 // TODO add your handling code here:
     StudentGUI studentgui = new StudentGUI();
     this.setVisible(false);
+    personFlag=false;
     studentgui.setVisible(true);
 }//GEN-LAST:event_jButton2ActionPerformed
 
