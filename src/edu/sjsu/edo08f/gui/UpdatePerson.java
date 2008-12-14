@@ -68,7 +68,7 @@ public class UpdatePerson extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 12));
         jLabel1.setText("CmpE 273 - Project");
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 1, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Calibri", 1, 11));
         jLabel3.setText("Enter the Type of Person");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Instructor", "Student" }));
@@ -78,7 +78,7 @@ public class UpdatePerson extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Calibri", 1, 11)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Calibri", 1, 11));
         jLabel10.setText("Enter Old Id");
 
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
@@ -127,6 +127,11 @@ public class UpdatePerson extends javax.swing.JFrame {
         jButton1.setText("Update");
 
         jButton2.setText("Clear");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Cancel");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -289,6 +294,19 @@ public class UpdatePerson extends javax.swing.JFrame {
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        jTextField1.setText("");
+    jTextField2.setText("");
+    jTextField3.setText("");
+    jTextField4.setText("");
+    jTextField5.setText("");
+    jTextField6.setText("");
+    jTextField7.setText("");
+    jComboBox1.setSelectedIndex(0);
+    jComboBox2.setSelectedIndex(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
     * @param args the command line arguments
