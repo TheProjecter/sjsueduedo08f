@@ -7,7 +7,7 @@ import javax.naming.NamingException;
 import java.util.Properties;
 
 /**
- * Created by: Alex Yarmula
+ * Created by: Oleksiy Yarmula
  * Date: Nov 5, 2008
  */
 abstract class AbstractJMSPort {
@@ -55,7 +55,6 @@ abstract class AbstractJMSPort {
             counterTopic = (Topic)jndi.lookup(topicName);
         }
         catch(NamingException namingException) {
-            System.out.println("NamingException: "+namingException+ " : Continuing anyway...");
         }
     }
 

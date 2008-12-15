@@ -1,7 +1,7 @@
 package edu.sjsu.edo08f.support;
 
 /**
- * Created by: Alex Yarmula
+ * Created by: Oleksiy Yarmula
  * Date: Nov 7, 2008
  */
 public class EventInformation {

@@ -15,7 +15,7 @@ import java.util.List;
 import java.lang.reflect.Method;
 
 /**
- * Created by: Alex Yarmula
+ * Created by: Oleksiy Yarmula
  * Date: Nov 27, 2008
  */
 public class SearchUtils {

@@ -6,17 +6,17 @@
     </classes>
   </test>
 
-  <test name="TestCourseMessages">
-    <classes>
-      <class name="edu.sjsu.edo08f.jms.CourseServiceMessageTest" />
-    </classes>
-  </test>
+  <!--<test name="TestCourseMessages">-->
+    <!--<classes>-->
+      <!--<class name="edu.sjsu.edo08f.jms.CourseServiceMessageTest" />-->
+    <!--</classes>-->
+  <!--</test>-->
 
-  <test name="TestPersonMessages">
-    <classes>
-      <class name="edu.sjsu.edo08f.jms.PersonServiceMessageTest" />
-    </classes>
-  </test>
+  <!--<test name="TestPersonMessages">-->
+    <!--<classes>-->
+      <!--<class name="edu.sjsu.edo08f.jms.PersonServiceMessageTest" />-->
+    <!--</classes>-->
+  <!--</test>-->
 
   <!--<test name="TestBillCalculator">-->
     <!--<classes>-->

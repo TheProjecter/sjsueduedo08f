@@ -6,7 +6,7 @@ import edu.sjsu.edo08f.exceptions.GeneralException;
 import edu.sjsu.edo08f.support.DayOfWeek;
 
 /**
- * Created by: Alex Yarmula
+ * Created by: Oleksiy Yarmula
  * Date: Nov 11, 2008
  */
 public class DayOfWeekTypeHandler implements TypeHandlerCallback {

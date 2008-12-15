@@ -11,7 +11,7 @@ import org.springframework.util.StringUtils;
 import java.util.ArrayList;
 
 /**
- * Created by: Alex Yarmula
+ * Created by: Oleksiy Yarmula
  * Date: Nov 16, 2008
  */
 public class InstructorVerifier extends CommonVerifier {

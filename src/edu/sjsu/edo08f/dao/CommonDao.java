@@ -6,7 +6,7 @@ import edu.sjsu.edo08f.support.EventInformation;
 import java.util.*;
 
 /**
- * Created by: Alex Yarmula
+ * Created by: Oleksiy Yarmula
  * Date: Nov 15, 2008
  */
 public class CommonDao extends SqlMapClientDaoSupport {

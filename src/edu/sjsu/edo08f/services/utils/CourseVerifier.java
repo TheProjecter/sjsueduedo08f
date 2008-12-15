@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.lang.reflect.Method;
 
 /**
- * Created by: Alex Yarmula
+ * Created by: Oleksiy Yarmula
  * Date: Nov 11, 2008
  */
 public class CourseVerifier extends CommonVerifier {
