@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * Created by: Alex Yarmula
+ * Created by: Oleksiy Yarmula
  * Date: Nov 11, 2008
  */
 public class CourseServiceImpl implements CourseService {

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
 /**
- * Created by: Alex Yarmula
+ * Created by: Oleksiy Yarmula
  * Date: Nov 11, 2008
  */
 public class CourseDao extends SqlMapClientDaoSupport {

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * Created by: Alex Yarmula
+ * Created by: Oleksiy Yarmula
  * Date: Nov 16, 2008
  */
 public class CommonVerifier {
@@ -208,7 +208,7 @@ public class CommonVerifier {
     protected boolean isCoursesScheduleOverlapWithSomebodysOfficeHours (Course course) {
         List<Course> coursesForGivenLocation =
                 courseDao.getByLocationName(course.getLocation());
-        //todo optimize getAll -> getInstructorsByLocation + getCoursesByLocation.getInstructor
+
         List<Instructor> instructors = instructorDao.getAll();
         for (Instructor currentInstructor : instructors) {
             if (isInstructorsOfficeHoursOverlapWithCourse (currentInstructor, course)) return true;

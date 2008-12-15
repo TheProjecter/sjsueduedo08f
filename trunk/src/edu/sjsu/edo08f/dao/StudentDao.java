@@ -9,7 +9,7 @@ import java.util.HashMap;
 import edu.sjsu.edo08f.domain.Student;
 
 /**
- * Created by: Alex Yarmula
+ * Created by: Oleksiy Yarmula
  * Date: Nov 11, 2008
  */
 public class StudentDao  extends SqlMapClientDaoSupport {

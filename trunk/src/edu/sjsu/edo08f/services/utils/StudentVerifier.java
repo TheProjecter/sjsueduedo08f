@@ -11,7 +11,7 @@ import edu.sjsu.edo08f.support.UnitedStatesEnum;
 import java.util.List;
 
 /**
- * Created by: Alex Yarmula
+ * Created by: Oleksiy Yarmula
  * Date: Nov 18, 2008
  */
 public class StudentVerifier  extends CommonVerifier {

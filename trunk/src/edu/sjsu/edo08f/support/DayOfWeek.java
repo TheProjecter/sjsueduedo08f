@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 /**
- * Created by: Alex Yarmula
+ * Created by: Oleksiy Yarmula
  * Date: Nov 7, 2008
  */
 public enum DayOfWeek {

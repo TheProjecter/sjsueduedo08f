@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import javax.jms.JMSException;
 
 /**
- * Author: Alex Yarmula
+ * Author: Oleksiy Yarmula
  * Date: Dec 11, 2008
  */
 public class StudentServiceMessageTest extends MessageClient {

@@ -4,7 +4,7 @@ import edu.sjsu.edo08f.objectWrappers.XmlParsingError;
 import edu.sjsu.edo08f.exceptions.GeneralException;
 
 /**
- * Created by: Alex Yarmula
+ * Created by: Oleksiy Yarmula
  * Date: Nov 8, 2008
  */
 public class XmlReceiver {
