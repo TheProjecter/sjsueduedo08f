@@ -98,7 +98,8 @@ public class XmlParser {
                             return objectToXmlConverter.getOutputForAllStudent(returnAllStudent);
                         }
                         if(methodName.equalsIgnoreCase("getById")){
-                            Student student = parseStudentWithId();
+                            long id = getById ();
+                            Student student = studentService.getById(id);
                             return objectToXmlConverter.getOutputForGetByIdStudentService(student);
                         }
                         if(methodName.equalsIgnoreCase("create")){
@@ -134,7 +135,8 @@ public class XmlParser {
                             return objectToXmlConverter.getOutputForAllPerson(returnAllPerson);
                         }
                         if(methodName.equalsIgnoreCase("getById")){
-                            Person person = parsePersonWithId ();
+                            long id = getById ();
+                            Person person = personService.getById(id);
                             return objectToXmlConverter.getOutputForGetByIdPersonService(person);
                         }
                         if(methodName.equalsIgnoreCase("search")){
@@ -153,7 +155,8 @@ public class XmlParser {
                             return objectToXmlConverter.getOutputForAllInstructor(returnAllInstructor);
                         }
                         if(methodName.equalsIgnoreCase("getById")){
-                            Instructor instructor = parseInstructorWithId();
+                            long id = getById ();
+                            Instructor instructor = instructorService.getById(id);
                             return objectToXmlConverter.getOutputForGetByIdInstructorService(instructor);
                         }
                         if(methodName.equalsIgnoreCase("create")){
@@ -185,7 +188,8 @@ public class XmlParser {
                             return objectToXmlConverter.getOutputForAllCourse(returnAllCourse);
                         }
                         if(methodName.equalsIgnoreCase("getById")){
-                            Course course = parseCourseWithId();
+                            long id = getById ();
+                            Course course = courseService.getById(id);
                             return objectToXmlConverter.getOutputForGetByIdCourseService(course);
                         }
                         if(methodName.equalsIgnoreCase("getStudentsByCourse")){
@@ -244,6 +248,12 @@ public class XmlParser {
         return "";
     }
 
+    public long getById () {
+        NodeList nodeLst = d.getElementsByTagName("id");
+        long id = Long.parseLong(nodeLst.item(0).getTextContent());
+        return id;
+    }
+
     public Student parseStudentWithId() {
 
         Student student = new Student();
@@ -283,7 +293,7 @@ public class XmlParser {
 
         Person person = new Person();
 
-        NodeList nodeLst = d.getElementsByTagName("instructor");
+        NodeList nodeLst = d.getElementsByTagName("person");
 
         NodeList personElements = nodeLst.item(0).getChildNodes();
 

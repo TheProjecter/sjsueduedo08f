@@ -1,10 +1,10 @@
 <suite name="Main Suite">
 
-  <test name="TestStudentMessages">
-    <classes>
-      <class name="edu.sjsu.edo08f.jms.StudentServiceMessageTest" />
-    </classes>
-  </test>
+  <!--<test name="TestStudentMessages">-->
+    <!--<classes>-->
+      <!--<class name="edu.sjsu.edo08f.jms.StudentServiceMessageTest" />-->
+    <!--</classes>-->
+  <!--</test>-->
 
   <!--<test name="TestCourseMessages">-->
     <!--<classes>-->
@@ -12,11 +12,11 @@
     <!--</classes>-->
   <!--</test>-->
 
-  <!--<test name="TestPersonMessages">-->
-    <!--<classes>-->
-      <!--<class name="edu.sjsu.edo08f.jms.PersonServiceMessageTest" />-->
-    <!--</classes>-->
-  <!--</test>-->
+  <test name="TestPersonMessages">
+    <classes>
+      <class name="edu.sjsu.edo08f.jms.PersonServiceMessageTest" />
+    </classes>
+  </test>
 
   <!--<test name="TestBillCalculator">-->
     <!--<classes>-->
