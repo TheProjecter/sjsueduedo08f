@@ -31,11 +31,16 @@ public class MessageClient extends AbstractJMSPort {
         textMessage.setJMSReplyTo(replyTopic);
         messageProducer.send(textMessage);
 
+        System.out.println("=============================REQUEST=========================");
+        System.out.println(messageText);
+
         messageProducer.close();
     }
 
     public String getReply () throws JMSException {
         TextMessage reply = (TextMessage)consumer.receive();
+        System.out.println("=============================RESPONSE=======================");
+        System.out.println(reply.getText());
         return reply.getText();
     }
 

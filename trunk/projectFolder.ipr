@@ -41,6 +41,438 @@
       <entry name="?*.tld" />
     </wildcardResourcePatterns>
   </component>
+  <component name="DataSourceManagerImpl">
+    <DataSource DataSourceSourceName="LOCAL">
+      <option name="DRIVER_CLASS" value="com.mysql.jdbc.Driver" />
+      <option name="DATABASE_URL" value="jdbc:mysql://127.0.0.1/universitySystem" />
+      <option name="DRIVER_PATH" />
+      <option name="DATBASE_USERNAME" value="root" />
+      <option name="ENCODED_DATABASE_PASSWORD" value="df9bdf98df99" />
+      <option name="DEFAULT_SCHEMA_NAME" />
+      <option name="TABLE_PATTERN" value="" />
+      <option name="UUID" value="23e0409b-237b-4e04-89f2-276a3da660cf" />
+      <option name="NAME" value="DataSource" />
+      <TABLE_DATA>
+        <option name="NAME" value="course" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" value="universitySystem" />
+        <option name="TYPE" value="TABLE" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="name" />
+          <option name="SQL_TYPE" value="VARCHAR" />
+          <option name="JDBC_TYPE" value="12" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="50" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="section" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="location_id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="instructor_id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="units" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="course_meeting_hours" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" value="universitySystem" />
+        <option name="TYPE" value="TABLE" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="course_id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="event_information_id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="event_information" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" value="universitySystem" />
+        <option name="TYPE" value="TABLE" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="day_of_week" />
+          <option name="SQL_TYPE" value="ENUM" />
+          <option name="JDBC_TYPE" value="1" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="2" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="start_time" />
+          <option name="SQL_TYPE" value="VARCHAR" />
+          <option name="JDBC_TYPE" value="12" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="20" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="end_time" />
+          <option name="SQL_TYPE" value="VARCHAR" />
+          <option name="JDBC_TYPE" value="12" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="20" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="instructor" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" value="universitySystem" />
+        <option name="TYPE" value="TABLE" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="employee_id" />
+          <option name="SQL_TYPE" value="VARCHAR" />
+          <option name="JDBC_TYPE" value="12" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="11" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="department" />
+          <option name="SQL_TYPE" value="VARCHAR" />
+          <option name="JDBC_TYPE" value="12" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="40" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="office" />
+          <option name="SQL_TYPE" value="VARCHAR" />
+          <option name="JDBC_TYPE" value="12" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="20" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="instructor_office_hours" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" value="universitySystem" />
+        <option name="TYPE" value="TABLE" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="instructor_id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="event_information_id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="location" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" value="universitySystem" />
+        <option name="TYPE" value="TABLE" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="name" />
+          <option name="SQL_TYPE" value="VARCHAR" />
+          <option name="JDBC_TYPE" value="12" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="20" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="true" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="person" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" value="universitySystem" />
+        <option name="TYPE" value="TABLE" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="first_name" />
+          <option name="SQL_TYPE" value="VARCHAR" />
+          <option name="JDBC_TYPE" value="12" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="50" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="last_name" />
+          <option name="SQL_TYPE" value="VARCHAR" />
+          <option name="JDBC_TYPE" value="12" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="50" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="address" />
+          <option name="SQL_TYPE" value="VARCHAR" />
+          <option name="JDBC_TYPE" value="12" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="200" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="city" />
+          <option name="SQL_TYPE" value="VARCHAR" />
+          <option name="JDBC_TYPE" value="12" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="50" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="state" />
+          <option name="SQL_TYPE" value="VARCHAR" />
+          <option name="JDBC_TYPE" value="12" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="20" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="zip_code" />
+          <option name="SQL_TYPE" value="VARCHAR" />
+          <option name="JDBC_TYPE" value="12" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="type" />
+          <option name="SQL_TYPE" value="ENUM" />
+          <option name="JDBC_TYPE" value="1" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="type_id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="student" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" value="universitySystem" />
+        <option name="TYPE" value="TABLE" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="student_id" />
+          <option name="SQL_TYPE" value="VARCHAR" />
+          <option name="JDBC_TYPE" value="12" />
+          <option name="TYPE" value="java.lang.String" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="11" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <TABLE_DATA>
+        <option name="NAME" value="student_to_course" />
+        <option name="SCHEMA" />
+        <option name="CATALOG" value="universitySystem" />
+        <option name="TYPE" value="TABLE" />
+        <FIELD_ELEMENT>
+          <option name="NAME" value="id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="true" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="student_id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+        <FIELD_ELEMENT>
+          <option name="NAME" value="course_id" />
+          <option name="SQL_TYPE" value="INT" />
+          <option name="JDBC_TYPE" value="4" />
+          <option name="TYPE" value="java.lang.Integer" />
+          <option name="PRIMARY" value="false" />
+          <option name="LENGTH" value="10" />
+          <option name="PRECISION" value="0" />
+          <option name="NULLABLE" value="false" />
+        </FIELD_ELEMENT>
+      </TABLE_DATA>
+      <libraries>
+        <library>
+          <url>jar://C:/alex.yarmula/SJSU/fall-08-classes/273-enterprise_systems/project/___TO_SEND/ProjectFiles/lib/mysql-connector-java-5.0.8-bin.jar!/</url>
+        </library>
+      </libraries>
+    </DataSource>
+  </component>
   <component name="DependenciesAnalyzeManager">
     <option name="myForwardDirection" value="false" />
   </component>
