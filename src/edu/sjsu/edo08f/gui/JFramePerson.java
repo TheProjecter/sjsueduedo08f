@@ -11,19 +11,16 @@
 
 package edu.sjsu.edo08f.gui;
 
-import edu.sjsu.edo08f.services.PersonService;
 import edu.sjsu.edo08f.domain.Person;
-
+import edu.sjsu.edo08f.support.converters.ConvertFromXML;
 import javax.jms.JMSException;
-import java.util.List;
 
 /**
  *
- * @author Tan Tan
+ * @author francist
  */
 public class JFramePerson extends javax.swing.JFrame {
 
-    Object personList;
     /** Creates new form JFramePerson */
     public JFramePerson() {
         initComponents();
@@ -144,6 +141,11 @@ public class JFramePerson extends javax.swing.JFrame {
 
         jButton_Save.setText(resourceMap.getString("jButton_Save.text")); // NOI18N
         jButton_Save.setName("jButton_Save"); // NOI18N
+        jButton_Save.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_SaveMouseClicked(evt);
+            }
+        });
 
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, resourceMap.getString("jLayeredPane1.border.title"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, resourceMap.getFont("jLayeredPane1.border.titleFont"))); // NOI18N
         jLayeredPane1.setName("jLayeredPane1"); // NOI18N
@@ -161,6 +163,7 @@ public class JFramePerson extends javax.swing.JFrame {
                 "Name", "Section", "Meeting Times", "Location"
             }
         ));
+        jTable_CourseList.setEnabled(false);
         jTable_CourseList.setName("jTable_CourseList"); // NOI18N
         jScrollPane2.setViewportView(jTable_CourseList);
         jTable_CourseList.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("jTable_CourseList.columnModel.title0")); // NOI18N
@@ -257,6 +260,7 @@ public class JFramePerson extends javax.swing.JFrame {
         jLabel10.setBounds(20, 20, 80, 20);
         jLayeredPane2.add(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jTextField_PersonID.setEditable(false);
         jTextField_PersonID.setText(resourceMap.getString("jTextField_PersonID.text")); // NOI18N
         jTextField_PersonID.setName("jTextField_PersonID"); // NOI18N
         jTextField_PersonID.setBounds(110, 20, 180, 20);
@@ -278,6 +282,7 @@ public class JFramePerson extends javax.swing.JFrame {
                 "ID", "First Name", "Last Name", "Address", "City", "State", "Zip Code"
             }
         ));
+        jTable1ResultList.setEnabled(false);
         jTable1ResultList.setName("jTable1ResultList"); // NOI18N
         jScrollPane1.setViewportView(jTable1ResultList);
         jTable1ResultList.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("jTable1ResultList.columnModel.title1")); // NOI18N
@@ -301,7 +306,7 @@ public class JFramePerson extends javax.swing.JFrame {
         jLayeredPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("jLayeredPane4.border.title"))); // NOI18N
         jLayeredPane4.setName("jLayeredPane4"); // NOI18N
 
-        jComboBox_SearchName.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "First Name", "Last Name", "Address", "City", "State", "Zip Code" }));
+        jComboBox_SearchName.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Person ID", "First Name", "Last Name", "Address", "City", "State", "Zip Code" }));
         jComboBox_SearchName.setName("jComboBox_SearchName"); // NOI18N
         jComboBox_SearchName.setBounds(90, 20, 148, 20);
         jLayeredPane4.add(jComboBox_SearchName, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -338,7 +343,7 @@ public class JFramePerson extends javax.swing.JFrame {
                 jButton_GetAllMouseClicked(evt);
             }
         });
-        jButton_GetAll.setBounds(560, 20, 65, 23);
+        jButton_GetAll.setBounds(560, 20, 70, 23);
         jLayeredPane4.add(jButton_GetAll, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jButton8.setText(resourceMap.getString("jButton8.text")); // NOI18N
@@ -398,16 +403,27 @@ public class JFramePerson extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_ClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_ClearMouseClicked
-        // TODO add your handling code here:
-       org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(MainApp.class).getContext().getResourceMap(JFramePerson.class);
-       jTextField_PersonID.setText("");
-       jTextField_FirstName.setText("");
-       jTextField_LastName.setText("");
-       jTextField_Address.setText("");
-       jTextField_City.setText("");
-       jTextField_State.setText("");
-       jTextField_ZipCode.setText("");
-       jTextField_PersonType.setText("");
+
+        jTextField_PersonID.setText("");
+        jTextField_FirstName.setText("");
+        jTextField_LastName.setText("");
+        jTextField_Address.setText("");
+        jTextField_City.setText("");
+        jTextField_State.setText("");
+        jTextField_ZipCode.setText("");
+        jTextField_PersonType.setText("");
+
+        jTable1ResultList.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "First Name", "Last Name", "Address", "City", "State", "Zip Code"
+            }
+        ));
 
        jTable_CourseList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -424,29 +440,47 @@ public class JFramePerson extends javax.swing.JFrame {
 }//GEN-LAST:event_jButton_ClearMouseClicked
 
     private void jButton_SearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_SearchMouseClicked
-        // TODO add your handling code here:
-       jTextField_PersonID.setText("a");
-       jTextField_FirstName.setText("b");
-       jTextField_LastName.setText("c");
-       jTextField_Address.setText("d");
-       jTextField_City.setText("e");
-       jTextField_State.setText("f");
-       jTextField_ZipCode.setText("g");
-       jTextField_PersonType.setText("h");
+        PersonClient personclient = new PersonClient();
+        ConvertFromXML convert = new ConvertFromXML();
+        String xml = new String();
 
-       jTable_CourseList.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {1, 2, 3, 4},
-                {5, 6, 6, 6},
-                {3, 3, 3, 3},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Name", "Section", "Meeting Times", "Location"
+        String selectedFieldName = (String)jComboBox_SearchName.getSelectedItem();
+        String fieldName = new String();
+        String fieldValue = new String();
+        if (selectedFieldName ==  "Person ID"){
+            fieldName = "id";
+        }else if (selectedFieldName ==  "First Name"){
+            fieldName = "firstName";
+        }else if (selectedFieldName ==  "Last Name"){
+            fieldName = "lastName";
+        }else if (selectedFieldName ==  "Address"){
+            fieldName = "address";
+        }else if (selectedFieldName ==  "City"){
+            fieldName = "city";
+        }else if (selectedFieldName ==  "State"){
+            fieldName = "state";
+        }else if (selectedFieldName ==  "Zip Code"){
+            fieldName = "zipCode";
+        }else if (selectedFieldName ==  "Type"){
+            fieldName = "type";
+        }
+        fieldValue = jTextField1_SearchValue.getText();
+        try {
+            if (fieldName == "id"){
+                xml = personclient.getById(fieldValue);
+            }else{
+                xml = personclient.search(fieldValue, fieldValue);
             }
-        ));
+            xml = personclient.getAll();
+            String[][] PersonTable = convert.PersonConvertFromXML(xml);
+            jTable1ResultList.setModel(new javax.swing.table.DefaultTableModel( PersonTable,
+                new String [] {"ID", "First Name", "Last Name", "Address", "City", "State", "Zip Code"} ));
+        } catch (JMSException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
 //        jTable_CourseList.setValueAt("aaa", 1, 1);
-}//GEN-LAST:event_jButton_SearchMouseClicked
+    }//GEN-LAST:event_jButton_SearchMouseClicked
 
     private void jButton_BackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_BackMouseClicked
         // TODO add your handling code here:
@@ -456,19 +490,23 @@ public class JFramePerson extends javax.swing.JFrame {
 }//GEN-LAST:event_jButton_BackMouseClicked
 
     private void jButton_GetAllMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_GetAllMouseClicked
-        // TODO add your handling code here:
-
-        PersonClient c = new PersonClient();
+        PersonClient personclient = new PersonClient();
+        ConvertFromXML convert = new ConvertFromXML();
+        String xml = new String();
         try {
-            personList = c.getAllPersons();
+            xml = personclient.getAll();
+            String[][] PersonTable = convert.PersonConvertFromXML(xml);
+            jTable1ResultList.setModel(new javax.swing.table.DefaultTableModel( PersonTable,
+                new String [] {"ID", "First Name", "Last Name", "Address", "City", "State", "Zip Code"} ));
         } catch (JMSException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
-        System.out.println(personList);
-
-
-        
+        System.out.println(xml);
     }//GEN-LAST:event_jButton_GetAllMouseClicked
+
+    private void jButton_SaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_SaveMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_SaveMouseClicked
 
     /**
     * @param args the command line arguments
