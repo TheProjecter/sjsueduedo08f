@@ -33,27 +33,27 @@ public class PersonXMLConverter implements Converter{
         writer.endNode();
 
         writer.startNode("last-name");
-        writer.setValue(person.getFirstName());
+        writer.setValue(person.getLastName());
         writer.endNode();
 
         writer.startNode("address");
-        writer.setValue(person.getFirstName());
+        writer.setValue(person.getAddress());
         writer.endNode();
 
         writer.startNode("city");
-        writer.setValue(person.getFirstName());
+        writer.setValue(person.getCity());
         writer.endNode();
 
         writer.startNode("state");
-        writer.setValue(person.getFirstName());
+        writer.setValue(person.getState());
         writer.endNode();
 
         writer.startNode("zip-code");
-        writer.setValue(person.getFirstName());
+        writer.setValue(person.getZipCode());
         writer.endNode();
 
         writer.startNode("type");
-        writer.setValue(person.getFirstName());
+        writer.setValue(person.getType());
         writer.endNode();
         
     }
