@@ -18,6 +18,9 @@ import javax.jms.TextMessage;
  */
 public class PersonClient extends MessageClient {
     public String getAll() throws JMSException {
+
+        System.out.println("PersonClient getAll()");
+
         sendAsynchronousMessage(
             "<request>" +
                 "<personService>"  +
@@ -31,6 +34,10 @@ public class PersonClient extends MessageClient {
 
     public String search(String searchedFieldName, String searchedValue) throws JMSException {
 
+        System.out.println("PersonClient search");
+        System.out.println("searchedFieldName: " + searchedFieldName);
+        System.out.println("searchedValue:     " + searchedValue);
+
         sendAsynchronousMessage(
             "<request>" +
                 "<personService>" +
@@ -42,10 +49,15 @@ public class PersonClient extends MessageClient {
             "</request>"
         );
         String reply = getReply();
+        System.out.println(reply);
+        System.out.println("===============================");
         return reply;
     }
 
-        public String getById(String id) throws JMSException {
+    public String getById(String id) throws JMSException {
+
+        System.out.println("PersonClient search");
+        System.out.println("Id: " + id);
 
         sendAsynchronousMessage(
             "<request>" +
@@ -54,6 +66,61 @@ public class PersonClient extends MessageClient {
                         "<id>"     + id  +  "</id>" +
                     "</getbyid>"   +
                 "</personService>" +
+            "</request>"
+        );
+        String reply = getReply();
+        return reply;
+    }
+
+    public String updateStudent(String id, String firstName, String lastName, String address
+                   , String city, String state, String zipCode, String type, String studentId) throws JMSException {
+        
+        sendAsynchronousMessage(
+            "<request>" +
+                "<studentService>"  +
+                    "<update>"    +
+                        "<student>" +
+                            "<id>"+id+"</id>" +
+                            "<first-name>"+firstName+"</first-name>" +
+                            "<last-name>"+lastName+"</last-name>" +
+                            "<address>"+address+"</address>" +
+                            "<city>"+city+"</city>" +
+                            "<state>"+state+"</state>" +
+                            "<zip-code>"+zipCode+"</zip-code>" +
+                            "<type>"+type+"</type>" +
+                            "<student-id>"+studentId+"</student-id>" +
+                        "</student>" +
+                    "</update>"   +
+                "</studentService>" +
+            "</request>"
+        );
+        String reply = getReply();
+        return reply;
+    }
+
+    public String update(String id, String firstName, String lastName, String address
+                   , String city, String state, String zipCode, String type
+                   , String department, String employeeId, String officeHours) throws JMSException {
+
+        sendAsynchronousMessage(
+            "<request>" +
+                "<instructorServicee>"  +
+                    "<update>"    +
+                        "<instructor>" +
+                            "<id>"+id+"</id>" +
+                            "<first-name>"+firstName+"</first-name>" +
+                            "<last-name>"+lastName+"</last-name>" +
+                            "<address>"+address+"</address>" +
+                            "<city>"+city+"</city>" +
+                            "<state>"+state+"</state>" +
+                            "<zip-code>"+zipCode+"</zip-code>" +
+                            "<type>"+type+"</type>" +
+                            "<department>"+department+"</department>" +
+                            "<employee-id>"+employeeId+"</employee-id>" +
+                            "<office-hours>"+officeHours+"</office-hours>" +
+                        "</instructor>" +
+                    "</update>"   +
+                "</instructorService>" +
             "</request>"
         );
         String reply = getReply();
