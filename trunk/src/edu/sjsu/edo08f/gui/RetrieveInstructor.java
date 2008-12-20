@@ -387,9 +387,9 @@ public static String lastname;
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        FirstPage firstPage = new FirstPage();
-        this.setVisible(false);
-        firstPage.setVisible(true);
+      GUIMain firstPage = new GUIMain();
+    this.setVisible(false);
+    firstPage.setVisible(true);
 }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed

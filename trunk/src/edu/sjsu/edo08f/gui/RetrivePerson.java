@@ -238,7 +238,7 @@ public class RetrivePerson extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        FirstPage firstPage = new FirstPage();
+       GUIMain firstPage = new GUIMain();
     this.setVisible(false);
     firstPage.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed

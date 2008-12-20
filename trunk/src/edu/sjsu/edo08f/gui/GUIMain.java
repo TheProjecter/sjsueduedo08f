@@ -17,6 +17,7 @@ package edu.sjsu.edo08f.gui;
  */
 public class GUIMain extends javax.swing.JFrame {
 
+     public static boolean personFlag = false;
     /** Creates new form GUIMain */
     public GUIMain() {
         initComponents();
@@ -122,10 +123,18 @@ public class GUIMain extends javax.swing.JFrame {
 
     private void jButton_InstructorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_InstructorMouseClicked
         // Instructor management:
+         InstructorGUI instructorgui = new InstructorGUI();
+    this.setVisible(false);
+    personFlag = true;
+    instructorgui.setVisible(true);
     }//GEN-LAST:event_jButton_InstructorMouseClicked
 
     private void jButton_StudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_StudentMouseClicked
         // Student management:
+         StudentGUI studentgui = new StudentGUI();
+    this.setVisible(false);
+    personFlag=false;
+    studentgui.setVisible(true);
     }//GEN-LAST:event_jButton_StudentMouseClicked
 
     /**

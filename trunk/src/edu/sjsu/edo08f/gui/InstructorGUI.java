@@ -275,7 +275,7 @@ private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 // TODO add your handling code here:
-    FirstPage firstPage = new FirstPage();
+    GUIMain firstPage = new GUIMain();
     this.setVisible(false);
     firstPage.setVisible(true);
 }//GEN-LAST:event_jButton5ActionPerformed

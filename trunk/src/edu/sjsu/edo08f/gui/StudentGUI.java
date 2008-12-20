@@ -242,7 +242,7 @@ public class StudentGUI extends javax.swing.JFrame {
 
 private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
 // TODO add your handling code here:
-    FirstPage firstPage = new FirstPage();
+     GUIMain firstPage = new GUIMain();
     this.setVisible(false);
     firstPage.setVisible(true);
 }//GEN-LAST:event_jButton6ActionPerformed
