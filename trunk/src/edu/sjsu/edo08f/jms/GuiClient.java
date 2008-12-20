@@ -6,18 +6,15 @@ import javax.jms.MessageProducer;
 import javax.jms.TextMessage;
 
 /**
- * Created by: Alex Yarmula
+ * Created by: Oleksiy Yarmula
  * Date: Dec 6, 2008
  */
-public class MessageClient extends AbstractJMSPort {
+public class GuiClient extends AbstractJMSPort {
 
+    private static String topicName = "UniversitySystemTopic";
     private Topic replyTopic;
 
-    public static void main(String args[]) {
-        new MessageClient();
-    }
-
-     public void sendAsynchronousMessage (String messageText) throws JMSException {
+    protected void sendAsynchronousMessage (String messageText) throws JMSException {
         MessageProducer messageProducer = session.createProducer(counterTopic);
 
         TextMessage textMessage = session.createTextMessage(messageText);
@@ -30,19 +27,23 @@ public class MessageClient extends AbstractJMSPort {
         textMessage.setJMSReplyTo(replyTopic);
         messageProducer.send(textMessage);
 
+        System.out.println("=============================REQUEST=========================");
+        System.out.println(messageText);
+
         messageProducer.close();
     }
 
     public String getReply () throws JMSException {
         TextMessage reply = (TextMessage)consumer.receive();
+        System.out.println("=============================RESPONSE=======================");
+        System.out.println(reply.getText());
         return reply.getText();
     }
 
-    public MessageClient() {
+    public GuiClient() {
 
         prepareResources ();
 
-        makeCallSafely();
     }
 
 
@@ -50,32 +51,9 @@ public class MessageClient extends AbstractJMSPort {
         activateJndi();
         createConnection();
         createSession();
-        lookUpTheTopicByName ("UniversitySystemTopic");
+        lookUpTheTopicByName (topicName);
         startConnection();
     }
 
-    private void makeCallSafely () {
-        try {
-            makeCall ();
-        }   catch(JMSException JMSException) {
-            System.out.println("JMS Exception: "+JMSException);
-        }
-    }
-
-    private void makeCall () throws JMSException {
-        String reply;
-        sendAsynchronousMessage(
-                "<request>" +
-                "        <studentService>" +
-                "            <getAll/>" +
-                "        </studentService>" +
-                "    </request>"
-        );
-        reply = getReply();
-        System.out.println(reply);
-
-
-
-    }
 
 }

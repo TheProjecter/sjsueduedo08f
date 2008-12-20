@@ -16,9 +16,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\support\PersonTest.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectFolder.iml" afterPath="$PROJECT_DIR$/projectFolder.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/sjsu/edo08f/jms/GuiClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/sjsu/edo08f/gui/PersonClient.java" afterPath="$PROJECT_DIR$/src/edu/sjsu/edo08f/gui/PersonClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projectFolder.iws" afterPath="$PROJECT_DIR$/projectFolder.iws" />
+      <change type="DELETED" beforePath="C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\jms\MessageClient.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/sjsu/edo08f/gui/CourseClient.java" afterPath="$PROJECT_DIR$/src/edu/sjsu/edo08f/gui/CourseClient.java" />
     </list>
     <list name="Revert: Tan checked in the config file" comment="Revert: Tan checked in the config file" />
     <ignored path="projectFolder.iws" />
@@ -164,6 +166,19 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/test-src/edu/sjsu/edo08f/jms/PersonServiceMessageTest.java" line="42" class="edu.sjsu.edo08f.jms.PersonServiceMessageTest" package="edu.sjsu.edo08f.jms">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
     </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
@@ -208,7 +223,7 @@
       <file leaf-file-name="MessageServer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/jms/MessageServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="356" selection-start="1486" selection-end="1486" vertical-scroll-proportion="0.0">
+            <state line="78" column="183" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -217,53 +232,84 @@
       <file leaf-file-name="testng.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/testng.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="107" selection-start="456" selection-end="456" vertical-scroll-proportion="0.0">
+            <state line="73" column="50" selection-start="1720" selection-end="1720" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="inputSchema.xsd" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/inputSchema.xsd">
+      <file leaf-file-name="Course.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/domain/Course.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="133" column="8" selection-start="5458" selection-end="5458" vertical-scroll-proportion="0.0">
+            <state line="0" column="10" selection-start="8" selection-end="30" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/services/utils/SearchUtils.java">
+      <file leaf-file-name="CourseServiceMessageTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test-src/edu/sjsu/edo08f/jms/CourseServiceMessageTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="0" selection-start="2268" selection-end="2268" vertical-scroll-proportion="0.0">
+            <state line="49" column="2" selection-start="1962" selection-end="1962" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PersonService.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/services/PersonService.java">
+      <file leaf-file-name="GuiClient.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/jms/GuiClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="47" selection-start="358" selection-end="358" vertical-scroll-proportion="0.32911393">
+            <state line="11" column="22" selection-start="223" selection-end="232" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UpdateInstructorTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test-src/edu/sjsu/edo08f/support/UpdateInstructorTest.java">
+      <file leaf-file-name="CourseService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/services/CourseService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="264" column="0" selection-start="9587" selection-end="9587" vertical-scroll-proportion="0.0">
+            <state line="24" column="47" selection-start="627" selection-end="627" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UpdateStudentTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test-src/edu/sjsu/edo08f/support/UpdateStudentTest.java">
+      <file leaf-file-name="CreateInstructor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/gui/CreateInstructor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="192" column="151" selection-start="7221" selection-end="7221" vertical-scroll-proportion="0.0">
+            <state line="266" column="44" selection-start="13482" selection-end="13482" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="XmlReceiver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/xml/XmlReceiver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="32" selection-start="720" selection-end="734" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PersonClient.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/gui/PersonClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="57" selection-start="598" selection-end="598" vertical-scroll-proportion="0.27639753">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CourseClient.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/gui/CourseClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="55" selection-start="1221" selection-end="1221" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -285,68 +331,7 @@
     <option name="LAST_EDITED_TAB_NAME" />
   </component>
   <component name="PackagesPane">
-    <subPane>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="projectFolder" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="projectFolder" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="projectFolder" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="projectFolder" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="edu.sjsu.edo08f" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="projectFolder" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="projectFolder" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="edu.sjsu.edo08f" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="services" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="projectFolder" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="projectFolder" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="edu.sjsu.edo08f" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="dao" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-        </PATH_ELEMENT>
-      </PATH>
-    </subPane>
+    <subPane />
   </component>
   <component name="ProjectLevelVcsManager">
     <OptionsSetting value="true" id="Add" />
@@ -514,7 +499,79 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
+          <option name="myItemId" value="xml" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="projectFolder" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="projectFolder" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="projectFolder" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="edu" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="sjsu" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="edo08f" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
           <option name="myItemId" value="support" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="projectFolder" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="projectFolder" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="projectFolder" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="edu" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="sjsu" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="edo08f" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="support" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="converters" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -654,7 +711,7 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="dao" />
+          <option name="myItemId" value="gui" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -732,30 +789,30 @@
     </navigator>
   </component>
   <component name="PropertiesComponent">
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="149" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="128" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="250" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="25" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="144" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="213" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="33" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="241" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
+    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
-    <property name="RunManagerConfig.showSettingsBeforeRunnig" value="false" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
+    <property name="RunManagerConfig.showSettingsBeforeRunnig" value="false" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2" value="122" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth1" value="128" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2" value="202" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth1" value="212" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder4" value="4" />
     <property name="last_opened_file_path" value="C:\Work\AK\main\admin-app" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth0" value="122" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4" value="454" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth0" value="202" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4" value="785" />
     <property name="GoToClass.includeJavaFiles" value="false" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3" value="123" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3" value="204" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4" value="503" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4" value="868" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -763,14 +820,14 @@
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
     <property name="options.searchVisible" value="true" />
   </component>
   <component name="RestoreUpdateTree">
-    <UpdateInfo date="12/20/08 10:29 AM" ActionInfo="_Update">
+    <UpdateInfo date="12/20/08 2:26 PM" ActionInfo="_Update">
       <UpdatedFiles>
         <FILE-GROUP>
           <option name="myUpdateName" value="Updated from server" />
@@ -784,23 +841,8 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="UPDATED" />
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\CreateInstructor.java</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\StudentsAll.java</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\PersonClient.java</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\JFrameCourse.form</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\JFramePerson.form</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\CreateInstructor.form</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\FirstPage.java</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\CreatePerson.java</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\RetrivePerson.java</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\UpdatePerson.java</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\InstructorGUI.java</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\JFrameCourse.java</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\RetrivePerson.form</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\JFrameCourse.properties</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\JFramePerson.properties</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\UpdatePerson.form</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\JFramePerson.java</PATH>
+            <PATH vcs="svn" revision="112">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\RetrieveInstructor.java</PATH>
+            <PATH vcs="svn" revision="112">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\RetrieveInstructor.form</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Created" />
@@ -808,41 +850,8 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="CREATED" />
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\CourseClient.java</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\GUIMain.java</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\CourseDataForGUI.java</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\GUIMain.form</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\GUIMain.properties</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\MainApp.properties</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\JFrameCourse.properties</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\MainAboutBox.properties</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\JFramePerson.properties</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\MainView.properties</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\splash.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\about.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons\busy-icon4.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons\busy-icon5.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons\busy-icon6.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons\busy-icon7.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons\busy-icon8.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons\busy-icon9.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons\idle-icon.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons\busy-icon10.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons\busy-icon11.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons\busy-icon12.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons\busy-icon13.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons\busy-icon14.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons\busy-icon0.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons\busy-icon1.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons\busy-icon2.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\resources\resources\busyicons\busy-icon3.png</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\support\PersonTest.java</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\support\converters\PersonXMLConverter.java</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\support\converters\StudentXMLConverter.java</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\support\converters\ConvertFromXML.java</PATH>
-            <PATH vcs="svn" revision="103">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\support\converters\CourseXMLConverter.java</PATH>
+            <PATH vcs="svn" revision="112">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\NewDelete.java</PATH>
+            <PATH vcs="svn" revision="112">C:\alex.yarmula\SJSU\fall-08-classes\273-enterprise_systems\project\projectFolder\src\edu\sjsu\edo08f\gui\NewDelete.form</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Deleted" />
@@ -922,9 +931,9 @@
     <RUBY_DOC NAME="DEFAULTS" VALUE="true" />
     <RUBY_DOC NAME="NUMBER" VALUE="0" />
   </component>
-  <component name="RunManager" selected="Application.MessageServer">
-    <tempConfiguration default="false" name="MessageServer" type="Application" factoryName="Application" enabled="false" merge="false" runner="emma">
-      <option name="MAIN_CLASS_NAME" value="edu.sjsu.edo08f.jms.MessageServer" />
+  <component name="RunManager" selected="Application.GUIMain">
+    <tempConfiguration default="false" name="GUIMain" type="Application" factoryName="Application" enabled="false" merge="false" runner="emma">
+      <option name="MAIN_CLASS_NAME" value="edu.sjsu.edo08f.gui.GUIMain" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -935,12 +944,8 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="projectFolder" />
       <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="49269" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <ConfigurationWrapper RunnerId="Debug" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
       <method>
         <option name="Make" value="true" />
       </method>
@@ -1108,7 +1113,7 @@
     <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Remote.remote" />
       <item index="1" class="java.lang.String" itemvalue="Tomcat Server.tomcat" />
-      <item index="2" class="java.lang.String" itemvalue="Application.MessageServer" />
+      <item index="2" class="java.lang.String" itemvalue="Application.GUIMain" />
     </list>
     <configuration default="true" type="RubyRunConfigurationType" factoryName="Ruby test">
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e &quot;STDOUT.sync=true;STDERR.sync=true;load($0=ARGV.shift)&quot;" />
@@ -1201,23 +1206,23 @@
     <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30725622" sideWeight="0.0" order="8" side_tool="false" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45351472" sideWeight="0.0" order="8" side_tool="false" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294621" sideWeight="0.654195" order="6" side_tool="false" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14975551" sideWeight="0.90929705" order="3" side_tool="false" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13979591" sideWeight="0.62666667" order="1" side_tool="false" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.545" sideWeight="0.5" order="1" side_tool="false" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1393643" sideWeight="0.6689342" order="1" side_tool="false" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4739229" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="Code explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39002267" sideWeight="0.5" order="3" side_tool="false" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32312927" sideWeight="0.5" order="3" side_tool="false" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21333334" sideWeight="0.5" order="9" side_tool="false" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24603175" sideWeight="0.5" order="10" side_tool="false" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21315193" sideWeight="0.5" order="9" side_tool="false" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43537414" sideWeight="0.5" order="10" side_tool="false" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1601467" sideWeight="0.74603176" order="0" side_tool="false" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32640588" sideWeight="0.7789116" order="0" side_tool="false" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" />
       <window_info id="Web Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" />
@@ -1231,8 +1236,8 @@
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" />
-      <window_info id="soapUI Navigator" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" />
       <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" />
+      <window_info id="soapUI Navigator" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
@@ -1244,7 +1249,7 @@
     <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete unneeded file" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete unneeded file and rename to GuiCLient" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -1255,7 +1260,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="added: enrollStudent, delete/update course, find courses for student.&#10;fixed bugs" />
     <MESSAGE value="finished StudentService. finished InstructorService. added unenroll student to CourseService. left 3 methods to implement until the end" />
     <MESSAGE value="added update instructor implementation for course service" />
     <MESSAGE value="implemented last services" />
@@ -1280,6 +1284,7 @@
     <MESSAGE value="fixed getByIDs" />
     <MESSAGE value="all tests included" />
     <MESSAGE value="delete unneeded file" />
+    <MESSAGE value="delete unneeded file and rename to GuiCLient" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1329,100 +1334,127 @@
       <antCommandLine value="" />
       <runInBackground value="true" />
       <targetFilters />
-      <treeView value="true" />
+      <treeView value="false" />
       <verbose value="false" />
       <viewClosedWhenNoErrors value="false" />
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/xml/XmlParser.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/services/PersonService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="49" selection-start="3177" selection-end="3177" vertical-scroll-proportion="0.0">
+        <state line="20" column="0" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/services/CourseService.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/gui/RetrivePerson.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="17" selection-start="317" selection-end="317" vertical-scroll-proportion="0.0">
+        <state line="268" column="40" selection-start="12554" selection-end="12554" vertical-scroll-proportion="0.8836207">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/services/InstructorService.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/support/converters/CourseXMLConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="17" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
+        <state line="36" column="73" selection-start="1237" selection-end="1237" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-src/edu/sjsu/edo08f/jms/PersonServiceMessageTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="104" selection-start="1773" selection-end="1773" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/services/StudentService.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/dao/CommonDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="512" selection-end="512" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/services/InstructorServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="69" selection-start="2020" selection-end="2020" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-src/edu/sjsu/edo08f/jms/StudentServiceMessageTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="7" selection-start="266" selection-end="266" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-src/edu/sjsu/edo08f/support/UpdateInstructorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="264" column="0" selection-start="9587" selection-end="9587" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test-src/edu/sjsu/edo08f/support/UpdateStudentTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="192" column="151" selection-start="7221" selection-end="7221" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/testng.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="107" selection-start="456" selection-end="456" vertical-scroll-proportion="0.0">
+        <state line="73" column="50" selection-start="1720" selection-end="1720" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/inputSchema.xsd">
+    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/domain/Course.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="8" selection-start="5458" selection-end="5458" vertical-scroll-proportion="0.0">
+        <state line="0" column="10" selection-start="8" selection-end="30" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/services/utils/SearchUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/services/CourseService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="0" selection-start="2268" selection-end="2268" vertical-scroll-proportion="0.0">
+        <state line="24" column="47" selection-start="627" selection-end="627" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/gui/CreateInstructor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="266" column="44" selection-start="13482" selection-end="13482" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-src/edu/sjsu/edo08f/jms/CourseServiceMessageTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="2" selection-start="1962" selection-end="1962" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/jms/GuiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="22" selection-start="223" selection-end="232" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-src/edu/sjsu/edo08f/jms/MessageClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="26" selection-start="223" selection-end="236" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/jms/MessageServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="356" selection-start="1486" selection-end="1486" vertical-scroll-proportion="0.0">
+        <state line="78" column="183" selection-start="2019" selection-end="2019" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/services/PersonService.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/xml/XmlReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="47" selection-start="358" selection-end="358" vertical-scroll-proportion="0.32911393">
+        <state line="27" column="32" selection-start="720" selection-end="734" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/gui/CourseClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="55" selection-start="1221" selection-end="1221" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/sjsu/edo08f/gui/PersonClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="57" selection-start="598" selection-end="598" vertical-scroll-proportion="0.27639753">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
