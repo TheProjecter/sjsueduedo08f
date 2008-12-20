@@ -288,7 +288,7 @@ private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 	// TODO add your handling code here:
 	    MainApp coursegui = new MainApp();
 	    this.setVisible(false);
-	    coursegui.setVisible(true);
+	    //coursegui.setVisible(true);
 }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
