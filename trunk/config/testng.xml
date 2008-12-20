@@ -1,16 +1,16 @@
 <suite name="Main Suite">
 
-  <!--<test name="TestStudentMessages">-->
-    <!--<classes>-->
-      <!--<class name="edu.sjsu.edo08f.jms.StudentServiceMessageTest" />-->
-    <!--</classes>-->
-  <!--</test>-->
+  <test name="TestStudentMessages">
+    <classes>
+      <class name="edu.sjsu.edo08f.jms.StudentServiceMessageTest" />
+    </classes>
+  </test>
 
-  <!--<test name="TestCourseMessages">-->
-    <!--<classes>-->
-      <!--<class name="edu.sjsu.edo08f.jms.CourseServiceMessageTest" />-->
-    <!--</classes>-->
-  <!--</test>-->
+  <test name="TestCourseMessages">
+    <classes>
+      <class name="edu.sjsu.edo08f.jms.CourseServiceMessageTest" />
+    </classes>
+  </test>
 
   <test name="TestPersonMessages">
     <classes>
@@ -18,59 +18,70 @@
     </classes>
   </test>
 
-  <!--<test name="TestBillCalculator">-->
-    <!--<classes>-->
-      <!--<class name="edu.sjsu.edo08f.support.BillCalculatorTest" />-->
-    <!--</classes>-->
-  <!--</test>-->
+  <test name="TestBillCalculator">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.BillCalculatorTest" />
+    </classes>
+  </test>
 
-  <!--<test name="CreateStudentTest">-->
-    <!--<classes>-->
-      <!--<class name="edu.sjsu.edo08f.support.CreateStudentTest" />-->
-    <!--</classes>-->
-  <!--</test>-->
+  <test name="CreateInstructorTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.CreateInstructorTest" />
+    </classes>
+  </test>
 
-  <!--<test name="CreateInstructorTest">-->
-    <!--<classes>-->
-      <!--<class name="edu.sjsu.edo08f.support.CreateInstructorTest" />-->
-    <!--</classes>-->
-  <!--</test>-->
+  <test name="CreateStudentTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.CreateStudentTest" />
+    </classes>
+  </test>
 
-  <!--<test name="UpdateStudentTest">-->
-    <!--<classes>-->
-      <!--<class name="edu.sjsu.edo08f.support.UpdateStudentTest" />-->
-    <!--</classes>-->
-  <!--</test>-->
+  <test name="CreateCourseTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.CreateCourseTest" />
+    </classes>
+  </test>
 
-  <!--<test name="UpdateInstructorTest">-->
-    <!--<classes>-->
-      <!--<class name="edu.sjsu.edo08f.support.UpdateInstructorTest" />-->
-    <!--</classes>-->
-  <!--</test>-->
+  <test name="DeleteCourseTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.DeleteCourseTest" />
+    </classes>
+  </test>
 
-  <!--<test name="DeleteInstructorTest">-->
-    <!--<classes>-->
-      <!--<class name="edu.sjsu.edo08f.support.DeleteInstructorTest" />-->
-    <!--</classes>-->
-  <!--</test>-->
+  <test name="DeleteInstructorTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.DeleteInstructorTest" />
+    </classes>
+  </test>
 
-  <!--<test name="DeleteStudentTest">-->
-    <!--<classes>-->
-      <!--<class name="edu.sjsu.edo08f.support.DeleteStudentTest" />-->
-    <!--</classes>-->
-  <!--</test>-->
+  <test name="DeleteStudentTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.DeleteStudentTest" />
+    </classes>
+  </test>
 
-  <!--<test name="EnrolStudentTest">-->
-    <!--<classes>-->
-      <!--<class name="edu.sjsu.edo08f.support.EnrolStudentTest" />-->
-    <!--</classes>-->
-  <!--</test>-->
+  <test name="EnrolStudentTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.EnrolStudentTest" />
+    </classes>
+  </test>
 
-  <!--<test name="UnenrollStudentTest">-->
-    <!--<classes>-->
-      <!--<class name="edu.sjsu.edo08f.support.UnenrollStudentTest" />-->
-    <!--</classes>-->
-  <!--</test>-->
+  <test name="UnenrollStudentTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.UnenrollStudentTest" />
+    </classes>
+  </test>
 
+  <test name="UpdateInstructorTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.UpdateInstructorTest" />
+    </classes>
+  </test>
+
+  <test name="UpdateStudentTest">
+    <classes>
+      <class name="edu.sjsu.edo08f.support.UpdateStudentTest" />
+    </classes>
+  </test>
 
 </suite>
