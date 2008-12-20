@@ -547,6 +547,7 @@ public class JFrameCourse extends javax.swing.JFrame {
 
     private void jButton_BackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_BackMouseClicked
         // TODO add your handling code here:
+        this.dispose();
 }//GEN-LAST:event_jButton_BackMouseClicked
 
     /**
