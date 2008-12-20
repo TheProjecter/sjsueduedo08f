@@ -42,7 +42,7 @@ public class StudentsAll extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-   
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,9 +52,7 @@ public class StudentsAll extends javax.swing.JFrame {
           StudentService studentService = (StudentService) BeanRetriever.getBeanFactory().getBean("studentService");
         List<Student> students = studentService.getAll();
     JFrame frame = new JFrame("List of all students ");
-    JPanel panel = new JPanel();
-    //String data[][] = {{students.get(0).getId().toString(), students.get(0).getFirstName(), students.get(0).getLastName(),students.get(0).getAddress(),students.get(0).getCity(),students.get(0).getState(),students.get(0).getZipCode()}};
-    String data[][] = {{null,null,null,null,null,null}};
+    String data[][] = {{"Id", "FirstName", "Last Name", "Address", "City", "State", "Zip"}};
     String col[] = {"Id", "FirstName", "Last Name", "Address", "City", "State", "Zip"};
     DefaultTableModel model = new DefaultTableModel(data,col);
     JTable table = new JTable(model);
@@ -62,9 +60,9 @@ public class StudentsAll extends javax.swing.JFrame {
         for (Student studentToBeDisplayed : students) {
        model.insertRow(table.getRowCount(),new Object[]{studentToBeDisplayed.getId(), studentToBeDisplayed.getFirstName(), studentToBeDisplayed.getLastName(),studentToBeDisplayed.getAddress(),studentToBeDisplayed.getCity(),studentToBeDisplayed.getState(),studentToBeDisplayed.getZipCode()});
      }
-        panel.add(table);
-    frame.add(panel);
-    frame.setSize(300,300);
+
+    frame.add(table);
+    frame.setSize(600,300);
     frame.setVisible(true);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -74,7 +72,8 @@ public class StudentsAll extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StudentsAll().setVisible(true);
+                new StudentsAll();
+
             }
         });
     }

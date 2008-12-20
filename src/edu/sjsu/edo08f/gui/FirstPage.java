@@ -8,7 +8,7 @@ package edu.sjsu.edo08f.gui;
 
 /**
  *
- * @author  Rags
+ * @author  Anita
  */
 public class FirstPage extends javax.swing.JFrame {
 
@@ -259,8 +259,8 @@ public class FirstPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
+
+
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
     InstructorGUI instructorgui = new InstructorGUI();
@@ -277,12 +277,12 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     studentgui.setVisible(true);
 }//GEN-LAST:event_jButton2ActionPerformed
 
-private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {
 // TODO add your handling code here:
     AboutPage aboutPage = new AboutPage();
     aboutPage.setVisible(true);
     System.out.println("Done");
-}                                        
+}
 
 private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 	// TODO add your handling code here:
