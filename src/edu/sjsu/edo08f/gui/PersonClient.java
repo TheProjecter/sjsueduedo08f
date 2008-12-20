@@ -19,8 +19,6 @@ import javax.jms.TextMessage;
 public class PersonClient extends MessageClient {
     public String getAll() throws JMSException {
 
-        System.out.println("PersonClient getAll()");
-
         sendAsynchronousMessage(
             "<request>" +
                 "<personService>"  +
@@ -34,10 +32,6 @@ public class PersonClient extends MessageClient {
 
     public String search(String searchedFieldName, String searchedValue) throws JMSException {
 
-        System.out.println("PersonClient search");
-        System.out.println("searchedFieldName: " + searchedFieldName);
-        System.out.println("searchedValue:     " + searchedValue);
-
         sendAsynchronousMessage(
             "<request>" +
                 "<personService>" +
@@ -49,15 +43,10 @@ public class PersonClient extends MessageClient {
             "</request>"
         );
         String reply = getReply();
-        System.out.println(reply);
-        System.out.println("===============================");
         return reply;
     }
 
     public String getById(String id) throws JMSException {
-
-        System.out.println("PersonClient search");
-        System.out.println("Id: " + id);
 
         sendAsynchronousMessage(
             "<request>" +

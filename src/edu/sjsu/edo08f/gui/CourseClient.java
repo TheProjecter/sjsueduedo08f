@@ -47,10 +47,6 @@ public class CourseClient  extends MessageClient {
 
     public String getCourseByPersionId(String id, String personType) throws JMSException {
 
-        System.out.println("CourseClient getCourseByPersionId() id: "+id+"personType: "+personType+"|");
-        System.out.println("personType: "+personType+"|");
-        System.out.println("personType: "+"STUDENT"+"|");
-
         String reply;
         if ( personType.equals("STUDENT") ){
             // Get Student
@@ -103,7 +99,7 @@ public class CourseClient  extends MessageClient {
     }
 
 
-    public String getPersonByCourse(String id, String name, String section, String meetingHours
+    public String getStudentsByCourse(String id, String name, String section, String meetingHours
                                   , String location, String units) throws JMSException {
         sendAsynchronousMessage(
             "<request>" +
@@ -122,8 +118,70 @@ public class CourseClient  extends MessageClient {
             "</request>"
         );
         String student = getReply();
-        System.out.println("getPersonByCourse");
-        System.out.println(student);
+        return student;
+    }
+    public String updateCourse(String id, String name, String section, String meetingHours
+                                  , String location, String units) throws JMSException {
+        sendAsynchronousMessage(
+            "<request>" +
+                "<courseService>"  +
+                    "<update>"    +
+                        "<course>"    +
+                            "<id>"+id+"</id>"    +
+                            "<name>"+name+"</name>"    +
+                            "<section>"+section+"</section>"    +
+                            "<meeting-hours>"+meetingHours+"</meeting-hours>"    +
+                            "<location>"+location+"</location>"    +
+                            "<units>"+units+"</units>"    +
+                        "</course>"    +
+                    "</update>"    +
+                "</courseService>" +
+            "</request>"
+        );
+        String student = getReply();
+        return student;
+    }
+    public String createCourse(String id, String name, String section, String meetingHours
+                                  , String location, String units) throws JMSException {
+        sendAsynchronousMessage(
+            "<request>" +
+                "<courseService>"  +
+                    "<create>"    +
+                        "<course>"    +
+//                            "<id>"+id+"</id>"    +
+                            "<name>"+name+"</name>"    +
+                            "<section>"+section+"</section>"    +
+                            "<meeting-hours>"+meetingHours+"</meeting-hours>"    +
+                            "<location>"+location+"</location>"    +
+                            "<units>"+units+"</units>"    +
+                        "</course>"    +
+                    "</create>"    +
+                "</courseService>" +
+            "</request>"
+        );
+        String student = getReply();
+        return student;
+    }
+
+    public String deleteCourse(String id, String name, String section, String meetingHours
+                                  , String location, String units) throws JMSException {
+        sendAsynchronousMessage(
+            "<request>" +
+                "<courseService>"  +
+                    "<delete>"    +
+                        "<course>"    +
+                            "<id>"+id+"</id>"    +
+                            "<name>"+name+"</name>"    +
+                            "<section>"+section+"</section>"    +
+                            "<meeting-hours>"+meetingHours+"</meeting-hours>"    +
+                            "<location>"+location+"</location>"    +
+                            "<units>"+units+"</units>"    +
+                        "</course>"    +
+                    "</delete>"    +
+                "</courseService>" +
+            "</request>"
+        );
+        String student = getReply();
         return student;
     }
 }
