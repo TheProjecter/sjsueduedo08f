@@ -348,7 +348,7 @@ private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         studentGUI.setVisible(true);
 
     }
-    
+
 }//GEN-LAST:event_jButton3ActionPerformed
 
 private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
