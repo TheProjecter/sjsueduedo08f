@@ -69,8 +69,7 @@ public class StudentsSearch extends javax.swing.JFrame {
 
       PersonService personService = (PersonService) BeanRetriever.getBeanFactory().getBean("personService");
              List<Person> person =personService.search(personField,fieldValue);
-
-           System.out.println(personType);
+         System.out.println(personType);
          System.out.println(personField);
          System.out.println(fieldValue);
 
