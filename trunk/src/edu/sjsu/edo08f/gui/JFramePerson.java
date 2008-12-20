@@ -453,14 +453,10 @@ public class JFramePerson extends javax.swing.JFrame {
     private void jButton_SearchMouseClicked(java.awt.event.MouseEvent evt) {
         PersonClient personclient = new PersonClient();
         ConvertFromXML convert = new ConvertFromXML();
-        String xml = new String();
-
-//
-        System.out.println("jButton_SearchMouseClicked");
+        String[][] PersonTable;
 
         String selectedFieldName = (String)jComboBox_SearchName.getSelectedItem();
-        String fieldName = new String();
-        String fieldValue = new String();
+        String fieldName = null, fieldValue;
         if (selectedFieldName ==  "Person ID"){
             fieldName = "id";
         }else if (selectedFieldName ==  "First Name"){
@@ -480,17 +476,14 @@ public class JFramePerson extends javax.swing.JFrame {
         }
         fieldValue = jTextField1_SearchValue.getText();
         try {
-//            if (fieldName == "id"){
-//                xml = personclient.getById(fieldValue);
-//            }else{
-                xml = personclient.search(fieldName, fieldValue);
-//            }
-            String[][] PersonTable = convert.PersonConvertFromXML(xml);
-            System.out.println(xml);
-
+            String xml = personclient.search(fieldName, fieldValue);
+            if (xml.indexOf("<exception>") >= 0 ){
+                PersonTable = null;
+            }else{
+                PersonTable = convert.PersonConvertFromXML(xml);
+            }
             jTable1ResultList.setModel(new javax.swing.table.DefaultTableModel( PersonTable,
                 new String [] {"ID", "First Name", "Last Name", "Address", "City", "State", "Zip Code", "Type"} ));
-
         } catch (JMSException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
@@ -507,16 +500,20 @@ public class JFramePerson extends javax.swing.JFrame {
     private void jButton_GetAllMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_GetAllMouseClicked
         PersonClient personclient = new PersonClient();
         ConvertFromXML convert = new ConvertFromXML();
-        String xml = new String();
+        String[][] PersonTable;
         try {
-            xml = personclient.getAll();
-            String[][] PersonTable = convert.PersonConvertFromXML(xml);
+            String xml = personclient.getAll();
+            if (xml.indexOf("<exception>") >= 0 ){
+                PersonTable = null;
+            }else{
+                PersonTable = convert.PersonConvertFromXML(xml);
+            }
             jTable1ResultList.setModel(new javax.swing.table.DefaultTableModel( PersonTable,
                 new String [] {"ID", "First Name", "Last Name", "Address", "City", "State", "Zip Code", "Type"} ));
         } catch (JMSException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
-        System.out.println(xml);
+
     }//GEN-LAST:event_jButton_GetAllMouseClicked
 
     private void jButton_SaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_SaveMouseClicked
@@ -545,7 +542,7 @@ public class JFramePerson extends javax.swing.JFrame {
         PersonClient personclient = new PersonClient();
         CourseClient courseClient = new CourseClient();
         ConvertFromXML convert = new ConvertFromXML();
-        String xml = new String();
+        String[][] CourseTable;
 //      if (evt.getClickCount() == 2) {
             javax.swing.JTable target = (javax.swing.JTable)evt.getSource();
             int row = target.getSelectedRow();
@@ -558,10 +555,14 @@ public class JFramePerson extends javax.swing.JFrame {
             jTextField_ZipCode.setText((String)target.getValueAt(row, 6));
             jTextField_PersonType.setText((String)target.getValueAt(row, 7));
             String id = (String)target.getValueAt(row, 0);
-            System.out.println("row: " + row + "Id: " + id);
+
             try {
-                xml = courseClient.getCourseByPersionId(jTextField_PersonID.getText(), jTextField_PersonType.getText());
-                String[][] CourseTable = convert.CourseConvertFromXML(xml);
+                String xml = courseClient.getCourseByPersionId(jTextField_PersonID.getText(), jTextField_PersonType.getText());
+                if (xml.indexOf("<exception>") >= 0 ){
+                    CourseTable = null;
+                }else{
+                    CourseTable = convert.CourseConvertFromXML(xml);
+                }
                 jTable_CourseList.setModel(new javax.swing.table.DefaultTableModel( CourseTable,
                     new String [] {"ID", "Name", "Section", "Meeting Times", "Location", "Units"} ));
 
