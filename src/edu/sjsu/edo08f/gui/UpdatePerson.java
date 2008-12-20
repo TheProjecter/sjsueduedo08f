@@ -339,9 +339,9 @@ public class UpdatePerson extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-    InstructorGUI instructorGui = new InstructorGUI();
+     GUIMain firstPage = new GUIMain();
     this.setVisible(false);
-    instructorGui.setVisible(true);
+    firstPage.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed

@@ -340,7 +340,7 @@ private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     // TODO add your handling code here:
     this.setVisible(false);
 
-    if (FirstPage.personFlag){
+    if (GUIMain.personFlag){
         InstructorGUI instructorGui = new InstructorGUI();
         instructorGui.setVisible(true);
     } else {
