@@ -1,6 +1,6 @@
 package edu.sjsu.edo08f.gui;
 
-import edu.sjsu.edo08f.jms.MessageClient;
+import edu.sjsu.edo08f.jms.GuiClient;
 
 import javax.jms.JMSException;
 
@@ -11,7 +11,7 @@ import javax.jms.JMSException;
  * Time: 3:38:00 PM
  * To change this template use File | Settings | File Templates.
  */
-public class CourseClient  extends MessageClient {
+public class CourseClient  extends GuiClient {
 
     public String getAll()  throws JMSException {
 
