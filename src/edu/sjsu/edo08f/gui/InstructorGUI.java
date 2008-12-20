@@ -16,9 +16,9 @@ public class InstructorGUI extends javax.swing.JFrame {
     public InstructorGUI() {
         initComponents();
     }
-
-
-
+    
+    
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -261,14 +261,14 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 // TODO add your handling code here:
-    DeletePerson deletePerson = new DeletePerson();
+    NewDelete deletePerson = new NewDelete();
     this.setVisible(false);
     deletePerson.setVisible(true);
 }//GEN-LAST:event_jButton3ActionPerformed
 
 private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 // TODO add your handling code here:
-    RetrieveInstructor retrievePerson = new RetrieveInstructor();
+     RetrivePerson retrievePerson = new RetrivePerson();
     this.setVisible(false);
     retrievePerson.setVisible(true);
 }//GEN-LAST:event_jButton4ActionPerformed
@@ -287,7 +287,7 @@ private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
     // TODO add your handling code here:
-    UpdateInstructor updateInstructor = new UpdateInstructor();
+    RetrieveInstructor updateInstructor = new RetrieveInstructor();
     this.setVisible(false);
     updateInstructor.setVisible(true);
 }//GEN-LAST:event_jButton7ActionPerformed
