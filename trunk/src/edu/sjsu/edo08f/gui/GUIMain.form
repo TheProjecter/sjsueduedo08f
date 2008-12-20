@@ -55,12 +55,11 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="jButton_Student">
           <Properties>
-            <Property name="font" type="java.awt.Font" resourceKey="jButton_Student.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jButton_Student.text"/>
             <Property name="name" type="java.lang.String" value="jButton_Student" noResource="true"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton_StudentMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_StudentActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
@@ -70,8 +69,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton_Person">
           <Properties>
-            <Property name="font" type="java.awt.Font" resourceKey="jButton_Person.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jButton_Person.text"/>
             <Property name="name" type="java.lang.String" value="jButton_Person" noResource="true"/>
           </Properties>
           <Events>
@@ -85,8 +82,6 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton_Course">
           <Properties>
-            <Property name="font" type="java.awt.Font" resourceKey="jButton_Course.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jButton_Course.text"/>
             <Property name="name" type="java.lang.String" value="jButton_Course" noResource="true"/>
           </Properties>
           <Events>
@@ -100,12 +95,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton_Instructor">
           <Properties>
-            <Property name="font" type="java.awt.Font" resourceKey="jButton_Instructor.font"/>
-            <Property name="text" type="java.lang.String" resourceKey="jButton_Instructor.text"/>
             <Property name="name" type="java.lang.String" value="jButton_Instructor" noResource="true"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton_InstructorMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_InstructorActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout$JLayeredPaneConstraintsDescription">
