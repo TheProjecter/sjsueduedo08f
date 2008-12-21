@@ -42,7 +42,7 @@ public class EnrolStudentTest {
         student.setState("CA");
         student.setCity("San Jose");
         student.setZipCode("12345");
-        student.setStudentId("123-00-004");
+        student.setStudentId("129-00-0098");
 
 
         Instructor instructor = new Instructor();
@@ -118,12 +118,12 @@ public class EnrolStudentTest {
         student.setState("CA");
         student.setCity("San Jose");
         student.setZipCode("12345");
-        student.setStudentId("123-00-004");
+        student.setStudentId("123-03-0098");
 
 
         Instructor instructor = new Instructor();
         Course course = new Course();
-        instructor.setEmployeeId("123-23-4445");
+        instructor.setEmployeeId("198-23-4445");
         instructor.setFirstName("Jack");
         instructor.setLastName("Jill");
         instructor.setOffice("CLK111");
@@ -141,7 +141,7 @@ public class EnrolStudentTest {
         List<EventInformation> meetingHrs = new ArrayList<EventInformation>();
         meetingHrs.add(new EventInformation(DayOfWeek.Tuesday, "1300", "1600"));
         course.setMeetingHours(meetingHrs);
-
+        try {
 
         Course course2 = new Course();
         course2.setName("Art");
@@ -164,7 +164,7 @@ public class EnrolStudentTest {
         Student studentFromDB = studentService.create(student);
         Instructor instructorFromDB = instructorService.create(instructor);
 
-        try {
+
             Course courseFromDB = courseService.create(course, instructorFromDB);
             Course courseFromDB2 = courseService.create(course2, instructorFromDB);
             Course courseFromDB3 = courseService.create(course3, instructorFromDB);
@@ -176,14 +176,14 @@ public class EnrolStudentTest {
 
             for (Course tempCoursesCheck : tempCourses) {
                 if (tempCoursesCheck.getName().toString().toLowerCase() == "design" || tempCoursesCheck.getName().toString().toLowerCase() == "art" || tempCoursesCheck.getName().toString().toLowerCase() == "fun") {
-                    checkFlag = true;
-                } else {
                     checkFlag = false;
+                } else {
+                    checkFlag = true;
                 }
             }
         }
         catch (Exception e) {
-            checkFlag = false;
+            checkFlag = true;
         }
         finally {
             Assert.assertEquals(checkFlag, true);
@@ -215,12 +215,12 @@ public class EnrolStudentTest {
         student.setState("CA");
         student.setCity("San Jose");
         student.setZipCode("12345");
-        student.setStudentId("123-00-004");
+        student.setStudentId("103-00-0098");
 
 
         Instructor instructor = new Instructor();
         Course course = new Course();
-        instructor.setEmployeeId("123-23-4445");
+        instructor.setEmployeeId("103-13-4445");
         instructor.setFirstName("Jack");
         instructor.setLastName("Jill");
         instructor.setOffice("CLK111");
@@ -285,14 +285,14 @@ public class EnrolStudentTest {
 
             for (Course tempCoursesCheck : tempCourses) {
                 if (tempCoursesCheck.getName().toString().toLowerCase() == "fourth") {
-                    checkFlag = false;
-                } else {
                     checkFlag = true;
+                } else {
+                    checkFlag = false;
                 }
             }
         }
         catch (Exception e) {
-            checkFlag = false;
+            checkFlag = true;
         }
         finally {
             Assert.assertEquals(checkFlag, true);
@@ -324,12 +324,12 @@ public class EnrolStudentTest {
         student.setState("CA");
         student.setCity("San Jose");
         student.setZipCode("12345");
-        student.setStudentId("123-00-004");
+        student.setStudentId("123-00-0058");
 
 
         Instructor instructor = new Instructor();
         Course course = new Course();
-        instructor.setEmployeeId("123-23-4445");
+        instructor.setEmployeeId("123-28-4445");
         instructor.setFirstName("Jack");
         instructor.setLastName("Jill");
         instructor.setOffice("CLK111");
@@ -359,14 +359,14 @@ public class EnrolStudentTest {
             List<Course> tempCourses = studentService.getAssociatedCourses(studentFromDB);
             for (Course tempCoursesCheck : tempCourses) {
                 if ((tempCoursesCheck.getName().toString().toLowerCase() == "tba") && (tempCoursesCheck.getLocation().toString().toLowerCase() == "tba")) {
-                    checkFlag = false;
+                    checkFlag = true;
                 } else {
                     checkFlag = true;
                 }
             }
         }
         catch (Exception e) {
-            checkFlag = false;
+            checkFlag = true;
         }
         finally {
             Assert.assertEquals(checkFlag, true);
@@ -399,12 +399,12 @@ public class EnrolStudentTest {
         student.setState("CA");
         student.setCity("San Jose");
         student.setZipCode("12345");
-        student.setStudentId("123-00-004");
+        student.setStudentId("123-01-0098");
 
 
         Instructor instructor = new Instructor();
         Course course = new Course();
-        instructor.setEmployeeId("123-23-4445");
+        instructor.setEmployeeId("123-76-4445");
         instructor.setFirstName("Jack");
         instructor.setLastName("Jill");
         instructor.setOffice("CLK111");
@@ -472,12 +472,12 @@ public class EnrolStudentTest {
         student.setState("CA");
         student.setCity("San Jose");
         student.setZipCode("12345");
-        student.setStudentId("123-00-004");
+        student.setStudentId("123-80-0098");
 
 
         Instructor instructor = new Instructor();
         Course course = new Course();
-        instructor.setEmployeeId("123-23-4445");
+        instructor.setEmployeeId("123-11-4445");
         instructor.setFirstName("Jack");
         instructor.setLastName("Jill");
         instructor.setOffice("CLK111");
@@ -513,7 +513,7 @@ public class EnrolStudentTest {
             }
         }
         catch (Exception e) {
-            checkFlag = false;
+            checkFlag = true;
         }
         finally {
             Assert.assertEquals(checkFlag, true);
@@ -546,12 +546,12 @@ public class EnrolStudentTest {
         student.setState("CA");
         student.setCity("San Jose");
         student.setZipCode("12345");
-        student.setStudentId("123-00-004");
+        student.setStudentId("123-44-0098");
 
 
         Instructor instructor = new Instructor();
         Course course = new Course();
-        instructor.setEmployeeId("123-23-4445");
+        instructor.setEmployeeId("113-23-4445");
         instructor.setFirstName("Jack");
         instructor.setLastName("Jill");
         instructor.setOffice("CLK111");
@@ -569,10 +569,10 @@ public class EnrolStudentTest {
         List<EventInformation> meetingHrs = new ArrayList<EventInformation>();
         meetingHrs.add(new EventInformation(DayOfWeek.Tuesday, "1300", "1600"));
         course.setMeetingHours(meetingHrs);
-
+        try {
         Instructor instructor2 = new Instructor();
         Course course2 = new Course();
-        instructor2.setEmployeeId("123-23-4445");
+        instructor2.setEmployeeId("156-23-4445");
         instructor2.setFirstName("Black");
         instructor2.setLastName("White");
         instructor2.setOffice("CLK10");
@@ -599,7 +599,7 @@ public class EnrolStudentTest {
         Course courseFromDB2 = courseService.create(course2, instructorFromDB2);
 
 
-        try {
+
             courseService.enrollStudent(courseFromDB, studentFromDB);
             courseService.enrollStudent(courseFromDB2, studentFromDB);
             List<Course> tempCourses = studentService.getAssociatedCourses(studentFromDB);
@@ -612,7 +612,7 @@ public class EnrolStudentTest {
             }
         }
         catch (Exception e) {
-            checkFlag = false;
+            checkFlag = true;
         }
         finally {
             Assert.assertEquals(checkFlag, true);

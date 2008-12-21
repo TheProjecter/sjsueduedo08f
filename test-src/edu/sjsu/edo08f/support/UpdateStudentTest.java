@@ -22,29 +22,32 @@ public class UpdateStudentTest {
     Student student = new Student();
     boolean checkFlag = false;
 
-
+//
     @Test(groups = {"main"})
 
-    //Test for updating any 1 feild - taken here :Student Id
+    //Test for updating any 1 feild - taken here :Student Name
     public void testStudId() {
         Student student = new Student();
-        student.setFirstName("Jack");
+        student.setFirstName("James");
         student.setLastName("Jill");
-        student.setAddress("123 ABC St");
-        student.setStudentId("123-00-004");
+        student.setAddress("1898 ABC St");
+        student.setStudentId("123-12-0948");
         student.setCity("San Jose");
         student.setState("CA");
         student.setZipCode("95112");
         Student studentFromDB = studentService.create(student);
-        student.setStudentId("123-11-1212");
+        student.setFirstName("Changed_James");
+
+
 
         try {
+
             studentService.update(student);
 
-            String temp = studentFromDB.getStudentId();
+            String temp = studentFromDB.getFirstName();
             String tempType = studentFromDB.getType().toString().toLowerCase();
 
-            if (temp.toLowerCase().equals("123-11-1212") && tempType.equals("student"))
+            if (temp.toLowerCase()=="Changed_Jack" && tempType.equals("student"))
                 checkFlag = false;
             else
                 checkFlag = true;
@@ -54,6 +57,10 @@ public class UpdateStudentTest {
             checkFlag = false;
         }
         finally {
+            Long x=  student.getId();
+
+                              System.out.println("long x "+ x);
+
                    Assert.assertEquals(checkFlag, true);
                    List<Student> students = studentService.getAll();
                    for (Student studentToBeDeleted : students) {
@@ -71,7 +78,7 @@ public class UpdateStudentTest {
         student.setFirstName("Jack");
         student.setLastName("Jill");
         student.setAddress("123 ABC St");
-        student.setStudentId("123-00-004");
+        student.setStudentId("123-00-0098");
         student.setCity("San Jose");
         student.setState("CA");
         student.setZipCode("95112");
@@ -115,7 +122,7 @@ public class UpdateStudentTest {
         student.setFirstName("Jack");
         student.setLastName("Jill");
         student.setAddress("123 ABC St");
-        student.setStudentId("123-00-004");
+        student.setStudentId("123-00-0098");
         student.setCity("San Jose");
         student.setState("CA");
         student.setZipCode("95112");
@@ -158,7 +165,7 @@ public class UpdateStudentTest {
         student.setFirstName("Jack");
         student.setLastName("Jill");
         student.setAddress("123 ABC St");
-        student.setStudentId("123-00-004");
+        student.setStudentId("123-00-0098");
         student.setCity("San Jose");
         student.setState("CA");
         student.setZipCode("95112");
@@ -175,7 +182,7 @@ public class UpdateStudentTest {
         Student studentFromDB2 = studentService.create(student2);
 
 
-        student2.setStudentId("123-00-004");
+        student2.setStudentId("123-00-0098");
         student2.setFirstName("Jack");
 
         try {
@@ -184,7 +191,7 @@ public class UpdateStudentTest {
             String temp = studentFromDB2.getStudentId();
             String tempType = studentFromDB2.getType().toString().toLowerCase();
             String tempFName = studentFromDB2.getFirstName().toString().toLowerCase();
-            if (temp.toLowerCase().equals("123-00-004") && tempType.equals("student") && tempFName.toLowerCase().equals("Jack")) {
+            if (temp.toLowerCase().equals("123-00-0098") && tempType.equals("student") && tempFName.toLowerCase().equals("Jack")) {
                 checkFlag = false;
                 System.out.println("2 students with completely identical details- updated student 2 to look like student1");
             } else
