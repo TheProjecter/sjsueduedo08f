@@ -140,6 +140,11 @@ public class CourseVerifier extends CommonVerifier {
             logger.warn("The course section should be defined and be 1 or more");
             throw new InvalidCourseException("The course section should be defined and be 0 or more");
         }
+        if (course.getUnits() == null || course.getUnits() < 0) {
+            logger.warn ("The number of units should be non-negative");
+            throw new InvalidCourseException("The course unit number should be defined and be 0 or more");
+        }
+
         verifyMeetingHours(course.getMeetingHours());
 
         if (isCourseOverlappingWithDBForThisTimeLocation(course)) {
