@@ -177,7 +177,7 @@ public class UpdatePerson extends javax.swing.JFrame {
             }
         });
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "first-name", "last-name", "Address", "City", "State", "zip-code" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "id", "first-name", "last-name", "Address", "City", "State", "zip-code" }));
         jComboBox5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox5ActionPerformed(evt);
