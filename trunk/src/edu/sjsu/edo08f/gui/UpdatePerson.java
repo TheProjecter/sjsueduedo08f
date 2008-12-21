@@ -341,7 +341,7 @@ public class UpdatePerson extends javax.swing.JFrame {
         // TODO add your handling code here:
      GUIMain firstPage = new GUIMain();
     this.setVisible(false);
-    firstPage.setVisible(true);
+    GUIMain.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
