@@ -33,7 +33,7 @@ public class DeleteStudentTest {
         student.setState("CA");
         student.setCity("San Jose");
         student.setZipCode("12345");
-        student.setStudentId("123-00-004");
+        student.setStudentId("123-00-0098");
         studentService.create(student);
 
         try {

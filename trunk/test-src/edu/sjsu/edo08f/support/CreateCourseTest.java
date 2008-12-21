@@ -44,11 +44,11 @@ public class CreateCourseTest {
 
 
         course.setName("Design");
-        course.setLocation("BNR01");
+        course.setLocation("BNz01");
         course.setSection(1);
         course.setUnits(3);
         List<EventInformation> meetingHrs = new ArrayList<EventInformation>();
-        meetingHrs.add(new EventInformation(DayOfWeek.Tuesday, "1300", "1600"));
+        meetingHrs.add(new EventInformation(DayOfWeek.Friday, "1330", "1600"));
         course.setMeetingHours(meetingHrs);
         Instructor instructorFromDB = instructorService.create(instructor);
 
@@ -60,7 +60,7 @@ public class CreateCourseTest {
             String temp = tempInstr.getFirstName();
             String tempType = instructorFromDB.getType().toString().toLowerCase();
 
-            if (temp.toLowerCase().equals("Jack") && tempType.equals("instructor"))
+            if (temp.toLowerCase().equals("jack") && tempType.equals("instructor"))
                 checkFlag = true;
             else
                 checkFlag = false;
@@ -647,9 +647,9 @@ public class CreateCourseTest {
             int tempCourseUnits = courseFromDB.getUnits();
 
             if (tempCourseName.toLowerCase().equals("unitszero") && tempCourseUnits == 0)
-                checkFlag = false;
-            else
                 checkFlag = true;
+            else
+                checkFlag = false;
         }
         catch (Exception e) {
             checkFlag = true;
@@ -690,7 +690,7 @@ public class CreateCourseTest {
         course.setName("UnitsZero");
         course.setLocation("KLS120");
         course.setSection(1);
-        course.setUnits(-10);
+        course.setUnits(-3);
         List<EventInformation> meetingHrs = new ArrayList<EventInformation>();
         meetingHrs.add(new EventInformation(DayOfWeek.Monday, "1200", "1500"));
         course.setMeetingHours(meetingHrs);
@@ -703,13 +703,13 @@ public class CreateCourseTest {
             int tempCourseSec = courseFromDB.getSection();
             int tempCourseUnits = courseFromDB.getUnits();
 
-            if (tempCourseName.toLowerCase().equals("unitszero") && tempCourseUnits == -10)
+            if (tempCourseName.toLowerCase().equals("unitszero") && tempCourseUnits <0)
                 checkFlag = false;
             else
                 checkFlag = true;
         }
         catch (Exception e) {
-            checkFlag = true;
+            checkFlag = false;
         }
        finally {
             Assert.assertEquals(checkFlag,true);

@@ -40,7 +40,7 @@ public class UnenrollStudentTest {
             student.setState("CA");
             student.setCity("San Jose");
             student.setZipCode("12345");
-            student.setStudentId("123-00-004");
+            student.setStudentId("123-00-0098");
 
 
             Instructor instructor = new Instructor();
@@ -116,7 +116,7 @@ public class UnenrollStudentTest {
         student.setState("CA");
         student.setCity("San Jose");
         student.setZipCode("12345");
-        student.setStudentId("123-00-004");
+        student.setStudentId("123-00-0098");
 
 
         Instructor instructor = new Instructor();
@@ -189,7 +189,7 @@ public class UnenrollStudentTest {
         student.setState("CA");
         student.setCity("San Jose");
         student.setZipCode("12345");
-        student.setStudentId("123-00-004");
+        student.setStudentId("123-00-0098");
 
 
         Instructor instructor = new Instructor();
@@ -262,7 +262,7 @@ public class UnenrollStudentTest {
         student.setState("CA");
         student.setCity("San Jose");
         student.setZipCode("12345");
-        student.setStudentId("123-00-004");
+        student.setStudentId("123-00-0098");
 
 
         Instructor instructor = new Instructor();

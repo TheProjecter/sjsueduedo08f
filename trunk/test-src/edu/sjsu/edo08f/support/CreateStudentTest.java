@@ -27,7 +27,9 @@ public class CreateStudentTest {
     public CreateStudentTest() {
 
         try {
-            Thread.sleep (5000);
+               Thread.sleep (5000);
+            int i = 0;
+   //         Thread.sleep (5000);
         } catch (Exception e) {}
 
     }
@@ -44,7 +46,7 @@ public class CreateStudentTest {
                   student.setState("CA");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-0041");
+                  student.setStudentId("100-00-0941");
 
                 try{
                     Student studentFromDB = studentService.create(student);
@@ -89,7 +91,7 @@ public class CreateStudentTest {
                   student.setState("CA");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("124-00-0098");
 
        try{
            Student studentFromDB = studentService.create(student);
@@ -100,15 +102,15 @@ public class CreateStudentTest {
            System.out.println("Value of temp" + temp);
 
 
-           if (temp.toLowerCase().equals("$#%0--09 *^ ")&& tempType.equals("student"))
-           checkFlag = false;
-           else
+           if (temp.toLowerCase().equals(student.getFirstName().toLowerCase())&& tempType.equals("student"))
            checkFlag = true;
+           else
+           checkFlag = false;
             }
 
             catch (Exception e){
 
-                checkFlag = true;
+                checkFlag = false;
     }
        finally {
                    Assert.assertEquals(checkFlag, true);
@@ -124,14 +126,14 @@ public class CreateStudentTest {
       @Test
       public void testFirstNameNumbers() {
 
-             Student student = new Student();
-                 student.setFirstName("12387986");
+                  Student student = new Student();
+                  student.setFirstName("12387986");
                   student.setLastName("Jill");
                   student.setAddress("98 ABC Street");
                   student.setState("CA");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("103-00-0098");
 
                try{
            Student studentFromDB = studentService.create(student);
@@ -142,18 +144,24 @@ public class CreateStudentTest {
            System.out.println("Value of temp" + temp);
 
 
-              if (temp.toLowerCase().equals("12387986")&& tempType.equals("student"))
-                         checkFlag = false;
-                         else
+              if (temp.equals(student.getFirstName())&& tempType.equals("student"))
                          checkFlag = true;
+                         else
+                         checkFlag = false;
 
           }
                catch (Exception e)
                {
-                   checkFlag= true;
+                   checkFlag= false;
                }
 
-          Assert.assertFalse(checkFlag,"true");
+         finally {
+                   Assert.assertEquals(checkFlag, true);
+                   List<Student> students = studentService.getAll();
+                   for (Student studentToBeDeleted : students) {
+                       studentService.delete(studentToBeDeleted);
+                   }
+               }
         }
 
 
@@ -167,7 +175,7 @@ public class CreateStudentTest {
                   student.setState("CA");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("023-00-0098");
        try{     Student studentFromDB = studentService.create(student);
 
            String temp = studentFromDB.getFirstName().toString();
@@ -205,7 +213,7 @@ public class CreateStudentTest {
                   student.setState("CA");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("123-00-0078");
 
      try{      Student studentFromDB = studentService.create(student);
 
@@ -215,12 +223,12 @@ public class CreateStudentTest {
            System.out.println("Value of temp" + temp);
 
 
-           if (temp.toLowerCase().equals("Skj23")&& tempType.equals("student"))
-           checkFlag = false;
+           if (temp.toLowerCase().equals(student.getFirstName().toLowerCase())&& tempType.equals("student"))
+           checkFlag = true;
            else
-           checkFlag = true;}
+           checkFlag = false;}
 
-              catch(Exception e){ checkFlag = true;}
+              catch(Exception e){ checkFlag = false;}
 
      finally {
                  Assert.assertEquals(checkFlag, true);
@@ -245,7 +253,7 @@ public class CreateStudentTest {
                   student.setState("CA");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("123-90-0098");
          try{      Student studentFromDB = studentService.create(student);
 
             String tempFirstName = studentFromDB.getLastName().toString();
@@ -260,7 +268,13 @@ public class CreateStudentTest {
                 checkFlag = false;
       }
                       catch(Exception e){ checkFlag = false;}
-            Assert.assertFalse(checkFlag,"true");
+          finally {
+                   Assert.assertEquals(checkFlag, true);
+                   List<Student> students = studentService.getAll();
+                   for (Student studentToBeDeleted : students) {
+                       studentService.delete(studentToBeDeleted);
+                   }
+               }
         }
 
       @Test
@@ -273,7 +287,7 @@ public class CreateStudentTest {
                   student.setState("CA");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("123-03-0098");
         try{     Student studentFromDB = studentService.create(student);
 
             String tempFirstName = studentFromDB.getLastName().toString();
@@ -309,7 +323,7 @@ public class CreateStudentTest {
                   student.setState("CA");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("163-00-0098");
             try{        Student studentFromDB = studentService.create(student);
 
             String tempFirstName = studentFromDB.getLastName().toString();
@@ -318,12 +332,12 @@ public class CreateStudentTest {
             System.out.println("Value of temp" + tempFirstName);
 
 
-            if (tempFirstName.toLowerCase().equals("^%$0 )(*")&& tempType.equals("student"))
-                checkFlag = false;
-            else
+            if (tempFirstName.toLowerCase().equals(student.getLastName().toLowerCase())&& tempType.equals("student"))
                 checkFlag = true;
+            else
+                checkFlag = false;
           }
-          catch(Exception e){ checkFlag = true;}
+          catch(Exception e){ checkFlag = false;}
             finally {
                         Assert.assertEquals(checkFlag, true);
                         List<Student> students = studentService.getAll();
@@ -337,31 +351,29 @@ public class CreateStudentTest {
 
       @Test
 
-    public void testLastNameNumber() {
+    public void testLastNameNumbers() {
 
                Student student = new Student();
                    student.setFirstName("Jack");
-                  student.setLastName("12587");
+                  student.setLastName("12387986");
                   student.setAddress("98 ABC Street");
                   student.setState("CA");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
-         try{       Student studentFromDB = studentService.create(student);
-
-               String tempFirstName = studentFromDB.getLastName().toString();
+                  student.setStudentId("900-00-0098");
+          try{
+           Student studentFromDB = studentService.create(student);
+           String temp = studentFromDB.getLastName().toString();
            String tempType = studentFromDB.getType().toString().toLowerCase();
+           System.out.println("Value of temp" + temp);
 
-               System.out.println("Value of temp" + tempFirstName);
-
-
-               if (tempFirstName.toLowerCase().equals("12587")&& tempType.equals("student"))
-                   checkFlag = false;
-               else
-                   checkFlag = true;
+              if ((temp.toLowerCase().equals(student.getLastName().toLowerCase()) && tempType.equals("student")))
+                         checkFlag = true;
+                         else
+                         checkFlag = false;
           }
-        catch(Exception e){ checkFlag = true;}
-         finally {
+            catch(Exception e){ checkFlag = false;}
+                finally {
                      Assert.assertEquals(checkFlag, true);
                      List<Student> students = studentService.getAll();
                      for (Student studentToBeDeleted : students) {
@@ -383,7 +395,7 @@ public class CreateStudentTest {
                   student.setState("CA");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("345-00-0098");
           try{     Student studentFromDB = studentService.create(student);
 
                String tempFirstName = studentFromDB.getLastName().toString();
@@ -392,12 +404,12 @@ public class CreateStudentTest {
                System.out.println("Value of temp" + tempFirstName);
 
 
-               if (tempFirstName.toLowerCase().equals("hu87sf")&& tempType.equals("student"))
-                   checkFlag = false;
-               else
+               if (tempFirstName.toLowerCase().equals(student.getLastName().toLowerCase())&& tempType.equals("student"))
                    checkFlag = true;
+               else
+                   checkFlag = false;
           }
-          catch(Exception e){ checkFlag = true;}
+          catch(Exception e){ checkFlag = false;}
           finally {
                       Assert.assertEquals(checkFlag, true);
                       List<Student> students = studentService.getAll();
@@ -413,24 +425,23 @@ public class CreateStudentTest {
 
       @Test
         public void testAddress() {
+           try {Thread.sleep(5000); } catch (Exception e) {}
 
              Student student = new Student();
                    student.setFirstName("Jack");
-                 student.setLastName("hu87sf");
-                  student.setAddress("98 ABC Street");
+                 student.setLastName("James");
+                  student.setAddress("98 ABCD Street");
                   student.setState("CA");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
-        try{      Student studentFromDB = studentService.create(student);
-
+                  student.setStudentId("533-77-0098");
+        try{
+            Student studentFromDB = studentService.create(student);
             String tempFirstName = studentFromDB.getAddress().toString();
             String tempType = studentFromDB.getType().toString().toLowerCase();
-        
-           System.out.println("Value of temp" + tempFirstName);
+            System.out.println("Value of temp" + tempFirstName);
 
-
-           if (tempFirstName.equals("123 ABC Street , San Jose ")&& tempType.equals("student"))
+           if (tempFirstName.equals(student.getAddress()) && tempType.equals("student"))
            checkFlag = true;
            else
            checkFlag = false;
@@ -453,13 +464,14 @@ public class CreateStudentTest {
 
             Student student = new Student();
                    student.setFirstName("Jack");
-                 student.setLastName("hu87sf");
-                   student.setAddress("^&%_) (* #@$@#  ");
+                 student.setLastName("husf");
+                   student.setAddress("^&%_) (* #@$@#");
                   student.setState("CA");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
-         try{       Student studentFromDB = studentService.create(student);
+                  student.setStudentId("765-00-0098");
+         try{
+             Student studentFromDB = studentService.create(student);
 
             String tempFirstName = studentFromDB.getAddress().toString();
             String tempType = studentFromDB.getType().toString().toLowerCase();
@@ -467,13 +479,13 @@ public class CreateStudentTest {
            System.out.println("Value of temp" + tempFirstName);
 
 
-           if (tempFirstName.equals("^&%_) (* #@$@#   ")&& tempType.equals("student"))
-           checkFlag = false;
-           else
+           if (tempFirstName.equals("^&%_) (* #@$@#")&& tempType.equals("student"))
            checkFlag = true;
+           else
+           checkFlag = false;
           }
 
-          catch(Exception e){ checkFlag = true;}
+          catch(Exception e){ checkFlag = false;}
          finally {
                      Assert.assertEquals(checkFlag, true);
                      List<Student> students = studentService.getAll();
@@ -488,15 +500,15 @@ public class CreateStudentTest {
      public void testAddressNegetiveNum() {
            Student student = new Student();
                    student.setFirstName("Jack");
-                 student.setLastName("hu87sf");
-                   //student.setAddress("^&%_) (* #@$@#  ");
+                 student.setLastName("husf");
                   student.setState("CA");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("231-00-0098");
         student.setAddress("-123 ABC Street , San Jose ");
 
-       try{        Student studentFromDB = studentService.create(student);
+       try{
+           Student studentFromDB = studentService.create(student);
 
             String tempFirstName = studentFromDB.getAddress().toString();
             String tempType = studentFromDB.getType().toString().toLowerCase();
@@ -505,11 +517,11 @@ public class CreateStudentTest {
 
 
            if (tempFirstName.equals("-123 ABC Street , San Jose ")&& tempType.equals("student"))
-           checkFlag = false;
-           else
            checkFlag = true;
+           else
+           checkFlag = false;
       }
-           catch(Exception e){ checkFlag = true;}
+           catch(Exception e){ checkFlag = false;}
        finally {
                    Assert.assertEquals(checkFlag, true);
                    List<Student> students = studentService.getAll();
@@ -518,21 +530,18 @@ public class CreateStudentTest {
                    }
                }
 
-
-
         }
 
-                                @Test
+   @Test
     public void testAddressEmpty() {
-                                    try {Thread.sleep(5000); } catch (Exception e) {}
+                                   
           Student student = new Student();
-                   student.setFirstName("Jack");
-                 student.setLastName("hu87sf");
-                   //student.setAddress("^&%_) (* #@$@#  ");
+                 student.setFirstName("Jack");
+                 student.setLastName("husf");
                   student.setState("CA");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("123-00-0098");
         student.setAddress("");
 
       try{       Student studentFromDB = studentService.create(student);
@@ -556,8 +565,6 @@ public class CreateStudentTest {
                       studentService.delete(studentToBeDeleted);
                   }
               }
-
-
         }
 
     //Tests For City
@@ -570,7 +577,7 @@ public class CreateStudentTest {
                    student.setAddress("123 ABC St");
                   student.setState("CA");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-0041");
+                  student.setStudentId("123-00-4532");
         student.setCity("San Jose");
 
        try{      Student studentFromDB = studentService.create(student);
@@ -594,8 +601,7 @@ public class CreateStudentTest {
                        studentService.delete(studentToBeDeleted);
                    }
                }
-
-        }
+            }
 
       @Test
          public void testCitySpecial() {
@@ -605,7 +611,7 @@ public class CreateStudentTest {
                     student.setAddress("123 ABC St");
                   student.setState("CA");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("123-34-0098");
         student.setCity("^^@$% 87 *&");
 
           try{         Student studentFromDB = studentService.create(student);
@@ -616,13 +622,13 @@ public class CreateStudentTest {
            System.out.println("Value of temp" + tempFirstName);
 
 
-           if (tempFirstName.toLowerCase().equals("^^@$% 87 *&")&& tempType.equals("student"))
-           checkFlag = false;
-           else
+           if (tempFirstName.equals(student.getCity())&& tempType.equals("student"))
            checkFlag = true;
+           else
+           checkFlag = false;
           }
 
-          catch(Exception e){ checkFlag = true;}
+          catch(Exception e){ checkFlag = false;}
           finally {
                       Assert.assertEquals(checkFlag, true);
                       List<Student> students = studentService.getAll();
@@ -642,7 +648,7 @@ public class CreateStudentTest {
                    student.setAddress("123 ABC St");
                   student.setState("CA");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("123-10-0098");
         student.setCity("124567");
 
     try{        Student studentFromDB = studentService.create(student);
@@ -653,12 +659,12 @@ public class CreateStudentTest {
            System.out.println("Value of temp" + tempFirstName);
 
 
-          if (tempFirstName.toLowerCase().equals("124567")&& tempType.equals("student"))
-           checkFlag = false;
-           else
+          if (tempFirstName.equals(student.getCity())&& tempType.equals("student"))
            checkFlag = true;
+           else
+           checkFlag = false;
           }
-          catch(Exception e){ checkFlag = true;}
+          catch(Exception e){ checkFlag = false;}
     finally {
                 Assert.assertEquals(checkFlag, true);
                 List<Student> students = studentService.getAll();
@@ -677,7 +683,7 @@ public class CreateStudentTest {
                    student.setAddress("123 ABC Str");
                   student.setState("CA");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("123-00-0098");
         student.setCity("");
 
        try{       Student studentFromDB = studentService.create(student);
@@ -714,7 +720,7 @@ public class CreateStudentTest {
                    student.setAddress("123 ABS St");
                   student.setState("CA");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-004");
+                  student.setStudentId("123-00-7898");
         student.setCity("C6th9");
 
           try{        Student studentFromDB = studentService.create(student);
@@ -725,12 +731,12 @@ public class CreateStudentTest {
            System.out.println("Value of temp" + tempFirstName);
 
 
-           if (tempFirstName.toLowerCase().equals("C6th9")&& tempType.equals("student"))
-           checkFlag = false;
-           else
+           if (tempFirstName.toLowerCase().equals(student.getCity().toLowerCase())&& tempType.equals("student"))
            checkFlag = true;
+           else
+           checkFlag = false;
           }
-           catch(Exception e){ checkFlag = true;}
+           catch(Exception e){ checkFlag = false;}
           finally {
                       Assert.assertEquals(checkFlag, true);
                       List<Student> students = studentService.getAll();
@@ -751,7 +757,7 @@ public class CreateStudentTest {
                  student.setLastName("Jill");
                    student.setAddress("123 ABC Street");
                    student.setZipCode("12345");
-                  student.setStudentId("123-00-0041");
+                  student.setStudentId("123-00-3441");
           student.setCity("San Jose");
         student.setState("CA");
 
@@ -788,7 +794,7 @@ public class CreateStudentTest {
                    student.setAddress("123 ABC St");
                   student.setCity("San Jose");
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-0041");
+                  student.setStudentId("123-00-5441");
 
         student.setState("*&");
 
@@ -800,12 +806,12 @@ public class CreateStudentTest {
            System.out.println("Value of temp" + tempFirstName);
 
 
-          if (tempFirstName.toLowerCase().equals("*&") && tempType.equals("student") )
-           checkFlag = false;
-           else
+          if (tempFirstName.toLowerCase().equals(student.getState()) && tempType.equals("student") )
            checkFlag = true;
+           else
+           checkFlag = false;
           }
- catch(Exception e){ checkFlag = true;}
+ catch(Exception e){ checkFlag = false;}
           finally {
                       Assert.assertEquals(checkFlag, true);
                       List<Student> students = studentService.getAll();
@@ -824,7 +830,7 @@ public class CreateStudentTest {
                    student.setAddress("123 ABC St");
 
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-0041");
+                  student.setStudentId("123-00-0001");
         student.setCity("San Jose");
         student.setState("MP");
 
@@ -860,7 +866,7 @@ public class CreateStudentTest {
                    student.setAddress("123 ABC St");
 
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-0041");
+                  student.setStudentId("109-00-0041");
         student.setCity("San Jose");
 
         student.setState("");
@@ -898,7 +904,7 @@ public class CreateStudentTest {
                    student.setAddress("123 ABC St");
 
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-0041");
+                  student.setStudentId("123-70-0041");
         student.setCity("San Jose");
         student.setState("23");
 
@@ -934,7 +940,7 @@ public class CreateStudentTest {
                    student.setAddress("123 ABC St");
 
                   student.setZipCode("12345");
-                  student.setStudentId("123-00-0041");
+                  student.setStudentId("123-30-0041");
         student.setCity("San Jose");
         student.setState("2C");
 
@@ -970,7 +976,7 @@ public class CreateStudentTest {
                     student.setFirstName("Jack");
                     student.setLastName("Jill");
                     student.setAddress("123 ABC St");
-                    student.setStudentId("123-00-0041");
+                    student.setStudentId("123-50-0041");
                     student.setCity("San Jose");
                     student.setState("CA");
                     student.setZipCode("95123");
@@ -1005,7 +1011,7 @@ public class CreateStudentTest {
                     student.setFirstName("Jack");
                     student.setLastName("Jill");
                     student.setAddress("123 ABC St");
-                    student.setStudentId("123-00-004");
+                    student.setStudentId("235-00-0098");
                     student.setCity("San Jose");
                     student.setState("CA");
            student.setZipCode("4j-23");
@@ -1039,7 +1045,7 @@ public class CreateStudentTest {
                     student.setFirstName("Jack");
                     student.setLastName("Jill");
                     student.setAddress("123 ABC St");
-                    student.setStudentId("123-00-004");
+                    student.setStudentId("123-00-8764");
                     student.setCity("San Jose");
                     student.setState("CA");
            student.setZipCode("-98823");
@@ -1074,7 +1080,7 @@ public class CreateStudentTest {
                     student.setFirstName("Jack");
                     student.setLastName("Jill");
                     student.setAddress("123 ABC St");
-                    student.setStudentId("123-00-004");
+                    student.setStudentId("123-00-2442");
                     student.setCity("San Jose");
                     student.setState("CA");
            student.setZipCode("");
@@ -1109,7 +1115,7 @@ public class CreateStudentTest {
                     student.setFirstName("Jack");
                     student.setLastName("Jill");
                     student.setAddress("123 ABC St");
-                    student.setStudentId("123-00-004");
+                    student.setStudentId("123-00-9876");
                     student.setCity("San Jose");
                     student.setState("CA");
            student.setZipCode("^$%__(");
@@ -1147,19 +1153,16 @@ public class CreateStudentTest {
                     student.setFirstName("Jack");
                     student.setLastName("Jill");
                     student.setAddress("123 ABC St");
-                    student.setStudentId("123-00-004");
+                    student.setStudentId("123-00-8634");
                     student.setCity("San Jose");
                     student.setState("CA");
-           student.setZipCode("95112");
+                    student.setZipCode("95112");
           try{     Student studentFromDB = studentService.create(student);
 
            String tempFirstName = studentFromDB.getStudentId();
            String tempType = studentFromDB.getType().toString().toLowerCase();
 
-           System.out.println("Value of temp" + tempFirstName);
-
-
-           if (tempFirstName.toLowerCase().equals("123-00-004") && tempType.equals("student") )
+           if (tempFirstName.toLowerCase().equals("123-00-0098") && tempType.equals("student") )
            checkFlag = false;
            else
            checkFlag = true;
@@ -1172,8 +1175,6 @@ public class CreateStudentTest {
                           studentService.delete(studentToBeDeleted);
                       }
                   }
-
-
 
         }
 
