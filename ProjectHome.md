@@ -1,0 +1,1 @@
+The project is done by students of San Jose State University. We have a specification from instructor, and need to use JMS and XML services to write the program.
